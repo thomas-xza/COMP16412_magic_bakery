@@ -12,7 +12,6 @@ public class Layer extends Ingredient {
     public Layer(String name, List<Ingredient> recipe) {
 
 	super(name);
-	// this.name = name;
 
 	this.recipe = recipe;
 

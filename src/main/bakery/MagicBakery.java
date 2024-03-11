@@ -28,10 +28,10 @@ public class MagicBakery {
 
     }
 
-    // public enum ActionType {
+    public enum ActionType {
     
-    // 	DRAW_INGREDIENT,PASS_INGREDIENT,BAKE_LAYER,FULFIL_ORDER,REFRESH_PANTRY;
+	DRAW_INGREDIENT,PASS_INGREDIENT,BAKE_LAYER,FULFIL_ORDER,REFRESH_PANTRY;
 	
-    // }
+    }
     
 }

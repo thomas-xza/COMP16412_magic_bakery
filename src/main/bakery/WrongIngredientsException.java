@@ -8,14 +8,14 @@ import java.lang.*;
  * @version 1.0
  */
 
-// public class WrongIngredientsException extends java.lang.IllegalArgumentException {
+public class WrongIngredientsException extends java.lang.IllegalArgumentException {
 
-//     /**
-//      * Someting
-//      */
+    /**
+     * Someting
+     */
 
-//     public WrongIngredientsException() {
+    public WrongIngredientsException() {
 
-//     }
+    }
 
-// }
+}
