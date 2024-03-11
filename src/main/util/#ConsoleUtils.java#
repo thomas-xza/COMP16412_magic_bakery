@@ -1,6 +1,5 @@
-package util;
+65;7006;1cpackage util;
 import java.util.List;
-import java.io.Console;
 
 public class ConsoleUtils {
 
