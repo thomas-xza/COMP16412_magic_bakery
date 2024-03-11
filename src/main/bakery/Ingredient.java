@@ -4,7 +4,9 @@ public class Ingredient {
 
     private String name;
 
-    //  private static HELPFUL_DUCK Ingredient;
+    public static Ingredient HELPFUL_DUCK;
+
+    private static long serialVersionUID;
 
     public Ingredient(String name) {
 

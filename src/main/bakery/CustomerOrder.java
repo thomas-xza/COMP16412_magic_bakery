@@ -12,6 +12,14 @@ public class CustomerOrder {
 
     private ArrayList<Ingredient> recipe;
 
+    private CustomerOrderStatus status;
+   
+    public enum CustomerOrderStatus {
+
+	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
+
+    }
+    
     public CustomerOrder(String name, Integer level, ArrayList<Ingredient> recipe, ArrayList<Ingredient> garnish) {
 
 	this.name = name;
@@ -76,5 +84,17 @@ public class CustomerOrder {
 	return "Test";
 	
     }
+
+    public CustomerOrderStatus getStatus() {
+
+	return status;
+
+    }
+
+    public void setStatus(CustomerOrderStatus setatus) {
+
+	this.status = status;
+
+    }    
 
 }
