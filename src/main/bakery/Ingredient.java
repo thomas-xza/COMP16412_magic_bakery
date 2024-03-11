@@ -2,9 +2,9 @@ package bakery;
 
 public class Ingredient {
 
-    public String name;
+    private String name;
 
-    //  public static HELPFUL_DUCK Ingredient;
+    //  private static HELPFUL_DUCK Ingredient;
 
     public Ingredient(String name) {
 

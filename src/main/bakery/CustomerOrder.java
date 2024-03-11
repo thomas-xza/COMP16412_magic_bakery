@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class CustomerOrder {
 
-    public String name;
+    private String name;
 
-    public Integer level;
+    private Integer level;
 
-    public ArrayList<Ingredient> garnish;
+    private ArrayList<Ingredient> garnish;
 
-    public ArrayList<Ingredient> recipe;
+    private ArrayList<Ingredient> recipe;
 
     public CustomerOrder(String name, Integer level, ArrayList<Ingredient> recipe, ArrayList<Ingredient> garnish) {
 

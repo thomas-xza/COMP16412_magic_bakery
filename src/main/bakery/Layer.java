@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Layer extends Ingredient {
 
-    public ArrayList<Ingredient> recipe;
+    private ArrayList<Ingredient> recipe;
 
-    public static long serialVersionUID;
+    private static long serialVersionUID;
 
     public Layer(String name, ArrayList<Ingredient> recipe) {
 
