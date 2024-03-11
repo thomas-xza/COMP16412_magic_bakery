@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Layer extends Ingredient {
 
-    private ArrayList<Ingredient> recipe;
+    private List<Ingredient> recipe;
 
     private static long serialVersionUID;
 
-    public Layer(String name, ArrayList<Ingredient> recipe) {
+    public Layer(String name, List<Ingredient> recipe) {
 
 	super(name);
 	// this.name = name;
