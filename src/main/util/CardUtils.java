@@ -12,38 +12,31 @@ import java.io.IOException;
 
 public class CardUtils {
 
-    // public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) {
-
-    // }
-
     public static List<Ingredient> readIngredientFile(String path) {
 
 	String line;
-	List<Ingredient> one_ingrd_list = new ArrayList<>();
+	List<Ingredient> sublist = new ArrayList<>();
 	List<Ingredient> all_ingrd_list = new ArrayList<>();
 
 	try(
 	
-	    FileReader ingrd_file = new FileReader(path);
-
-	    BufferedReader ingrd_stream = new BufferedReader(ingrd_file);
+	    FileReader file = new FileReader(path);
+	    BufferedReader stream = new BufferedReader(file);
 
 	    )
 	    {
 
-		line = ingrd_stream.readLine();
+		line = stream.readLine();
 		
-		line = ingrd_stream.readLine();
+		line = stream.readLine();
 		
 		while(line != null) {
 		    
-		    //  Java's integer parser doesn't like whitespace.
+		    sublist = stringToIngredient(line);
 
-		    one_ingrd_list = stringToIngredient(line);
+		    all_ingrd_list.addAll(sublist);
 
-		    all_ingrd_list.addAll(one_ingrd_list);
-
-		    line = ingrd_stream.readLine();
+		    line = stream.readLine();
 
 		}
 
@@ -63,57 +56,53 @@ public class CardUtils {
 
     private static List<Ingredient> stringToIngredient(String str) {
 
-	String ingrd_name;
-	Integer ingrd_quantity;
+	String name;
+	Integer quantity;
 	List<String> csv_line;
-	List<Ingredient> one_ingrd_list = new ArrayList<>();
+	List<Ingredient> sublist = new ArrayList<>();
 	
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
-	ingrd_name = csv_line.get(0);
+	name = csv_line.get(0);
 
-	ingrd_quantity = Integer.parseInt(csv_line.get(1));
+	quantity = Integer.parseInt(csv_line.get(1));
 
-	while (ingrd_quantity > 0) {
+	while (quantity > 0) {
 
-	    one_ingrd_list.add(new Ingredient(ingrd_name));
+	    sublist.add(new Ingredient(name));
 
-	    ingrd_quantity = ingrd_quantity - 1;
+	    quantity = quantity - 1;
 
 	}
 
-	return one_ingrd_list;
+	return sublist;
 
     }
 
     public static List<Layer> readLayerFile(String path) {
 
 	String line;
-	List<Layer> one_layer_list = new ArrayList<>();
+	List<Layer> sublist = new ArrayList<>();
 	List<Layer> all_layer_list = new ArrayList<>();
 
 	try(
 	
-	    FileReader layer_file = new FileReader(path);
-
-	    BufferedReader layer_stream = new BufferedReader(layer_file);
+	    FileReader file = new FileReader(path);
+	    BufferedReader stream = new BufferedReader(file);
 
 	    )
 	    {
 
-		line = layer_stream.readLine();
-		
-		line = layer_stream.readLine();
+		line = stream.readLine();		
+		line = stream.readLine();
 		
 		while(line != null) {
 		    
-		    //  Java's integer parser doesn't like whitespace.
+		    sublist = stringToLayers(line);
 
-		    one_layer_list = stringToLayers(line);
+		    all_layer_list.addAll(sublist);
 
-		    all_layer_list.addAll(one_layer_list);
-
-		    line = layer_stream.readLine();
+		    line = stream.readLine();
 
 		}
 
@@ -164,12 +153,98 @@ public class CardUtils {
 
     }
 
-    // private static CustomerOrder stringToCustomerOrder(String str) {
+    public static List<CustomerOrder> readCustomerFile(String path, List<Layer> layers) {
 
-    // }
+	String line;
+	List<CustomerOrder> sublist = new ArrayList<>();
+	List<CustomerOrder> all_order_list = new ArrayList<>();
 
-    // public CardUtils() {
+	try(
+	
+	    FileReader file = new FileReader(path);
+	    BufferedReader stream = new BufferedReader(file);
 
-    // }
+	    )
+	    {
+
+		line = stream.readLine();		
+		line = stream.readLine();
+		
+		while(line != null) {
+		    
+		    sublist = stringToCustomerOrder(line);
+
+		    all_order_list.addAll(sublist);
+
+		    line = stream.readLine();
+
+		}
+
+	}
+
+	catch(FileNotFoundException e) {
+	    System.out.println("No file found.");
+	}
+
+	catch(IOException e) {
+	    System.out.println("Read error.");
+	}
+
+	return all_order_list;
+
+    }
+
+    private static CustomerOrder stringToCustomerOrder(String str, List<Layer> layers) {
+
+	List<String> csv_line;
+	Integer level;
+	String order_name;
+	List<String> recipe_parts_str = new ArrayList<>();
+	List<Ingredient> layer_ingrds = new ArrayList<>();
+	// List<Ingredient> recipe_ingrds = new ArrayList<>();
+	// List<Layer> one_layer_list = new ArrayList<>();
+	
+	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
+
+	level = csv_line.get(0);
+
+	order_name = csv_line.get(1);
+
+        recipe_parts_str = Arrays.asList(csv_line.get(2).split("\\s*;\\s*"));
+
+	for ( String recipe_part_str : recipe_parts_str ) {
+
+	    bool part_is_layer = false;
+
+	    for ( Layer layer : layers ) {
+
+		if recipe_part_str.equals(layer.toString()) {
+
+			part_is_layer = true;
+
+			Layer target_layer = layer;
+
+		    }
+
+	    }
+
+	    if ( part_is_layer == true ) {
+
+		layer_ingrds.add(target_layer.getRecipe());
+
+	    } else {
+
+		layer_ingrds.add(new Ingredient(recipe_part_str));
+
+	    }
+
+	}
+	
+	one_layer_list.add(new Layer(layer_name, layer_ingrds));
+
+	return one_layer_list;
+	
+
+    }
 
 }

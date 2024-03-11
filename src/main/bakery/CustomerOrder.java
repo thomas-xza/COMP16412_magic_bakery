@@ -1,6 +1,6 @@
 package bakery;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerOrder {
 
@@ -8,9 +8,9 @@ public class CustomerOrder {
 
     private Integer level;
 
-    private ArrayList<Ingredient> garnish;
+    private List<Ingredient> garnish;
 
-    private ArrayList<Ingredient> recipe;
+    private List<Ingredient> recipe;
 
     private CustomerOrderStatus status;
    
@@ -20,7 +20,7 @@ public class CustomerOrder {
 
     }
     
-    public CustomerOrder(String name, Integer level, ArrayList<Ingredient> recipe, ArrayList<Ingredient> garnish) {
+    public CustomerOrder(String name, Integer level, List<Ingredient> recipe, List<Ingredient> garnish) {
 
 	this.name = name;
 
@@ -32,7 +32,7 @@ public class CustomerOrder {
 
     }
 
-    public ArrayList<Ingredient> getGarnish() {
+    public List<Ingredient> getGarnish() {
 
 	return garnish;
 
@@ -59,7 +59,7 @@ public class CustomerOrder {
 
     }
 
-    public ArrayList<Ingredient> getRecipe() {
+    public List<Ingredient> getRecipe() {
 
 	return recipe;
 	
