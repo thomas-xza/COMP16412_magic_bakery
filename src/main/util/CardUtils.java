@@ -10,23 +10,38 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ *   File parsing functions.
+ *   @author thomas.
+ * @version 1.5
+ * @since 1.0
+*/
+
 public class CardUtils {
 
     /**
+     *   File parsing functions. This is not to be substantiated.
+     *   @param nothing
+     *   @return nothing
+     */
 
-       This class contains methods for handling file reads and
-       conversions to associated classes.
+    private CardUtils() {
 
+    /**
+     *   File parsing functions. This is not to be substantiated.
+     *   @param nothing
+     *   @return nothing
+     */
+    }
+
+    /**
+     *  Takes a path as a string, reads file, converts to
+     *  associated data type. Assumes valid data.
+     *  @param path : File path
+     *  @return File data converted to ingredient objects.
      */
 
     public static List<Ingredient> readIngredientFile(String path) {
-
-	/**
-
-	   Takes a path as a string, reads file, converts to
-	   associated data type. Assumes valid data.
-
-	 */
 
 	String line;
 	List<Ingredient> sublist = new ArrayList<>();
@@ -68,14 +83,17 @@ public class CardUtils {
 
     }
 
+    /**
+
+       Takes a string in format exampled in ingredients.csv,
+       converts to instances of Ingredient object.
+
+       @param str Ingredient file CSV line.
+       @return Ingredient objects.
+
+    */
+    
     private static List<Ingredient> stringToIngredient(String str) {
-
-	/**
-
-	   Takes a string in format exampled in ingredients.csv,
-	   converts to instances of Ingredient object.
-
-	 */
 
 	String name;
 	Integer quantity;
@@ -100,14 +118,16 @@ public class CardUtils {
 
     }
 
+    /**
+
+       Takes a path as a string, reads file, converts to
+       associated data type. Assumes valid data.
+
+       @param path : File path.
+       @return : List of layer objects within file.
+
+    */
     public static List<Layer> readLayerFile(String path) {
-
-	/**
-
-	   Takes a path as a string, reads file, converts to
-	   associated data type. Assumes valid data.
-
-	 */
 
 	String line;
 	List<Layer> sublist = new ArrayList<>();
@@ -148,15 +168,18 @@ public class CardUtils {
 
     }
 
+
+    /**
+
+       Takes a string in format exampled in layers.csv,
+       converts to instances of Layer object.
+
+       @param str : Line from CSV of layer
+       @return : Layer objects
+
+    */
+
     private static List<Layer> stringToLayers(String str) {
-
-	/**
-
-	   Takes a string in format exampled in layers.csv,
-	   converts to instances of Layer object.
-
-	 */
-
 	List<String> csv_line;
 	String layer_name;
 	List<String> layer_ingrds_str = new ArrayList<>();
@@ -188,14 +211,18 @@ public class CardUtils {
 
     }
 
+    /**
+
+       Takes a string in format exampled in layers.csv,
+       converts to instances of Ingredient object.
+
+       @param path : File path
+       @param layers : List of layer objects.
+       @return : Order objects.
+
+    */
+
     public static List<CustomerOrder> readCustomerFile(String path, List<Layer> layers) {
-
-	/**
-
-	   Takes a string in format exampled in layers.csv,
-	   converts to instances of Ingredient object.
-
-	 */
 	
 	String line;
 	CustomerOrder order;
@@ -236,15 +263,19 @@ public class CardUtils {
 
     }
 
+
+    /**
+
+       Takes a list of strings, converts eac to instance of
+       Ingredient object after checking if they are found in list
+       of layers.
+
+       @param data : String list containing layers and ingredients.
+       @param layers : Layer objects.
+       @return : List of ingredients derived via string input.
+
+    */
     private static List<Ingredient> data_to_ingredients(List<String> data, List<Layer> layers) {
-
-	/**
-
-	   Takes a list of strings, converts eac to instance of
-	   Ingredient object after checking if they are found in list
-	   of layers.
-
-	 */
 
 	List<Ingredient> ingrds = new ArrayList<>();
 	boolean part_is_layer = false;
@@ -285,14 +316,18 @@ public class CardUtils {
 
     }
 
+    /**
+
+       Takes a string in format exampled in customers.csv,
+       converts to instance of CustomerOrder object.
+
+       @param str : CSV line of customer order
+       @param layers : Layer objects
+       @return : Order object.
+
+    */
     private static CustomerOrder stringToCustomerOrder(String str, List<Layer> layers) {
 
-	/**
-
-	   Takes a string in format exampled in customers.csv,
-	   converts to instance of CustomerOrder object.
-
-	 */
 
 	List<String> csv_line;
 	Integer level;
