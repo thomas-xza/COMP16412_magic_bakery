@@ -12,7 +12,21 @@ import java.io.IOException;
 
 public class CardUtils {
 
+    /**
+
+       This class contains methods for handling file reads and
+       conversions to associated classes.
+
+     */
+
     public static List<Ingredient> readIngredientFile(String path) {
+
+	/**
+
+	   Takes a path as a string, reads file, converts to
+	   associated data type. Assumes valid data.
+
+	 */
 
 	String line;
 	List<Ingredient> sublist = new ArrayList<>();
@@ -56,6 +70,13 @@ public class CardUtils {
 
     private static List<Ingredient> stringToIngredient(String str) {
 
+	/**
+
+	   Takes a string in format exampled in ingredients.csv,
+	   converts to instances of Ingredient object.
+
+	 */
+
 	String name;
 	Integer quantity;
 	List<String> csv_line;
@@ -80,6 +101,13 @@ public class CardUtils {
     }
 
     public static List<Layer> readLayerFile(String path) {
+
+	/**
+
+	   Takes a path as a string, reads file, converts to
+	   associated data type. Assumes valid data.
+
+	 */
 
 	String line;
 	List<Layer> sublist = new ArrayList<>();
@@ -122,6 +150,13 @@ public class CardUtils {
 
     private static List<Layer> stringToLayers(String str) {
 
+	/**
+
+	   Takes a string in format exampled in layers.csv,
+	   converts to instances of Layer object.
+
+	 */
+
 	List<String> csv_line;
 	String layer_name;
 	List<String> layer_ingrds_str = new ArrayList<>();
@@ -155,6 +190,13 @@ public class CardUtils {
 
     public static List<CustomerOrder> readCustomerFile(String path, List<Layer> layers) {
 
+	/**
+
+	   Takes a string in format exampled in layers.csv,
+	   converts to instances of Ingredient object.
+
+	 */
+	
 	String line;
 	CustomerOrder order;
 	List<CustomerOrder> all_orders = new ArrayList<>();
@@ -196,6 +238,14 @@ public class CardUtils {
 
     private static List<Ingredient> data_to_ingredients(List<String> data, List<Layer> layers) {
 
+	/**
+
+	   Takes a list of strings, converts eac to instance of
+	   Ingredient object after checking if they are found in list
+	   of layers.
+
+	 */
+
 	List<Ingredient> ingrds = new ArrayList<>();
 	boolean part_is_layer = false;
 
@@ -236,6 +286,13 @@ public class CardUtils {
     }
 
     private static CustomerOrder stringToCustomerOrder(String str, List<Layer> layers) {
+
+	/**
+
+	   Takes a string in format exampled in customers.csv,
+	   converts to instance of CustomerOrder object.
+
+	 */
 
 	List<String> csv_line;
 	Integer level;

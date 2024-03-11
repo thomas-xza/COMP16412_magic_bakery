@@ -96,4 +96,10 @@ public class CustomerOrder {
 
     }
 
+    public void abandon() {
+
+	this.status = CustomerOrderStatus.GIVEN_UP;
+
+    }
+
 }
