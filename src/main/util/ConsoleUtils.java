@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import bakery.*;
+import bakery.MagicBakery.ActionType;
 
 /**
  *   Blah
@@ -14,198 +15,198 @@ import bakery.*;
 
 public class ConsoleUtils {
 
-    // public Console console;
+    public Console console;
 
-    // /**
-    //  * Helper methods for console i/o.
-    //  */
+    /**
+     * Helper methods for console i/o.
+     */
     
-    // public ConsoleUtils() {
+    public ConsoleUtils() {
 
-    // 	console = System.console();
+	console = System.console();
 
-    // }
+    }
 
-    // /**
-    //  * Wrapped around base method.
-    //  * @return Input from user
-    //  */
+    /**
+     * Wrapped around base method.
+     * @return Input from user
+     */
 
-    // public String readLine() {
+    public String readLine() {
 
-    // 	String input = console.readLine("");
+	String input = console.readLine("");
 
-    // 	return input;
+	return input;
 
-    // }
+    }
 
-    // /**
-    //  * Read line and format it.
-    //  * @param fmt readLine customisations
-    //  * @param args  readLine customisations
-    //  * @return formatted string
-    //  */
+    /**
+     * Read line and format it.
+     * @param fmt readLine customisations
+     * @param args  readLine customisations
+     * @return formatted string
+     */
 
-    // public String readLine(String fmt, Object... args) {
+    public String readLine(String fmt, Object... args) {
 
-    // 	String input = console.readLine(fmt, args);
+	String input = console.readLine(fmt, args);
 
-    // 	return input;
+	return input;
 
-    // }
+    }
 
-    // /**
-    //  * Get file path
-    //  * @param prompt blah
-    //  * @return File object
-    //  */
+    /**
+     * Get file path
+     * @param prompt blah
+     * @return File object
+     */
 
-    // public File promptForFilePath(String prompt) {
+    public File promptForFilePath(String prompt) {
 
-    // 	String input = console.readLine(prompt);
+	String input = console.readLine(prompt);
 
-    // 	File path = new File(input);
+	File path = new File(input);
 
-    // 	return path;
+	return path;
 
-    // }
+    }
 
-    // /**
-    //  * Ask for player names.
-    //  * @param prompt Request
-    //  * @return Parsed input as strings.
-    //  */
+    /**
+     * Ask for player names.
+     * @param prompt Request
+     * @return Parsed input as strings.
+     */
 
-    // public List<String> promptForNewPlayers(String prompt) {
+    public List<String> promptForNewPlayers(String prompt) {
 
-    // 	List<String> players = new ArrayList<>();
+	List<String> players = new ArrayList<>();
 
-    // 	String input = console.readLine(prompt);
+	String input = console.readLine(prompt);
 
-    // 	while (input != null && players.size() < 2) {
+	while (input != null && players.size() < 2) {
 
-    // 	    if ( players.contains(input) ) {
+	    if ( players.contains(input) ) {
 
-    // 	    } else { players.add(input); }
+	    } else { players.add(input); }
 
-    // 	    input = console.readLine(prompt);
+	    input = console.readLine(prompt);
 
-    // 	    if (players.size() == 5) {
+	    if (players.size() == 5) {
 
-    // 		input = null;
+		input = null;
 
-    // 	    }
+	    }
 
-    // 	}
+	}
 
-    // 	return players;
+	return players;
 
-    // }
+    }
 
-    // /**
-    //  * some desc
-    //  * @param prompt Request
-    //  * @return Result as boolean.
-    //  */
+    /**
+     * some desc
+     * @param prompt Request
+     * @return Result as boolean.
+     */
 
-    // public boolean promptForStartLoad(String prompt) {
+    public boolean promptForStartLoad(String prompt) {
 
-    // 	String input = console.readLine(prompt + "[S]tart/[L]oad");
+	String input = console.readLine(prompt + "[S]tart/[L]oad");
 
-    // 	if (input.toLowerCase().contains("s")) {
+	if (input.toLowerCase().contains("s")) {
 
-    // 	    return true;
+	    return true;
 
-    // 	}
+	}
 
-    // 	return false;
+	return false;
 
-    // }
+    }
 
-    // /**
-    //  * Yes/no input
-    //  * @param prompt Request
-    //  * @return Result as boolean.
-    //  */
+    /**
+     * Yes/no input
+     * @param prompt Request
+     * @return Result as boolean.
+     */
 
-    // public boolean promptForYesNo(String prompt) {
+    public boolean promptForYesNo(String prompt) {
 
-    // 	String input = console.readLine(prompt + "[Y]es/[N]o");
+	String input = console.readLine(prompt + "[Y]es/[N]o");
 
-    // 	if (input.toLowerCase().contains("y")) {
+	if (input.toLowerCase().contains("y")) {
 
-    // 	    return true;
+	    return true;
 
-    // 	}
+	}
 
-    // 	return true;
+	return true;
 
-    // }
+    }
 
-    // /**
-    //  * ask
-    //  * @param prompt Request
-    //  * @param bakery Game instance
-    //  * @return blah
-    //  */
+    /**
+     * ask
+     * @param prompt Request
+     * @param bakery Game instance
+     * @return blah
+     */
 
-    // public Player promptForExistingPlayer(String prompt, MagicBakery bakery) {
+    public Player promptForExistingPlayer(String prompt, MagicBakery bakery) {
 
-    // 	Player blah = new Player("john");
+	Player blah = new Player("john");
 
-    // 	return blah;
+	return blah;
 
-    // }
+    }
 
-    // /**
-    //  * Ask user for ingredient.
-    //  * @param prompt Request
-    //  * @param ingredients lists of bits
-    //  * @return ingr
-    //  */
+    /**
+     * Ask user for ingredient.
+     * @param prompt Request
+     * @param ingredients lists of bits
+     * @return ingr
+     */
 
-    // public Ingredient promptForIngredient(String prompt, List<Ingredient> ingredients) {
+    public Ingredient promptForIngredient(String prompt, List<Ingredient> ingredients) {
 
-    // 	Ingredient a = new Ingredient("a");
+	Ingredient a = new Ingredient("a");
 
-    // 	return a;
+	return a;
 
-    // }
+    }
 
-    // /**
-    //  * ask
-    //  * @param prompt Request
-    //  * @param bakery game
-    //  * @return action
-    //  */
-    // public ActionType promptForAction(String prompt, MagicBakery bakery) {
+    /**
+     * ask
+     * @param prompt Request
+     * @param bakery game
+     * @return action
+     */
+    public ActionType promptForAction(String prompt, MagicBakery bakery) {
 	
-    // 	return MagicBakery.ActionType.REFRESH_PANTRY;
+	return ActionType.REFRESH_PANTRY;
 	
-    // }
+    }
 
-    // /**
-    //  * Ask customer
-    //  * @param prompt Request
-    //  * @param customers list of custs
-    //  * @return order
-    //  */
-    // public CustomerOrder promptForCustomer(String prompt, List<CustomerOrder> customers) {
+    /**
+     * Ask customer
+     * @param prompt Request
+     * @param customers list of custs
+     * @return order
+     */
+    public CustomerOrder promptForCustomer(String prompt, List<CustomerOrder> customers) {
 
-    // 	CustomerOrder a = CustomerOrder.fast_order();
+	CustomerOrder a = CustomerOrder.fast_order();
 
-    // 	return a;
+	return a;
 
-    // }
+    }
     
-    // /**
-    //  * ask
-    //  * @param prompt Request
-    //  * @return answer
-    //  */    
+    /**
+     * ask
+     * @param prompt Request
+     * @return answer
+     */    
     
-    // // public  promptFor(String prompt) {
+    // public  promptFor(String prompt) {
 
-    // // }
+    // }
     
 }
