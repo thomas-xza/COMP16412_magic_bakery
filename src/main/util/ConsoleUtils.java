@@ -1,11 +1,16 @@
 package util;
+
 import java.util.*;
 import java.io.*;
 
+import bakery.*;
+
 /**
- * Helper methods for console i/o.
- * @author thomas
- */
+ *   Blah
+ *   @author thomas.
+ * @version 1.5
+ * @since 1.0
+*/
 
 public class ConsoleUtils {
 
@@ -13,17 +18,12 @@ public class ConsoleUtils {
 
     /**
      * Helper methods for console i/o.
-     * @author thomas
      */
     
     public ConsoleUtils() {
 
 	console = System.console();
 
-	/**
-	 * Helper methods for console i/o.
-	 * @author thomas
-	 */
     }
 
     /**
@@ -56,7 +56,7 @@ public class ConsoleUtils {
 
     /**
      * Get file path
-     * @param Request
+     * @param prompt blah
      * @return File object
      */
 
@@ -103,6 +103,7 @@ public class ConsoleUtils {
     }
 
     /**
+     * some desc
      * @param prompt Request
      * @return Result as boolean.
      */
@@ -141,4 +142,74 @@ public class ConsoleUtils {
 
     }
 
+    /**
+     * ask
+     * @param prompt Request
+     * @param bakery Game instance
+     * @return blah
+     */
+
+    public Player promptForExistingPlayer(String prompt, MagicBakery bakery) {
+
+	Player blah = new Player("john");
+
+	return blah;
+
+    }
+
+    /**
+     * Ask user for ingredient.
+     * @param prompt Request
+     * @param ingredients lists of bits
+     * @return ingr
+     */
+
+    public Ingredient promptForIngredient(String prompt, List<Ingredient> ingredients) {
+
+	Ingredient a = new Ingredient("a");
+
+	return a;
+
+    }
+
+    /**
+     * ask
+     * @param prompt Request
+     * @param bakery game
+     * @return action
+     */
+    public ActionType promptForAction(String prompt, MagicBakery bakery) {
+	
+	return ActionType.REFRESH_PANTRY;
+	
+    }
+
+    /**
+     * Ask customer
+     * @param prompt Request
+     * @param customers list of custs
+     * @return order
+     */
+    public CustomerOrder promptForCustomer(String prompt, List<CustomerOrder> customers) {
+
+	List<Ingredient> ingrd_l = new ArrayList<>();
+	Ingredient a = new Ingredient("a");
+	ingrd_l.add(a);
+
+	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
+
+	return blah;
+
+    }
+    
+    /**
+     * ask
+     * @param prompt Request
+     * @return answer
+     */    
+    
+    // public  promptFor(String prompt) {
+
+    // }
+    
 }

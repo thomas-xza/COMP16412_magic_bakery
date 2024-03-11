@@ -5,9 +5,10 @@ import java.util.ArrayList;
 
 /**
  * Create an object for each player.
+ * @author thomas
  */
 
-public class Player  {
+public class Player {
 
     private String name;
 

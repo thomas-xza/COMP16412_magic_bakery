@@ -16,7 +16,7 @@ public class Ingredient {
 
     public String toString() {
 
-	return this.name;
+	return name;
 
     }
 

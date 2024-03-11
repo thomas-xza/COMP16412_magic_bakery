@@ -21,17 +21,10 @@ public class CardUtils {
 
     /**
      *   File parsing functions. This is not to be substantiated.
-     *   @param nothing
-     *   @return nothing
      */
 
     private CardUtils() {
 
-    /**
-     *   File parsing functions. This is not to be substantiated.
-     *   @param nothing
-     *   @return nothing
-     */
     }
 
     /**
