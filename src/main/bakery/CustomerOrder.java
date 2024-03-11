@@ -2,11 +2,17 @@ package bakery;
 
 import java.util.*;
 
+/**
+ * Create customer order
+ * @author thomas
+ * @version 1.0
+ */
+
 public class CustomerOrder {
 
     private String name;
 
-    private Integer level;
+    private int level;
 
     private List<Ingredient> garnish;
 
@@ -14,113 +20,217 @@ public class CustomerOrder {
 
     private CustomerOrderStatus status;
    
-    public enum CustomerOrderStatus {
+    // public enum CustomerOrderStatus {
 
-	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
+    // 	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
 
-    }
+    // }
     
-    public CustomerOrder(String name, Integer level, List<Ingredient> recipe, List<Ingredient> garnish) {
+    // /**
+    //  *  Initiate order
+    //  * @param name a
+    //  * @param level b
+    //  * @param recipe a
+    //  * @param garnish d
+    //  */
+    
+    // public CustomerOrder(String name, int level, List<Ingredient> recipe, List<Ingredient> garnish) {
 
-	this.name = name;
+    // 	this.name = name;
 
-	this.level = level;
+    // 	this.level = level;
 
-	this.garnish = garnish;
+    // 	this.garnish = garnish;
 
-	this.recipe = recipe;
+    // 	this.recipe = recipe;
 
-    }
+    // }
 
-    public List<Ingredient> getGarnish() {
+    // /**
+    //  * a
+    //  * @param ingredients a
+    //  * @return a
+    //  */
+    
+    // public boolean canFulfill(List<Ingredient> ingredients) {
 
-	return garnish;
+    // 	return true;
 
-    }
+    // }
 
-    public String getGarnishDescription() {
+    // /**
+    //  * a
+    //  * @param ingredients a
+    //  * @return a
+    //  */
+    
+    // public boolean canGarnish(List<Ingredient> ingredients) {
 
-	String garnish_desc = "";
+    // 	return true;
 
-        for (Ingredient g : garnish) {
+    // }
 
-            garnish_desc = garnish_desc.concat(g.toString());
+    // /**
+    //  * a
+    //  * @param ingredients a
+    //  * @param garnish a
+    //  * @return a
+    //  */
+    
+    // public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
 
-        }
+    //     List<Ingredient> ingrd_l = new ArrayList<>();
+    //     Ingredient a = new Ingredient("a");
+    //     ingrd_l.add(a);
 
-        return garnish_desc;
+    // 	return ingrd_l;
 
-    }
+    // }
 
-    public Integer getLevel() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public List<Ingredient> getGarnish() {
 
-	return level;
+    // 	return garnish;
 
-    }
+    // }
 
-    public List<Ingredient> getRecipe() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public String getGarnishDescription() {
 
-	return recipe;
+    // 	String garnish_desc = "";
+
+    //     for (Ingredient g : garnish) {
+
+    //         garnish_desc = garnish_desc.concat(g.toString());
+
+    //     }
+
+    //     return garnish_desc;
+
+    // }
+
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public int getLevel() {
+
+    // 	return level;
+
+    // }
+
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public List<Ingredient> getRecipe() {
+
+    // 	return recipe;
 	
-    }
+    // }
 
-    public String getRecipeDescription() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public String getRecipeDescription() {
 
-	String recipe_desc = "";
+    // 	String recipe_desc = "";
 
-        for (Ingredient g : recipe) {
+    //     for (Ingredient g : recipe) {
 
-            recipe_desc = recipe_desc.concat(g.toString());
+    //         recipe_desc = recipe_desc.concat(g.toString());
 
-        }
+    //     }
 
-        return recipe_desc;
+    //     return recipe_desc;
 	
-    }
+    // }
 
-    public String toString() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public String toString() {
 
-	return name;
+    // 	return name;
 	
-    }
+    // }
 
-    public CustomerOrderStatus getStatus() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public CustomerOrderStatus getStatus() {
 
-	return status;
+    // 	return status;
 
-    }
+    // }
 
-    public void setStatus(CustomerOrderStatus status) {
+    // /**
+    //  * a
+    //  * @param status a
+    //  */
+    
+    // public void setStatus(CustomerOrderStatus status) {
 
-	this.status = status;
+    // 	this.status = status;
 
-    }
+    // }
 
-    public void abandon() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public void abandon() {
 
-	this.status = CustomerOrderStatus.GIVEN_UP;
+    // 	this.status = CustomerOrderStatus.GIVEN_UP;
 
-    }
+    // }
 
-    public static CustomerOrder fast_order() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public static CustomerOrder fast_order() {
 	
-        List<Ingredient> ingrd_l = new ArrayList<>();
-        Ingredient a = new Ingredient("a");
-        ingrd_l.add(a);
+    //     List<Ingredient> ingrd_l = new ArrayList<>();
+    //     Ingredient a = new Ingredient("a");
+    //     ingrd_l.add(a);
 	
-	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
+    // 	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
 
-	return blah;
+    // 	return blah;
 
-    }
+    // }
 
-    public static List<CustomerOrder> fast_order_list() {
+    // /**
+    //  * a
+    //  * @return a
+    //  */
+    
+    // public static List<CustomerOrder> fast_order_list() {
 
-	List<CustomerOrder> blah = new ArrayList<>();
-        blah.add(fast_order());
+    // 	List<CustomerOrder> blah = new ArrayList<>();
+    //     blah.add(fast_order());
 
-	return blah;
+    // 	return blah;
 
-    }
+    // }
 
 }

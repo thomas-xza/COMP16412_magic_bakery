@@ -29,7 +29,7 @@ public class Customers {
      * @param numPlayers d
      */
 
-    public Customers(String deckFile, Random random, List<Layer> layers, Integer numPlayers) {
+    public Customers(String deckFile, Random random, List<Layer> layers, int numPlayers) {
 
     }
 

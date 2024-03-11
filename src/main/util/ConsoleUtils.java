@@ -180,7 +180,7 @@ public class ConsoleUtils {
      */
     public ActionType promptForAction(String prompt, MagicBakery bakery) {
 	
-	return ActionType.REFRESH_PANTRY;
+	return MagicBakery.ActionType.REFRESH_PANTRY;
 	
     }
 
