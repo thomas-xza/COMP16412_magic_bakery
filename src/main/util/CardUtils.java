@@ -194,21 +194,23 @@ public class CardUtils {
 
     }
 
+    private static List<Ingredient> data_to_ingredients(String data, List<Layer> layers) {
+
+    }
+
     private static CustomerOrder stringToCustomerOrder(String str, List<Layer> layers) {
 
 	List<String> csv_line;
 	Integer level;
-	String order_name;
+	String name;
 	List<String> recipe_parts_str = new ArrayList<>();
-	List<Ingredient> layer_ingrds = new ArrayList<>();
-	// List<Ingredient> recipe_ingrds = new ArrayList<>();
-	// List<Layer> one_layer_list = new ArrayList<>();
+	List<Ingredient> recipe = new ArrayList<>();
 	
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
 	level = csv_line.get(0);
 
-	order_name = csv_line.get(1);
+	name = csv_line.get(1);
 
         recipe_parts_str = Arrays.asList(csv_line.get(2).split("\\s*;\\s*"));
 
@@ -230,20 +232,17 @@ public class CardUtils {
 
 	    if ( part_is_layer == true ) {
 
-		layer_ingrds.add(target_layer.getRecipe());
+		recipe.add(target_layer.getRecipe());
 
 	    } else {
 
-		layer_ingrds.add(new Ingredient(recipe_part_str));
+		recipe.add(new Ingredient(recipe_part_str));
 
 	    }
 
 	}
 	
-	one_layer_list.add(new Layer(layer_name, layer_ingrds));
-
-	return one_layer_list;
-	
+	CustomerOrder order = new CustomerOrder(name, level, recipe,
 
     }
 
