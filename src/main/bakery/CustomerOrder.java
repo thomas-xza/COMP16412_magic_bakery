@@ -1,6 +1,6 @@
 package bakery;
 
-import java.util.List;
+import java.util.*;
 
 public class CustomerOrder {
 
@@ -99,6 +99,27 @@ public class CustomerOrder {
     public void abandon() {
 
 	this.status = CustomerOrderStatus.GIVEN_UP;
+
+    }
+
+    public static CustomerOrder fast_order() {
+	
+        List<Ingredient> ingrd_l = new ArrayList<>();
+        Ingredient a = new Ingredient("a");
+        ingrd_l.add(a);
+	
+	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
+
+	return blah;
+
+    }
+
+    public static List<CustomerOrder> fast_order_list() {
+
+	List<CustomerOrder> blah = new ArrayList<>();
+        blah.add(fast_order());
+
+	return blah;
 
     }
 

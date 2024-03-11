@@ -192,13 +192,9 @@ public class ConsoleUtils {
      */
     public CustomerOrder promptForCustomer(String prompt, List<CustomerOrder> customers) {
 
-	List<Ingredient> ingrd_l = new ArrayList<>();
-	Ingredient a = new Ingredient("a");
-	ingrd_l.add(a);
+	CustomerOrder a = CustomerOrder.fast_order();
 
-	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
-
-	return blah;
+	return a;
 
     }
     
