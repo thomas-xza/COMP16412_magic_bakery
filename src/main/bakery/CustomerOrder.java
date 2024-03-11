@@ -50,7 +50,6 @@ public class CustomerOrder {
 
         return garnish_desc;
 
-
     }
 
     public Integer getLevel() {
@@ -81,7 +80,7 @@ public class CustomerOrder {
 
     public String toString() {
 
-	return "Test";
+	return name;
 	
     }
 
@@ -91,10 +90,10 @@ public class CustomerOrder {
 
     }
 
-    public void setStatus(CustomerOrderStatus setatus) {
+    public void setStatus(CustomerOrderStatus status) {
 
 	this.status = status;
 
-    }    
+    }
 
 }

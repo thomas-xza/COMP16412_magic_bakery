@@ -12,6 +12,8 @@ public class MagicBakery {
 
 	List<Layer> layer_list = CardUtils.readLayerFile(layerDeckFile);
 
+	List<CustomerOrder> order_list = CardUtils.readCustomerFile("customers.csv", layer_list);
+
 	System.out.println(ingrd_list);
 
 	System.out.println(ingrd_list.size());
@@ -19,6 +21,10 @@ public class MagicBakery {
 	System.out.println(layer_list);
 
 	System.out.println(layer_list.size());
+
+	System.out.println(order_list);
+
+	System.out.println(order_list.size());
 
     }
 

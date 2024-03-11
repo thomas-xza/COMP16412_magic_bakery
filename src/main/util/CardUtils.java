@@ -156,8 +156,8 @@ public class CardUtils {
     public static List<CustomerOrder> readCustomerFile(String path, List<Layer> layers) {
 
 	String line;
-	List<CustomerOrder> sublist = new ArrayList<>();
-	List<CustomerOrder> all_order_list = new ArrayList<>();
+	CustomerOrder order;
+	List<CustomerOrder> all_orders = new ArrayList<>();
 
 	try(
 	
@@ -172,9 +172,9 @@ public class CardUtils {
 		
 		while(line != null) {
 		    
-		    sublist = stringToCustomerOrder(line);
+		    order = stringToCustomerOrder(line, layers);
 
-		    all_order_list.addAll(sublist);
+		    all_orders.add(order);
 
 		    line = stream.readLine();
 
@@ -190,11 +190,48 @@ public class CardUtils {
 	    System.out.println("Read error.");
 	}
 
-	return all_order_list;
+	return all_orders;
 
     }
 
-    private static List<Ingredient> data_to_ingredients(String data, List<Layer> layers) {
+    private static List<Ingredient> data_to_ingredients(List<String> data, List<Layer> layers) {
+
+	List<Ingredient> ingrds = new ArrayList<>();
+	boolean part_is_layer = false;
+
+	//  Next line is a workaround because Java dislikes empty objects.
+	Layer target_layer = layers.get(0);
+
+
+	for ( String recipe_part_str : data ) {
+
+	    part_is_layer = false;
+
+	    for ( Layer layer : layers ) {
+
+		if ( recipe_part_str.equals(layer.toString()) ) {
+
+			part_is_layer = true;
+
+			target_layer = layer;
+
+		    }
+
+	    }
+
+	    if ( part_is_layer == true ) {
+
+		ingrds.addAll(target_layer.getRecipe());
+
+	    } else {
+
+		ingrds.add(new Ingredient(recipe_part_str));
+
+	    }
+
+	}
+
+	return ingrds;
 
     }
 
@@ -204,45 +241,30 @@ public class CardUtils {
 	Integer level;
 	String name;
 	List<String> recipe_parts_str = new ArrayList<>();
+	List<String> garnish_parts_str = new ArrayList<>();
 	List<Ingredient> recipe = new ArrayList<>();
+	List<Ingredient> garnish = new ArrayList<>();
 	
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
-	level = csv_line.get(0);
+	level = Integer.parseInt(csv_line.get(0));
 
 	name = csv_line.get(1);
 
         recipe_parts_str = Arrays.asList(csv_line.get(2).split("\\s*;\\s*"));
 
-	for ( String recipe_part_str : recipe_parts_str ) {
+	recipe = data_to_ingredients(recipe_parts_str, layers);
 
-	    bool part_is_layer = false;
+	if (csv_line.size() == 4) {
 
-	    for ( Layer layer : layers ) {
-
-		if recipe_part_str.equals(layer.toString()) {
-
-			part_is_layer = true;
-
-			Layer target_layer = layer;
-
-		    }
-
-	    }
-
-	    if ( part_is_layer == true ) {
-
-		recipe.add(target_layer.getRecipe());
-
-	    } else {
-
-		recipe.add(new Ingredient(recipe_part_str));
-
-	    }
+	    garnish_parts_str = Arrays.asList(csv_line.get(3).split("\\s*;\\s*"));
+	    garnish = data_to_ingredients(garnish_parts_str, layers);
 
 	}
-	
-	CustomerOrder order = new CustomerOrder(name, level, recipe,
+
+	CustomerOrder order = new CustomerOrder(name, level, recipe, garnish);
+
+	return order;
 
     }
 
