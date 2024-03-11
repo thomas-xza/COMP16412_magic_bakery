@@ -20,217 +20,217 @@ public class CustomerOrder {
 
     private CustomerOrderStatus status;
    
-    // public enum CustomerOrderStatus {
+    public enum CustomerOrderStatus {
 
-    // 	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
+	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
 
-    // }
+    }
     
-    // /**
-    //  *  Initiate order
-    //  * @param name a
-    //  * @param level b
-    //  * @param recipe a
-    //  * @param garnish d
-    //  */
+    /**
+     *  Initiate order
+     * @param name a
+     * @param level b
+     * @param recipe a
+     * @param garnish d
+     */
     
-    // public CustomerOrder(String name, int level, List<Ingredient> recipe, List<Ingredient> garnish) {
+    public CustomerOrder(String name, int level, List<Ingredient> recipe, List<Ingredient> garnish) {
 
-    // 	this.name = name;
+	this.name = name;
 
-    // 	this.level = level;
+	this.level = level;
 
-    // 	this.garnish = garnish;
+	this.garnish = garnish;
 
-    // 	this.recipe = recipe;
+	this.recipe = recipe;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @param ingredients a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @param ingredients a
+     * @return a
+     */
     
-    // public boolean canFulfill(List<Ingredient> ingredients) {
+    public boolean canFulfill(List<Ingredient> ingredients) {
 
-    // 	return true;
+	return true;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @param ingredients a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @param ingredients a
+     * @return a
+     */
     
-    // public boolean canGarnish(List<Ingredient> ingredients) {
+    public boolean canGarnish(List<Ingredient> ingredients) {
 
-    // 	return true;
+	return true;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @param ingredients a
-    //  * @param garnish a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @param ingredients a
+     * @param garnish a
+     * @return a
+     */
     
-    // public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
+    public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
 
-    //     List<Ingredient> ingrd_l = new ArrayList<>();
-    //     Ingredient a = new Ingredient("a");
-    //     ingrd_l.add(a);
+        List<Ingredient> ingrd_l = new ArrayList<>();
+        Ingredient a = new Ingredient("a");
+        ingrd_l.add(a);
 
-    // 	return ingrd_l;
+	return ingrd_l;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public List<Ingredient> getGarnish() {
+    public List<Ingredient> getGarnish() {
 
-    // 	return garnish;
+	return garnish;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public String getGarnishDescription() {
+    public String getGarnishDescription() {
 
-    // 	String garnish_desc = "";
+	String garnish_desc = "";
 
-    //     for (Ingredient g : garnish) {
+        for (Ingredient g : garnish) {
 
-    //         garnish_desc = garnish_desc.concat(g.toString());
+            garnish_desc = garnish_desc.concat(g.toString());
 
-    //     }
+        }
 
-    //     return garnish_desc;
+        return garnish_desc;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public int getLevel() {
+    public int getLevel() {
 
-    // 	return level;
+	return level;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public List<Ingredient> getRecipe() {
+    public List<Ingredient> getRecipe() {
 
-    // 	return recipe;
+	return recipe;
 	
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public String getRecipeDescription() {
+    public String getRecipeDescription() {
 
-    // 	String recipe_desc = "";
+	String recipe_desc = "";
 
-    //     for (Ingredient g : recipe) {
+        for (Ingredient g : recipe) {
 
-    //         recipe_desc = recipe_desc.concat(g.toString());
+            recipe_desc = recipe_desc.concat(g.toString());
 
-    //     }
+        }
 
-    //     return recipe_desc;
+        return recipe_desc;
 	
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public String toString() {
+    public String toString() {
 
-    // 	return name;
+	return name;
 	
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public CustomerOrderStatus getStatus() {
+    public CustomerOrderStatus getStatus() {
 
-    // 	return status;
+	return status;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @param status a
-    //  */
+    /**
+     * a
+     * @param status a
+     */
     
-    // public void setStatus(CustomerOrderStatus status) {
+    public void setStatus(CustomerOrderStatus status) {
 
-    // 	this.status = status;
+	this.status = status;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public void abandon() {
+    public void abandon() {
 
-    // 	this.status = CustomerOrderStatus.GIVEN_UP;
+	this.status = CustomerOrderStatus.GIVEN_UP;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public static CustomerOrder fast_order() {
+    public static CustomerOrder fast_order() {
 	
-    //     List<Ingredient> ingrd_l = new ArrayList<>();
-    //     Ingredient a = new Ingredient("a");
-    //     ingrd_l.add(a);
+        List<Ingredient> ingrd_l = new ArrayList<>();
+        Ingredient a = new Ingredient("a");
+        ingrd_l.add(a);
 	
-    // 	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
+	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
 
-    // 	return blah;
+	return blah;
 
-    // }
+    }
 
-    // /**
-    //  * a
-    //  * @return a
-    //  */
+    /**
+     * a
+     * @return a
+     */
     
-    // public static List<CustomerOrder> fast_order_list() {
+    public static List<CustomerOrder> fast_order_list() {
 
-    // 	List<CustomerOrder> blah = new ArrayList<>();
-    //     blah.add(fast_order());
+	List<CustomerOrder> blah = new ArrayList<>();
+        blah.add(fast_order());
 
-    // 	return blah;
+	return blah;
 
-    // }
+    }
 
 }
