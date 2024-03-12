@@ -15,11 +15,18 @@ import util.*;
 
 public class MagicBakery {
 
+    private Customers customers;
+    private Collection<Layer> layers;
+    private Collection<Player> players;
+    private Collection<Ingredient> pantry;
+    private Collection<Ingredient> pantryDeck;
+    private Collection<Ingredient> pantryDiscard;
+    private Random random;
+
+    private static long serialVersionUID;
+
     /**
-     *  Initiate player
-     * @param seed  a
-     * @param ingredientDeckFile a
-     * @param layerDeckFile a
+     *  Initiate Magic
      */
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) {
@@ -181,7 +188,7 @@ public class MagicBakery {
      * @return a
      */
 
-    public Collection<CustomerOrder> getFulfillableCustomers() {
+    public Collection<CustomerOrder> getFulfilableCustomers() {
 
 	 List<CustomerOrder> a = CustomerOrder.fast_order_list();
 
@@ -258,7 +265,6 @@ public class MagicBakery {
      *  func
      * @param ingredient a
      * @param recipient a
-     * @return a
      */
 
     public void passCard(Ingredient ingredient, Player recipient) {
@@ -292,7 +298,6 @@ public class MagicBakery {
     /**
      *  func
      * @param file a
-     * @return a
      */
 
     public void saveState(File file) {

@@ -1,17 +1,26 @@
 package bakery;
 
 import java.util.*;
+import java.io.*;
 
 import bakery.*;
 
-public class Layer extends Ingredient {
+/**
+ *  class
+ *   @author thomas.
+ * @version 1.5
+ * @since 1.0
+*/
+
+public class Layer extends Ingredient
+    implements Serializable, Comparable<Layer> {
 
     private List<Ingredient> recipe;
 
     private static long serialVersionUID;
 
     /**
-     *  Initiate player
+     * func
      * @param seed
      * @param ingredientDeckFile
      */
@@ -53,13 +62,25 @@ public class Layer extends Ingredient {
     }
 
     /**
-     *  Initiate player
+     * a
      * @param ingredients
      * @return a
      */
+    
     public boolean canBake(List<Ingredient> ingredients) {
 
 	return true;
+
+    }
+
+    /**
+     * a
+     * @return a
+     */
+    
+    public int hashCode() {
+
+	return 1;
 
     }
 
@@ -74,6 +95,13 @@ public class Layer extends Ingredient {
 	Layer b = new Layer("b", a);
 
 	return b;
+	
+    }
+
+    @Override
+    public int compareTo(Layer a) {
+	
+        return 1;
 	
     }
 

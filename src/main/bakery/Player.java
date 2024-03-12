@@ -1,14 +1,15 @@
 package bakery;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
 
 /**
  * Create an object for each player.
  * @author thomas
  */
 
-public class Player {
+public class Player
+    implements Serializable {
 
     private String name;
 
