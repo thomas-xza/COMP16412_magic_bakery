@@ -10,18 +10,31 @@ public class Ingredient {
 
     private static long serialVersionUID;
 
+    /**
+     *  func
+     * @param name a
+     */
+
     public Ingredient(String name) {
 
 	this.name = name;
 
     }
 
+    /**
+     *  func
+     * @return a
+     */
     public String toString() {
 
 	return name;
 
     }
 
+    /**
+     *  func
+     * @return a
+     */
     public static List<Ingredient> fast_ingrd_list() {
 	
         Ingredient a = new Ingredient("a");

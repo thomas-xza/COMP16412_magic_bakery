@@ -10,6 +10,12 @@ public class Layer extends Ingredient {
 
     private static long serialVersionUID;
 
+    /**
+     *  Initiate player
+     * @param seed
+     * @param ingredientDeckFile
+     */
+
     public Layer(String name, List<Ingredient> recipe) {
 
 	super(name);
@@ -17,13 +23,21 @@ public class Layer extends Ingredient {
 	this.recipe = recipe;
 
     }
-
+ 
+    /**
+     *  Initiate player
+     * @return a
+     */
     public List<Ingredient> getRecipe() {
 
 	return recipe;
 	
     }
 
+    /**
+     *  Initiate player
+     * @return a
+     */
     public String getRecipeDescription() {
 
 	String recipe_desc = "";
@@ -38,12 +52,21 @@ public class Layer extends Ingredient {
 
     }
 
+    /**
+     *  Initiate player
+     * @param ingredients
+     * @return a
+     */
     public boolean canBake(List<Ingredient> ingredients) {
 
 	return true;
 
     }
 
+    /**
+     *  Initiate player
+     * @return a
+     */
     public static Layer fast_layer() {
 
 	List<Ingredient> a = Ingredient.fast_ingrd_list();
@@ -54,7 +77,11 @@ public class Layer extends Ingredient {
 	
     }
 
-    public static Collection<Layer> fast_layer_list() {
+    /**
+     *  Initiate player
+     * @return a
+     */
+    public static List<Layer> fast_layer_list() {
 
 	Layer c = fast_layer();
 
@@ -63,6 +90,20 @@ public class Layer extends Ingredient {
         d.add(c);
 
         return d;
+	
+    }
+    
+    /**
+     *  Initiate player
+     * @return a
+     */
+    public static Collection<Layer> fast_layer_collection() {
+
+	List<Layer> a = Layer.fast_layer_list();
+
+	Collection<Layer> b = a;
+
+	return b;
 	
     }
 

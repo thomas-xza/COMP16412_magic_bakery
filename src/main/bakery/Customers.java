@@ -11,7 +11,8 @@ import bakery.*;
  * @since 1.0
 */
 
-public class Customers {
+public class Customers
+    implements Serializable {
 
     private Collection<CustomerOrder> activeCustomers = new ArrayList<>();
     private Collection<CustomerOrder> customerDeck = new ArrayList<>();
@@ -190,6 +191,23 @@ public class Customers {
 
 	return a;
 
+    }
+
+    /**
+     * something
+     * @return fast
+     */    
+
+    public static Customers fast_customers() {
+	
+        List<Layer> a = Layer.fast_layer_list();
+
+	Random b = new Random(1);
+
+	Customers c = new Customers("customers.csv", b, a, 2);
+
+	return c;
+	
     }
 
 }

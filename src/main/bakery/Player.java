@@ -100,5 +100,22 @@ public class Player {
 	return name;
 
     }
+ 
+    /**
+     *  func
+     * @return a
+     */
+    
+    public static List<Player> fast_player_list() {
+
+	Player a = new Player("a");
+
+	List<Player> b = new ArrayList<>();
+
+	b.add(a);
+
+	return b;
+	
+    }
 
 }

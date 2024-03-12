@@ -3,6 +3,7 @@ package bakery;
 import java.util.*;
 import java.io.*;
 
+import bakery.*;
 import util.*;
 
 /**
@@ -16,9 +17,9 @@ public class MagicBakery {
 
     /**
      *  Initiate player
-     * @param seed 
-     * @param ingredientDeckFile
-     * @param layerDeckFile
+     * @param seed  a
+     * @param ingredientDeckFile a
+     * @param layerDeckFile a
      */
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) {
@@ -126,7 +127,6 @@ public class MagicBakery {
 
     }
 
-
     /**
      *  func
      * @return a
@@ -144,7 +144,9 @@ public class MagicBakery {
 
     public Collection<Layer> getBakeableLayers() {
 
-	
+	List<Layer> a = Layer.fast_layer_list();
+
+	return a;
 
     }
 
@@ -167,6 +169,10 @@ public class MagicBakery {
      */
 
     public Customers getCustomers() {
+
+	Customers a = Customers.fast_customers();
+
+	return a;
 
     }
 
@@ -203,6 +209,10 @@ public class MagicBakery {
 
     public Collection<Layer> getLayers() {
 
+	List<Layer> a = Layer.fast_layer_list();
+
+	return a;
+
     }
 
     /**
@@ -224,6 +234,10 @@ public class MagicBakery {
      */
 
     public Collection<Player> getPlayers() {
+
+	List<Player> a = Player.fast_player_list();
+
+	return a;
 
     }
 
