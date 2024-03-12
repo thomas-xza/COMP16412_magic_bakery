@@ -68,13 +68,13 @@ public class Ingredient
 
     // }
 
+
+    @Override
     /**
      *  func
      * @param o a
      * @return a
      */
-
-    @Override
     public int compareTo(Object o) {
 
 	return 1;

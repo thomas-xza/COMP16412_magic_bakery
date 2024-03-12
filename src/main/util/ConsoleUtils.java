@@ -15,7 +15,7 @@ import bakery.MagicBakery.ActionType;
 
 public class ConsoleUtils {
 
-    public Console console;
+    private Console console;
 
     /**
      * Helper methods for console i/o.
@@ -165,7 +165,7 @@ public class ConsoleUtils {
      * @return ingr
      */
 
-    public Ingredient promptForIngredient(String prompt, List<Ingredient> ingredients) {
+    public Ingredient promptForIngredient(String prompt, Collection<Ingredient> ingredients) {
 
 	Ingredient a = new Ingredient("a");
 
@@ -191,7 +191,7 @@ public class ConsoleUtils {
      * @param customers list of custs
      * @return order
      */
-    public CustomerOrder promptForCustomer(String prompt, List<CustomerOrder> customers) {
+    public CustomerOrder promptForCustomer(String prompt, Collection<CustomerOrder> customers) {
 
 	CustomerOrder a = CustomerOrder.fast_order();
 
@@ -199,14 +199,20 @@ public class ConsoleUtils {
 
     }
     
+
     /**
      * ask
      * @param prompt Request
+     * @param collection a
      * @return answer
      */    
     
-    // public  promptFor(String prompt) {
+    private Object promptEnumerateCollection(String prompt, Collection<Object> collection) {
 
-    // }
+	Ingredient a = new Ingredient("A");
+
+	return a;
+
+    }
     
 }
