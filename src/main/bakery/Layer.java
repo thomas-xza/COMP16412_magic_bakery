@@ -63,6 +63,8 @@ public class Layer extends Ingredient
 
         }
 
+	Collections.sort(r_list);
+
         String r_str = String.join(", ", r_list);
 
 	return r_str;
