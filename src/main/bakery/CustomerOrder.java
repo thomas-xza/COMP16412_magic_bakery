@@ -43,7 +43,7 @@ public class CustomerOrder
      * @param garnish d
      */
     
-    public CustomerOrder(String name, int level, List<Ingredient> recipe, List<Ingredient> garnish) {
+    public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) {
 
 	this.name = name;
 
@@ -217,7 +217,7 @@ public class CustomerOrder
 	
         List<Ingredient> a = Ingredient.fast_ingrd_list();
 
-	CustomerOrder blah = new CustomerOrder("test", 1, a, a);
+	CustomerOrder blah = new CustomerOrder("test", a, a, 1);
 
 	return blah;
 

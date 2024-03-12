@@ -38,7 +38,7 @@ public class CardUtils {
 	List<Ingredient> sublist = new ArrayList<>();
 	List<Ingredient> all_ingrd_list = new ArrayList<>();
 
-	try(
+	try (
 	
 	    FileReader file = new FileReader(path);
 	    BufferedReader stream = new BufferedReader(file);
@@ -61,6 +61,7 @@ public class CardUtils {
 		}
 
 	}
+
 
 	catch(FileNotFoundException e) {
 	    System.out.println("No file found.");
@@ -345,7 +346,7 @@ public class CardUtils {
 
 	}
 
-	CustomerOrder order = new CustomerOrder(name, level, recipe, garnish);
+	CustomerOrder order = new CustomerOrder(name, recipe, garnish, level);
 
 	return order;
 

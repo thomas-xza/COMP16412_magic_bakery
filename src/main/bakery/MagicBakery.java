@@ -7,8 +7,8 @@ import bakery.*;
 import util.*;
 
 /**
- *   class
- *   @author thomas.
+ * class
+ * @author thomas.
  * @version 1.5
  * @since 1.0
 */
@@ -27,7 +27,7 @@ public class MagicBakery
     private static final long serialVersionUID = 3;
 
     /**
-     *  Initiate Magic
+     * Initiate Magic
      * @param seed a
      * @param ingredientDeckFile a
      * @param layerDeckFile a
@@ -58,6 +58,7 @@ public class MagicBakery
     /**
      *  function
      */
+    
     public enum ActionType {
     
 	DRAW_INGREDIENT,PASS_INGREDIENT,BAKE_LAYER,FULFIL_ORDER,REFRESH_PANTRY;
@@ -68,6 +69,7 @@ public class MagicBakery
      *  function
      * @param layer a
      */
+    
     public void bakeLayer(Layer layer) {
 
     }
@@ -76,6 +78,7 @@ public class MagicBakery
      *  func
      * @return a
      */
+    
     private Ingredient drawFromPantryDeck() {
 
 	Ingredient a = new Ingredient("a");
