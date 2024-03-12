@@ -1,6 +1,7 @@
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.io.*;
+import java.lang.*;
 
 import bakery.*;
 import util.*;
@@ -15,7 +16,15 @@ public class BakeryDriver {
 
     public static void main(String[] args)  {
 
-	MagicBakery game = new MagicBakery(0, args[0], args[1]);
+	try {
+
+	    MagicBakery game = new MagicBakery(0, args[0], args[1]);
+
+	} catch (IOException e) {
+
+	    System.out.println("File read error");
+
+	}
 
 	// Ingredient myobj = new Ingredient("Water");
 	

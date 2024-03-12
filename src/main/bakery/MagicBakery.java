@@ -2,6 +2,7 @@ package bakery;
 
 import java.util.*;
 import java.io.*;
+import java.lang.*;
 
 import bakery.*;
 import util.*;
@@ -33,7 +34,11 @@ public class MagicBakery
      * @param layerDeckFile a
      */
     
-    public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) {
+    public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws IOException {
+
+	File f = new File(ingredientDeckFile);
+	
+	if( !f.exists() ) { throw new FileNotFoundException(); }
 
 	List<Ingredient> ingrd_list = CardUtils.readIngredientFile(ingredientDeckFile);
 
@@ -263,9 +268,18 @@ public class MagicBakery
 
     public static MagicBakery loadState(File file) {
 
-	MagicBakery a = new MagicBakery(1, "a", "a");
-	return a;
+	MagicBakery a = null;
 
+	try {
+	    
+	     a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
+	} catch (IOException e) {
+
+	    System.out.println("fail");
+
+	}
+
+	return a;
     }
 
     /**
