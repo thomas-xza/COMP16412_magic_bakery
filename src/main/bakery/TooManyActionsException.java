@@ -1,12 +1,17 @@
 package bakery;
 
-    /**
-     * Someting
-     * @author a
-     * @version 1.0
-     */
+import java.io.*;
+import java.lang.*;
 
-public class TooManyActionsException {
+/**
+ * Someting
+ * @author a
+ * @version 1.0
+ */
+
+public class TooManyActionsException
+    extends java.lang.IllegalStateException
+    implements Serializable {
 
     /**
      * Someting

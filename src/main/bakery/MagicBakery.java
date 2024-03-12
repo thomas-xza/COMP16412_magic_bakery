@@ -13,7 +13,8 @@ import util.*;
  * @since 1.0
 */
 
-public class MagicBakery {
+public class MagicBakery
+    implements Serializable {
 
     private Customers customers;
     private Collection<Layer> layers;
@@ -72,7 +73,7 @@ public class MagicBakery {
      *  func
      * @return a
      */
-    public Ingredient drawFromPantryDeck() {
+    private Ingredient drawFromPantryDeck() {
 
 	Ingredient a = new Ingredient("a");
 	

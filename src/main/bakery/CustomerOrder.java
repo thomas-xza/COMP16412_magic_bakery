@@ -196,7 +196,6 @@ public class CustomerOrder {
 
     /**
      * a
-     * @return a
      */
     
     public void abandon() {

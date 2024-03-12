@@ -101,7 +101,8 @@ public class Customers
  
     /**
      * getter
-     * @return list
+     * @param hand a
+     * @return a
      */
     
     public Collection<CustomerOrder> getFulfilable(List<Ingredient> hand) {
@@ -114,7 +115,7 @@ public class Customers
 
     /**
      * getter
-     * @param stat hi
+     * @param status hi
      * @return list
      */
     

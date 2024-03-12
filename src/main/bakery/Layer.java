@@ -13,7 +13,7 @@ import bakery.*;
 */
 
 public class Layer extends Ingredient
-    implements Serializable, Comparable<Layer> {
+    implements Serializable, Comparable<Object> {
 
     private List<Ingredient> recipe;
 
@@ -34,7 +34,7 @@ public class Layer extends Ingredient
     }
  
     /**
-     *  Initiate player
+     *  func
      * @return a
      */
     public List<Ingredient> getRecipe() {
@@ -44,7 +44,7 @@ public class Layer extends Ingredient
     }
 
     /**
-     *  Initiate player
+     *  func
      * @return a
      */
     public String getRecipeDescription() {
@@ -85,7 +85,7 @@ public class Layer extends Ingredient
     }
 
     /**
-     *  Initiate player
+     *  func
      * @return a
      */
     public static Layer fast_layer() {
@@ -98,15 +98,8 @@ public class Layer extends Ingredient
 	
     }
 
-    @Override
-    public int compareTo(Layer a) {
-	
-        return 1;
-	
-    }
-
     /**
-     *  Initiate player
+     *  func
      * @return a
      */
     public static List<Layer> fast_layer_list() {
@@ -122,7 +115,7 @@ public class Layer extends Ingredient
     }
     
     /**
-     *  Initiate player
+     *  func
      * @return a
      */
     public static Collection<Layer> fast_layer_collection() {

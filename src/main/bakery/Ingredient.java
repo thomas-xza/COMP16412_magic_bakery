@@ -1,12 +1,25 @@
 package bakery;
 
 import java.util.*;
+import java.io.*;
 
-public class Ingredient {
+/**
+ *  class
+ *   @author thomas.
+ * @version 1.5
+ * @since 1.0
+*/
+
+public class Ingredient
+    implements Serializable, Comparable<Object> {
 
     private String name;
 
-    public static Ingredient HELPFUL_DUCK;
+    /**
+     * something (not sure)
+     */
+
+    public final static Ingredient HELPFUL_DUCK = new Ingredient("Helpful duck");
 
     private static long serialVersionUID;
 
@@ -42,6 +55,32 @@ public class Ingredient {
 
     }
 
+    // /**
+    //  *  func
+    //  * @param ingredient a
+    //  * @return a
+    //  */
+
+    // @Override
+    // public int compareTo(Ingredient ingredient) {
+
+    // 	return 1;
+
+    // }
+
+    /**
+     *  func
+     * @param o a
+     * @return a
+     */
+
+    @Override
+    public int compareTo(Object o) {
+
+	return 1;
+
+    }
+
     /**
      *  func
      * @return a
@@ -66,5 +105,6 @@ public class Ingredient {
         return b;
 
     }
+
 
 }

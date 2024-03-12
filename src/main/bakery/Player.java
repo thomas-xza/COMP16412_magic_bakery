@@ -4,9 +4,11 @@ import java.util.*;
 import java.io.*;
 
 /**
- * Create an object for each player.
- * @author thomas
- */
+ *   class
+ *   @author thomas.
+ * @version 1.5
+ * @since 1.0
+*/
 
 public class Player
     implements Serializable {
