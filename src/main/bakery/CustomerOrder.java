@@ -43,7 +43,13 @@ public class CustomerOrder
      * @param garnish d
      */
     
-    public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) {
+    public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) throws RuntimeException {
+
+        if ( recipe.size() == 0 || garnish.size() == 0 ) {
+
+                throw new WrongIngredientsException();
+
+            }
 
 	this.name = name;
 

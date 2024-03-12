@@ -25,9 +25,15 @@ public class Layer extends Ingredient
      * @param recipe a
      */
 
-    public Layer(String name, List<Ingredient> recipe) {
+    public Layer(String name, List<Ingredient> recipe) throws RuntimeException {
 
 	super(name);
+
+	if ( recipe.size() == 0 ) {
+
+		throw new WrongIngredientsException();
+
+	    }
 
 	this.recipe = recipe;
 

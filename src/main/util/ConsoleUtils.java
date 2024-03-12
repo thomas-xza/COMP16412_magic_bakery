@@ -2,7 +2,7 @@ package util;
 
 import java.util.*;
 import java.io.*;
-
+import java.lang.reflect.*;
 import bakery.*;
 import bakery.MagicBakery.ActionType;
 
@@ -207,7 +207,13 @@ public class ConsoleUtils {
      * @return answer
      */    
     
-    private Object promptEnumerateCollection(String prompt, Collection<Object> collection) {
+    private Object promptEnumerateCollection(String prompt, Collection<Object> collection){
+
+	// if ( collection.isEmpty() == true ) {
+
+	//     throw new InvocationTargetException();
+
+	// }
 
 	Ingredient a = new Ingredient("A");
 
