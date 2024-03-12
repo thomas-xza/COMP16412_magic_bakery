@@ -23,6 +23,27 @@ public class Ingredient {
 
     /**
      *  func
+     * @param o a
+     * @return a
+     */
+    public boolean equals(Object o) {
+
+	return true;
+
+    }
+
+    /**
+     *  func
+     * @return a
+     */
+    public int hashCode() {
+
+	return 1;
+
+    }
+
+    /**
+     *  func
      * @return a
      */
     public String toString() {

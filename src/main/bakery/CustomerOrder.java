@@ -22,6 +22,9 @@ public class CustomerOrder {
 
     private CustomerOrderStatus status;
    
+    /**
+     *  func     */
+    
     public enum CustomerOrderStatus {
 
 	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
