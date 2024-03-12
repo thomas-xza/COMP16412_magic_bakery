@@ -2,6 +2,8 @@ package bakery;
 
 import java.util.*;
 
+import bakery.*;
+
 /**
  * Create customer order
  * @author thomas
@@ -79,11 +81,9 @@ public class CustomerOrder {
     
     public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
 
-        List<Ingredient> ingrd_l = new ArrayList<>();
-        Ingredient a = new Ingredient("a");
-        ingrd_l.add(a);
+        List<Ingredient> a = Ingredient.fast_ingrd_list();
 
-	return ingrd_l;
+	return a;
 
     }
 
@@ -209,11 +209,9 @@ public class CustomerOrder {
     
     public static CustomerOrder fast_order() {
 	
-        List<Ingredient> ingrd_l = new ArrayList<>();
-        Ingredient a = new Ingredient("a");
-        ingrd_l.add(a);
-	
-	CustomerOrder blah = new CustomerOrder("test", 1, ingrd_l, ingrd_l);
+        List<Ingredient> a = Ingredient.fast_ingrd_list();
+
+	CustomerOrder blah = new CustomerOrder("test", 1, a, a);
 
 	return blah;
 

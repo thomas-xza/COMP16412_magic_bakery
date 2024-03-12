@@ -1,6 +1,7 @@
 package bakery;
 
-import java.util.List;
+import java.util.*;
+import java.io.*;
 
 import util.*;
 
@@ -67,7 +68,7 @@ public class MagicBakery {
 
 	Ingredient a = new Ingredient("a");
 	
-	return a
+	return a;
 
     }
 
@@ -108,11 +109,9 @@ public class MagicBakery {
      */
     public List<Ingredient> fulfillOrder(CustomerOrder customer, boolean garnish) {
 
-	List<Ingredient> ingrd_l = new ArrayList<>();
-        Ingredient a = new Ingredient("a");
-        ingrd_l.add(a);
+        List<Ingredient> a = Ingredient.fast_ingrd_list();
 
-	return ingrd_l;
+	return a;
 
     }
 
@@ -145,6 +144,8 @@ public class MagicBakery {
 
     public Collection<Layer> getBakeableLayers() {
 
+	
+
     }
 
     /**
@@ -156,7 +157,7 @@ public class MagicBakery {
 
 	Player a = new Player("A");
 
-	return a
+	return a;
 
     }
 
@@ -211,11 +212,10 @@ public class MagicBakery {
 
     public Collection<Ingredient> getPantry() {
 
-        List<Ingredient> ingrd_l = new ArrayList<>();
-        Ingredient a = new Ingredient("a");
-        ingrd_l.add(a);
+        List<Ingredient> a = Ingredient.fast_ingrd_list();
 
-        return ingrd_l;
+	return a;
+
     }
 
     /**
@@ -234,6 +234,9 @@ public class MagicBakery {
      */
 
     public static MagicBakery loadState(File file) {
+
+	MagicBakery a = new MagicBakery(1, "a", "a");
+	return a;
 
     }
 

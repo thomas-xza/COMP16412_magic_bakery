@@ -1,7 +1,8 @@
 package bakery;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import bakery.*;
 
 public class Layer extends Ingredient {
 
@@ -41,6 +42,28 @@ public class Layer extends Ingredient {
 
 	return true;
 
+    }
+
+    public static Layer fast_layer() {
+
+	List<Ingredient> a = Ingredient.fast_ingrd_list();
+
+	Layer b = new Layer("b", a);
+
+	return b;
+	
+    }
+
+    public static Collection<Layer> fast_layer_list() {
+
+	Layer c = fast_layer();
+
+	List<Layer> d = new ArrayList<>();
+	
+        d.add(c);
+
+        return d;
+	
     }
 
 }

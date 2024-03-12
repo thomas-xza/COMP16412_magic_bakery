@@ -1,5 +1,7 @@
 package bakery;
 
+import java.util.*;
+
 public class Ingredient {
 
     private String name;
@@ -17,6 +19,17 @@ public class Ingredient {
     public String toString() {
 
 	return name;
+
+    }
+
+    public static List<Ingredient> fast_ingrd_list() {
+	
+        Ingredient a = new Ingredient("a");
+        List<Ingredient> b = new ArrayList<>();
+	
+        b.add(a);
+
+        return b;
 
     }
 
