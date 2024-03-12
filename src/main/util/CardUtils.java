@@ -2,9 +2,7 @@ package util;
 
 import bakery.*;
 
-import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -54,7 +52,7 @@ public class CardUtils {
 		
 		while(line != null) {
 		    
-		    sublist = stringToIngredient(line);
+		    sublist = stringToIngredients(line);
 
 		    all_ingrd_list.addAll(sublist);
 
@@ -86,7 +84,7 @@ public class CardUtils {
 
     */
     
-    private static List<Ingredient> stringToIngredient(String str) {
+    private static List<Ingredient> stringToIngredients(String str) {
 
 	String name;
 	Integer quantity;
@@ -215,7 +213,7 @@ public class CardUtils {
 
     */
 
-    public static List<CustomerOrder> readCustomerFile(String path, List<Layer> layers) {
+    public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) {
 	
 	String line;
 	CustomerOrder order;
@@ -268,14 +266,14 @@ public class CardUtils {
        @return : List of ingredients derived via string input.
 
     */
-    private static List<Ingredient> data_to_ingredients(List<String> data, List<Layer> layers) {
+    private static List<Ingredient> data_to_ingredients(List<String> data, Collection<Layer> layers) {
 
 	List<Ingredient> ingrds = new ArrayList<>();
+	List<Layer> layers_list = List.copyOf(layers);
 	boolean part_is_layer = false;
 
 	//  Next line is a workaround because Java dislikes empty objects.
-	Layer target_layer = layers.get(0);
-
+	Layer target_layer = layers_list.get(0);
 
 	for ( String recipe_part_str : data ) {
 
@@ -319,7 +317,7 @@ public class CardUtils {
        @return : Order object.
 
     */
-    private static CustomerOrder stringToCustomerOrder(String str, List<Layer> layers) {
+    private static CustomerOrder stringToCustomerOrder(String str, Collection<Layer> layers) {
 
 
 	List<String> csv_line;
