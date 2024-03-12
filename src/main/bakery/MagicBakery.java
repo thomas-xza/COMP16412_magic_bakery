@@ -28,6 +28,9 @@ public class MagicBakery
 
     /**
      *  Initiate Magic
+     * @param seed a
+     * @param ingredientDeckFile a
+     * @param layerDeckFile a
      */
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) {

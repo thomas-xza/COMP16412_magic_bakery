@@ -24,6 +24,8 @@ public class CustomerOrder
 
     private CustomerOrderStatus status;
    
+    private static final long serialVersionUID = 7;
+
     /**
      *  func     */
     

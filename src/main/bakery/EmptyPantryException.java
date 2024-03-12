@@ -12,6 +12,8 @@ public class EmptyPantryException extends java.lang.RuntimeException {
 
     /**
      * Someting
+     * @param msg a
+     * @param e a
      */
 
     public EmptyPantryException(String msg, Throwable e) {

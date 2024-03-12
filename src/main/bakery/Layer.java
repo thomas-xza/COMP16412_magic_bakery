@@ -21,8 +21,8 @@ public class Layer extends Ingredient
 
     /**
      * func
-     * @param seed
-     * @param ingredientDeckFile
+     * @param seed a
+     * @param recipe a
      */
 
     public Layer(String name, List<Ingredient> recipe) {
@@ -63,7 +63,7 @@ public class Layer extends Ingredient
 
     /**
      * a
-     * @param ingredients
+     * @param ingredients a
      * @return a
      */
     
