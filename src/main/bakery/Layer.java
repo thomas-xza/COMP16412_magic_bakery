@@ -17,7 +17,7 @@ public class Layer extends Ingredient
 
     private List<Ingredient> recipe;
 
-    private static long serialVersionUID;
+    private static final long serialVersionUID = 2;
 
     /**
      * func

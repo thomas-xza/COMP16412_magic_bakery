@@ -17,7 +17,7 @@ public class Player
 
     private List<Ingredient> hand;
 
-    private static long serialVersionUID;
+    private static final long serialVersionUID = 4;
 
     /**
      *  Initiate player

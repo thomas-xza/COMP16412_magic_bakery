@@ -1,6 +1,7 @@
 package bakery;
 
 import java.util.*;
+import java.io.*;
 
 import bakery.*;
 
@@ -10,7 +11,8 @@ import bakery.*;
  * @version 1.0
  */
 
-public class CustomerOrder {
+public class CustomerOrder
+    implements Serializable {
 
     private String name;
 

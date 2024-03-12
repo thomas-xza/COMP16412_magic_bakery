@@ -21,7 +21,7 @@ public class Customers
     private List<CustomerOrder> inactiveCustomers = new ArrayList<>();
     private Random random;
 
-    private static long serialVersionUID;
+    private static final long serialVersionUID = 0;
     
 
     /**

@@ -24,7 +24,7 @@ public class MagicBakery
     private Collection<Ingredient> pantryDiscard;
     private Random random;
 
-    private static long serialVersionUID;
+    private static final long serialVersionUID = 3;
 
     /**
      *  Initiate Magic

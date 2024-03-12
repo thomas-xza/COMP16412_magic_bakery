@@ -21,7 +21,7 @@ public class Ingredient
 
     public final static Ingredient HELPFUL_DUCK = new Ingredient("Helpful duck");
 
-    private static long serialVersionUID;
+    private static final long serialVersionUID = 1;
 
     /**
      *  func
