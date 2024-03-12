@@ -118,15 +118,17 @@ public class CustomerOrder
     
     public String getGarnishDescription() {
 
-	String garnish_desc = "";
+	List<String> g_list = new ArrayList<>();
 
         for (Ingredient g : garnish) {
 
-            garnish_desc = garnish_desc.concat(g.toString());
+	    g_list.append(g.toString());
 
         }
 
-        return garnish_desc;
+	String g_str = String.join(", ", g_list);
+
+        return g_str;
 
     }
 
@@ -159,15 +161,17 @@ public class CustomerOrder
     
     public String getRecipeDescription() {
 
-	String recipe_desc = "";
+	List<String> r_list = new ArrayList<>();
 
-        for (Ingredient g : recipe) {
+        for (Ingredient r : recipe) {
 
-            recipe_desc = recipe_desc.concat(g.toString());
+	    r_list.append(r.toString());
 
         }
 
-        return recipe_desc;
+	String r_str = String.join(", ", r_list);
+
+        return r_str;
 	
     }
 

@@ -254,7 +254,9 @@ public class MagicBakery
      * @return a
      */
 
-    public static MagicBakery loadState(File file) {
+    public static MagicBakery loadState(File file) throws IOException {
+
+	if( !file.exists() ) { throw new FileNotFoundException(); }
 
 	MagicBakery a = null;
 
@@ -307,7 +309,13 @@ public class MagicBakery
      * @param file a
      */
 
-    public void saveState(File file) {
+    public void saveState(File file) throws IOException {
+
+	if (!file.exists()) {
+
+	    throw new FileNotFoundException();
+
+	}
 
     }
 
