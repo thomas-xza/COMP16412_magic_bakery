@@ -1,5 +1,4 @@
 package bakery;
-package bakery;
 
 import java.lang.*;
 

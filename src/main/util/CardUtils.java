@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- *   File parsing functions.
+ *  class
  *   @author thomas.
  * @version 1.5
  * @since 1.0

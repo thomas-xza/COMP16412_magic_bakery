@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import bakery.*;
+import bakery.CustomerOrder.CustomerOrderStatus;
 
 /**
  *   Customers
