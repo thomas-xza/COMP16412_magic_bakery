@@ -55,15 +55,17 @@ public class Layer extends Ingredient
      */
     public String getRecipeDescription() {
 
-	String recipe_desc = "";
+        List<String> r_list = new ArrayList<>();
 
-	for (Ingredient i : recipe) {
+        for (Ingredient r : recipe) {
 
-	    recipe_desc = recipe_desc.concat(i.toString());
+            r_list.add(r.toString());
 
-	}
+        }
 
-	return recipe_desc;
+        String r_str = String.join(", ", r_list);
+
+	return r_str;
 
     }
 
