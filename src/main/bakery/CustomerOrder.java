@@ -122,7 +122,7 @@ public class CustomerOrder
 
         for (Ingredient g : garnish) {
 
-	    g_list.append(g.toString());
+	    g_list.add(g.toString());
 
         }
 
@@ -165,7 +165,7 @@ public class CustomerOrder
 
         for (Ingredient r : recipe) {
 
-	    r_list.append(r.toString());
+	    r_list.add(r.toString());
 
         }
 
