@@ -21,7 +21,7 @@ public class Layer extends Ingredient
 
     /**
      * func
-     * @param seed a
+     * @param name a
      * @param recipe a
      */
 
