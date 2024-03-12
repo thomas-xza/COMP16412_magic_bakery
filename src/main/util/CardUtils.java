@@ -3,10 +3,7 @@ package util;
 import bakery.*;
 
 import java.util.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  *  class
@@ -32,8 +29,12 @@ public class CardUtils {
      *  @return File data converted to ingredient objects.
      */
 
-    public static List<Ingredient> readIngredientFile(String path) {
+    public static List<Ingredient> readIngredientFile(String path) throws IOException {
 
+        File f = new File(path);
+
+        if( !f.exists() ) { throw new FileNotFoundException(); }
+	
 	String line;
 	List<Ingredient> sublist = new ArrayList<>();
 	List<Ingredient> all_ingrd_list = new ArrayList<>();
@@ -57,10 +58,10 @@ public class CardUtils {
 	    }
 	    
 	} catch(FileNotFoundException e) {
-	    System.out.println("No file found.");
+	    ;
 
 	} catch(IOException e) {
-	    System.out.println("Read error.");
+	    ;
 	}
 
 	return all_ingrd_list;
@@ -111,7 +112,11 @@ public class CardUtils {
        @return : List of layer objects within file.
 
     */
-    public static List<Layer> readLayerFile(String path) {
+    public static List<Layer> readLayerFile(String path) throws IOException {
+
+        File f = new File(path);
+
+        if( !f.exists() ) { throw new FileNotFoundException(); }
 
 	String line;
 	List<Layer> sublist = new ArrayList<>();
@@ -138,11 +143,11 @@ public class CardUtils {
 	}
 
 	catch(FileNotFoundException e) {
-	    System.out.println("No file found.");
-	}
+	    ;
+       	}
 
 	catch(IOException e) {
-	    System.out.println("Read error.");
+	    ;
 	}
 
 	return all_layer_list;
@@ -203,7 +208,11 @@ public class CardUtils {
 
     */
 
-    public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) {
+    public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) throws IOException {
+
+        File f = new File(path);
+
+        if( !f.exists() ) { throw new FileNotFoundException(); }
 	
 	String line;
 	CustomerOrder order;
@@ -230,11 +239,11 @@ public class CardUtils {
 	}
 
 	catch(FileNotFoundException e) {
-	    System.out.println("No file found.");
+	    ;
 	}
 
 	catch(IOException e) {
-	    System.out.println("Read error.");
+	    ;
 	}
 
 	return all_orders;

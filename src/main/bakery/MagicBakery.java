@@ -262,9 +262,7 @@ public class MagicBakery
 	    
 	     a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
 	} catch (IOException e) {
-
-	    System.out.println("fail");
-
+	    ;
 	}
 
 	return a;
