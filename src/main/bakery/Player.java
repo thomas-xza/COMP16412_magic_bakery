@@ -28,6 +28,8 @@ public class Player
 
 	this.name = name;
 
+	hand = null;
+
     }
 
     /**
@@ -37,6 +39,8 @@ public class Player
 
     public void addToHand(List<Ingredient> ingredients) {
 
+	hand.addAll(ingredients);
+
     }
 
     /**
@@ -45,6 +49,8 @@ public class Player
      */
 
     public void addToHand(Ingredient ingredient) {
+
+	hand.add(ingredient);
 
     }
 
@@ -56,7 +62,13 @@ public class Player
 
     public boolean hasIngredient(Ingredient ingredient) {
 
-	return true;
+	if ( hand.contains(ingredient) == true ) {
+	    
+	    return true;
+
+	}
+
+	return false;
 
     }
 
@@ -66,6 +78,10 @@ public class Player
      */
 
     public void removeFromHand(Ingredient ingredient) {
+
+	//  May fail due to object IDs, Comparable<> not being finished...
+
+	hand.remove(ingredient);
 
     }
 
