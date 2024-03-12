@@ -106,5 +106,24 @@ public class Ingredient
 
     }
 
+    /**
+     *  func
+     * @param a
+     * @return a
+     */
+    public static List<String> ingrd_list_to_str_list(List<Ingredient> ingredients) {
+
+	List<String> s_list = new ArrayList<>();
+
+        for (Ingredient i : ingredients) {
+
+            s_list.add(i.toString());
+
+        }
+
+	return s_list;
+
+    }
+
 
 }

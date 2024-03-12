@@ -89,7 +89,11 @@ public class Player
      
     public String getHandStr() {
 
-	return "A";
+	List<String> h_list = Ingredient.ingrd_list_to_str_list(hand);
+
+	String hand_str = String.join(", ", h_list);
+
+	return hand_str;
 
     }
 
