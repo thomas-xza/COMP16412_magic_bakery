@@ -63,38 +63,27 @@ public class CustomerOrder
     }
 
     /**
-     * a
-     * @param ingredients a
-     * @return a
+     * compare
+     * @param target_map a
+     * @param source_map a
+     * @return bool
      */
-    
-    public boolean canFulfill(List<Ingredient> ingredients) {
 
-        return true;
-
-    }
-
-    /**
-     * a
-     * @param ingredients a
-     * @return a
-     */
-    
-    public boolean canGarnish(List<Ingredient> ingredients) {
-
-	Map<String, int> target_map = list_to_quantities(garnish);
-	Map<String, int> source_map = list_to_quantities(ingredients);
+    public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
 
 	int missing = 0;
 
-	int i_target = 0;
+	Integer i_target = 0;
+	Integer i_source = 0;
 	
 	for (String key : target_map.keySet()) {
 
 	    i_target = target_map.get(key);
 	    i_source = source_map.get(key);
 
-	    if (i_source == null) {
+	    if (i_source == null) { i_source = 0; }
+
+	    if (i_source == 0) {
 
 		missing = missing + i_target;
 
@@ -106,9 +95,11 @@ public class CustomerOrder
 
 	}
 
-	ducks = target_map.get("Helpful duck 𓅭 " );
+	Integer ducks = target_map.get("Helpful duck 𓅭 " );
 
-	if ( missing == 0 || ( ducks != null && ducks >= missing ) ) {
+	if ( ducks == null ) { ducks = 0; }
+
+	if ( missing == 0 || ( ducks != 0 && ducks >= missing ) ) {
 
 	    return true;
 	    
@@ -116,6 +107,40 @@ public class CustomerOrder
 	
 	return false;
 
+    }
+
+    /**
+     * a
+     * @param ingredients a
+     * @return a
+     */
+    
+    public boolean canFulfill(List<Ingredient> ingredients) {
+
+	boolean res = compare_quantities(
+					 list_to_quantities(recipe),
+					 list_to_quantities(ingredients)
+					 );
+
+	return res;
+	
+    }
+
+    /**
+     * a
+     * @param ingredients a
+     * @return a
+     */
+    
+    public boolean canGarnish(List<Ingredient> ingredients) {
+
+	boolean res = compare_quantities(
+					 list_to_quantities(garnish),
+					 list_to_quantities(ingredients)
+					 );
+
+	return res;
+	
     }
 
     /**
@@ -257,27 +282,21 @@ public class CustomerOrder
      * @return a
      */
 
-    public static Map<String, int> list_to_quantities(List<Ingredient> elements) {
+    public static Map<String, Integer> list_to_quantities(List<Ingredient> elements) {
 
-	Map<String, int> map = new HashMap<>();
+	Map<String, Integer> map = new HashMap<>();
 
 	String e_str = "";
 
-	for ( element e : elements ) {
+	for ( Ingredient e : elements ) {
 
 	    e_str = e.toString();
 
-	    if (map.get(e_str) == null) {
-
-		map.put(e_str, 0);
-
-	    } else {
-
-		map.put(e_str, map.get(e_str) + 1);
-
-	    }
+	    map.put(e_str, map.getOrDefault(e_str, 0) + 1);
 
 	}
+
+	return map;
 
     }
     
