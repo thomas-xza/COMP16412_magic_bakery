@@ -64,13 +64,11 @@ public class Ingredient
     @Override
     public int compareTo(Ingredient ingredient) {
 
-	if ( ingredient.name = null ) {
+	if ( ingredient.name == null ) {
 
-	    return 1;
+	    return -1;
 
-	}
-
-	( else if this.name == ingredient.name ) {
+	} else if ( this.name == ingredient.name ) {
 
 	    return 0;
 
