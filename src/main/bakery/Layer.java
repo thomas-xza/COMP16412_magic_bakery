@@ -7,7 +7,7 @@ import bakery.*;
 
 /**
  *  class
- *   @author thomas.
+ * @author thomas.
  * @version 1.5
  * @since 1.0
 */
@@ -23,6 +23,7 @@ public class Layer extends Ingredient
      * func
      * @param name a
      * @param recipe a
+     * @exception RuntimeException a
      */
 
     public Layer(String name, List<Ingredient> recipe) throws RuntimeException {
@@ -78,6 +79,8 @@ public class Layer extends Ingredient
      */
     
     public boolean canBake(List<Ingredient> ingredients) {
+
+	
 
 	return true;
 

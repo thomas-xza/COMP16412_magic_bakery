@@ -30,6 +30,7 @@ public class Customers
      * @param random b
      * @param layers c
      * @param numPlayers d
+     * @exception IOException a
      */
 
     public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
