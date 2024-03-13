@@ -254,7 +254,7 @@ public class MagicBakery
      * @return a
      */
 
-    public static MagicBakery loadState(File file) throws Exception {
+    public static MagicBakery loadState(File file) throws IOException {
 
 	Object result = null;
 
@@ -262,23 +262,8 @@ public class MagicBakery
 
 	    throw new FileNotFoundException();
 
-	} else {
-
-	    FileInputStream fis = new FileInputStream(file);
-	    ObjectInputStream ois = new ObjectInputStream(fis);
-
-	    try {
-		
-		result = ois.readObject();
-		
-	    } catch (Exception e) {
-
-		throw new Exception();
-
-	    }
-
 	}
-	    
+	
 	MagicBakery a = null;
 
 	try {
