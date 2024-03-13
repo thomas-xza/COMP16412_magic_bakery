@@ -83,11 +83,7 @@ public class CustomerOrder
 
 	    if (i_source == null) { i_source = 0; }
 
-	    if (i_source == 0) {
-
-		missing = missing + i_target;
-
-	    } else if (i_target > i_source) {
+	    if (i_target > i_source) {
 
 		missing = missing + (i_target - i_source);
 
