@@ -80,7 +80,33 @@ public class Layer extends Ingredient
     
     public boolean canBake(List<Ingredient> ingredients) {
 
+	//  Iterate over layer requirements.
+	//  Subiterate over the ingredients given.
+	//  Check for match.
+	//  No match: return false.
+
+	//  Also something to do with HELPFUL_DUCK but not sure how to
+	//  use that data structure.
+
+	int found = 0;
+
+	for (Ingredient r_i : recipe ) {
+
+	    found = 0;
 	
+	    for (Ingredient i : ingredients) {
+
+		if ( r_i.toString() == i.toString() ) {
+
+		    found = 1;
+
+		}
+
+	    }
+
+	    if ( found == 0 ) { return false; }
+
+	}
 
 	return true;
 
