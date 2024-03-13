@@ -70,7 +70,7 @@ public class CustomerOrder
     
     public boolean canFulfill(List<Ingredient> ingredients) {
 
-	return true;
+        return true;
 
     }
 
@@ -81,6 +81,26 @@ public class CustomerOrder
      */
     
     public boolean canGarnish(List<Ingredient> ingredients) {
+
+        int found = 0;
+
+        for (Ingredient r_i : recipe ) {
+
+	    found = 0;
+
+            for (Ingredient i : ingredients) {
+
+                if ( r_i.toString() == i.toString() ) {
+
+                    found = 1;
+
+                }
+
+            }
+
+            if ( found == 0 ) { return false; }
+
+        }
 
 	return true;
 
