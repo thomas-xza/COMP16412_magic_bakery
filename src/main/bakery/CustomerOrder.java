@@ -82,27 +82,39 @@ public class CustomerOrder
     
     public boolean canGarnish(List<Ingredient> ingredients) {
 
-        int found = 0;
+	Map<String, int> target_map = list_to_quantities(garnish);
+	Map<String, int> source_map = list_to_quantities(ingredients);
 
-        for (Ingredient r_i : recipe ) {
+	int missing = 0;
 
-	    found = 0;
+	int i_target = 0;
+	
+	for (String key : target_map.keySet()) {
 
-            for (Ingredient i : ingredients) {
+	    i_target = target_map.get(key);
+	    i_source = source_map.get(key);
 
-                if ( r_i.toString() == i.toString() ) {
+	    if (i_source == null) {
 
-                    found = 1;
+		missing = missing + i_target;
 
-                }
+	    } else if (i_target > i_source) {
 
-            }
+		missing = missing + (i_target - i_source);
 
-            if ( found == 0 ) { return false; }
+	    }
 
-        }
+	}
 
-	return true;
+	ducks = target_map.get("Helpful duck 𓅭 " );
+
+	if ( missing == 0 || ( ducks != null && ducks >= missing ) ) {
+
+	    return true;
+	    
+	}
+	
+	return false;
 
     }
 
@@ -239,6 +251,36 @@ public class CustomerOrder
 
     }
 
+    /**
+     * a
+     * @param elements a
+     * @return a
+     */
+
+    public static Map<String, int> list_to_quantities(List<Ingredient> elements) {
+
+	Map<String, int> map = new HashMap<>();
+
+	String e_str = "";
+
+	for ( element e : elements ) {
+
+	    e_str = e.toString();
+
+	    if (map.get(e_str) == null) {
+
+		map.put(e_str, 0);
+
+	    } else {
+
+		map.put(e_str, map.get(e_str) + 1);
+
+	    }
+
+	}
+
+    }
+    
     /**
      * a
      * @return a

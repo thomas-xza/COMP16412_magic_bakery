@@ -19,7 +19,7 @@ public class Ingredient
      * something (not sure)
      */
 
-    public final static Ingredient HELPFUL_DUCK = new Ingredient("Helpful duck");
+    public final static Ingredient HELPFUL_DUCK = new Ingredient("Helpful duck 𓅭 ");
 
     private static final long serialVersionUID = 1;
 
