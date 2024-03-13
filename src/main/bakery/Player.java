@@ -92,8 +92,6 @@ public class Player
 
     public List<Ingredient> getHand() {
 
-	List<Ingredient> hand = new ArrayList<>();
-
 	return hand;
 
     }
