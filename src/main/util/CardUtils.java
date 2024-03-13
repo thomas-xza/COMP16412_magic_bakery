@@ -25,8 +25,9 @@ public class CardUtils {
     /**
      *  Takes a path as a string, reads file, converts to
      *  associated data type. Assumes valid data.
-     *  @param path : File path
+     *  @param path File path
      *  @return File data converted to ingredient objects.
+     *  @throws IOException a
      */
 
     public static List<Ingredient> readIngredientFile(String path) throws IOException {
@@ -108,8 +109,9 @@ public class CardUtils {
        Takes a path as a string, reads file, converts to
        associated data type. Assumes valid data.
 
-       @param path : File path.
-       @return : List of layer objects within file.
+       @param path File path.
+       @return List of layer objects within file.
+       @throws IOException a
 
     */
     public static List<Layer> readLayerFile(String path) throws IOException {
@@ -202,10 +204,10 @@ public class CardUtils {
        Takes a string in format exampled in layers.csv,
        converts to instances of Ingredient object.
 
-       @param path : File path
-       @param layers : List of layer objects.
-       @return : Order objects.
-
+       @param path File path
+       @param layers List of layer objects.
+       @return Order objects.
+       @throws IOException a
     */
 
     public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) throws IOException {
