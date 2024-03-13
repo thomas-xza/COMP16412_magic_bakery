@@ -108,7 +108,7 @@ public class Ingredient
 
     /**
      *  func
-     * @param a
+     * @param ingredients a
      * @return a
      */
     public static List<String> ingrd_list_to_str_list(List<Ingredient> ingredients) {

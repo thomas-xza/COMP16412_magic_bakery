@@ -23,7 +23,7 @@ public class Layer extends Ingredient
      * func
      * @param name a
      * @param recipe a
-     * @exception RuntimeException a
+     * @throws RuntimeException a
      */
 
     public Layer(String name, List<Ingredient> recipe) throws RuntimeException {

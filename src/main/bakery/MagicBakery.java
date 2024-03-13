@@ -32,7 +32,7 @@ public class MagicBakery
      * @param seed a
      * @param ingredientDeckFile a
      * @param layerDeckFile a
-     * @exception IOException a
+     * @throws IOException a
      */
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws IOException {
@@ -253,7 +253,7 @@ public class MagicBakery
      *  func
      * @param file f
      * @return a
-     * @exception IOException a
+     * @throws IOException a
      */
 
     public static MagicBakery loadState(File file) throws IOException {
@@ -315,7 +315,7 @@ public class MagicBakery
     /**
      *  func
      * @param file a
-     * @exception IOException a
+     * @throws IOException a
      */
 
     public void saveState(File file) throws IOException {
@@ -332,7 +332,7 @@ public class MagicBakery
      *  func
      * @param playerNames a
      * @param customerDeckFile a
-     * @exception IOException a
+     * @throws IOException a
      */
     
     public void startGame(List<String> playerNames, String customerDeckFile) throws IOException {

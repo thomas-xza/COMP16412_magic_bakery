@@ -38,9 +38,10 @@ public class CustomerOrder
     /**
      *  Initiate order
      * @param name a
-     * @param level b
-     * @param recipe a
-     * @param garnish d
+     * @param recipe b
+     * @param garnish c
+     * @param level d
+     * @throws RuntimeException a
      */
     
     public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) throws RuntimeException {
