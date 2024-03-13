@@ -106,6 +106,57 @@ public class CustomerOrder
     }
 
     /**
+     * compare
+     * @param target_map a
+     * @param source_map a
+     * @return bool
+     */
+
+    public static Map<String, Integer> used_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
+
+	Map<String, Integer> used = new HashMap<>();
+
+	int missing = 0;
+
+	Integer i_target = 0;
+	Integer i_source = 0;
+	
+	for (String key : target_map.keySet()) {
+
+	    i_target = target_map.get(key);
+	    i_source = source_map.get(key);
+
+	    if (i_source == null) { i_source = 0; }
+
+	    if (i_target > i_source) {
+
+		missing = missing + (i_target - i_source);
+
+		used.put(key, i_source);
+	    
+	    } else {
+
+		used.put(key, i_target);
+
+	    }
+
+	}
+
+	Integer ducks = target_map.get("Helpful duck 𓅭 ");
+
+	if ( ducks == null ) { ducks = 0; }
+
+	if ( missing == 0 || ( ducks != 0 && ducks >= missing ) ) {
+
+	    used.put("Helpful duck 𓅭 ", missing);
+
+	}
+	
+	return used;
+
+    }
+
+    /**
      * a
      * @param ingredients a
      * @return a
@@ -148,9 +199,54 @@ public class CustomerOrder
     
     public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
 
-        List<Ingredient> a = Ingredient.fast_ingrd_list();
+	ArrayList ingredients_used = new ArrayList<>();
 
-	return a;
+	int i = 0;
+
+	int quantity = 0;
+
+	status = CustomerOrderStatus.FULFILLED;
+
+	if ( garnish == true ) {
+
+	    ingredients.addAll(this.garnish);
+
+	    status = CustomerOrderStatus.GARNISHED;
+
+	}
+
+	System.out.println(ingredients);
+
+	// System.out.println(list_to_quantities(ingredients));
+	
+	System.out.println(list_to_quantities(recipe));
+
+	Map<String, Integer> used = used_quantities(
+					  list_to_quantities(recipe),
+					  list_to_quantities(ingredients)
+						    );
+
+	System.out.println(used);
+
+	for (String key : used.keySet()) {
+
+	    quantity = used.get(key);
+
+	    for ( i = quantity ; i > 0 ; i-- ) {
+
+		ingredients_used.add(key);
+
+	    }
+
+	}
+
+	Collections.sort(ingredients_used);
+
+	System.out.println(ingredients_used);
+
+	System.out.println();
+
+	return ingredients_used;
 
     }
 
