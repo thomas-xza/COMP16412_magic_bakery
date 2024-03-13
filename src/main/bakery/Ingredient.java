@@ -11,7 +11,7 @@ import java.io.*;
 */
 
 public class Ingredient
-    implements Serializable, Comparable<Object> {
+    implements Serializable, Comparable<Ingredient> {
 
     private String name;
 
@@ -55,31 +55,43 @@ public class Ingredient
 
     }
 
-    // /**
-    //  *  func
-    //  * @param ingredient a
-    //  * @return a
-    //  */
-
-    // @Override
-    // public int compareTo(Ingredient ingredient) {
-
-    // 	return 1;
-
-    // }
-
-
-    @Override
     /**
      *  func
-     * @param o a
+     * @param ingredient a
      * @return a
      */
-    public int compareTo(Object o) {
 
-	return 1;
+    @Override
+    public int compareTo(Ingredient ingredient) {
+
+	if ( ingredient.name = null ) {
+
+	    return 1;
+
+	}
+
+	( else if this.name == ingredient.name ) {
+
+	    return 0;
+
+	}
+
+	return this.name.compareTo(ingredient.name);
 
     }
+
+
+    // @Override
+    // /**
+    //  *  func
+    //  * @param o a
+    //  * @return a
+    //  */
+    // public int compareTo(Object o) {
+
+    // 	this.name.compareTo(o.name);
+
+    // }
 
     /**
      *  func

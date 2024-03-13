@@ -13,7 +13,7 @@ import bakery.*;
 */
 
 public class Layer extends Ingredient
-    implements Serializable, Comparable<Object> {
+    implements Serializable, Comparable<Ingredient> {
 
     private List<Ingredient> recipe;
 
