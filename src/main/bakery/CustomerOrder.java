@@ -45,11 +45,11 @@ public class CustomerOrder
     
     public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) throws RuntimeException {
 
-        if ( recipe.size() == 0 || garnish.size() == 0 ) {
+        if ( recipe == null || recipe.size() == 0 || garnish.size() == 0 ) {
 
-                throw new WrongIngredientsException();
+	    throw new WrongIngredientsException();
 
-            }
+	}
 
 	this.name = name;
 

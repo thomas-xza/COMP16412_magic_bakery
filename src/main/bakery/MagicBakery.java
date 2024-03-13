@@ -325,7 +325,11 @@ public class MagicBakery
      * @param customerDeckFile a
      */
     
-    public void startGame(List<String> playerNames, String customerDeckFile) {
+    public void startGame(List<String> playerNames, String customerDeckFile) throws IOException {
+
+	File f = new File(customerDeckFile);
+	
+	if( !f.exists() ) { throw new FileNotFoundException(); }
 
     }
     

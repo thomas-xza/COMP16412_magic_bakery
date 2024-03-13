@@ -32,7 +32,14 @@ public class Customers
      * @param numPlayers d
      */
 
-    public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) {
+    public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
+
+	File file = new File(deckFile);
+
+	if ( deckFile != "fast.csv" && !file.exists() ) {
+
+	    throw new FileNotFoundException();
+	}
 
     }
 
@@ -207,7 +214,13 @@ public class Customers
 
 	Random b = new Random(1);
 
-	Customers c = new Customers("customers.csv", b, a, 2);
+	Customers c = null;
+
+	try {
+
+	    c = new Customers("fast.csv", b, a, 2);
+
+	} catch (IOException e) { ; }
 
 	return c;
 	

@@ -207,13 +207,13 @@ public class ConsoleUtils {
      * @return answer
      */    
     
-    private Object promptEnumerateCollection(String prompt, Collection<Object> collection){
+    private Object promptEnumerateCollection(String prompt, Collection<Object> collection) throws RuntimeException {
 
-	// if ( collection.isEmpty() == true ) {
+	if ( collection == null || collection.isEmpty() == true ) {
 
-	//     throw new InvocationTargetException();
+	    throw new IllegalArgumentException();
 
-	// }
+	}
 
 	Ingredient a = new Ingredient("A");
 
