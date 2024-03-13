@@ -271,7 +271,7 @@ public class MagicBakery
 		
 		result = ois.readObject();
 		
-	    } catch (ClassNotFoundException e) {
+	    } catch (Exception e) {
 
 		throw new Exception();
 
