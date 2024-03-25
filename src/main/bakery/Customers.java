@@ -1,6 +1,7 @@
 package bakery;
 
 import java.util.*;
+import java.util.LinkedList;
 import java.io.*;
 
 import bakery.*;
@@ -36,17 +37,15 @@ public class Customers
 
     public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
 
-	Stack<Integer> intStack = new Stack<>();
+	// Collection<Integer> intStack = new LinkedList<>();
 
-	intStack.push(1);
+	// intStack.push(1);
 
-	this.activeCustomers = new Stack<>();
+	this.activeCustomers = new LinkedList<>();
 	
-	this.customerDeck = new Stack<>();
+	this.customerDeck = new ArrayList<>();
 	
-	this.inactiveCustomers = new Stack<>();
-
-	this.customerDeck.push(CustomerOrder.fast_order());
+	this.inactiveCustomers = new LinkedList<>();
 
 	File file = new File(deckFile);
 
@@ -161,7 +160,13 @@ public class Customers
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
-	List<CustomerOrder> customers_list = CardUtils.readCustomerFile(deckFile, layers);
+	List<CustomerOrder> customers_list = null;
+	
+	try {
+	    
+	    customers_list = CardUtils.readCustomerFile(deckFile, layers);
+
+	} catch (IOException e) { ; }
 
 	Map<Integer, Integer> map = new HashMap<>();
 
@@ -197,7 +202,7 @@ public class Customers
 
 		map.put(level, map.get(level) - 1);
 
-		this.customerDeck.push(customer_order);
+		this.customerDeck.add(customer_order);
 
 	    }
 
