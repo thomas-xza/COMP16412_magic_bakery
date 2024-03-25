@@ -48,7 +48,7 @@ public class CustomerOrder
 
         if ( recipe == null || recipe.size() == 0 || garnish.size() == 0 ) {
 
-	    throw new WrongIngredientsException();
+	    throw new WrongIngredientsException("test");
 
 	}
 

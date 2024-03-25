@@ -14,7 +14,7 @@ public class WrongIngredientsException extends java.lang.IllegalArgumentExceptio
      * Someting
      */
 
-    public WrongIngredientsException() {
+    public WrongIngredientsException(String something) {
 
     }
 
