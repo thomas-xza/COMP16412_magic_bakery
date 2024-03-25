@@ -199,7 +199,9 @@ public class CustomerOrder
     
     public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
 
-	ArrayList ingredients_used = new ArrayList<>();
+	List<String> ingredients_used = new ArrayList<>();
+
+	List<Ingredient> ingredients_used_final = new ArrayList<>();
 
 	int i = 0;
 
@@ -246,7 +248,13 @@ public class CustomerOrder
 
 	System.out.println();
 
-	return ingredients_used;
+	for (String ingredient : ingredients_used) {
+
+	    ingredients_used_final.add(new Ingredient(ingredient));
+
+	}
+
+	return ingredients_used_final;
 
     }
 
