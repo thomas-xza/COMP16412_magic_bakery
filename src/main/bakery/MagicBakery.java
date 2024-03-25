@@ -37,6 +37,14 @@ public class MagicBakery
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws FileNotFoundException {
 
+	this.pantry = new ArrayList<Ingredient>();
+
+	this.players = new ArrayList<Player>();
+
+	this.pantryDeck = new Stack<Ingredient>();
+
+	this.pantryDiscard = new Stack<Ingredient>();
+	
 	File f_1 = new File(ingredientDeckFile);
 	
 	File f_2 = new File(layerDeckFile);
@@ -51,16 +59,52 @@ public class MagicBakery
 
 	try {
 
-	    ingrd_list = CardUtils.readIngredientFile(ingredientDeckFile);
+	    this.pantry = CardUtils.readIngredientFile(ingredientDeckFile);
 
 	} catch (IOException e) { ; }
 
-	List<Layer> layer_list = CardUtils.readLayerFile(layerDeckFile);
+	this.layers = CardUtils.readLayerFile(layerDeckFile);
 
-	// List<CustomerOrder> order_list = CardUtils.readCustomerFile("customers.csv", layer_list);
+	// List<Layer> layer_list = CardUtils.readLayerFile(layerDeckFile);
 
     }
 
+    /**
+     *  func
+     * @param playerNames a
+     * @param customerDeckFile a
+     * @throws FileNotFoundException a
+     * @throws IllegalArgumentException a
+     */
+    
+    public void startGame(List<String> playerNames, String customerDeckFile) throws FileNotFoundException, IllegalArgumentException {
+
+	if ( playerNames.size() > 5 ) {
+
+	    throw new IllegalArgumentException();
+
+	} else {
+
+	    for ( String player_name : playerNames ) {
+
+		players.add(new Player(player_name));
+
+	    }
+
+	}
+
+	File f = new File(customerDeckFile);
+	
+	if( !f.exists() ) { throw new FileNotFoundException();
+
+	} else {
+
+	    List<CustomerOrder> customers_list = CardUtils.readCustomerFile(customerDeckFile, this.layers);
+
+	}
+
+    }
+    
     /**
      *  function
      */
@@ -283,6 +327,7 @@ public class MagicBakery
 	a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
 
 	return a;
+	
     }
 
     /**
@@ -335,25 +380,4 @@ public class MagicBakery
 
     }
 
-    /**
-     *  func
-     * @param playerNames a
-     * @param customerDeckFile a
-     * @throws FileNotFoundException a
-     */
-    
-    public void startGame(List<String> playerNames, String customerDeckFile) throws FileNotFoundException, IllegalArgumentException {
-
-	File f = new File(customerDeckFile);
-	
-	if ( playerNames.size() > 5 ) {
-
-	    throw new IllegalArgumentException();
-
-	}
-
-	if( !f.exists() ) { throw new FileNotFoundException(); }
-
-    }
-    
 }
