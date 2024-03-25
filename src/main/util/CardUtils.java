@@ -32,7 +32,7 @@ public class CardUtils {
 
     public static List<Ingredient> readIngredientFile(String path) throws FileNotFoundException, IOException {
 
-	System.out.println("Reading ing file...");
+	// System.out.println("Reading ing file...");
 
         File f = new File(path);
 
@@ -118,7 +118,7 @@ public class CardUtils {
     */
     public static List<Layer> readLayerFile(String path) throws FileNotFoundException {
 
-	System.out.println("Reading layer file...");
+	// System.out.println("Reading layer file...");
 
         File f = new File(path);
 
@@ -216,7 +216,7 @@ public class CardUtils {
 
     public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) throws FileNotFoundException {
 
-	System.out.println("Reading customer file...");
+	// System.out.println("Reading customer file...");
 
         File f = new File(path);
 

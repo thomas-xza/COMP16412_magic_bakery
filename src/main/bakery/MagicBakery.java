@@ -315,7 +315,7 @@ public class MagicBakery
      *  func
      */
 
-    public void refreshPantry() {
+    public void refreshPantry() throws TooManyActionsException {
 
     }
 
