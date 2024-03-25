@@ -41,7 +41,19 @@ public class Ingredient
      */
     public boolean equals(Object o) {
 
-	return true;
+	if (o == null) {
+
+	    return false;
+
+	} if ( this.name == o.toString() ) {
+
+	    return true;
+
+	} else {
+
+	    return false;
+
+	}
 
     }
 
