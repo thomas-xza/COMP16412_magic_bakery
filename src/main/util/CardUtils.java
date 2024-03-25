@@ -27,10 +27,12 @@ public class CardUtils {
      *  associated data type. Assumes valid data.
      *  @param path File path
      *  @return File data converted to ingredient objects.
-     *  @throws IOException a
+     *  @throws FileNotFoundException a
      */
 
-    public static List<Ingredient> readIngredientFile(String path) throws IOException {
+    public static List<Ingredient> readIngredientFile(String path) throws FileNotFoundException, IOException {
+
+	System.out.println("Reading ing file...");
 
         File f = new File(path);
 
@@ -111,10 +113,12 @@ public class CardUtils {
 
        @param path File path.
        @return List of layer objects within file.
-       @throws IOException a
+       @throws FileNotFoundException a
 
     */
-    public static List<Layer> readLayerFile(String path) throws IOException {
+    public static List<Layer> readLayerFile(String path) throws FileNotFoundException {
+
+	System.out.println("Reading layer file...");
 
         File f = new File(path);
 
@@ -207,10 +211,12 @@ public class CardUtils {
        @param path File path
        @param layers List of layer objects.
        @return Order objects.
-       @throws IOException a
+       @throws FileNotFoundException a
     */
 
-    public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) throws IOException {
+    public static List<CustomerOrder> readCustomerFile(String path, Collection<Layer> layers) throws FileNotFoundException {
+
+	System.out.println("Reading customer file...");
 
         File f = new File(path);
 

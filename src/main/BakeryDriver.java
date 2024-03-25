@@ -9,8 +9,6 @@ import util.*;
 public class BakeryDriver {
 
     // public BakeryDriver() {
-
-	
 	
     // }
 
@@ -22,7 +20,7 @@ public class BakeryDriver {
 
 	} catch (IOException e) {
 
-	    System.out.println("File read error");
+	    System.out.println("File read error main()");
 
 	}
 

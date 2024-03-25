@@ -32,20 +32,32 @@ public class MagicBakery
      * @param seed a
      * @param ingredientDeckFile a
      * @param layerDeckFile a
-     * @throws IOException a
+     * @throws FileNotFoundException a
      */
     
-    public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws IOException {
+    public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws FileNotFoundException {
 
-	File f = new File(ingredientDeckFile);
+	File f_1 = new File(ingredientDeckFile);
 	
-	if( !f.exists() ) { throw new FileNotFoundException(); }
+	File f_2 = new File(layerDeckFile);
+	
+	if ( !f_1.exists() || !f_2.exists() ) {
 
-	List<Ingredient> ingrd_list = CardUtils.readIngredientFile(ingredientDeckFile);
+	    throw new FileNotFoundException();
+
+	}
+
+	List<Ingredient> ingrd_list = null;
+
+	try {
+
+	    ingrd_list = CardUtils.readIngredientFile(ingredientDeckFile);
+
+	} catch (IOException e) { ; }
 
 	List<Layer> layer_list = CardUtils.readLayerFile(layerDeckFile);
 
-	List<CustomerOrder> order_list = CardUtils.readCustomerFile("customers.csv", layer_list);
+	// List<CustomerOrder> order_list = CardUtils.readCustomerFile("customers.csv", layer_list);
 
     }
 
@@ -253,27 +265,22 @@ public class MagicBakery
      *  func
      * @param file f
      * @return a
-     * @throws IOException a
+     * @throws FileNotFoundException a
      */
 
-    public static MagicBakery loadState(File file) throws IOException {
+    public static MagicBakery loadState(File file) throws FileNotFoundException {
 
 	Object result = null;
 
-	if( !file.exists() ) {
+	// if( !file.exists() ) {
 
-	    throw new FileNotFoundException();
+	//     throw new FileNotFoundException();
 
-	}
+	// }
 	
 	MagicBakery a = null;
 
-	try {
-	    
-	    a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
-	} catch (IOException e) {
-	    ;
-	}
+	a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
 
 	return a;
     }
@@ -315,10 +322,10 @@ public class MagicBakery
     /**
      *  func
      * @param file a
-     * @throws IOException a
+     * @throws FileNotFoundException a
      */
 
-    public void saveState(File file) throws IOException {
+    public void saveState(File file) throws FileNotFoundException {
 
 	if (!file.exists()) {
 
@@ -332,13 +339,19 @@ public class MagicBakery
      *  func
      * @param playerNames a
      * @param customerDeckFile a
-     * @throws IOException a
+     * @throws FileNotFoundException a
      */
     
-    public void startGame(List<String> playerNames, String customerDeckFile) throws IOException {
+    public void startGame(List<String> playerNames, String customerDeckFile) throws FileNotFoundException, IllegalArgumentException {
 
 	File f = new File(customerDeckFile);
 	
+	if ( playerNames.size() > 5 ) {
+
+	    throw new IllegalArgumentException();
+
+	}
+
 	if( !f.exists() ) { throw new FileNotFoundException(); }
 
     }
