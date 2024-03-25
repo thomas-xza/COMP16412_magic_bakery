@@ -1,7 +1,6 @@
 package bakery;
 
 import java.util.*;
-import java.util.LinkedList;
 import java.io.*;
 
 import bakery.*;
@@ -36,10 +35,6 @@ public class Customers
      */
 
     public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
-
-	// Collection<Integer> intStack = new LinkedList<>();
-
-	// intStack.push(1);
 
 	this.activeCustomers = new LinkedList<>();
 	
@@ -202,7 +197,7 @@ public class Customers
 
 		map.put(level, map.get(level) - 1);
 
-		this.customerDeck.add(customer_order);
+		((Stack) this.customerDeck).push(customer_order);
 
 	    }
 

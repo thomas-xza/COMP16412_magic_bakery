@@ -57,17 +57,17 @@ public class MagicBakery
 
 	}
 
-	List<Ingredient> ingrd_list = null;
+	List<Ingredient> ingredients_list = null;
 
 	try {
 
-	    List<Ingredient> ingredients_list = CardUtils.readIngredientFile(ingredientDeckFile);
+	    ingredients_list = CardUtils.readIngredientFile(ingredientDeckFile);
 
 	} catch (IOException e) { ; }
 
 	for ( Ingredient ingredient : ingredients_list ) {
 
-	    this.pantryDeck.push(ingredient);
+	    ((Stack) this.pantryDeck).push(ingredient);
 
 	}
 
@@ -105,17 +105,19 @@ public class MagicBakery
 
 	} else {
 
-	    this.customers = new Customers(customerDeckFile, this.random, this.layers, this.players.size());
+	    try {
+		
+		this.customers = new Customers(customerDeckFile, this.random, this.layers, this.players.size());
+
+	    } catch (IOException e) { ; }
 
 	}
 
-	this.pantryDeck.shuffle(this.random);
+	Collections.shuffle(((Stack)this.pantryDeck), this.random);
 
 	for (int i = 0 ; i < 5 ; i++ ) {
 
-	    Ingredient pantry_ingrd = this.pantryDeck.pop();
-
-	    this.pantry.push(pantry_ingrd);
+	    ((Stack) this.pantry).push(((Stack)this.pantryDeck).pop());
 
 	}
 
