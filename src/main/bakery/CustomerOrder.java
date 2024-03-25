@@ -27,7 +27,8 @@ public class CustomerOrder
     private static final long serialVersionUID = 7;
 
     /**
-     *  func     */
+     *  func
+     */
     
     public enum CustomerOrderStatus {
 

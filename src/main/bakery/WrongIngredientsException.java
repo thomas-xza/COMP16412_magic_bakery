@@ -11,10 +11,11 @@ import java.lang.*;
 public class WrongIngredientsException extends java.lang.IllegalArgumentException {
 
     /**
-     * Someting
+     * a
+     * @param msg a
      */
 
-    public WrongIngredientsException(String something) {
+    public WrongIngredientsException(String msg) {
 
     }
 
