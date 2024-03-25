@@ -36,11 +36,17 @@ public class Customers
 
     public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
 
-	this.activeCustomers = new Stack<CustomerOrder>();
+	Stack<Integer> intStack = new Stack<>();
+
+	intStack.push(1);
+
+	this.activeCustomers = new Stack<>();
 	
-	this.customerDeck = new Stack<CustomerOrder>();
+	this.customerDeck = new Stack<>();
 	
-	this.inactiveCustomers = new Stack<CustomerOrder>();
+	this.inactiveCustomers = new Stack<>();
+
+	this.customerDeck.push(CustomerOrder.fast_order());
 
 	File file = new File(deckFile);
 
