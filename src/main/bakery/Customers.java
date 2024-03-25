@@ -16,9 +16,9 @@ import bakery.CustomerOrder.CustomerOrderStatus;
 public class Customers
     implements Serializable {
 
-    private Collection<CustomerOrder> activeCustomers = new ArrayList<>();
-    private Collection<CustomerOrder> customerDeck = new ArrayList<>();
-    private List<CustomerOrder> inactiveCustomers = new ArrayList<>();
+    private Collection<CustomerOrder> activeCustomers = new Stack<>();
+    private Collection<CustomerOrder> customerDeck = new Stack<>();
+    private List<CustomerOrder> inactiveCustomers = new Stack<>();
     private Random random;
 
     private static final long serialVersionUID = 0;
@@ -37,10 +37,17 @@ public class Customers
 
 	File file = new File(deckFile);
 
-	if ( deckFile != "fast.csv" && !file.exists() ) {
+	if ( !file.exists() ) {
 
 	    throw new FileNotFoundException();
+	    
+	} else {
+	    
+	    initialiseCustomerDeck(deckFile, layers, numPlayers);
+		
 	}
+
+	this.random = random;
 
     }
 
@@ -88,9 +95,7 @@ public class Customers
     
     public Collection<CustomerOrder> getActiveCustomers() {
 
-	List<CustomerOrder> a = CustomerOrder.fast_order_list();
-
-	return a;
+	return activeCustomers;
 
     }
 
@@ -101,9 +106,7 @@ public class Customers
     
     public Collection<CustomerOrder> getCustomerDeck() {
 
-	List<CustomerOrder> a = CustomerOrder.fast_order_list();
-
-	return a;
+	return customerDeck;
 
     }
  
@@ -144,6 +147,48 @@ public class Customers
      */
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
+
+	List<CustomerOrder> customers_list = CardUtils.readCustomerFile(deckFile, layers);
+
+	Map<Integer, Integer> map = new HashMap<>();
+
+	Integer level_1 = 0;
+	Integer level_2 = 0;
+	Integer level_3 = 0;
+
+	if ( numPlayers == 2 ) {
+
+	    map.put(1, 4);
+	    map.put(2, 2);
+	    map.put(3, 1);
+
+	} else if ( numPlayers == 3 || numPlayers == 4 ) {
+
+	    map.put(1, 1);
+	    map.put(2, 2);
+	    map.put(3, 4);
+	    
+	} else if ( numPlayers == 5 ) {
+
+	    map.put(1, 0);
+	    map.put(2, 1);
+	    map.put(3, 6);
+	    
+	}
+	
+	for ( CustomerOrder customer_order : customers_list ) {
+
+	    level = customer_order.getLevel();
+
+	    if ( map.get(level) > 0 ) {
+
+		customerDeck.push(customer_order);
+
+		map.put(level, map.get(level) - 1)
+
+	    }
+
+	}
 
     }
 

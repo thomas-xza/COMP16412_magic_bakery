@@ -41,9 +41,11 @@ public class MagicBakery
 
 	this.players = new ArrayList<Player>();
 
+	this.pantryDiscard = new Stack<Ingredient>();
+
 	this.pantryDeck = new Stack<Ingredient>();
 
-	this.pantryDiscard = new Stack<Ingredient>();
+	this.random = new Random(seed);
 	
 	File f_1 = new File(ingredientDeckFile);
 	
@@ -59,13 +61,17 @@ public class MagicBakery
 
 	try {
 
-	    this.pantry = CardUtils.readIngredientFile(ingredientDeckFile);
+	    List<Ingredient> ingredients_list = CardUtils.readIngredientFile(ingredientDeckFile);
 
 	} catch (IOException e) { ; }
 
-	this.layers = CardUtils.readLayerFile(layerDeckFile);
+	for ( Ingredient ingredient : ingredients_list ) {
 
-	// List<Layer> layer_list = CardUtils.readLayerFile(layerDeckFile);
+	    pantryDeck.push(ingredient);
+
+	}
+
+	this.layers = CardUtils.readLayerFile(layerDeckFile);
 
     }
 
@@ -87,7 +93,7 @@ public class MagicBakery
 
 	    for ( String player_name : playerNames ) {
 
-		players.add(new Player(player_name));
+		this.players.add(new Player(player_name));
 
 	    }
 
@@ -99,9 +105,17 @@ public class MagicBakery
 
 	} else {
 
-	    List<CustomerOrder> customers_list = CardUtils.readCustomerFile(customerDeckFile, this.layers);
+	    this.customers = new Customers(customerDeckFile, this.random, this.layers, this.players.size());
 
 	}
+
+	this.pantryDeck.shuffle(this.random);
+
+	pantry.push(pantryDeck.pop());
+	pantry.push(pantryDeck.pop());
+	pantry.push(pantryDeck.pop());
+	pantry.push(pantryDeck.pop());
+	pantry.push(pantryDeck.pop());
 
     }
     
