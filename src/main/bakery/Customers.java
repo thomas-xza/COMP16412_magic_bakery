@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import bakery.*;
+import util.*;
 import bakery.CustomerOrder.CustomerOrderStatus;
 
 /**
@@ -16,9 +17,9 @@ import bakery.CustomerOrder.CustomerOrderStatus;
 public class Customers
     implements Serializable {
 
-    private Collection<CustomerOrder> activeCustomers = new Stack<>();
-    private Collection<CustomerOrder> customerDeck = new Stack<>();
-    private List<CustomerOrder> inactiveCustomers = new Stack<>();
+    private Collection<CustomerOrder> activeCustomers;
+    private Collection<CustomerOrder> customerDeck;
+    private List<CustomerOrder> inactiveCustomers;
     private Random random;
 
     private static final long serialVersionUID = 0;
@@ -34,6 +35,12 @@ public class Customers
      */
 
     public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
+
+	this.activeCustomers = new Stack<CustomerOrder>();
+	
+	this.customerDeck = new Stack<CustomerOrder>();
+	
+	this.inactiveCustomers = new Stack<CustomerOrder>();
 
 	File file = new File(deckFile);
 
@@ -178,13 +185,13 @@ public class Customers
 	
 	for ( CustomerOrder customer_order : customers_list ) {
 
-	    level = customer_order.getLevel();
+	    Integer level = customer_order.getLevel();
 
 	    if ( map.get(level) > 0 ) {
 
-		customerDeck.push(customer_order);
+		map.put(level, map.get(level) - 1);
 
-		map.put(level, map.get(level) - 1)
+		this.customerDeck.push(customer_order);
 
 	    }
 

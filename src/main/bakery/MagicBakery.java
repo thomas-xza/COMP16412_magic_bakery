@@ -67,7 +67,7 @@ public class MagicBakery
 
 	for ( Ingredient ingredient : ingredients_list ) {
 
-	    pantryDeck.push(ingredient);
+	    this.pantryDeck.push(ingredient);
 
 	}
 
@@ -111,11 +111,13 @@ public class MagicBakery
 
 	this.pantryDeck.shuffle(this.random);
 
-	pantry.push(pantryDeck.pop());
-	pantry.push(pantryDeck.pop());
-	pantry.push(pantryDeck.pop());
-	pantry.push(pantryDeck.pop());
-	pantry.push(pantryDeck.pop());
+	for (int i = 0 ; i < 5 ; i++ ) {
+
+	    Ingredient pantry_ingrd = this.pantryDeck.pop();
+
+	    this.pantry.push(pantry_ingrd);
+
+	}
 
     }
     
