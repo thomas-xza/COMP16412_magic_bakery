@@ -217,18 +217,18 @@ public class CustomerOrder
 
 	}
 
-	System.out.println(ingredients);
+	// System.out.println(ingredients);
 
 	// System.out.println(list_to_quantities(ingredients));
 	
-	System.out.println(list_to_quantities(recipe));
+	// System.out.println(list_to_quantities(recipe));
 
 	Map<String, Integer> used = used_quantities(
 					  list_to_quantities(recipe),
 					  list_to_quantities(ingredients)
 						    );
 
-	System.out.println(used);
+	// System.out.println(used);
 
 	for (String key : used.keySet()) {
 
@@ -244,9 +244,9 @@ public class CustomerOrder
 
 	Collections.sort(ingredients_used);
 
-	System.out.println(ingredients_used);
+	// System.out.println(ingredients_used);
 
-	System.out.println();
+	// System.out.println();
 
 	for (String ingredient : ingredients_used) {
 
