@@ -154,7 +154,7 @@ public class MagicBakery
     /**
      *  function
      * @param layer a
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
      */
     
     public void bakeLayer(Layer layer) {
@@ -167,7 +167,7 @@ public class MagicBakery
     /**
      *  func
      * @return a
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
      */
     
     private Ingredient drawFromPantryDeck() {
@@ -214,7 +214,8 @@ public class MagicBakery
     /**
      *  func
      * @param ingredientName a
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
+     * @throws WrongIngredientsException a
      */
     public void drawFromPantry(String ingredientName) throws TooManyActionsException, WrongIngredientsException {
 
@@ -248,7 +249,7 @@ public class MagicBakery
     /**
      *  func
      * @param ingredient a
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
      */
     public void drawFromPantry(Ingredient ingredient) {
 
@@ -281,7 +282,7 @@ public class MagicBakery
      * @param customer a
      * @param garnish a
      * @return a
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
      */
     public List<Ingredient> fulfillOrder(CustomerOrder customer, boolean garnish) {
 	
@@ -426,6 +427,7 @@ public class MagicBakery
      * @param file f
      * @return a
      * @throws FileNotFoundException a
+     * @throws InvalidObjectException a
      */
 
     public static MagicBakery loadState(File file) throws FileNotFoundException, InvalidObjectException {
@@ -470,7 +472,7 @@ public class MagicBakery
      *  func
      * @param ingredient a
      * @param recipient a
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
      */
 
     public void passCard(Ingredient ingredient, Player recipient) {
@@ -503,7 +505,7 @@ public class MagicBakery
 
     /**
      *  func
-     * @throws TooManyActionsException
+     * @throws TooManyActionsException a
      */
 
     public void refreshPantry() throws TooManyActionsException {

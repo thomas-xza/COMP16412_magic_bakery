@@ -86,8 +86,8 @@ public class Player
 
     /**
      * rm from hand
-     * @param ingredient Ingred to remove
-     * @throw WrongIngredientsException a
+     * @param ingredient a
+     * @throws WrongIngredientsException a
      */
 
     public void removeFromHand(Ingredient ingredient) throws WrongIngredientsException {
