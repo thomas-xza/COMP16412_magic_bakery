@@ -28,6 +28,7 @@ public class CardUtils {
      *  @param path File path
      *  @return File data converted to ingredient objects.
      *  @throws FileNotFoundException a
+     *  @throws IOException a
      */
 
     public static List<Ingredient> readIngredientFile(String path) throws FileNotFoundException, IOException {

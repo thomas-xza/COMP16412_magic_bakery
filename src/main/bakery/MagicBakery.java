@@ -157,7 +157,7 @@ public class MagicBakery
      * @throws TooManyActionsException a
      */
     
-    public void bakeLayer(Layer layer) {
+    public void bakeLayer(Layer layer) throws TooManyActionsException {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	this.actions_taken += 1;
@@ -170,7 +170,7 @@ public class MagicBakery
      * @throws TooManyActionsException a
      */
     
-    private Ingredient drawFromPantryDeck() {
+    private Ingredient drawFromPantryDeck() throws TooManyActionsException{
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 
@@ -250,8 +250,9 @@ public class MagicBakery
      *  func
      * @param ingredient a
      * @throws TooManyActionsException a
+     * @throws WrongIngredientsException a
      */
-    public void drawFromPantry(Ingredient ingredient) {
+    public void drawFromPantry(Ingredient ingredient) throws TooManyActionsException, WrongIngredientsException {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	if ( ((LinkedList)this.pantry).contains(ingredient) == false ) {
@@ -284,7 +285,7 @@ public class MagicBakery
      * @return a
      * @throws TooManyActionsException a
      */
-    public List<Ingredient> fulfillOrder(CustomerOrder customer, boolean garnish) {
+    public List<Ingredient> fulfillOrder(CustomerOrder customer, boolean garnish) throws TooManyActionsException{
 	
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	    
@@ -475,7 +476,7 @@ public class MagicBakery
      * @throws TooManyActionsException a
      */
 
-    public void passCard(Ingredient ingredient, Player recipient) {
+    public void passCard(Ingredient ingredient, Player recipient) throws TooManyActionsException {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 
