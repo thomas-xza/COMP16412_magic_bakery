@@ -28,7 +28,7 @@ public class Player
 
 	this.name = name;
 
-	hand = null;
+	hand = new ArrayList<Ingredient>();
 
     }
 

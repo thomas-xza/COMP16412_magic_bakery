@@ -233,10 +233,16 @@ public class CardUtils {
 
 	    line = stream.readLine();		
 	    line = stream.readLine();
+
+	    // System.out.println("Converting string to order");
 		
 	    while(line != null) {
+
+		// System.out.println("generating order");
 		    
 		order = stringToCustomerOrder(line, layers);
+
+		// System.out.println("adding order");
 
 		all_orders.add(order);
 
@@ -253,6 +259,8 @@ public class CardUtils {
 	catch(IOException e) {
 	    ;
 	}
+
+	// System.out.println("returning all orders");
 
 	return all_orders;
 
@@ -323,7 +331,6 @@ public class CardUtils {
     */
     private static CustomerOrder stringToCustomerOrder(String str, Collection<Layer> layers) {
 
-
 	List<String> csv_line;
 	Integer level;
 	String name;
@@ -349,7 +356,18 @@ public class CardUtils {
 
 	}
 
+	// System.out.println("Sending to new CustomerOrder:");
+	// System.out.println(name);
+	// System.out.println(name.getClass());
+	// System.out.println(recipe);
+	// System.out.println(recipe.getClass());
+	// System.out.println(garnish);
+	// System.out.println(garnish.getClass());
+	// System.out.println(level);
+
 	CustomerOrder order = new CustomerOrder(name, recipe, garnish, level);
+
+	// System.out.println("order generated");
 
 	return order;
 

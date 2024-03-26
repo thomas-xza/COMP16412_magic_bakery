@@ -91,9 +91,6 @@ public class Customers
     public CustomerOrder drawCustomer() {
 
 	return (CustomerOrder)((Stack)this.customerDeck).pop();
-	// CustomerOrder to_return = ((Stack) this.customerDeck).pop();
-
-	// return to_return;
 
     }
 
@@ -158,6 +155,8 @@ public class Customers
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
 	List<CustomerOrder> customers_list = null;
+
+	// System.out.println("reading customer file");
 	
 	try {
 	    
@@ -165,6 +164,8 @@ public class Customers
 
 	} catch (IOException e) { ; }
 
+	// System.out.println("building hashmap for levels");
+	
 	Map<Integer, Integer> map = new HashMap<>();
 
 	Integer level_1 = 0;

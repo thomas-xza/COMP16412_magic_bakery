@@ -27,6 +27,8 @@ public class MagicBakery
 
     private static final long serialVersionUID = 3;
 
+    private int actions_taken = 0;
+
     /**
      * Initiate Magic
      * @param seed a
@@ -37,7 +39,7 @@ public class MagicBakery
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws FileNotFoundException {
 
-	this.pantry = new ArrayList<Ingredient>();
+	this.pantry = new Stack<Ingredient>();
 
 	this.players = new ArrayList<Player>();
 
@@ -85,6 +87,8 @@ public class MagicBakery
     
     public void startGame(List<String> playerNames, String customerDeckFile) throws FileNotFoundException, IllegalArgumentException {
 
+	// System.out.println("Initialising players");
+
 	if ( playerNames.size() > 5 ) {
 
 	    throw new IllegalArgumentException();
@@ -99,6 +103,8 @@ public class MagicBakery
 
 	}
 
+	// System.out.println("Initialising customers");
+	
 	File f = new File(customerDeckFile);
 	
 	if( !f.exists() ) { throw new FileNotFoundException();
@@ -113,6 +119,8 @@ public class MagicBakery
 
 	}
 
+	// System.out.println("Initialising pantry");
+	
 	Collections.shuffle(((Stack)this.pantryDeck), this.random);
 
 	for (int i = 0 ; i < 5 ; i++ ) {
@@ -121,7 +129,15 @@ public class MagicBakery
 
 	}
 
+	// System.out.println("Initialising hand");
 	
+	for (Player player : this.players) {
+
+	    player.addToHand(((Ingredient)((Stack)this.pantryDeck).pop()));
+	    player.addToHand(((Ingredient)((Stack)this.pantryDeck).pop()));
+	    player.addToHand(((Ingredient)((Stack)this.pantryDeck).pop()));
+
+	}
 
     }
     
@@ -151,6 +167,8 @@ public class MagicBakery
     
     private Ingredient drawFromPantryDeck() {
 
+	this.actions_taken += 1;
+	
 	Ingredient a = new Ingredient("a");
 	
 	return a;
@@ -163,6 +181,8 @@ public class MagicBakery
      * @param ingredientName a
      */
     public void drawFromPantry(String ingredientName) {
+
+	
 
     }
 
@@ -207,7 +227,15 @@ public class MagicBakery
      */
     public int getActionsPermitted() {
 
-	return 1;
+	if ( this.players.size() <= 3 ) {
+
+	    return 3;
+
+	} else {
+
+	    return 2;
+
+	}
 
     }
 
@@ -217,7 +245,7 @@ public class MagicBakery
      */
     public int getActionsRemaining() {
 
-	return 1;
+	return getActionsPermitted() - actions_taken;
 
     }
 
@@ -378,10 +406,13 @@ public class MagicBakery
 
     /**
      *  func
+     * @throws TooManyActionsException
      */
 
     public void refreshPantry() throws TooManyActionsException {
 
+	this.actions_taken += 1;
+	
     }
 
     /**
