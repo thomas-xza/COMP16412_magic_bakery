@@ -53,9 +53,9 @@ public class CustomerOrder
 
 	}
 
-	System.out.println(name);
+	// System.out.println(name);
 
-	System.out.println(recipe);
+	// System.out.println(recipe);
 
 	this.name = name;
 
@@ -108,7 +108,7 @@ public class CustomerOrder
 
 	// System.out.println("missing: " + missing);
 
-	Integer ducks = target_map.get("Helpful duck 𓅭 " );
+	Integer ducks = target_map.get("Helpful duck 𓅭" );
 
 	if ( ducks == null ) { ducks = 0; }
 
@@ -159,13 +159,13 @@ public class CustomerOrder
 
 	}
 
-	Integer ducks = target_map.get("Helpful duck 𓅭 ");
+	Integer ducks = target_map.get("Helpful duck 𓅭");
 
 	if ( ducks == null ) { ducks = 0; }
 
 	if ( missing == 0 || ( ducks != 0 && ducks >= missing ) ) {
 
-	    used.put("Helpful duck 𓅭 ", missing);
+	    used.put("Helpful duck 𓅭", missing);
 
 	}
 	
@@ -200,7 +200,7 @@ public class CustomerOrder
 
 	boolean res = compare_quantities(
 					 list_to_quantities(recipe),
-					 list_to_quantities(ingredients)
+					 list_to_quantities(garnish)
 					 );
 
 	return res;
@@ -221,11 +221,11 @@ public class CustomerOrder
 
 	List<Ingredient> ingredients_used_final = new ArrayList<>();
 
-	System.out.println(ingredients);
+	// System.out.println(ingredients);
 
-	System.out.println("Fulfill:  " + canFulfill(ingredients));
+	// System.out.println("Fulfill:  " + canFulfill(ingredients));
 
-	System.out.println("Garnish:  " + canGarnish(ingredients));
+	// System.out.println("Garnish:  " + canGarnish(ingredients));
 
 	if ( garnish == false && canFulfill(ingredients) == false ) {
 

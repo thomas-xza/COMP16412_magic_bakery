@@ -122,11 +122,39 @@ public class Player
      
     public String getHandStr() {
 
-	List<String> h_list = Ingredient.ingrd_list_to_str_list(hand);
+	Map<String, Integer> hand_map = CustomerOrder.list_to_quantities(hand);
 
-	String hand_str = String.join(", ", h_list);
+	List<String> hand_list = new ArrayList<String>();
 
-	return hand_str;
+	String i_str = "";
+
+	for (String key : hand_map.keySet()) {
+
+	    i_str = key;
+
+	    if (hand_map.get(key) > 1) {
+
+		if ( key.contains("𓅭") ) {
+
+		    i_str = key + "(x" + hand_map.get(key) + ")";
+
+		} else {
+
+		    i_str = key + " (x" + hand_map.get(key) + ")";
+
+		}
+
+	    }
+
+	    i_str = i_str.substring(0, 1).toUpperCase() + i_str.substring(1);
+		    	
+	    hand_list.add(i_str);
+
+	}
+
+	Collections.sort(hand_list);
+
+	return String.join(", ", hand_list);
 
     }
 
