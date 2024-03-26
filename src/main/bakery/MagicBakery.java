@@ -182,7 +182,7 @@ public class MagicBakery
      */
     public void drawFromPantry(String ingredientName) {
 
-	
+	this.actions_taken += 1;	
 
     }
 
@@ -193,6 +193,8 @@ public class MagicBakery
      */
     public void drawFromPantry(Ingredient ingredient) {
 
+	this.actions_taken += 1;
+	
     }
 
     /**
@@ -245,7 +247,7 @@ public class MagicBakery
      */
     public int getActionsRemaining() {
 
-	return getActionsPermitted() - actions_taken;
+	return getActionsPermitted() - this.actions_taken;
 
     }
 
@@ -282,9 +284,7 @@ public class MagicBakery
 
     public Customers getCustomers() {
 
-	Customers a = Customers.fast_customers();
-
-	return a;
+	return this.customers;
 
     }
 
@@ -321,9 +321,7 @@ public class MagicBakery
 
     public Collection<Layer> getLayers() {
 
-	List<Layer> a = Layer.fast_layer_list();
-
-	return a;
+	return this.layers;
 
     }
 
@@ -334,9 +332,7 @@ public class MagicBakery
 
     public Collection<Ingredient> getPantry() {
 
-        List<Ingredient> a = Ingredient.fast_ingrd_list();
-
-	return a;
+	return this.pantry;
 
     }
 
@@ -347,9 +343,7 @@ public class MagicBakery
 
     public Collection<Player> getPlayers() {
 
-	List<Player> a = Player.fast_player_list();
-
-	return a;
+	return this.players;
 
     }
 
