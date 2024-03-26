@@ -39,9 +39,9 @@ public class MagicBakery
     
     public MagicBakery(long seed, String ingredientDeckFile, String layerDeckFile) throws FileNotFoundException {
 
-	this.pantry = new Stack<Ingredient>();
+	this.pantry = new LinkedList<Ingredient>();
 
-	this.players = new ArrayList<Player>();
+	this.players = new LinkedList<Player>();
 
 	this.pantryDiscard = new Stack<Ingredient>();
 
@@ -125,7 +125,7 @@ public class MagicBakery
 
 	for (int i = 0 ; i < 5 ; i++ ) {
 
-	    ((Stack) this.pantry).push(((Stack)this.pantryDeck).pop());
+	    ((LinkedList) this.pantry).add(((Stack)this.pantryDeck).pop());
 
 	}
 
@@ -154,35 +154,69 @@ public class MagicBakery
     /**
      *  function
      * @param layer a
+     * @throws TooManyActionsException
      */
     
     public void bakeLayer(Layer layer) {
 
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+	this.actions_taken += 1;
+	
     }
 
     /**
      *  func
      * @return a
+     * @throws TooManyActionsException
      */
     
     private Ingredient drawFromPantryDeck() {
 
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+	
 	this.actions_taken += 1;
 	
-	Ingredient a = new Ingredient("a");
+	return (Ingredient)((Stack)this.pantryDeck).pop();
 	
-	return a;
-
     }
-
 
     /**
      *  func
+     * @param ingredient a
+     */
+
+    public void pantry_to_hand(String ingredient) {
+	
+	for (Ingredient i : this.pantry) {
+
+	    if ( i.toString() == ingredient ) {
+
+		((LinkedList)this.pantry).remove(i);
+
+		Player current_player = getCurrentPlayer();
+
+		current_player.addToHand(i);
+
+		break;
+
+	    }
+
+	}
+
+    }
+    
+    /**
+     *  func
      * @param ingredientName a
+     * @throws TooManyActionsException
      */
     public void drawFromPantry(String ingredientName) {
 
-	this.actions_taken += 1;	
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+
+	this.actions_taken += 1;
+
+	pantry_to_hand(ingredientName);
 
     }
 
@@ -190,11 +224,15 @@ public class MagicBakery
     /**
      *  func
      * @param ingredient a
+     * @throws TooManyActionsException
      */
     public void drawFromPantry(Ingredient ingredient) {
 
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	this.actions_taken += 1;
-	
+
+	pantry_to_hand(ingredient.toString());
+
     }
 
     /**
@@ -213,9 +251,17 @@ public class MagicBakery
      * @param customer a
      * @param garnish a
      * @return a
+     * @throws TooManyActionsException
      */
     public List<Ingredient> fulfillOrder(CustomerOrder customer, boolean garnish) {
+	
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+	    
 
+	this.actions_taken += 1;
+
+	
+	
         List<Ingredient> a = Ingredient.fast_ingrd_list();
 
 	return a;
@@ -271,9 +317,7 @@ public class MagicBakery
 
     public Player getCurrentPlayer() {
 
-	Player a = new Player("A");
-
-	return a;
+	return (Player)((Queue)this.players).peek();
 
     }
 
@@ -376,10 +420,14 @@ public class MagicBakery
      *  func
      * @param ingredient a
      * @param recipient a
+     * @throws TooManyActionsException
      */
 
     public void passCard(Ingredient ingredient, Player recipient) {
 
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+	this.actions_taken += 1;
+	
     }
 
     /**
@@ -405,6 +453,7 @@ public class MagicBakery
 
     public void refreshPantry() throws TooManyActionsException {
 
+	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	this.actions_taken += 1;
 	
     }

@@ -66,6 +66,8 @@ public class Customers
 
     public CustomerOrder addCustomerOrder() {
 
+	
+
 	CustomerOrder a = CustomerOrder.fast_order();
 
 	return a;
