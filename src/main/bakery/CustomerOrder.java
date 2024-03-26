@@ -53,6 +53,10 @@ public class CustomerOrder
 
 	}
 
+	System.out.println(name);
+
+	System.out.println(recipe);
+
 	this.name = name;
 
 	this.level = level;
@@ -72,17 +76,27 @@ public class CustomerOrder
 
     public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
 
+	// System.out.println("source_map:  " + source_map);
+
+	// System.out.println(target_map);
+
 	int missing = 0;
 
 	Integer i_target = 0;
 	Integer i_source = 0;
 	
+	// System.out.println(target_map.keySet());
+
 	for (String key : target_map.keySet()) {
 
 	    i_target = target_map.get(key);
 	    i_source = source_map.get(key);
 
 	    if (i_source == null) { i_source = 0; }
+
+	    // System.out.println(key + ": " + i_target);
+
+	    // System.out.println(key + ": " + i_source);
 
 	    if (i_target > i_source) {
 
@@ -92,11 +106,13 @@ public class CustomerOrder
 
 	}
 
+	// System.out.println("missing: " + missing);
+
 	Integer ducks = target_map.get("Helpful duck 𓅭 " );
 
 	if ( ducks == null ) { ducks = 0; }
 
-	if ( missing == 0 || ( ducks != 0 && ducks >= missing ) ) {
+	if ( missing == 0 || ( ducks >= missing ) ) {
 
 	    return true;
 	    
@@ -183,7 +199,7 @@ public class CustomerOrder
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = compare_quantities(
-					 list_to_quantities(garnish),
+					 list_to_quantities(recipe),
 					 list_to_quantities(ingredients)
 					 );
 
@@ -196,13 +212,30 @@ public class CustomerOrder
      * @param ingredients a
      * @param garnish a
      * @return a
+     * @throws WrongIngredientsException a
      */
     
-    public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) {
+    public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) throws WrongIngredientsException {
 
 	List<String> ingredients_used = new ArrayList<>();
 
 	List<Ingredient> ingredients_used_final = new ArrayList<>();
+
+	System.out.println(ingredients);
+
+	System.out.println("Fulfill:  " + canFulfill(ingredients));
+
+	System.out.println("Garnish:  " + canGarnish(ingredients));
+
+	if ( garnish == false && canFulfill(ingredients) == false ) {
+
+	    throw new WrongIngredientsException("fail");
+
+	} else if ( garnish == true && ( canFulfill(ingredients) == false || canGarnish(ingredients) == false ) ) {
+
+	    throw new WrongIngredientsException("fail");
+
+	}
 
 	int i = 0;
 
