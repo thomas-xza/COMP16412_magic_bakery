@@ -3,6 +3,8 @@ package bakery;
 import java.util.*;
 import java.io.*;
 
+import bakery.*;
+
 /**
  *   class
  *   @author thomas.
@@ -68,6 +70,16 @@ public class Player
 
 	}
 
+	for ( Ingredient i : hand ) {
+
+	    if ( i.toString() == ingredient.toString() ) {
+
+		return true;
+
+	    }
+
+	}
+
 	return false;
 
     }
@@ -75,13 +87,20 @@ public class Player
     /**
      * rm from hand
      * @param ingredient Ingred to remove
+     * @throw WrongIngredientsException a
      */
 
-    public void removeFromHand(Ingredient ingredient) {
+    public void removeFromHand(Ingredient ingredient) throws WrongIngredientsException {
 
-	//  May fail due to object IDs, Comparable<> not being finished...
+	if ( hasIngredient(ingredient) == true ) {
 
-	hand.remove(ingredient);
+	    hand.remove(ingredient);
+
+	} else {
+
+	    throw new WrongIngredientsException(ingredient.toString());
+
+	}
 
     }
 
