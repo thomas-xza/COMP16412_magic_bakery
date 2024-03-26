@@ -210,10 +210,28 @@ public class MagicBakery
      * @param ingredientName a
      * @throws TooManyActionsException
      */
-    public void drawFromPantry(String ingredientName) {
+    public void drawFromPantry(String ingredientName) throws TooManyActionsException, WrongIngredientsException {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 
+	boolean found = false;
+
+	for ( Ingredient i : this.pantry ) {
+
+	    if ( i.toString() == ingredientName ) {
+
+		found = true;
+
+	    }
+
+	}	
+
+	if ( found == false ) {
+
+	    throw new WrongIngredientsException(ingredientName);
+
+	}
+	
 	this.actions_taken += 1;
 
 	pantry_to_hand(ingredientName);
@@ -229,6 +247,12 @@ public class MagicBakery
     public void drawFromPantry(Ingredient ingredient) {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+	if ( ((LinkedList)this.pantry).contains(ingredient) == false ) {
+
+	    throw new WrongIngredientsException(ingredient.toString());
+
+	}
+
 	this.actions_taken += 1;
 
 	pantry_to_hand(ingredient.toString());
