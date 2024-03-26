@@ -428,7 +428,7 @@ public class MagicBakery
      * @throws FileNotFoundException a
      */
 
-    public static MagicBakery loadState(File file) throws FileNotFoundException {
+    public static MagicBakery loadState(File file) throws FileNotFoundException, InvalidObjectException {
 
 	if ( !file.exists() || file.getName().contains("a2d17f") ) {
 
@@ -436,19 +436,33 @@ public class MagicBakery
 
 	    }
 
-	Object result = null;
+	MagicBakery bakery = null;
 
-	// if( !file.exists() ) {
+	try {
+	    
+	    FileInputStream in = new FileInputStream(file);
+	    
+	    ObjectInputStream in_obj = new ObjectInputStream(in);
+	    
+	    bakery = (MagicBakery)in_obj.readObject();
+	    
+	    in_obj.close();
+	    
+	    in.close();
 
-	//     throw new FileNotFoundException();
+	} catch (IOException e ) {
 
-	// }
+	    throw new InvalidObjectException("Invalid data");
+
+	} catch (ClassNotFoundException e ) {
+
+	    throw new InvalidObjectException("Invalid data");
+
+	}
 	
-	MagicBakery a = null;
+	// a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
 
-	a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
-
-	return a;
+	return bakery;
 	
     }
 
