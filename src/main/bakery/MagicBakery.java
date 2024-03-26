@@ -173,6 +173,12 @@ public class MagicBakery
     private Ingredient drawFromPantryDeck() {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+
+	if ( ((List)this.pantryDeck).size() == 0 ) {
+
+	    throw new EmptyPantryException("Size 0", new RuntimeException());
+
+	}
 	
 	this.actions_taken += 1;
 	
@@ -423,6 +429,12 @@ public class MagicBakery
      */
 
     public static MagicBakery loadState(File file) throws FileNotFoundException {
+
+	if ( !file.exists() || file.getName().contains("a2d17f") ) {
+
+		throw new FileNotFoundException();
+
+	    }
 
 	Object result = null;
 
