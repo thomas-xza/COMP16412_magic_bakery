@@ -89,7 +89,7 @@ public class MagicBakery
 
 	// System.out.println("Initialising players");
 
-	if ( playerNames.size() > 5 ) {
+	if ( playerNames.size() > 5 || playerNames.size() < 2 ) {
 
 	    throw new IllegalArgumentException();
 
