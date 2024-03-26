@@ -90,6 +90,8 @@ public class Customers
    
     public CustomerOrder drawCustomer() {
 
+	
+
 	return (CustomerOrder)((Stack)this.customerDeck).pop();
 	// CustomerOrder to_return = ((Stack) this.customerDeck).pop();
 

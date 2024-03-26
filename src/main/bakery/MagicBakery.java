@@ -21,9 +21,9 @@ public class MagicBakery
     private Collection<Layer> layers;
     private Collection<Player> players;
     private Collection<Ingredient> pantry;
-    private Collection<Ingredient> pantryDeck;
     private Collection<Ingredient> pantryDiscard;
     private Random random;
+    private Collection<Ingredient> pantryDeck;
 
     private static final long serialVersionUID = 3;
 
@@ -120,6 +120,8 @@ public class MagicBakery
 	    ((Stack) this.pantry).push(((Stack)this.pantryDeck).pop());
 
 	}
+
+	
 
     }
     
