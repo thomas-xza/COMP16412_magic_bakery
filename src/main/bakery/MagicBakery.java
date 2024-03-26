@@ -450,6 +450,11 @@ public class MagicBakery
     public void passCard(Ingredient ingredient, Player recipient) {
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+
+	getCurrentPlayer().removeFromHand(ingredient);
+
+	recipient.addToHand(ingredient);
+	
 	this.actions_taken += 1;
 	
     }
