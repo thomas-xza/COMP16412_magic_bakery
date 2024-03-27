@@ -275,27 +275,21 @@ public class CustomerOrder
 
 	System.out.println(ingredients + "\n" + list_to_quantities(ingredients));
 
-	if ( garnish == false ) {
+	if ( canFulfill(ingredients) == false ) {
 
-	    System.out.println(list_to_quantities(recipe));
-
-	    if ( canFulfill(ingredients) == true ) {
-
-		status = CustomerOrderStatus.FULFILLED;
-
-	    } else { throw new WrongIngredientsException("fail"); }
-
-	} else if ( garnish == true ) {
-
-	    System.out.println(list_to_quantities(recipe_and_garnish));
-
-	    if ( can_fulfill_and_garnish == true ) {
-
-		status = CustomerOrderStatus.GARNISHED;
-
-	    } else { throw new WrongIngredientsException("fail"); }
+	    throw new WrongIngredientsException("fail");
 
 	}
+
+	if ( garnish == true && canGarnish(ingredients) == false ) {
+
+	    throw new WrongIngredientsException("fail");
+
+	}
+
+		// status = CustomerOrderStatus.FULFILLED;
+
+		// status = CustomerOrderStatus.GARNISHED;
 	
 	int i = 0;
 

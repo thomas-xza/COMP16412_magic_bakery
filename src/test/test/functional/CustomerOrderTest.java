@@ -348,7 +348,7 @@ public class CustomerOrderTest {
 	@Test
 	public void testFulfill__NoGarnish() throws NoSuchFieldException, IllegalAccessException {
 
-	    System.out.println("\ntestFulfill__NoGarnish");
+	    System.out.println("\nERROR MISSING SPRINKLES testFulfill__NoGarnish");
 
 	    Ingredient[] shouldUse = {new Ingredient("butter"), new Ingredient("flour"), new Ingredient("sugar")};
 
@@ -401,7 +401,7 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testFulfill__DoubleIngredient_NoGarnish() throws NoSuchFieldException, IllegalAccessException {
-	    System.out.println("\ntestFulfill__DoubleIngredient_NoGarn");
+	    System.out.println("\nERROR NO SPRINKLES testFulfill__DoubleIngredient_NoGarn");
 		Ingredient[] shouldUse = {
 			new Ingredient("butter"),
 			new Ingredient("flour"),
@@ -491,7 +491,7 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testFulfill__GarnishThanksToDucks() throws NoSuchFieldException, IllegalAccessException {
-	    System.out.println("\ntestFulfill__GarnishThanksToDucks");
+	    System.out.println("\nERROR FLOUR AND SPRINKLES MISSING, ONLY 1 DUCK  testFulfill__GarnishThanksToDucks");
 		Ingredient[] shouldUse = {
 			new Ingredient("butter"),
 			new Ingredient("chocolate"),
