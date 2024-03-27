@@ -244,7 +244,7 @@ public class CardUtils {
 		
 	    while(line != null) {
 
-		System.out.println(line);
+		// System.out.println(line);
 
 		order = stringToCustomerOrder(line, layers);
 

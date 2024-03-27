@@ -84,17 +84,18 @@ public class CustomerOrder
 
 	int missing = 0;
 
-	Integer i_target = 0;
 	Integer i_source = 0;
+	Integer i_target = 0;
 	
 	// System.out.println(target_map.keySet());
 
 	for (String key : target_map.keySet()) {
 
-	    i_target = target_map.get(key);
 	    i_source = source_map.get(key);
+	    i_target = target_map.get(key);
 
 	    if (i_source == null) { i_source = 0; }
+	    if (i_target == null) { i_target = 0; }
 
 	    // System.out.println(key + ": " + i_source);
 
@@ -228,14 +229,8 @@ public class CustomerOrder
     
     public boolean canGarnish(List<Ingredient> ingredients) {
 
-	List<Ingredient> recipe_and_garnish = new ArrayList<>();
-
-	recipe_and_garnish.addAll(recipe);
-
-	recipe_and_garnish.addAll(garnish);
-
 	boolean res = compare_quantities(
-					 list_to_quantities(recipe_and_garnish),
+					 list_to_quantities(garnish),
 					 list_to_quantities(ingredients)
 					 );
 
@@ -259,17 +254,7 @@ public class CustomerOrder
 
 	List<Ingredient> ingredients_used_final = new ArrayList<>();
 
-	// System.out.println(ingredients);
-
-	// System.out.println("Fulfill:  " + canFulfill(ingredients));
-
-	// System.out.println("Garnish:  " + canGarnish(ingredients));
-
-	if ( garnish == false && canFulfill(ingredients) == false ) {
-
-	    throw new WrongIngredientsException("fail");
-
-	} else if ( garnish == true && canGarnish(ingredients) == false ) {
+	if ( canFulfill(ingredients) == false ) {
 
 	    throw new WrongIngredientsException("fail");
 

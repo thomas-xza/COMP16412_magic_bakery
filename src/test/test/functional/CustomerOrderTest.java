@@ -292,6 +292,7 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testCanGarnish__MissingLayer() throws NoSuchFieldException, IllegalAccessException {
+	    System.out.println("testCanGarnish__MissingLayer()");
 		// What if the garnish contains a layer?
 		List<Ingredient> layer_recipe = new ArrayList<Ingredient>();
 		layer_recipe.add(new Ingredient("pecans"));
