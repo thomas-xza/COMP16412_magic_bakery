@@ -76,9 +76,9 @@ public class CustomerOrder
 
     public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
 
-	// System.out.println("source_map:  " + source_map);
+	System.out.println("source_map:  " + source_map);
 
-	// System.out.println(target_map);
+	System.out.println(target_map);
 
 	int missing = 0;
 
@@ -94,9 +94,9 @@ public class CustomerOrder
 
 	    if (i_source == null) { i_source = 0; }
 
-	    // System.out.println(key + ": " + i_target);
+	    System.out.println(key + ": " + i_target);
 
-	    // System.out.println(key + ": " + i_source);
+	    System.out.println(key + ": " + i_source);
 
 	    if (i_target > i_source) {
 
@@ -106,9 +106,9 @@ public class CustomerOrder
 
 	}
 
-	// System.out.println("missing: " + missing);
+	System.out.println("missing: " + missing);
 
-	Integer ducks = target_map.get("Helpful duck 𓅭" );
+	Integer ducks = target_map.get("Helpful duck 𓅭 " );
 
 	if ( ducks == null ) { ducks = 0; }
 
@@ -159,13 +159,13 @@ public class CustomerOrder
 
 	}
 
-	Integer ducks = target_map.get("Helpful duck 𓅭");
+	Integer ducks = target_map.get("Helpful duck 𓅭 ");
 
 	if ( ducks == null ) { ducks = 0; }
 
 	if ( missing == 0 || ( ducks != 0 && ducks >= missing ) ) {
 
-	    used.put("Helpful duck 𓅭", missing);
+	    used.put("Helpful duck 𓅭 ", missing);
 
 	}
 	
@@ -180,6 +180,8 @@ public class CustomerOrder
      */
     
     public boolean canFulfill(List<Ingredient> ingredients) {
+
+	System.out.println(this.name);
 
 	boolean res = compare_quantities(
 					 list_to_quantities(recipe),
@@ -412,17 +414,33 @@ public class CustomerOrder
 
     /**
      * a
-     * @param elements a
+     * @param elements note_features_Layer_objects
      * @return a
      */
 
     public static Map<String, Integer> list_to_quantities(List<Ingredient> elements) {
+
+	List<Ingredient> raw_ingrds = new ArrayList<>();
 
 	Map<String, Integer> map = new HashMap<>();
 
 	String e_str = "";
 
 	for ( Ingredient e : elements ) {
+
+	    if (e instanceof Layer) {
+
+		raw_ingrds.addAll(((Layer)e).getRecipe());
+		
+	    } else {
+
+		raw_ingrds.add(e);
+
+	    }
+
+	}
+
+	for ( Ingredient e : raw_ingrds ) {
 
 	    e_str = e.toString();
 
