@@ -106,9 +106,7 @@ public class CustomerOrder
 
 	}
 
-	System.out.println("missing: " + missing);
-
-	Integer ducks = target_map.get("Helpful duck 𓅭 " );
+	Integer ducks = source_map.get("Helpful duck 𓅭 " );
 
 	if ( ducks == null ) { ducks = 0; }
 
@@ -159,7 +157,7 @@ public class CustomerOrder
 
 	}
 
-	Integer ducks = target_map.get("Helpful duck 𓅭 ");
+	Integer ducks = source_map.get("Helpful duck 𓅭 ");
 
 	if ( ducks == null ) { ducks = 0; }
 
