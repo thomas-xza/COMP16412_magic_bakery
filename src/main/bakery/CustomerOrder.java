@@ -254,19 +254,55 @@ public class CustomerOrder
 
 	List<Ingredient> ingredients_used_final = new ArrayList<>();
 
-	if ( canFulfill(ingredients) == false ) {
+	List<Ingredient> recipe_and_garnish = new ArrayList<>();
+	
+	recipe_and_garnish.addAll(this.recipe);
+
+	recipe_and_garnish.addAll(this.garnish);
+
+	boolean res = false;
+
+	if ( garnish == true ) {
+
+	    res = compare_quantities(
+				     list_to_quantities(recipe_and_garnish),
+				     list_to_quantities(ingredients)
+				     );
+
+	} else {
+
+	    res = compare_quantities(
+				     list_to_quantities(recipe),
+				     list_to_quantities(ingredients)
+				     );
+
+	}
+
+	System.out.println(list_to_quantities(recipe_and_garnish));
+
+	System.out.println(list_to_quantities(ingredients));
+	
+	if ( res == false ) {
 
 	    throw new WrongIngredientsException("fail");
+
+	}
+
+	if ( garnish == true && canGarnish(ingredients) == true ) {
+
+	    status = CustomerOrderStatus.GARNISHED;
+
+	}
+
+	if ( res == true ) {
+
+	    status = CustomerOrderStatus.FULFILLED;
 
 	}
 
 	int i = 0;
 
 	int quantity = 0;
-
-	status = CustomerOrderStatus.FULFILLED;
-
-	if ( garnish == true ) { status = CustomerOrderStatus.GARNISHED; }
 
 	raw_ingredients = to_raw_ingredients(ingredients);
 
