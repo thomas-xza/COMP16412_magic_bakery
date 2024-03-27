@@ -6,8 +6,8 @@ import java.util.*;
 import java.io.*;
 
 /**
- *  class
- *   @author thomas.
+ * class
+ * @author thomas.
  * @version 1.5
  * @since 1.0
 */
@@ -239,11 +239,9 @@ public class CardUtils {
 		
 	    while(line != null) {
 
-		// System.out.println("generating order");
-		    
-		order = stringToCustomerOrder(line, layers);
+		System.out.println(line);
 
-		// System.out.println("adding order");
+		order = stringToCustomerOrder(line, layers);
 
 		all_orders.add(order);
 
@@ -306,7 +304,9 @@ public class CardUtils {
 
 	    if ( part_is_layer == true ) {
 
-		ingrds.addAll(target_layer.getRecipe());
+		// ingrds.addAll(target_layer.getRecipe());
+
+		ingrds.add(new Layer(recipe_part_str, target_layer.getRecipe()));
 
 	    } else {
 
@@ -342,6 +342,8 @@ public class CardUtils {
 	
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
+	// System.out.println(csv_line);
+
 	level = Integer.parseInt(csv_line.get(0));
 
 	name = csv_line.get(1);
@@ -365,6 +367,8 @@ public class CardUtils {
 	// System.out.println(garnish);
 	// System.out.println(garnish.getClass());
 	// System.out.println(level);
+
+	// System.out.println("r: " + recipe + recipe.size() + " g: " + garnish);
 
 	CustomerOrder order = new CustomerOrder(name, recipe, garnish, level);
 
