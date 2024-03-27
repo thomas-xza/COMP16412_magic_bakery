@@ -192,6 +192,34 @@ public class CustomerOrder
 
     /**
      * a
+     * @param elements a
+     * @return a
+     */
+    
+    public static List<Ingredient> to_raw_ingredients(List<Ingredient> elements) {
+
+	List<Ingredient> raw_ingredients = null;
+
+	for ( Ingredient e : elements ) {
+
+	    if ( e instanceof Layer ) {
+
+		raw_ingredients.addAll(((Layer)e).getRecipe());
+
+	    } else if ( e {
+
+		raw_ingredients.add(e);
+
+	    }
+
+	}
+
+	return raw_ingredients;
+	
+    }
+
+    /**
+     * a
      * @param ingredients a
      * @return a
      */
@@ -424,19 +452,7 @@ public class CustomerOrder
 
 	String e_str = "";
 
-	for ( Ingredient e : elements ) {
-
-	    if (e instanceof Layer) {
-
-		raw_ingrds.addAll(((Layer)e).getRecipe());
-		
-	    } else {
-
-		raw_ingrds.add(e);
-
-	    }
-
-	}
+	raw_ingrds = to_raw_ingredients(elements);
 
 	for ( Ingredient e : raw_ingrds ) {
 
