@@ -65,6 +65,8 @@ public class CustomerOrder
 
 	this.recipe = recipe;
 
+	this.status = CustomerOrderStatus.WAITING;
+
     }
 
     /**
@@ -76,9 +78,9 @@ public class CustomerOrder
 
     public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
 
-	System.out.println("source_map:  " + source_map);
+	// System.out.println("source_map:  " + source_map);
 
-	System.out.println(target_map);
+	// System.out.println(target_map);
 
 	int missing = 0;
 
@@ -94,9 +96,9 @@ public class CustomerOrder
 
 	    if (i_source == null) { i_source = 0; }
 
-	    System.out.println(key + ": " + i_target);
+	    // System.out.println(key + ": " + i_source);
 
-	    System.out.println(key + ": " + i_source);
+	    // System.out.println(key + ": " + i_target);
 
 	    if (i_target > i_source) {
 
@@ -179,7 +181,7 @@ public class CustomerOrder
     
     public boolean canFulfill(List<Ingredient> ingredients) {
 
-	System.out.println(this.name);
+	// System.out.println(this.name);
 
 	boolean res = compare_quantities(
 					 list_to_quantities(recipe),
@@ -251,6 +253,8 @@ public class CustomerOrder
     
     public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) throws WrongIngredientsException {
 
+	List<Ingredient> raw_ingredients = new ArrayList<>();
+
 	List<String> ingredients_used = new ArrayList<>();
 
 	List<Ingredient> ingredients_used_final = new ArrayList<>();
@@ -265,7 +269,7 @@ public class CustomerOrder
 
 	    throw new WrongIngredientsException("fail");
 
-	} else if ( garnish == true && ( canFulfill(ingredients) == false || canGarnish(ingredients) == false ) ) {
+	} else if ( garnish == true && canGarnish(ingredients) == false ) {
 
 	    throw new WrongIngredientsException("fail");
 
@@ -277,13 +281,9 @@ public class CustomerOrder
 
 	status = CustomerOrderStatus.FULFILLED;
 
-	if ( garnish == true ) {
+	if ( garnish == true ) { status = CustomerOrderStatus.GARNISHED; }
 
-	    ingredients.addAll(this.garnish);
-
-	    status = CustomerOrderStatus.GARNISHED;
-
-	}
+	raw_ingredients = to_raw_ingredients(ingredients);
 
 	// System.out.println(ingredients);
 
@@ -292,8 +292,8 @@ public class CustomerOrder
 	// System.out.println(list_to_quantities(recipe));
 
 	Map<String, Integer> used = used_quantities(
-					  list_to_quantities(recipe),
-					  list_to_quantities(ingredients)
+					  list_to_quantities(this.recipe),
+					  list_to_quantities(raw_ingredients)
 						    );
 
 	// System.out.println(used);
