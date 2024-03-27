@@ -256,50 +256,47 @@ public class CustomerOrder
 
 	List<Ingredient> recipe_and_garnish = new ArrayList<>();
 	
+	boolean can_fulfill_and_garnish = false;
+
+	Collections.sort(ingredients);
+
+	Collections.sort(this.recipe);
+
+	Collections.sort(this.garnish);
+
 	recipe_and_garnish.addAll(this.recipe);
 
 	recipe_and_garnish.addAll(this.garnish);
 
-	boolean res = false;
-
-	if ( garnish == true ) {
-
-	    res = compare_quantities(
+	can_fulfill_and_garnish = compare_quantities(
 				     list_to_quantities(recipe_and_garnish),
 				     list_to_quantities(ingredients)
 				     );
 
-	} else {
+	System.out.println(ingredients + "\n" + list_to_quantities(ingredients));
 
-	    res = compare_quantities(
-				     list_to_quantities(recipe),
-				     list_to_quantities(ingredients)
-				     );
+	if ( garnish == false ) {
+
+	    System.out.println(list_to_quantities(recipe));
+
+	    if ( canFulfill(ingredients) == true ) {
+
+		status = CustomerOrderStatus.FULFILLED;
+
+	    } else { throw new WrongIngredientsException("fail"); }
+
+	} else if ( garnish == true ) {
+
+	    System.out.println(list_to_quantities(recipe_and_garnish));
+
+	    if ( can_fulfill_and_garnish == true ) {
+
+		status = CustomerOrderStatus.GARNISHED;
+
+	    } else { throw new WrongIngredientsException("fail"); }
 
 	}
-
-	System.out.println(list_to_quantities(recipe_and_garnish));
-
-	System.out.println(list_to_quantities(ingredients));
 	
-	if ( res == false ) {
-
-	    throw new WrongIngredientsException("fail");
-
-	}
-
-	if ( garnish == true && canGarnish(ingredients) == true ) {
-
-	    status = CustomerOrderStatus.GARNISHED;
-
-	}
-
-	if ( res == true ) {
-
-	    status = CustomerOrderStatus.FULFILLED;
-
-	}
-
 	int i = 0;
 
 	int quantity = 0;
