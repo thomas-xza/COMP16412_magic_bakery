@@ -198,7 +198,7 @@ public class CustomerOrder
     
     public static List<Ingredient> to_raw_ingredients(List<Ingredient> elements) {
 
-	List<Ingredient> raw_ingredients = null;
+	List<Ingredient> raw_ingredients = new ArrayList<>();
 
 	for ( Ingredient e : elements ) {
 
@@ -206,7 +206,7 @@ public class CustomerOrder
 
 		raw_ingredients.addAll(((Layer)e).getRecipe());
 
-	    } else if ( e {
+	    } else {
 
 		raw_ingredients.add(e);
 
@@ -226,9 +226,15 @@ public class CustomerOrder
     
     public boolean canGarnish(List<Ingredient> ingredients) {
 
+	List<Ingredient> recipe_and_garnish = new ArrayList<>();
+
+	recipe_and_garnish.addAll(recipe);
+
+	recipe_and_garnish.addAll(garnish);
+
 	boolean res = compare_quantities(
-					 list_to_quantities(recipe),
-					 list_to_quantities(garnish)
+					 list_to_quantities(recipe_and_garnish),
+					 list_to_quantities(ingredients)
 					 );
 
 	return res;

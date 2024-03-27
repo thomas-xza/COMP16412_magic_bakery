@@ -275,6 +275,8 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testCanGarnish__DoubleIngredient() throws NoSuchFieldException, IllegalAccessException {
+
+	    System.out.println("testCanGarnish__DoubleIngredient()");
 		// Does order_multi still can be garnished if it needs two portions of walnuts?
 		List<Ingredient> garnish = new ArrayList<Ingredient>(garnish_multi);
 		garnish.add(new Ingredient("walnuts"));
@@ -305,6 +307,7 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testCanGarnish__WithOneDuck() throws NoSuchFieldException, IllegalAccessException {
+	    System.out.println("testCanGarnish__WithOneDuck()");
 		assertTrue(order_multi.canGarnish(pantryWithOneDuck));
 		assertTrue(order_single.canGarnish(pantryWithOneDuck));
 	}
