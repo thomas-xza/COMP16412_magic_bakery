@@ -85,15 +85,16 @@ public class CardUtils {
     private static List<Ingredient> stringToIngredients(String str) {
 
 	String name;
+	String quantity_str;
 	Integer quantity;
 	List<String> csv_line;
 	List<Ingredient> sublist = new ArrayList<>();
 	
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
-	name = csv_line.get(0);
+	name = csv_line.get(0).replaceAll("^ *", "").replaceAll(" *$", "");
 
-	quantity = Integer.parseInt(csv_line.get(1));
+	quantity = Integer.parseInt(csv_line.get(1).replaceAll("^ *", "").replaceAll(" *$", ""));
 
 	while (quantity > 0) {
 
@@ -179,14 +180,18 @@ public class CardUtils {
 	List<Ingredient> layer_ingrds = new ArrayList<>();
 	List<Layer> one_layer_list = new ArrayList<>();
 	Integer i = 4;
-	
+
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
-	layer_name = csv_line.get(0);
+	layer_name = csv_line.get(0).replaceAll("^ *", "").replaceAll(" *$", "");
+
+	layer_name = layer_name;
 
 	layer_ingrds_str = Arrays.asList(csv_line.get(1).split("\\s*;\\s*"));
 
 	for ( String ingrd_str : layer_ingrds_str ) {
+
+	    ingrd_str = ingrd_str.replaceAll("^ *", "").replaceAll(" *$", "");
 
 	    layer_ingrds.add(new Ingredient(ingrd_str));
 
