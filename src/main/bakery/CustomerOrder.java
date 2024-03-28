@@ -362,7 +362,7 @@ public class CustomerOrder
 	    System.out.println("ATTEMPTING GARNISH");
 
 	    used_remain_2 = used_quantities_v2(
-					     this.recipe,
+					     this.garnish,
 					     remain
 					     );
 
