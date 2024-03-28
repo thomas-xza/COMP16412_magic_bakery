@@ -121,15 +121,15 @@ public class MagicBakery
 
 	// System.out.println("Initialising pantry");
 	
-	System.out.println("pantryDeck pshuf " + this.pantryDeck);
-
 	Collections.shuffle(((Stack)this.pantryDeck), this.random);
 
-	System.out.println("pantryDeck oshuf " + this.pantryDeck);
-
-	System.out.println("Shuffled pantry: " + this.pantry);
-
 	// System.out.println("Initialising hand");
+	
+	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
+	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
+	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
+	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
+	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
 	
 	for (Player player : this.players) {
 
@@ -137,8 +137,14 @@ public class MagicBakery
 	    player.addToHand(((Ingredient)((Stack)this.pantryDeck).pop()));
 	    player.addToHand(((Ingredient)((Stack)this.pantryDeck).pop()));
 
+	    // System.out.println(player.getHand());
+
 	}
 
+	// System.out.println("pantryDeck oshuf " + this.pantryDeck);
+
+	// System.out.println("pantry " + this.pantry);
+	
     }
     
     /**
@@ -292,11 +298,11 @@ public class MagicBakery
 
 	this.actions_taken += 1;
 
-	
-	
-        List<Ingredient> a = Ingredient.fast_ingrd_list();
+	List<Ingredient> hand_used = new ArrayList<>();
 
-	return a;
+	hand_used = customer.fulfill(getCurrentPlayer().getHand(), garnish);
+
+	return hand_used;
 
     }
 
@@ -408,7 +414,7 @@ public class MagicBakery
 
     public Collection<Ingredient> getPantry() {
 
-	System.out.println("getPantry():  " + this.pantry);
+	// System.out.println("getPantry():  " + this.pantry);
 
 	return this.pantry;
 

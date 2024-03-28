@@ -111,6 +111,8 @@ public class Player
 
     public List<Ingredient> getHand() {
 
+	System.out.println(hand);
+
 	return hand;
 
     }

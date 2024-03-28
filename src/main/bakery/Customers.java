@@ -1,5 +1,4 @@
 package bakery;
-
 import java.util.*;
 import java.io.*;
 import java.lang.*;
@@ -39,11 +38,13 @@ public class Customers
 
 	this.activeCustomers = new Stack<CustomerOrder>();
 	
-	this.customerDeck = new Stack<CustomerOrder>();
+	this.customerDeck = new LinkedList<CustomerOrder>();
 	
 	this.inactiveCustomers = new ArrayList<CustomerOrder>();
 
 	File file = new File(deckFile);
+
+	this.random = random;
 
 	if ( !file.exists() ) {
 
@@ -54,8 +55,6 @@ public class Customers
 	    initialiseCustomerDeck(deckFile, layers, numPlayers);
 		
 	}
-
-	this.random = random;
 
     }
 
@@ -92,7 +91,7 @@ public class Customers
    
     public CustomerOrder drawCustomer() {
 
-	return (CustomerOrder)((Stack)this.customerDeck).pop();
+	return (CustomerOrder)((LinkedList)this.customerDeck).pop();
 
     }
 
@@ -166,6 +165,8 @@ public class Customers
 
 	} catch (IOException e) { ; }
 
+	Collections.shuffle(customers_list, this.random);
+
 	// System.out.println("building hashmap for levels");
 	
 	Map<Integer, Integer> map = new HashMap<>();
@@ -202,11 +203,13 @@ public class Customers
 
 		map.put(level, map.get(level) - 1);
 
-		((Stack) this.customerDeck).push(customer_order);
+		((LinkedList) this.customerDeck).push(customer_order);
 
 	    }
 
 	}
+
+	Collections.shuffle(((LinkedList)this.customerDeck), this.random);
 
     }
 
