@@ -73,10 +73,11 @@ public class CustomerOrder
      * compare
      * @param target_map a
      * @param source_map a
+     * @param verbose v
      * @return bool
      */
 
-    public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
+    public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map, int verbose) {
 
 	// System.out.println("source_map:  " + source_map);
 
@@ -97,9 +98,13 @@ public class CustomerOrder
 	    if (i_source == null) { i_source = 0; }
 	    if (i_target == null) { i_target = 0; }
 
-	    // System.out.println(key + ": " + i_source);
+	    if ( verbose == 1 ) {
 
-	    // System.out.println(key + ": " + i_target);
+		System.out.println("have: " + key + ": " + i_source);
+
+		System.out.println("want: " + key + ": " + i_target);
+
+	    }
 
 	    if (i_target > i_source) {
 
@@ -186,7 +191,8 @@ public class CustomerOrder
 
 	boolean res = compare_quantities(
 					 list_to_quantities(recipe),
-					 list_to_quantities(ingredients)
+					 list_to_quantities(ingredients),
+					 0
 					 );
 
 	return res;
@@ -231,7 +237,8 @@ public class CustomerOrder
 
 	boolean res = compare_quantities(
 					 list_to_quantities(garnish),
-					 list_to_quantities(ingredients)
+					 list_to_quantities(ingredients),
+					 0
 					 );
 
 	return res;
@@ -268,12 +275,20 @@ public class CustomerOrder
 
 	recipe_and_garnish.addAll(this.garnish);
 
-	can_fulfill_and_garnish = compare_quantities(
-				     list_to_quantities(recipe_and_garnish),
-				     list_to_quantities(ingredients)
-				     );
+	System.out.println("inputs: " + ingredients);
+	// + "\n" + list_to_quantities(ingredients));
 
-	System.out.println(ingredients + "\n" + list_to_quantities(ingredients));
+	if ( garnish == false ) { System.out.println("recipe: " + this.recipe); }
+
+	else { System.out.println("recipe: " + this.recipe);
+
+	    System.out.println("garnish: " + this.garnish); }
+	
+	can_fulfill_and_garnish = compare_quantities(
+						     list_to_quantities(recipe_and_garnish),
+						     list_to_quantities(ingredients),
+						     1
+				     );
 
 	if ( canFulfill(ingredients) == false ) {
 
@@ -286,10 +301,6 @@ public class CustomerOrder
 	    throw new WrongIngredientsException("fail");
 
 	}
-
-		// status = CustomerOrderStatus.FULFILLED;
-
-		// status = CustomerOrderStatus.GARNISHED;
 	
 	int i = 0;
 
@@ -304,8 +315,8 @@ public class CustomerOrder
 	// System.out.println(list_to_quantities(recipe));
 
 	Map<String, Integer> used = used_quantities(
-					  list_to_quantities(this.recipe),
-					  list_to_quantities(raw_ingredients)
+						    list_to_quantities(this.recipe),
+						    list_to_quantities(raw_ingredients)
 						    );
 
 	// System.out.println(used);
