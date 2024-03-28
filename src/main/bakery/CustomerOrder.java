@@ -130,12 +130,12 @@ public class CustomerOrder
 
     /**
      * compare
-     * @param target_map a
-     * @param source_map a
+     * @param target recipe/garnish
+     * @param in ingredients 
      * @return 2 lists, 1 of used ingreds, 1 of remaining
      */
 
-    public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> in, List<Ingredient> target) {
+    public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> target, List<Ingredient> in) {
 
 	List<List<Ingredient>> output = new ArrayList<>();
 
@@ -143,11 +143,17 @@ public class CustomerOrder
 	List<Ingredient> target_raw = to_raw_ingredients(target);
 	List<Ingredient> used = new ArrayList<>();
 
+	int missing = 0;
+	int ducks_avail = 0;
+	int ducks_used = 0;
+	
 	for (Ingredient t : target_raw ) {
 
 	    for (Ingredient i : in_raw ) {
 
-		if ( target_raw.toString() == in_raw.toString() ) {
+		if ( t.toString() == i.toString() ) {
+
+		    System.out.println(t.toString() + "  " + i.toString());
 
 		    used.add(i);
 		    in_raw.remove(i);
@@ -159,77 +165,37 @@ public class CustomerOrder
 
 	}
 
+	missing = target_raw.size() - used.size();
+
+	for ( Ingredient i : in_raw ) {
+
+	    if ( i.toString() == "Helpful duck 𓅭 " ) {
+
+		ducks_avail += 1;
+
+	    }
+
+	}
+	
+	if ( missing > 0 && ducks_avail >= missing ) {
+
+	    while ( target_raw.size() != used.size() ) {
+
+		used.add(Ingredient.HELPFUL_DUCK);
+
+	    }
+
+	}
+
+	System.out.println(in_raw);
 	output.add(used);
 	output.add(in_raw);
+
+	System.out.println("used, remain:  " + output);
 
 	return output;
 
     }
-
-    // /**
-    //  * compare
-    //  * @param target_map a
-    //  * @param source_map a
-    //  * @return bool
-    //  */
-
-    // public static Map<String, Integer> used_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
-
-    // 	Map<String, Integer> used = new HashMap<>();
-
-    // 	int missing = 0;
-
-    // 	Integer i_target = 0;
-    // 	Integer i_source = 0;
-	
-    // 	Integer ducks_avail = source_map.get("Helpful duck 𓅭 ");
-
-    // 	Integer ducks_used = 0;
-
-    // 	int i_diff = 0;
-
-    // 	for (String key : target_map.keySet()) {
-
-    // 	    i_target = target_map.get(key);
-    // 	    i_source = source_map.get(key);
-
-    // 	    if (i_source == null) { i_source = 0; }
-    // 	    if (i_target == null) { i_target = 0; }
-
-    // 	    i_diff = i_target - i_source;
-
-    // 	    if ( i_diff > ducks_avail ) {
-
-    // 	    }
-
-    // 	    // if (i_target > i_source && ducks_used == ducks_avail) {
-
-    // 	    // 	missing = missing + (i_target - i_source);
-
-    // 	    // 	used.put(key, i_source);
-	    
-    // 	    // } else {
-
-    // 	    // 	used.put(key, i_target);
-
-    // 	    // }
-
-    // 	}
-
-    // 	System.out.println("∴ missing: " + missing);
-    // 	System.out.println("ducks: " + ducks);
-
-    // 	if ( ducks == null ) { ducks = 0; }
-
-    // 	if ( missing == 0 || ( missing > 0 && ducks >= missing ) ) {
-
-    // 	    used.put("Helpful duck 𓅭 ", missing);
-
-    // 	}
-	
-    // 	return used;
-
-    // }
 
     /**
      * a
@@ -366,39 +332,31 @@ public class CustomerOrder
 
 	    this.status = CustomerOrderStatus.FULFILLED;
 	    
-	} ( if garnish == true && canGarnish(remain) == true ) {
+	} else {
+
+	    throw new WrongIngredientsException("fail");
+	    
+	}
+
+	if ( garnish == true && canGarnish(remain) == true ) {
+
+	    System.out.println("ATTEMPTING GARNISH");
 
 	    used_remain_2 = used_quantities_v2(
 					     this.recipe,
 					     remain
 					     );
 
-	    used = used_remain_2.get(0);
+	    used.addAll(used_remain_2.get(0));
 	    remain = used_remain_2.get(1);
 
 	    this.status = CustomerOrderStatus.GARNISHED;
 	    
 	}
 
-	// else if ( can_f_g == false && canFulfill(ingredients) == true ) {
-
-	//     used_remain = used_quantities_v2(
-	// 			      list_to_quantities(this.recipe),
-	// 			      list_to_quantities(ingredients)
-	// 			      );
-
-	//     this.status = CustomerOrderStatus.FULFILLED;
-	    
-	// } else {
-
-	//     throw new WrongIngredientsException("fail");
-	    
-	// }
-
-
 	Collections.sort(used);
 
-	System.out.println("used: " + ingredients_used);
+	System.out.println("used: " + used);
 
 	return used;
 
