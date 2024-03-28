@@ -348,7 +348,7 @@ public class CustomerOrderTest {
 	@Test
 	public void testFulfill__NoGarnish() throws NoSuchFieldException, IllegalAccessException {
 
-	    System.out.println("\nERROR MISSING SPRINKLES testFulfill__NoGarnish");
+	    System.out.println("\ntestFulfill__NoGarnish (Garnish set to true, but only ingredients to fulfill without garnish)");
 
 	    Ingredient[] shouldUse = {new Ingredient("butter"), new Ingredient("flour"), new Ingredient("sugar")};
 
@@ -359,6 +359,8 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order.fulfill(pantry, true);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: FULFILLED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.FULFILLED, order.getStatus());
 	}
@@ -377,6 +379,8 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order_multi.fulfill(pantry, true);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: GARNISHED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.GARNISHED, order_multi.getStatus());
 		order_multi.setStatus(CustomerOrder.CustomerOrderStatus.WAITING);
@@ -384,7 +388,7 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testFulfill__RespectsGarnishFlag() throws NoSuchFieldException, IllegalAccessException {
-	    System.out.println("\ntestFulfill__X");
+	    System.out.println("\ntestFulfill__RespectsGarnishFlags");
 
 		Ingredient[] shouldUse = {
 			new Ingredient("butter"),
@@ -394,6 +398,8 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order_multi.fulfill(pantry, false);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: FULFILLED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.FULFILLED, order_multi.getStatus());
 		order_multi.setStatus(CustomerOrder.CustomerOrderStatus.WAITING);
@@ -401,7 +407,7 @@ public class CustomerOrderTest {
 
 	@Test
 	public void testFulfill__DoubleIngredient_NoGarnish() throws NoSuchFieldException, IllegalAccessException {
-	    System.out.println("\nERROR NO SPRINKLES testFulfill__DoubleIngredient_NoGarn");
+	    System.out.println("\nNO SPRINKLES testFulfill__DoubleIngredient_NoGarn");
 		Ingredient[] shouldUse = {
 			new Ingredient("butter"),
 			new Ingredient("flour"),
@@ -421,6 +427,8 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order.fulfill(pantry_alt, true);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: FULFILLED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.FULFILLED, order.getStatus());
 	}
@@ -446,6 +454,8 @@ public class CustomerOrderTest {
 		pantry_alt.add(new Ingredient("sugar"));
 
 		List<Ingredient> used = order.fulfill(pantry_alt, true);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: GARNISHED");
 		Collections.sort(used);
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.GARNISHED, order.getStatus());
@@ -466,6 +476,8 @@ public class CustomerOrderTest {
 		CustomerOrder order = new CustomerOrder("some other recipe", recipe_multi, garnish, 1);
 
 		List<Ingredient> used = order.fulfill(pantry, true);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: FULFILLED");
 		Collections.sort(used);
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.FULFILLED, order.getStatus());
@@ -484,14 +496,16 @@ public class CustomerOrderTest {
 		CustomerOrder order = new CustomerOrder("some other recipe", recipe_multi, garnish, 1);
 
 		List<Ingredient> used = order.fulfill(pantry, true);
+		System.out.println("test's expected use: " + shouldUse.toString());
 		Collections.sort(used);
+		System.out.println("test's expected status: FULFILLED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.FULFILLED, order.getStatus());
 	}
 
 	@Test
 	public void testFulfill__GarnishThanksToDucks() throws NoSuchFieldException, IllegalAccessException {
-	    System.out.println("\nERROR FLOUR AND SPRINKLES MISSING, ONLY 1 DUCK  testFulfill__GarnishThanksToDucks");
+	    System.out.println("\ntestFulfill__GarnishThanksToDucks");
 		Ingredient[] shouldUse = {
 			new Ingredient("butter"),
 			new Ingredient("chocolate"),
@@ -508,6 +522,9 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order.fulfill(pantryWithOneDuck, true);
 		Collections.sort(used);
+
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: GARNISHED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.GARNISHED, order.getStatus());
 	}
@@ -525,7 +542,9 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order_multi.fulfill(pantryWithOneDuck, true);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
+		System.out.println("test's expected status: GARNISHED");
 		assertEquals(CustomerOrder.CustomerOrderStatus.GARNISHED, order_multi.getStatus());
 		order_multi.setStatus(CustomerOrder.CustomerOrderStatus.WAITING);
 	}
@@ -549,6 +568,8 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order.fulfill(pantryWithOneDuck, true);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: GARNISHED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.GARNISHED, order.getStatus());
 	}
@@ -575,6 +596,8 @@ public class CustomerOrderTest {
 
 		List<Ingredient> used = order.fulfill(pantry_alt, true);
 		Collections.sort(used);
+		System.out.println("test's expected use: " + shouldUse.toString());
+		System.out.println("test's expected status: GARNISHED");
 		assertTrue(used.equals(Arrays.asList(shouldUse)));
 		assertEquals(CustomerOrder.CustomerOrderStatus.GARNISHED, order.getStatus());
 	}

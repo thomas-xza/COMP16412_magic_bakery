@@ -70,7 +70,7 @@ public class CustomerOrder
     }
 
     /**
-     * compare
+     * NOTE DUMB PARAMETER ORDER (target, source)
      * @param target_map a
      * @param source_map a
      * @param verbose v
@@ -129,7 +129,7 @@ public class CustomerOrder
     }
 
     /**
-     * compare
+     * NOTE DUMB PARAMETER ORDER (target, source)
      * @param target recipe/garnish
      * @param in ingredients 
      * @return 2 lists, 1 of used ingreds, 1 of remaining
@@ -139,24 +139,28 @@ public class CustomerOrder
 
 	List<List<Ingredient>> output = new ArrayList<>();
 
-	List<Ingredient> in_raw = to_raw_ingredients(in);
+	List<Ingredient> raw_i = to_raw_ingredients(in);
+	List<Ingredient> raw_i_copy = new ArrayList<>();
+	raw_i_copy.addAll(raw_i);
 	List<Ingredient> target_raw = to_raw_ingredients(target);
 	List<Ingredient> used = new ArrayList<>();
 
 	int missing = 0;
 	int ducks_avail = 0;
 	int ducks_used = 0;
+
+	System.out.println("in: " + in);
 	
 	for (Ingredient t : target_raw ) {
 
-	    for (Ingredient i : in_raw ) {
+	    for (Ingredient i : raw_i ) {
 
 		if ( t.toString() == i.toString() ) {
 
 		    System.out.println(t.toString() + "  " + i.toString());
 
 		    used.add(i);
-		    in_raw.remove(i);
+		    raw_i.remove(i);
 		    break;
 
 		}
@@ -167,7 +171,7 @@ public class CustomerOrder
 
 	missing = target_raw.size() - used.size();
 
-	for ( Ingredient i : in_raw ) {
+	for ( Ingredient i : raw_i ) {
 
 	    if ( i.toString() == "Helpful duck 𓅭 " ) {
 
@@ -176,6 +180,9 @@ public class CustomerOrder
 	    }
 
 	}
+
+	System.out.println("missing: " + missing);
+	System.out.println("ducks_avail: " + ducks_avail);
 	
 	if ( missing > 0 && ducks_avail >= missing ) {
 
@@ -187,11 +194,19 @@ public class CustomerOrder
 
 	}
 
-	System.out.println(in_raw);
-	output.add(used);
-	output.add(in_raw);
+	System.out.println("raw_i: " + raw_i);
 
-	System.out.println("used, remain:  " + output);
+	if ( target_raw.size() == used.size() ) {
+	    
+	    output.add(used);
+	    output.add(raw_i);
+
+	} else {
+
+	    output.add(new ArrayList<>());
+	    output.add(raw_i_copy);
+
+	}
 
 	return output;
 
@@ -330,6 +345,10 @@ public class CustomerOrder
 	    used = used_remain.get(0);
 	    remain = used_remain.get(1);
 
+	    System.out.println("#1 used, remain:  " + used_remain);
+	    System.out.println("used:  " + used);
+	    System.out.println("remain:  " + remain);
+
 	    this.status = CustomerOrderStatus.FULFILLED;
 	    
 	} else {
@@ -347,6 +366,8 @@ public class CustomerOrder
 					     remain
 					     );
 
+	    System.out.println("#2 used, remain:  " + used_remain_2);
+
 	    used.addAll(used_remain_2.get(0));
 	    remain = used_remain_2.get(1);
 
@@ -356,7 +377,7 @@ public class CustomerOrder
 
 	Collections.sort(used);
 
-	System.out.println("used: " + used);
+	System.out.println("final used: " + used);
 
 	return used;
 
