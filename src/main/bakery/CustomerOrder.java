@@ -70,7 +70,7 @@ public class CustomerOrder
     }
 
     /**
-     * NOTE DUMB PARAMETER ORDER (target, source)
+     * WARNING_DUMB_INVERTED_PARAMETER_ORDER
      * @param target_map a
      * @param source_map a
      * @param verbose v
@@ -129,10 +129,10 @@ public class CustomerOrder
     }
 
     /**
-     * NOTE DUMB PARAMETER ORDER (target, source)
-     * @param target recipe/garnish
+     * WARNING_PARAMETER_ORDER_INVERTED
+     * @param target recipe
      * @param in ingredients 
-     * @return 2 lists, 1 of used ingreds, 1 of remaining
+     * @return a
      */
 
     public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> target, List<Ingredient> in) {
