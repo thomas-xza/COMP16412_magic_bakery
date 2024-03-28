@@ -12,4 +12,4 @@ javac -cp .:junit-platform-console-standalone.jar --source-path ./src/main/ ./sr
 # Run the tests
 mv /tmp/tests /tmp/tests_prev
 java -jar junit-platform-console-standalone.jar --class-path ./bin/ --scan-class-path --fail-if-no-tests 2>&1 > /tmp/tests
-less -R /tmp/tests
+grep -v "Thanks for using JUnit" /tmp/tests | sed '/^Failures (/q' | less -R
