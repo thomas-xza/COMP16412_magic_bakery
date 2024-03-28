@@ -144,6 +144,8 @@ public class CardUtils {
 
 		all_layer_list.addAll(sublist);
 
+		System.out.println(all_layer_list);
+
 		line = stream.readLine();
 
 	    }

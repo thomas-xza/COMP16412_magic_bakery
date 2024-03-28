@@ -75,6 +75,8 @@ public class MagicBakery
 
 	this.layers = CardUtils.readLayerFile(layerDeckFile);
 
+	System.out.println("Just read layers!" + this.layers);
+
     }
 
     /**
@@ -342,10 +344,22 @@ public class MagicBakery
 
     public Collection<Layer> getBakeableLayers() {
 
-	List<Layer> a = Layer.fast_layer_list();
+	ArrayList<Layer> bakeable_l = new ArrayList<>();
 
-	return a;
+	System.out.println(layers);
 
+	for (Layer l : this.layers) {
+
+	    if ( l.canBake(getCurrentPlayer().getHand()) == true ) {
+
+		bakeable_l.add(l);
+
+	    }
+
+	}
+
+	return bakeable_l;
+	
     }
 
     /**

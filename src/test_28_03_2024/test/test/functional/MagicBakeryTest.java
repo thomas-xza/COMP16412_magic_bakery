@@ -825,13 +825,9 @@ public class MagicBakeryTest {
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 		
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
-
-		System.out.println("drawn");
 		assertEquals(2, drawn.size());
-		System.out.println("hand");
 		assertEquals(2, hand.size());
 		assertEquals(hand, drawn);
-		System.out.println("hand drawn");
 		assertEquals(2, customers.size());
 		assertEquals(1, inactiveCustomers.size());
 		assertTrue(inactiveCustomers.contains(customer));
@@ -1090,8 +1086,6 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetBakeableLayers__All() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-
-	    System.out.println("testGetBakeableLayers__All");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -2454,8 +2448,6 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__TwoPlayersPiSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-
-	    System.out.println("test_shuffled Two");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2497,7 +2489,6 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__ThreePlayersAvoSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	    System.out.println("test_shuffled Three");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2544,7 +2535,6 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__FourPlayersEulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	    System.out.println("test_shuffled Four");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2567,13 +2557,9 @@ public class MagicBakeryTest {
 		// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
 
 		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
-		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
-		System.out.println("pass b f s s s" + bakery.getPantry() + counts.get(new Ingredient("butter")));
-		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(3, counts.get(new Ingredient("sugar")));
-		System.out.println("pass b f s s s" + counts.get("butter") + counts.get("flour") + counts.get("sugar"));
 
 		// If the players hands are wrong, the got the cards in the wrong order
 
@@ -2583,29 +2569,24 @@ public class MagicBakeryTest {
 		assertEquals(1, counts.get(new Ingredient("eggs")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(1, counts.get(new Ingredient("sugar")));
-		System.out.println("e f s");
 
 		counts = countIngredients(players[1].getHand());
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(1, counts.get(new Ingredient("chocolate")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
-		System.out.println("b c f");
 
 		counts = countIngredients(players[2].getHand());
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(2, counts.get(new Ingredient("fruit")));
-		System.out.println("f f b");
 
 		counts = countIngredients(players[3].getHand());
 		assertEquals(1, counts.get(new Ingredient("chocolate")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(1, counts.get(new Ingredient("sugar")));
-		System.out.println("c f s");
 	}
 
 	@Test
 	public void testSerialisation__RecreatingOriginalBakery() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, ClassNotFoundException {
-	    System.out.println("test_Serialiation__Recreating");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");

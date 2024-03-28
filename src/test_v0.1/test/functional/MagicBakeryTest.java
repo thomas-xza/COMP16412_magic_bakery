@@ -825,13 +825,9 @@ public class MagicBakeryTest {
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 		
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
-
-		System.out.println("drawn");
 		assertEquals(2, drawn.size());
-		System.out.println("hand");
 		assertEquals(2, hand.size());
 		assertEquals(hand, drawn);
-		System.out.println("hand drawn");
 		assertEquals(2, customers.size());
 		assertEquals(1, inactiveCustomers.size());
 		assertTrue(inactiveCustomers.contains(customer));
@@ -1090,8 +1086,6 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetBakeableLayers__All() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-
-	    System.out.println("testGetBakeableLayers__All");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -2568,6 +2562,7 @@ public class MagicBakeryTest {
 
 		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
 		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
+		System.out.println("pass b f s s s" + bakery.getPantry() + counts.get("butter"));
 		System.out.println("pass b f s s s" + bakery.getPantry() + counts.get(new Ingredient("butter")));
 		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
 		assertEquals(1, counts.get(new Ingredient("butter")));
