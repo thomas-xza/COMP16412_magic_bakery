@@ -371,7 +371,11 @@ public class CustomerOrder
 	    used.addAll(used_remain_2.get(0));
 	    remain = used_remain_2.get(1);
 
-	    this.status = CustomerOrderStatus.GARNISHED;
+	    if ( used_remain_2.get(0).size() != 0 ) {
+
+		this.status = CustomerOrderStatus.GARNISHED;
+
+	    }
 	    
 	}
 
