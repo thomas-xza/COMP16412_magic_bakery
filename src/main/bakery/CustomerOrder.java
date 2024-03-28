@@ -132,52 +132,104 @@ public class CustomerOrder
      * compare
      * @param target_map a
      * @param source_map a
-     * @return bool
+     * @return 2 lists, 1 of used ingreds, 1 of remaining
      */
 
-    public static Map<String, Integer> used_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
+    public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> in, List<Ingredient> target) {
 
-	Map<String, Integer> used = new HashMap<>();
+	List<List<Ingredient>> output = new ArrayList<>();
 
-	int missing = 0;
+	List<Ingredient> in_raw = to_raw_ingredients(in);
+	List<Ingredient> target_raw = to_raw_ingredients(target);
+	List<Ingredient> used = new ArrayList<>();
 
-	Integer i_target = 0;
-	Integer i_source = 0;
-	
-	for (String key : target_map.keySet()) {
+	for (Ingredient t : target_raw ) {
 
-	    i_target = target_map.get(key);
-	    i_source = source_map.get(key);
+	    for (Ingredient i : in_raw ) {
 
-	    if (i_source == null) { i_source = 0; }
+		if ( target_raw.toString() == in_raw.toString() ) {
 
-	    if (i_target > i_source) {
+		    used.add(i);
+		    in_raw.remove(i);
+		    break;
 
-		missing = missing + (i_target - i_source);
-
-		used.put(key, i_source);
-	    
-	    } else {
-
-		used.put(key, i_target);
+		}
 
 	    }
 
 	}
 
-	Integer ducks = source_map.get("Helpful duck 𓅭 ");
+	output.add(used);
+	output.add(in_raw);
 
-	if ( ducks == null ) { ducks = 0; }
-
-	if ( missing == 0 || ( ducks != 0 && ducks >= missing ) ) {
-
-	    used.put("Helpful duck 𓅭 ", missing);
-
-	}
-	
-	return used;
+	return output;
 
     }
+
+    // /**
+    //  * compare
+    //  * @param target_map a
+    //  * @param source_map a
+    //  * @return bool
+    //  */
+
+    // public static Map<String, Integer> used_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map) {
+
+    // 	Map<String, Integer> used = new HashMap<>();
+
+    // 	int missing = 0;
+
+    // 	Integer i_target = 0;
+    // 	Integer i_source = 0;
+	
+    // 	Integer ducks_avail = source_map.get("Helpful duck 𓅭 ");
+
+    // 	Integer ducks_used = 0;
+
+    // 	int i_diff = 0;
+
+    // 	for (String key : target_map.keySet()) {
+
+    // 	    i_target = target_map.get(key);
+    // 	    i_source = source_map.get(key);
+
+    // 	    if (i_source == null) { i_source = 0; }
+    // 	    if (i_target == null) { i_target = 0; }
+
+    // 	    i_diff = i_target - i_source;
+
+    // 	    if ( i_diff > ducks_avail ) {
+
+    // 	    }
+
+    // 	    // if (i_target > i_source && ducks_used == ducks_avail) {
+
+    // 	    // 	missing = missing + (i_target - i_source);
+
+    // 	    // 	used.put(key, i_source);
+	    
+    // 	    // } else {
+
+    // 	    // 	used.put(key, i_target);
+
+    // 	    // }
+
+    // 	}
+
+    // 	System.out.println("∴ missing: " + missing);
+    // 	System.out.println("ducks: " + ducks);
+
+    // 	if ( ducks == null ) { ducks = 0; }
+
+    // 	if ( missing == 0 || ( missing > 0 && ducks >= missing ) ) {
+
+    // 	    used.put("Helpful duck 𓅭 ", missing);
+
+    // 	}
+	
+    // 	return used;
+
+    // }
 
     /**
      * a
@@ -255,97 +307,100 @@ public class CustomerOrder
     
     public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) throws WrongIngredientsException {
 
-	List<Ingredient> raw_ingredients = new ArrayList<>();
-
 	List<String> ingredients_used = new ArrayList<>();
 
 	List<Ingredient> ingredients_used_final = new ArrayList<>();
 
 	List<Ingredient> recipe_and_garnish = new ArrayList<>();
 	
-	boolean can_fulfill_and_garnish = false;
-
-	Collections.sort(ingredients);
-
-	Collections.sort(this.recipe);
-
-	Collections.sort(this.garnish);
-
-	recipe_and_garnish.addAll(this.recipe);
-
-	recipe_and_garnish.addAll(this.garnish);
-
-	System.out.println("inputs: " + ingredients);
-	// + "\n" + list_to_quantities(ingredients));
-
-	if ( garnish == false ) { System.out.println("recipe: " + this.recipe); }
-
-	else { System.out.println("recipe: " + this.recipe);
-
-	    System.out.println("garnish: " + this.garnish); }
+	List<List<Ingredient>> used_remain = new ArrayList<>();
 	
-	can_fulfill_and_garnish = compare_quantities(
-						     list_to_quantities(recipe_and_garnish),
-						     list_to_quantities(ingredients),
-						     1
-				     );
-
-	if ( canFulfill(ingredients) == false ) {
-
-	    throw new WrongIngredientsException("fail");
-
-	}
-
-	if ( garnish == true && canGarnish(ingredients) == false ) {
-
-	    throw new WrongIngredientsException("fail");
-
-	}
+	List<List<Ingredient>> used_remain_2 = new ArrayList<>();
 	
+	List<Ingredient> used = new ArrayList<>();
+	
+	List<Ingredient> remain = new ArrayList<>();
+
+	List<Ingredient> used_2 = new ArrayList<>();
+	
+	List<Ingredient> remain_2 = new ArrayList<>();
+
+	boolean can_f_g = false;
+
 	int i = 0;
 
 	int quantity = 0;
 
-	raw_ingredients = to_raw_ingredients(ingredients);
+	Collections.sort(ingredients);
+	Collections.sort(this.recipe);
+	Collections.sort(this.garnish);
 
-	// System.out.println(ingredients);
+	recipe_and_garnish.addAll(this.recipe);
+	recipe_and_garnish.addAll(this.garnish);
 
-	// System.out.println(list_to_quantities(ingredients));
-	
-	// System.out.println(list_to_quantities(recipe));
+	System.out.println("inputs: " + ingredients);
+	System.out.println("inputs: " + list_to_quantities(ingredients));
+	System.out.println("recipe: " + this.recipe);
 
-	Map<String, Integer> used = used_quantities(
-						    list_to_quantities(this.recipe),
-						    list_to_quantities(raw_ingredients)
-						    );
+	if ( garnish == true ) {
 
-	// System.out.println(used);
-
-	for (String key : used.keySet()) {
-
-	    quantity = used.get(key);
-
-	    for ( i = quantity ; i > 0 ; i-- ) {
-
-		ingredients_used.add(key);
-
-	    }
+	    System.out.println("garnish: " + this.garnish);
 
 	}
 
-	Collections.sort(ingredients_used);
+	can_f_g = compare_quantities(
+				     list_to_quantities(recipe_and_garnish),
+				     list_to_quantities(ingredients),
+				     1
+				     );
 
-	// System.out.println(ingredients_used);
+	if ( canFulfill(ingredients) == true ) {
 
-	// System.out.println();
+	    used_remain = used_quantities_v2(
+					     this.recipe,
+					     to_raw_ingredients(ingredients)
+					     );
 
-	for (String ingredient : ingredients_used) {
+	    used = used_remain.get(0);
+	    remain = used_remain.get(1);
 
-	    ingredients_used_final.add(new Ingredient(ingredient));
+	    this.status = CustomerOrderStatus.FULFILLED;
+	    
+	} ( if garnish == true && canGarnish(remain) == true ) {
 
+	    used_remain_2 = used_quantities_v2(
+					     this.recipe,
+					     remain
+					     );
+
+	    used = used_remain_2.get(0);
+	    remain = used_remain_2.get(1);
+
+	    this.status = CustomerOrderStatus.GARNISHED;
+	    
 	}
 
-	return ingredients_used_final;
+	// else if ( can_f_g == false && canFulfill(ingredients) == true ) {
+
+	//     used_remain = used_quantities_v2(
+	// 			      list_to_quantities(this.recipe),
+	// 			      list_to_quantities(ingredients)
+	// 			      );
+
+	//     this.status = CustomerOrderStatus.FULFILLED;
+	    
+	// } else {
+
+	//     throw new WrongIngredientsException("fail");
+	    
+	// }
+
+
+	Collections.sort(used);
+
+	System.out.println("used: " + ingredients_used);
+
+	return used;
 
     }
 

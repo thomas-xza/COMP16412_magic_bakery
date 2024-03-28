@@ -82,7 +82,8 @@ public class Layer extends Ingredient
 
         boolean res = CustomerOrder.compare_quantities(
 			CustomerOrder.list_to_quantities(recipe),
-		        CustomerOrder.list_to_quantities(ingredients)
+		        CustomerOrder.list_to_quantities(ingredients),
+			0
                                          );
 
 	
