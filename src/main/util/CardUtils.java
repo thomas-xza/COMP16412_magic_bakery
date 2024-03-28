@@ -144,8 +144,6 @@ public class CardUtils {
 
 		all_layer_list.addAll(sublist);
 
-		System.out.println(all_layer_list);
-
 		line = stream.readLine();
 
 	    }
@@ -181,7 +179,6 @@ public class CardUtils {
 	List<String> layer_ingrds_str = new ArrayList<>();
 	List<Ingredient> layer_ingrds = new ArrayList<>();
 	List<Layer> one_layer_list = new ArrayList<>();
-	Integer i = 4;
 
 	csv_line = Arrays.asList(str.split("\\s*,\\s*"));
 
@@ -199,13 +196,7 @@ public class CardUtils {
 
 	}
 	
-	while (i > 0) {
-
-	    one_layer_list.add(new Layer(layer_name, layer_ingrds));
-
-	    i = i - 1;
-
-	}
+	one_layer_list.add(new Layer(layer_name, layer_ingrds));
 
 	return one_layer_list;
 
