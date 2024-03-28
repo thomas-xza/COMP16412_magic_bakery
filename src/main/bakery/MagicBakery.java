@@ -121,13 +121,13 @@ public class MagicBakery
 
 	// System.out.println("Initialising pantry");
 	
+	System.out.println("pantryDeck pshuf " + this.pantryDeck);
+
 	Collections.shuffle(((Stack)this.pantryDeck), this.random);
 
-	for (int i = 0 ; i < 5 ; i++ ) {
+	System.out.println("pantryDeck oshuf " + this.pantryDeck);
 
-	    ((LinkedList) this.pantry).add(((Stack)this.pantryDeck).pop());
-
-	}
+	System.out.println("Shuffled pantry: " + this.pantry);
 
 	// System.out.println("Initialising hand");
 	
@@ -407,6 +407,8 @@ public class MagicBakery
      */
 
     public Collection<Ingredient> getPantry() {
+
+	System.out.println("getPantry():  " + this.pantry);
 
 	return this.pantry;
 

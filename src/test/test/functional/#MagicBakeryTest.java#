@@ -2449,7 +2449,7 @@ public class MagicBakeryTest {
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__TwoPlayersPiSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
 
-	    System.out.println("test_shuffled Two");
+	    System.out.println("Shuffled Two");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2491,7 +2491,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__ThreePlayersAvoSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	    System.out.println("test_shuffled Three");
+	    System.out.println("Shuffled Three");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2538,7 +2538,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__FourPlayersEulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	    System.out.println("test_shuffled Four");
+	    System.out.println("test<Shuffled Four");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2552,7 +2552,6 @@ public class MagicBakeryTest {
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
-		System.out.println("pantryDeck xpect " + pantryDeck);
 		assertEquals("eggs", pantryDeck.get(0).toString());
 		assertEquals("eggs", pantryDeck.get(7).toString());
 		assertEquals("eggs", pantryDeck.get(13).toString());
