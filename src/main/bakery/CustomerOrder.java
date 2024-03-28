@@ -114,7 +114,7 @@ public class CustomerOrder
 
 	}
 
-	Integer ducks = source_map.get("Helpful duck 𓅭 " );
+	Integer ducks = source_map.get("helpful duck 𓅭 " );
 
 	if ( ducks == null ) { ducks = 0; }
 
@@ -173,7 +173,7 @@ public class CustomerOrder
 
 	for ( Ingredient i : raw_i ) {
 
-	    if ( i.toString() == "Helpful duck 𓅭 " ) {
+	    if ( i.toString() == "helpful duck 𓅭 " ) {
 
 		ducks_avail += 1;
 
