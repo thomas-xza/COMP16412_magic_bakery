@@ -2552,7 +2552,6 @@ public class MagicBakeryTest {
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
-		System.out.println("pantryDeck xpect " + pantryDeck);
 		assertEquals("eggs", pantryDeck.get(0).toString());
 		assertEquals("eggs", pantryDeck.get(7).toString());
 		assertEquals("eggs", pantryDeck.get(13).toString());
@@ -2561,10 +2560,12 @@ public class MagicBakeryTest {
 
 		// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
 
-		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
+		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getsPantry());
+		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(3, counts.get(new Ingredient("sugar")));
+		System.out.println("pass b f s s s" + counts.get("butter") + counts.get("flour") + counts.get("sugar"));
 
 		// If the players hands are wrong, the got the cards in the wrong order
 
@@ -2574,24 +2575,29 @@ public class MagicBakeryTest {
 		assertEquals(1, counts.get(new Ingredient("eggs")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(1, counts.get(new Ingredient("sugar")));
+		System.out.println("e f s");
 
 		counts = countIngredients(players[1].getHand());
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(1, counts.get(new Ingredient("chocolate")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
+		System.out.println("b c f");
 
 		counts = countIngredients(players[2].getHand());
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(2, counts.get(new Ingredient("fruit")));
+		System.out.println("f f b");
 
 		counts = countIngredients(players[3].getHand());
 		assertEquals(1, counts.get(new Ingredient("chocolate")));
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(1, counts.get(new Ingredient("sugar")));
+		System.out.println("c f s");
 	}
 
 	@Test
 	public void testSerialisation__RecreatingOriginalBakery() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, ClassNotFoundException {
+	    System.out.println("test_Serialiation__Recreating");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
