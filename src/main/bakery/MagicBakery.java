@@ -163,9 +163,10 @@ public class MagicBakery
      *  function
      * @param layer a
      * @throws TooManyActionsException a
+     * @throws WrongIngredientsException a
      */
     
-    public void bakeLayer(Layer layer) throws TooManyActionsException {
+    public void bakeLayer(Layer layer) throws TooManyActionsException, WrongIngredientsException {
 
         List<Ingredient> used = new ArrayList<>();
 
@@ -204,6 +205,10 @@ public class MagicBakery
 	    System.out.println("hand   " + getCurrentPlayer().getHand());
 	    
 	    this.pantryDiscard.addAll(used);
+
+	} else {
+
+	    throw new WrongIngredientsException("bakeLayer");	    
 
 	}
 
