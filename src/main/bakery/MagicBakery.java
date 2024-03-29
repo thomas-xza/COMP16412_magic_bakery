@@ -180,8 +180,8 @@ public class MagicBakery
 
 	    this.actions_taken += 1;
 
-	    System.out.println("\nrecipe " + layer.getRecipe());
-	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    // System.out.println("\nrecipe " + layer.getRecipe());
+	    // System.out.println("hand   " + getCurrentPlayer().getHand());
 
 	    used_remain = CustomerOrder.used_quantities_v2(
 			      layer.getRecipe(),
@@ -190,7 +190,7 @@ public class MagicBakery
 	    
 	    used = used_remain.get(0);
 
-	    System.out.println("used, remain" + used_remain + "\n\n");
+	    // System.out.println("used, remain" + used_remain + "\n\n");
 
 	    this.layers.remove(layer);
 
@@ -202,7 +202,7 @@ public class MagicBakery
 	    
 	    getCurrentPlayer().addToHand(layer);
 
-	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    // System.out.println("hand   " + getCurrentPlayer().getHand());
 	    
 	    this.pantryDiscard.addAll(used);
 
@@ -469,6 +469,8 @@ public class MagicBakery
      */
 
     public Collection<Layer> getLayers() {
+
+	System.out.println(this.layers);
 
 	return this.layers;
 
