@@ -344,8 +344,7 @@ public class MagicBakery
 
     public Collection<Layer> getBakeableLayers() {
 
-	ArrayList<Layer> bakeable_l = new ArrayList<>();
-	int i = 0;
+	Collection<Layer> bakeable_l = new LinkedList<>();
 
 	System.out.println(layers);
 
@@ -353,11 +352,10 @@ public class MagicBakery
 
 	    if ( l.canBake(getCurrentPlayer().getHand()) == true &&
 		 ( bakeable_l.size() == 0 ||
-		   bakeable_l.get(i).toString() != l.toString() ) ) {
+		   ((LinkedList)bakeable_l).getLast().toString()
+		   != l.toString() ) ) {
 
-		bakeable_l.add(l);
-
-		i += 1;
+		((LinkedList)bakeable_l).add(l);
 
 	    }
 
