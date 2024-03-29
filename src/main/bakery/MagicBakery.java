@@ -345,14 +345,19 @@ public class MagicBakery
     public Collection<Layer> getBakeableLayers() {
 
 	ArrayList<Layer> bakeable_l = new ArrayList<>();
+	int i = 0;
 
 	System.out.println(layers);
 
 	for (Layer l : this.layers) {
 
-	    if ( l.canBake(getCurrentPlayer().getHand()) == true ) {
+	    if ( l.canBake(getCurrentPlayer().getHand()) == true &&
+		 ( bakeable_l.size() == 0 ||
+		   bakeable_l.get(i).toString() != l.toString() ) ) {
 
 		bakeable_l.add(l);
+
+		i += 1;
 
 	    }
 
