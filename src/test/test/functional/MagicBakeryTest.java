@@ -1396,6 +1396,8 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetLayers__AllLayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+
+	    System.out.println("testGetLayers__All");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -1405,6 +1407,8 @@ public class MagicBakeryTest {
 		for (Ingredient ing: layers2) {
 			counts.merge(ing.toString(), 1, Integer::sum);
 		}
+
+		System.out.println(counts);
 
 		assertEquals(6, counts.size());
 		assertEquals(1, counts.get("biscuit"));
@@ -1417,6 +1421,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetLayers__NoLayer() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testGetLayers__No");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -1436,6 +1441,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetLayers__SomeLayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testGetLayers__Some");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -1460,6 +1466,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetLayers__CustomLayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testGetLayers__Custom");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -2044,6 +2051,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testRefreshPantry__InitialState() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testRefreshPantry");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -2055,12 +2063,16 @@ public class MagicBakeryTest {
 
 		assertEquals(5, pantry.size());
 
+		System.out.println("New pantry");
+
 		ArrayList<Ingredient> pantryCopy = new ArrayList<Ingredient>(pantry);
 		ArrayList<Ingredient> pantryDiscardCopy = new ArrayList<Ingredient>(pantryDiscard);
 
 		bakery.refreshPantry();
 		assertEquals(5, pantry.size());
 		
+		System.out.println("New pantry #2");
+
 		assertEquals(pantryCopy.size() + pantryDiscardCopy.size(), pantryDiscard.size());
 		for (Ingredient ing: pantryCopy) {
 			assertTrue(pantryDiscard.contains(ing));
