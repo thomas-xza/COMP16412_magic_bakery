@@ -201,8 +201,10 @@ public class MagicBakery
 	    
 	    getCurrentPlayer().addToHand(layer);
 
+	    this.pantryDiscard.addAll(used);
+
 	}
-	
+
     }
 
     /**

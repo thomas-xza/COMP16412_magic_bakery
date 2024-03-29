@@ -106,11 +106,18 @@ public class Player
 
     /**
      * empty hand
+     *  @return hand
      */
 
-    public void clear_hand() {
+    public List<Ingredient> clear_hand() {
+
+	List<Ingredient> hand_copy = new ArrayList<>();
+	
+	hand_copy.addAll(this.hand);	
 
 	this.hand.clear();
+
+	return hand_copy;
 
     }
 
