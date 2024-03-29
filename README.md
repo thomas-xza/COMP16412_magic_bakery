@@ -1,3 +1,5 @@
+Note: you cannot edit commit messages on a protected branch, it seems. Logging out in lieu of that...
+
 ## Deadline and Submission
 
 This is summative coursework and it will be marked. The submission deadline is **April 24th 2024** (**Wednesday of Week 10**) at **12 pm (noon)**. 
