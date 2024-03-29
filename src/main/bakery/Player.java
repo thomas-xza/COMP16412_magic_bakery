@@ -110,7 +110,7 @@ public class Player
 
     public void clear_hand() {
 
-	this.hand.clear()
+	this.hand.clear();
 
     }
 

@@ -180,8 +180,8 @@ public class MagicBakery
 	if ( layer.canBake(getCurrentPlayer().getHand()) == true ) {
 
 	    used_remain = CustomerOrder.used_quantities_v2(
-			      getCurrentPlayer().getHand(),
-			      layer.getRecipe()
+			      layer.getRecipe(),
+			      getCurrentPlayer().getHand()
 					     );
 	    
 	    used = used_remain.get(0);
@@ -189,7 +189,7 @@ public class MagicBakery
 
 	    this.layers.remove(layer);
 
-	    getCurrentPlayer().hand_empty();
+	    getCurrentPlayer().clear_hand();
 
 	    getCurrentPlayer().addToHand(remain);
 	    
