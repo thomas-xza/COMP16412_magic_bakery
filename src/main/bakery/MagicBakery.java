@@ -144,6 +144,7 @@ public class MagicBakery
 	}
 
 	refreshPantry();
+	this.actions_taken -= 1;  // Hotfix for refreshPantry() call.
 
 	// System.out.println("pantryDeck oshuf " + this.pantryDeck);
 
@@ -592,7 +593,7 @@ public class MagicBakery
 
 	System.out.println("called refreshPantry()");
 	
-	System.out.println(this.pantry);
+	// System.out.println(this.pantry);
 	
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 
@@ -600,13 +601,23 @@ public class MagicBakery
 
 	for ( i = 0 ; i < 5 ; i++ ) {
 
-	    this.pantry.add((Ingredient)((Stack) this.pantryDeck).pop());
+	    ((Stack) this.pantryDiscard).push(
+		        ((LinkedList)this.pantry).removeLast()
+					      );
+
+	}
+
+	for ( i = 0 ; i < 5 ; i++ ) {	
+
+	    this.pantry.add(
+			(Ingredient)((Stack) this.pantryDeck).pop()
+			    );
 
 	}
 	
 	this.actions_taken += 1;
 	
-	System.out.println(this.pantry);
+	// System.out.println(this.pantry);
 	
 	System.out.println("exiting refreshPantry()");
 	
