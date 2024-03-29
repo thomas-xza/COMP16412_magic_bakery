@@ -179,9 +179,9 @@ public class MagicBakery
 
 	    this.actions_taken += 1;
 
-	    System.out.println("\nrecipe" + layer.getRecipe());
+	    System.out.println("\nrecipe " + layer.getRecipe());
 
-	    System.out.println("hand" + getCurrentPlayer().getHand());
+	    System.out.println("hand   " + getCurrentPlayer().getHand());
 
 	    used_remain = CustomerOrder.used_quantities_v2(
 			      layer.getRecipe(),
