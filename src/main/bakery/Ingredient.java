@@ -30,7 +30,7 @@ public class Ingredient
 
     public Ingredient(String name) {
 
-	this.name = name.trim();
+	this.name = name;
 
     }
 
