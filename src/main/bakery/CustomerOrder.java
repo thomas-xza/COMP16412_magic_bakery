@@ -155,11 +155,11 @@ public class CustomerOrder
 
 	    for (Ingredient i : raw_i ) {
 
-		System.out.println(t.toString() + " " + i.toString());
+		// System.out.println(t.toString() + " " + i.toString());
 
 		if ( t.toString().trim().equals(i.toString().trim()) ) {
 
-		    System.out.println("match!");
+		    // System.out.println("match!");
 
 		    used.add(i);
 		    raw_i.remove(i);
@@ -190,7 +190,17 @@ public class CustomerOrder
 
 	    while ( target_raw.size() != used.size() ) {
 
-		used.add(Ingredient.HELPFUL_DUCK);
+		for ( Ingredient i : raw_i ) {
+
+		    if ( i.toString().equals("helpful duck 𓅭 ") ) {
+
+			    used.add(i);
+			    raw_i.remove(i);
+			    break;
+
+			}
+
+		}
 
 	    }
 

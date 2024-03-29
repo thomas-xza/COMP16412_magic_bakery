@@ -180,7 +180,6 @@ public class MagicBakery
 	    this.actions_taken += 1;
 
 	    System.out.println("\nrecipe " + layer.getRecipe());
-
 	    System.out.println("hand   " + getCurrentPlayer().getHand());
 
 	    used_remain = CustomerOrder.used_quantities_v2(
@@ -195,12 +194,16 @@ public class MagicBakery
 
 	    this.layers.remove(layer);
 
-	    getCurrentPlayer().clear_hand();
+	    for ( Ingredient i : layer.getRecipe() ) {
 
-	    getCurrentPlayer().addToHand(remain);
+		getCurrentPlayer().removeFromHand(i);
+
+	    }
 	    
 	    getCurrentPlayer().addToHand(layer);
 
+	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    
 	    this.pantryDiscard.addAll(used);
 
 	}
