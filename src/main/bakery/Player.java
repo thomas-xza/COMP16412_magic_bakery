@@ -105,6 +105,16 @@ public class Player
     }
 
     /**
+     * empty hand
+     */
+
+    public void hand_empty() {
+
+	this.hand.removeAll()
+
+    }
+
+    /**
      *  get hand as oops objects
      *  @return hand
      */

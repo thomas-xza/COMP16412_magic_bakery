@@ -187,13 +187,14 @@ public class MagicBakery
 	    used = used_remain.get(0);
 	    remain = used_remain.get(1);
 
+	    this.layers.remove(layer);
+
+	    getCurrentPlayer().hand_empty();
+
+	    getCurrentPlayer().addToHand(remain);
+	    
 	    getCurrentPlayer().addToHand(layer);
 
-	    for ( Ingredient ing : used ) {
-
-		getCurrentPlayer().removeFromHand(ing);
-
-	    }
 
 	}
 	
