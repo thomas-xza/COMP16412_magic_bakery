@@ -167,8 +167,35 @@ public class MagicBakery
     
     public void bakeLayer(Layer layer) throws TooManyActionsException {
 
+        List<Ingredient> used = new ArrayList<>();
+
+        List<Ingredient> remain = new ArrayList<>();
+	
+        List<List<Ingredient>> used_remain = new ArrayList<>();
+	
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+	
 	this.actions_taken += 1;
+
+	if ( layer.canBake(getCurrentPlayer().getHand()) == true ) {
+
+	    used_remain = CustomerOrder.used_quantities_v2(
+			      getCurrentPlayer().getHand(),
+			      layer.getRecipe()
+					     );
+	    
+	    used = used_remain.get(0);
+	    remain = used_remain.get(1);
+
+	    getCurrentPlayer().addToHand(layer);
+
+	    for ( Ingredient ing : used ) {
+
+		getCurrentPlayer().removeFromHand(ing);
+
+	    }
+
+	}
 	
     }
 
@@ -393,6 +420,14 @@ public class MagicBakery
      */
 
     public Collection<CustomerOrder> getFulfilableCustomers() {
+
+	Collection<CustomerOrder> fulfilables = new ArrayList<>();
+
+	// for ( CustomerOrder order : this.customers ) {
+
+	    
+
+	// }
 
 	 List<CustomerOrder> a = CustomerOrder.fast_order_list();
 
