@@ -188,13 +188,12 @@ public class MagicBakery
 					     );
 	    
 	    used = used_remain.get(0);
-	    remain = used_remain.get(1);
 
 	    System.out.println("used, remain" + used_remain + "\n\n");
 
 	    this.layers.remove(layer);
 
-	    for ( Ingredient i : layer.getRecipe() ) {
+	    for ( Ingredient i : used ) {
 
 		getCurrentPlayer().removeFromHand(i);
 
