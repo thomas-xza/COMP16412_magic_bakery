@@ -110,7 +110,7 @@ public class Player
 
     public void hand_empty() {
 
-	this.hand.removeAll()
+	this.hand.clear();
 
     }
 
@@ -121,7 +121,7 @@ public class Player
 
     public List<Ingredient> getHand() {
 
-	System.out.println(hand);
+	// System.out.println(hand);
 
 	return hand;
 

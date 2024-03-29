@@ -75,7 +75,7 @@ public class MagicBakery
 
 	this.layers = CardUtils.readLayerFile(layerDeckFile);
 
-	System.out.println("Just read layers!" + this.layers);
+	// System.out.println("Just read layers!" + this.layers);
 
     }
 
@@ -175,17 +175,23 @@ public class MagicBakery
 	
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	
-	this.actions_taken += 1;
-
 	if ( layer.canBake(getCurrentPlayer().getHand()) == true ) {
 
+	    this.actions_taken += 1;
+
+	    System.out.println("\nrecipe" + layer.getRecipe());
+
+	    System.out.println("hand" + getCurrentPlayer().getHand());
+
 	    used_remain = CustomerOrder.used_quantities_v2(
-			      getCurrentPlayer().getHand(),
-			      layer.getRecipe()
+			      layer.getRecipe(),
+			      getCurrentPlayer().getHand()
 					     );
 	    
 	    used = used_remain.get(0);
 	    remain = used_remain.get(1);
+
+	    System.out.println("used, remain" + used_remain + "\n\n");
 
 	    this.layers.remove(layer);
 
@@ -374,7 +380,7 @@ public class MagicBakery
 
 	Collection<Layer> bakeable_l = new LinkedList<>();
 
-	System.out.println(layers);
+	// System.out.println(layers);
 
 	for (Layer l : this.layers) {
 

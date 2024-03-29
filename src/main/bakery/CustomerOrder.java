@@ -157,7 +157,7 @@ public class CustomerOrder
 
 		if ( t.toString() == i.toString() ) {
 
-		    // System.out.println(t.toString() + "  " + i.toString());
+		    System.out.println(t.toString() + "  " + i.toString());
 
 		    used.add(i);
 		    raw_i.remove(i);
@@ -194,7 +194,11 @@ public class CustomerOrder
 
 	}
 
-	// System.out.println("raw_i: " + raw_i);
+	System.out.println("raw_i: " + raw_i);
+
+	System.out.println("target_raw:  " + target_raw);
+
+	System.out.println("used:  " + used);
 
 	if ( target_raw.size() == used.size() ) {
 	    
