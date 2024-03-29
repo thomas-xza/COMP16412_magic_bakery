@@ -195,7 +195,7 @@ public class MagicBakery
 
 	    this.layers.remove(layer);
 
-	    getCurrentPlayer().hand_empty();
+	    getCurrentPlayer().clear_hand();
 
 	    getCurrentPlayer().addToHand(remain);
 	    

@@ -108,7 +108,7 @@ public class Player
      * empty hand
      */
 
-    public void hand_empty() {
+    public void clear_hand() {
 
 	this.hand.clear();
 
