@@ -157,7 +157,9 @@ public class CustomerOrder
 
 		System.out.println(t.toString() + " " + i.toString());
 
-		if ( t.toString() == i.toString() ) {
+		if ( t.toString().trim().equals(i.toString().trim()) ) {
+
+		    System.out.println("match!");
 
 		    used.add(i);
 		    raw_i.remove(i);
