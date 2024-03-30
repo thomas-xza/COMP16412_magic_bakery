@@ -42,10 +42,10 @@ public class CustomerOrder
      * @param recipe b
      * @param garnish c
      * @param level d
-     * @throws RuntimeException a
+     * @throws WrongIngredientsException a
      */
     
-    public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) throws RuntimeException {
+    public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) throws WrongIngredientsException {
 
         if ( recipe == null || recipe.size() == 0 ) {
 
@@ -130,8 +130,8 @@ public class CustomerOrder
 
     /**
      * WARNING_PARAMETER_ORDER_INVERTED
-     * @param target recipe
-     * @param in ingredients 
+     * @param target a
+     * @param in ingredients
      * @return a
      */
 
@@ -228,85 +228,16 @@ public class CustomerOrder
 
     }
 
-    // /**
-    //  *  func
-    //  * @param o a
-    //  * @return a
-    //  */
-
-    // @Override
-    // public boolean equals(Object o) {
-
-    // 	if (o == null) {
-
-    // 	    return false;
-
-    // 	} if ( this.name.equals(o.toString()) ) {
-
-    // 	    return true;
-
-    // 	} else {
-
-    // 	    return false;
-
-    // 	}
-
-    // }
-
     /**
-     *  func
+     * a
      * @return a
      */
+    
     public int hashCode() {
 
 	return this.name.hashCode() + this.recipe.hashCode();
 
     }
-    
-    // /**
-    //  *  func
-    //  * @param o a
-    //  * @return a
-    //  */
-
-    // @Override
-    // public int compareTo(CustomerOrder o) {
-
-    // 	if ( o.toString() == null ) {
-
-    // 	    return -1;
-
-    // 	} else if ( this.name.equals(o.toString()) ) {
-
-    // 	    return 0;
-
-    // 	}
-
-    // 	return this.name.compareTo(o.toString());
-
-    // }
-
-    // /**
-    //  *  func
-    //  * @param o a
-    //  * @return a
-    //  */
-
-    // public int compareTo(Object o) {
-
-    // 	if ( o.toString() == null ) {
-
-    // 	    return -1;
-
-    // 	} else if ( this.name.equals(o.toString()) ) {
-
-    // 	    return 0;
-
-    // 	}
-
-    // 	return this.name.compareTo(o.toString());
-
-    // }
 
     /**
      * a
@@ -603,7 +534,7 @@ public class CustomerOrder
 
     /**
      * a
-     * @param elements note_features_Layer_objects
+     * @param elements a
      * @return a
      */
 
