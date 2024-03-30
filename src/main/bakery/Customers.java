@@ -89,7 +89,9 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
-	if ( this.customerDeck.size() > 0 && this.hack_mode == false ) {
+	timePasses();
+
+	if ( this.customerDeck.size() > 0 ) {
 
 	    // System.out.println("customerDeck > 0");
 
@@ -97,12 +99,6 @@ public class Customers
 			     0,
 			     ((LinkedList)this.customerDeck).pop()
 						   );
-
-	}
-
-	if ( this.hack_mode == true ) {
-
-	    
 
 	}
 
@@ -378,7 +374,8 @@ public class Customers
     
     public void remove(CustomerOrder customer) {
 
-	((LinkedList)this.activeCustomers).remove(customer);
+	int pos = ((LinkedList)this.activeCustomers).indexOf(customer);
+	((LinkedList)this.activeCustomers).set(pos, null);	
 
 	this.inactiveCustomers.add(customer);
 
