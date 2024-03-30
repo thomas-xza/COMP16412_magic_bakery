@@ -136,7 +136,7 @@ public class Customers
 						   picked_up.removeFirst()
 						   );
 
-	    if ( i + 1 == 3 ) {
+	    if ( i + 1 == 3 && filled_a_blank == false ) {
 
 		overflowed = true;
 
@@ -421,17 +421,7 @@ public class Customers
     
     public CustomerOrder peek() {
 
-	for ( int i = 2 ; i >= 0 ; i-- ) {
-	    
-	    if ( ((LinkedList)this.activeCustomers).get(i) != null ) {
-
-		return (CustomerOrder)((LinkedList)this.activeCustomers).get(i);
-
-	    }
-
-	}
-
-	return null;
+	return (CustomerOrder)((LinkedList)this.activeCustomers).get(2);
 
     }
 

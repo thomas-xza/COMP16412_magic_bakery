@@ -490,7 +490,7 @@ public class CustomersTest {
 	System.out.println("AddCustomerOrder p6");
         assertFalse(customers.isEmpty());
 	System.out.println("AddCustomerOrder p7");
-        assertNull(customers.peek());  //  Another bug, as isEmpty() was false, and customers.size() was 1...
+        assertNull(customers.peek());  
     }
 
     @Test
@@ -549,26 +549,35 @@ public class CustomersTest {
 
         // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
         // Alternatively, there is a problem with adding the first two orders. Check the previous tests.
-        assertEquals(2, customers.size());
+        System.out.println("Add custo 3rd p1");
+	assertEquals(2, customers.size());
         assertEquals(3, customerDeck.size());
         assertTrue(customerDeck.contains(order3));
         assertEquals(0, inactiveCustomers.size());
+        System.out.println("Add custo 3rd p2");
 
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("Add custo 3rd p3");
         assertFalse(customers.isEmpty());
+        System.out.println("Add custo 3rd p4");
         assertNull(customers.peek()); 
 
+        System.out.println("Add custo 3rd p5");
         // ADD!
         assertNull(customers.addCustomerOrder());
 
         // State after addCustomerOrder() should be: order3 -> order2 -> order1
+        System.out.println("Add custo 3rd p6");
         assertEquals(3, customers.size());
         assertEquals(2, customerDeck.size());
         assertFalse(customerDeck.contains(order3));
         assertEquals(0, inactiveCustomers.size());
+        System.out.println("Add custo 3rd p7");
 
         assertTrue(customers.customerWillLeaveSoon());
+        System.out.println("Add custo 3rd p8");
         assertFalse(customers.isEmpty());
+        System.out.println("Add custo 3rd p9");
         assertEquals(order1, customers.peek()); 
     }
 
