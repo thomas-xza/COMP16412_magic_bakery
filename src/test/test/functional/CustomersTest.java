@@ -107,6 +107,8 @@ public class CustomersTest {
         order4.setStatus(CustomerOrderStatus.WAITING);
         order5.setStatus(CustomerOrderStatus.WAITING);
 
+	System.out.println("Deterministic customers" + order1 + order2 + order2 + order4 + order5);
+
         deck.add(order5);
         deck.add(order4);
         deck.add(order3);
@@ -1633,7 +1635,7 @@ public class CustomersTest {
     @Test
     public void testTimePasses__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
 
-	System.out.println("##  TP PDFExample 1");
+	System.out.println("##  TP PDFExample 1 - emulates 2 player test (initialises with 2x level #1 orders, then 1x level #2 order)");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
