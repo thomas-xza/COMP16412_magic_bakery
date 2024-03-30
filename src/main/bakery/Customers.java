@@ -224,6 +224,8 @@ public class Customers
 
 	Collections.shuffle(customers_list, this.random);
 
+	System.out.println("customers_list shuffled" + customers_list);
+
 	// System.out.println("building hashmap for levels");
 	
 	Map<Integer, Integer> map = new HashMap<>();
@@ -251,16 +253,20 @@ public class Customers
 	    map.put(3, 6);
 	    
 	}
+
+	for ( level_target = 1 ; level_target < 4 ; level_target++ ) {
 	
-	for ( CustomerOrder customer_order : customers_list ) {
+	    for ( CustomerOrder customer_order : customers_list ) {
 
-	    Integer level = customer_order.getLevel();
+		Integer level = customer_order.getLevel();
 
-	    if ( map.get(level) > 0 ) {
+		if ( level == level_target && map.get(level) > 0 ) {
 
-		map.put(level, map.get(level) - 1);
+		    map.put(level, map.get(level) - 1);
 
-		((LinkedList) this.customerDeck).push(customer_order);
+		    ((LinkedList) this.customerDeck).push(customer_order);
+
+		}
 
 	    }
 
