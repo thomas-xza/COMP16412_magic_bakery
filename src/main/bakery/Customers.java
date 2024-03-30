@@ -212,6 +212,12 @@ public class Customers
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
+	List<CustomerOrder> level_1 = new Stack<>();
+
+	List<CustomerOrder> level_2 = new Stack<>();
+
+	List<CustomerOrder> level_3 = new Stack<>();
+
 	List<CustomerOrder> customers_list = new LinkedList<>();
 
 	// System.out.println("reading customer file");
@@ -230,9 +236,9 @@ public class Customers
 	
 	Map<Integer, Integer> map = new HashMap<>();
 
-	Integer level_1 = 0;
-	Integer level_2 = 0;
-	Integer level_3 = 0;
+	// Integer level_1 = 0;
+	// Integer level_2 = 0;
+	// Integer level_3 = 0;
 
 	if ( numPlayers == 2 ) {
 
@@ -254,26 +260,55 @@ public class Customers
 	    
 	}
 
-	for ( level_target = 1 ; level_target < 4 ; level_target++ ) {
-	
-	    for ( CustomerOrder customer_order : customers_list ) {
+	for ( CustomerOrder customer_order : customers_list ) {
 
-		Integer level = customer_order.getLevel();
+	    Integer level = customer_order.getLevel();
+	    if ( level == 1 ) {
 
-		if ( level == level_target && map.get(level) > 0 ) {
+		((Stack)level_1).push(customer_order);
 
-		    map.put(level, map.get(level) - 1);
+	    } else if ( level == 2 ) {
 
-		    ((LinkedList) this.customerDeck).push(customer_order);
+		    ((Stack)level_2).push(customer_order);
+		
+	    } else {
 
-		}
-
+		    ((Stack)level_3).push(customer_order);
+		
 	    }
 
 	}
 
+        System.out.println("level_1" + level_1);
+
+        System.out.println("level_2" + level_2);
+
+        System.out.println("level_3" + level_3);
+
+	// for ( Integer level_target = 1 ; level_target < 4 ; level_target++ ) {
+	
+	//     for ( CustomerOrder customer_order : customers_list ) {
+
+	// 	Integer level = customer_order.getLevel();
+
+	// 	if ( level == level_target && map.get(level) > 0 ) {
+
+	// 	    map.put(level, map.get(level) - 1);
+
+	// 	    ((LinkedList) this.customerDeck).push(customer_order);
+
+	// 	}
+
+	//     }
+
+	// }
+
+	System.out.println("customerDeck: " + this.customerDeck);
+	
 	Collections.shuffle(((LinkedList)this.customerDeck), this.random);
 
+	System.out.println("customerDeck post-shuf: " + this.customerDeck);
+	
     }
 
     /**
