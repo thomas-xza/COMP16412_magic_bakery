@@ -125,7 +125,7 @@ public class MagicBakery
 	
 	Collections.shuffle(((Stack)this.pantryDeck), this.random);
 
-	System.out.println("pantryDeck post-shuf: " + this.pantryDeck);
+	// System.out.println("pantryDeck post-shuf: " + this.pantryDeck);
 
 	refreshPantry();
 	
@@ -141,7 +141,7 @@ public class MagicBakery
 
 	}
 
-	System.out.println("pantryDeck post-hands: " + this.pantryDeck);
+	// System.out.println("pantryDeck post-hands: " + this.pantryDeck);
 
 	this.actions_taken -= 1;  // Hotfix for refreshPantry() call.
 
@@ -614,7 +614,7 @@ public class MagicBakery
 
 	}
 	
-	System.out.println("pantryDeck post-pantry: " + this.pantryDeck);
+	// System.out.println("pantryDeck post-pantry: " + this.pantryDeck);
 
 	this.actions_taken += 1;
 	

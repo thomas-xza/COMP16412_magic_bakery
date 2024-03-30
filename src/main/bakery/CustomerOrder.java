@@ -12,7 +12,7 @@ import bakery.*;
  */
 
 public class CustomerOrder
-    implements Serializable { //, Comparable<CustomerOrder> {
+    implements Serializable, Comparable<CustomerOrder> {
     
     private String name;
 
@@ -229,15 +229,58 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     *  func
+     * @param o a
      * @return a
      */
-    
-    public int hashCode() {
 
-	return this.name.hashCode() + this.recipe.hashCode();
+    public boolean equals(Object o) {
+
+	if (o == null ||
+	    !this.name.equals(o.toString()) ) {
+	    //	    this.getClass() != obj.getClass()) ||
+
+	    return false;
+
+	}
+
+	return true;
 
     }
+
+    /**
+     *  func
+     * @return a
+     */
+
+    public int hashCode() {
+
+	return this.name.hashCode();
+
+    }
+
+    /**
+     *  func
+     * @param o a
+     * @return a
+     */
+
+    public int compareTo(CustomerOrder o) {
+
+	if ( o.toString() == null ) {
+
+	    return -1;
+
+	} else if ( this.name.equals(o.toString()) ) {
+
+	    return 0;
+
+	}
+
+	return this.name.compareTo(o.toString());
+
+    }
+
 
     /**
      * a

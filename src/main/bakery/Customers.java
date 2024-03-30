@@ -155,9 +155,9 @@ public class Customers
     
     public Collection<CustomerOrder> getActiveCustomers() {
 
-	System.out.println(
-		"size of activeCustomers: " + this.activeCustomers.size());
-	System.out.println(this.activeCustomers);
+	// System.out.println(
+	// 	"size of activeCustomers: " + this.activeCustomers.size());
+	// System.out.println(this.activeCustomers);
 
 	return this.activeCustomers;
 
@@ -250,7 +250,7 @@ public class Customers
 
 	Collections.shuffle(customers_list, this.random);
 
-	System.out.println("customers_list shuffled" + customers_list);
+	// System.out.println("customers_list shuffled" + customers_list);
 
 	// System.out.println("building hashmap for levels");
 	
@@ -299,11 +299,11 @@ public class Customers
 
 	}
 
-        System.out.println("level_1" + level_1);
+        // System.out.println("level_1" + level_1);
 
-        System.out.println("level_2" + level_2);
+        // System.out.println("level_2" + level_2);
 
-        System.out.println("level_3" + level_3);
+        // System.out.println("level_3" + level_3);
 
 	for ( int i = 0 ; i < map.get(1) ; i++ ) {
 	    
@@ -329,11 +329,11 @@ public class Customers
 	    
 	}
 
-	System.out.println("post extractions: " + this.customerDeck);
+	// System.out.println("post extractions: " + this.customerDeck);
 
 	Collections.shuffle(((LinkedList)this.customerDeck), this.random);
 
-	System.out.println("post shuffle: " + this.customerDeck);
+	// System.out.println("post shuffle: " + this.customerDeck);
 
     }
 
@@ -357,13 +357,17 @@ public class Customers
     
     public CustomerOrder peek() {
 
-	if ( this.activeCustomers.size() == 0 ) {
+	for ( int i = 2 ; i >= 0 ; i-- ) {
+	    
+	    if ( ((LinkedList)this.activeCustomers).get(i) != null ) {
 
-	    return null;
+		return (CustomerOrder)((LinkedList)this.activeCustomers).get(i);
+
+	    }
 
 	}
 
-	return (CustomerOrder)((LinkedList)this.activeCustomers).getLast();
+	return null;
 
     }
 
@@ -373,6 +377,10 @@ public class Customers
      */
     
     public void remove(CustomerOrder customer) {
+
+	((LinkedList)this.activeCustomers).remove(customer);
+
+	this.inactiveCustomers.add(customer);
 
     }
 
