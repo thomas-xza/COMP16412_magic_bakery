@@ -2468,156 +2468,156 @@ public class MagicBakeryTest {
 	// 	assertEquals(1, counts.get(new Ingredient("flour")));
 	// }
 
-	// @Test
-	// public void testPantryDeckIsShuffledCorrectly__TwoPlayersPiSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	@Test
+	public void testPantryDeckIsShuffledCorrectly__TwoPlayersPiSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
 
-	//     System.out.println("test_shuffled Two");
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("A");
-	// 	playerNames.add("B");
+	    System.out.println("test_shuffled Two");
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("A");
+		playerNames.add("B");
 
-	// 	MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+		MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
+		// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
 
-	// 	@SuppressWarnings("unchecked")
-	// 	ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
-	// 	assertEquals("sugar", pantryDeck.get(0).toString());
-	// 	assertEquals("sugar", pantryDeck.get(7).toString());
-	// 	assertEquals("sugar", pantryDeck.get(13).toString());
-	// 	assertEquals("sugar", pantryDeck.get(23).toString());
-	// 	assertEquals("sugar", pantryDeck.get(31).toString());
+		@SuppressWarnings("unchecked")
+		ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
+		assertEquals("sugar", pantryDeck.get(0).toString());
+		assertEquals("sugar", pantryDeck.get(7).toString());
+		assertEquals("sugar", pantryDeck.get(13).toString());
+		assertEquals("sugar", pantryDeck.get(23).toString());
+		assertEquals("sugar", pantryDeck.get(31).toString());
 
-	// 	// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
+		// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
 
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
-	// 	assertEquals(2, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
+		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
+		assertEquals(2, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
 
-	// 	// If the players hands are wrong, they got the cards in the wrong order
+		// If the players hands are wrong, they got the cards in the wrong order
 
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
 
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
+		counts = countIngredients(players[0].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
 
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-	// }
-// 
-	// @Test
-	// public void testPantryDeckIsShuffledCorrectly__ThreePlayersAvoSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	//     System.out.println("test_shuffled Three");
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("A");
-	// 	playerNames.add("B");
-	// 	playerNames.add("C");
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+	}
 
-	// 	MagicBakery bakery = new MagicBakery(602214076, "./io/ingredients.csv", "./io/layers.csv");
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPantryDeckIsShuffledCorrectly__ThreePlayersAvoSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("test_shuffled Three");
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("A");
+		playerNames.add("B");
+		playerNames.add("C");
 
-	// 	// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
+		MagicBakery bakery = new MagicBakery(602214076, "./io/ingredients.csv", "./io/layers.csv");
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
-	// 	assertEquals("sugar", pantryDeck.get(0).toString());
-	// 	assertEquals("chocolate", pantryDeck.get(7).toString());
-	// 	assertEquals("sugar", pantryDeck.get(13).toString());
-	// 	assertEquals("sugar", pantryDeck.get(23).toString());
-	// 	assertEquals("butter", pantryDeck.get(31).toString());
+		// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
 
-	// 	// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
+		@SuppressWarnings("unchecked")
+		ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
+		assertEquals("sugar", pantryDeck.get(0).toString());
+		assertEquals("chocolate", pantryDeck.get(7).toString());
+		assertEquals("sugar", pantryDeck.get(13).toString());
+		assertEquals("sugar", pantryDeck.get(23).toString());
+		assertEquals("butter", pantryDeck.get(31).toString());
 
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("fruit")));
-	// 	assertEquals(2, counts.get(new Ingredient("sugar")));
+		// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
 
-	// 	// If the players hands are wrong, they got the cards in the wrong order
+		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("fruit")));
+		assertEquals(2, counts.get(new Ingredient("sugar")));
 
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		// If the players hands are wrong, they got the cards in the wrong order
 
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(2, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
 
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(2, counts.get(new Ingredient("eggs")));
+		counts = countIngredients(players[0].getHand());
+		assertEquals(2, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
 
-	// 	counts = countIngredients(players[2].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-	// }
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(2, counts.get(new Ingredient("eggs")));
 
-	// @Test
-	// public void testPantryDeckIsShuffledCorrectly__FourPlayersEulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	//     System.out.println("test_shuffled Four");
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("A");
-	// 	playerNames.add("B");
-	// 	playerNames.add("C");
-	// 	playerNames.add("D");
+		counts = countIngredients(players[2].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+	}
 
-	// 	MagicBakery bakery = new MagicBakery(271828, "./io/ingredients.csv", "./io/layers.csv");
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPantryDeckIsShuffledCorrectly__FourPlayersEulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("test_shuffled Four");
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("A");
+		playerNames.add("B");
+		playerNames.add("C");
+		playerNames.add("D");
 
-	// 	// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
+		MagicBakery bakery = new MagicBakery(271828, "./io/ingredients.csv", "./io/layers.csv");
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
-	// 	assertEquals("eggs", pantryDeck.get(0).toString());
-	// 	assertEquals("eggs", pantryDeck.get(7).toString());
-	// 	assertEquals("eggs", pantryDeck.get(13).toString());
-	// 	assertEquals("sugar", pantryDeck.get(23).toString());
-	// 	assertEquals("eggs", pantryDeck.get(31).toString());
+		// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
 
-	// 	// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
+		@SuppressWarnings("unchecked")
+		ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
+		assertEquals("eggs", pantryDeck.get(0).toString());
+		assertEquals("eggs", pantryDeck.get(7).toString());
+		assertEquals("eggs", pantryDeck.get(13).toString());
+		assertEquals("sugar", pantryDeck.get(23).toString());
+		assertEquals("eggs", pantryDeck.get(31).toString());
 
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
-	// 	System.out.println("pass b f s s s" + bakery.getPantry() + counts);
-	// 	System.out.println("pass b f s s s" + bakery.getPantry() + counts.get(new Ingredient("butter")));
-	// 	System.out.println("pass b f s s s" + bakery.getPantry() + counts);
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(3, counts.get(new Ingredient("sugar")));
-	// 	System.out.println("pass b f s s s" + counts.get("butter") + counts.get("flour") + counts.get("sugar"));
+		// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
 
-	// 	// If the players hands are wrong, the got the cards in the wrong order
+		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
+		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
+		System.out.println("pass b f s s s" + bakery.getPantry() + counts.get(new Ingredient("butter")));
+		System.out.println("pass b f s s s" + bakery.getPantry() + counts);
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(3, counts.get(new Ingredient("sugar")));
+		System.out.println("pass b f s s s" + counts.get("butter") + counts.get("flour") + counts.get("sugar"));
 
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		// If the players hands are wrong, the got the cards in the wrong order
 
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-	// 	System.out.println("e f s");
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
 
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("chocolate")));
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	System.out.println("b c f");
+		counts = countIngredients(players[0].getHand());
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+		System.out.println("e f s");
 
-	// 	counts = countIngredients(players[2].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("fruit")));
-	// 	System.out.println("f f b");
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("chocolate")));
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		System.out.println("b c f");
 
-	// 	counts = countIngredients(players[3].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("chocolate")));
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-	// 	System.out.println("c f s");
-	// }
+		counts = countIngredients(players[2].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("fruit")));
+		System.out.println("f f b");
+
+		counts = countIngredients(players[3].getHand());
+		assertEquals(1, counts.get(new Ingredient("chocolate")));
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+		System.out.println("c f s");
+	}
 
 // 	@Test
 // 	public void testSerialisation__RecreatingOriginalBakery() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, ClassNotFoundException {

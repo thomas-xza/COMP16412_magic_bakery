@@ -1657,9 +1657,11 @@ public class CustomersTest {
 
 	try {
 	    System.out.println(customers.getActiveCustomers().contains(order1));
+	    System.out.println(order1);
+	    System.out.println(order2);
+	    System.out.println(order3);
 	} catch (Exception e ) {
 	    System.out.println("contains failed" + e);
-	    System.out.println(order1);
 
 	}
 
