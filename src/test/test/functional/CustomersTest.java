@@ -672,1761 +672,1761 @@ public class CustomersTest {
         assertEquals(order3, customers.peek()); 
     }
 
-    // @Test
-    // public void testAddCustomerOrder__Draining1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+    @Test
+    public void testAddCustomerOrder__Draining1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-    //     // Set the initial state: order5 -> order4 -> order3
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
+        // Set the initial state: order5 -> order4 -> order3
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
 
-    //     // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
-    //     // Alternatively, there is a problem with adding the first five orders. Check the previous tests.
-    //     assertEquals(3, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertFalse(inactiveCustomers.contains(order3));
+        // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
+        // Alternatively, there is a problem with adding the first five orders. Check the previous tests.
+        assertEquals(3, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertFalse(inactiveCustomers.contains(order3));
 
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek()); 
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek()); 
 
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
-    //     // State after addCustomerOrder() should be: null -> order5 -> order4
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
+        // State after addCustomerOrder() should be: null -> order5 -> order4
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
 
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek()); 
-    // }
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek()); 
+    }
 
-    // @Test
-    // public void testAddCustomerOrder__Draining2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+    @Test
+    public void testAddCustomerOrder__Draining2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-    //     // Set the initial state: null -> order5 -> order4
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+        // Set the initial state: null -> order5 -> order4
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
-    //     // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
-    //     // Alternatively, there is a problem with adding orders. Check the previous tests.
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertFalse(inactiveCustomers.contains(order4));
+        // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
+        // Alternatively, there is a problem with adding orders. Check the previous tests.
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertFalse(inactiveCustomers.contains(order4));
 
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek()); 
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek()); 
 
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
-    //     // State after addCustomerOrder() should be: null -> null -> order5
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order4));
+        // State after addCustomerOrder() should be: null -> null -> order5
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order4));
 
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order5, customers.peek()); 
-    // }
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order5, customers.peek()); 
+    }
 
-    // @Test
-    // public void testAddCustomerOrder__Draining3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+    @Test
+    public void testAddCustomerOrder__Draining3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-    //     // Set the initial state: null -> null -> order5
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
-    //     customers.addCustomerOrder();
+        // Set the initial state: null -> null -> order5
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
+        customers.addCustomerOrder();
         
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
-    //     // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
-    //     // Alternatively, there is a problem with adding orders. Check the previous tests.
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertFalse(inactiveCustomers.contains(order5));
+        // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
+        // Alternatively, there is a problem with adding orders. Check the previous tests.
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertFalse(inactiveCustomers.contains(order5));
 
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order5, customers.peek()); 
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order5, customers.peek()); 
 
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
-    //     // State after addCustomerOrder() should be: null -> null -> null
-    //     assertEquals(0, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(5, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order5));
+        // State after addCustomerOrder() should be: null -> null -> null
+        assertEquals(0, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(5, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order5));
 
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek()); 
-    // }
+        assertFalse(customers.customerWillLeaveSoon());
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek()); 
+    }
 
-    // @Test
-    // public void testAddCustomerOrder__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+    @Test
+    public void testAddCustomerOrder__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
 
-    //     // Active customers should be order3 -> order2 -> order1
+        // Active customers should be order3 -> order2 -> order1
 
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(3, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(0, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(3, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(0, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
         
 
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-
-    //     // ADD!
-    //     assertEquals(order1, customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> order3 -> order2 || order1 is now inactive
-    //     assertEquals(3, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order2, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-
-    //     // Active customers should be order3 -> order2 -> null || order1 is inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order1));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> order3 -> order2
-    //     assertEquals(3, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order2, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order2);
-
-    //     // Active customers should be order3 -> null -> order1 || order2 is inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order2));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> order3 -> order1
-    //     assertEquals(3, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample4() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> order2 -> order1 || order3 is inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> order2 -> order1
-    //     assertEquals(3, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample5() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-    //     customers.remove(order2);
-
-    //     // Active customers should be order3 -> null -> null || order1 and order2 are inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> order3 -> null
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample6() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> order2 -> null || order1 and order3 are inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> order2 -> null
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample7() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order2);
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> null -> order1 || order1 and order2 are inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> null -> order1
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample8() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-    //     customers.remove(order2);
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> null -> null || order1, order2 and order3 are inactive
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
-    //     assertEquals(0, customers.size());
-    //     assertEquals(2, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertNull(customers.addCustomerOrder());
-
-    //     // Active customers should be order4 -> null -> null
-    //     assertEquals(1, customers.size());
-    //     assertEquals(1, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    // }
-
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample9() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-
-    //     // Active customers should be order5 -> order4 -> order3 || order1 and order2 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(3, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> order5 -> order4 || order3 is now inactive
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample10() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-
-    //     // Active customers should be order5 -> order4 -> null || order1, order2, and order3 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> order5 -> order4
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample11() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order4);
-
-    //     // Active customers should be order5 -> null -> order3 || order1, order2, and order4 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order4));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> order5 -> order3
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample12() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> order4 -> order3 || order1, order2, and order5 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-    //     assertFalse(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order5));
-
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> null -> order4 || order3 becomes inactive
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample13() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-    //     customers.remove(order4);
-
-    //     // Active customers should be order5 -> null -> null || order1, order2, order3, and order4 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(inactiveCustomers.contains(order4));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> order5 -> null
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample14() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> order4 -> null || order1, order2, order3, and order5 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-    //     assertFalse(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(inactiveCustomers.contains(order5));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> null -> order4
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample15() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order4);
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> null -> order3 || order1, order2, order4, and order5 are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertFalse(customers.getActiveCustomers().contains(order4));
-    //     assertFalse(customers.getActiveCustomers().contains(order5));
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order5));
-
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> null -> null || order3 became inactive
-    //     assertEquals(0, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(5, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
-    // }
-
-    // @Test
-    // public void testAddCustomerOrder__PDFExample16() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-    //     customers.remove(order4);
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> null -> null || all orders are inactive || The deck is empty
-
-    //     // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
-    //     assertEquals(0, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(5, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(inactiveCustomers.contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order5));
-
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-
-    //     // ADD!
-    //     assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
-
-    //     // Active customers should be null -> null -> null
-    //     assertEquals(0, customers.size());
-    //     assertEquals(0, customerDeck.size());
-    //     assertEquals(5, inactiveCustomers.size());
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    // }
-
-    // @Test
-    // public void testRemoveCustomerOrder() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    // 	//  Deck looks like: [5, 4, 3, 2, 1]
-    //     customers.addCustomerOrder();// 1 
-    // 	//  ActiveCustomers: [1, _, _]
-    //     customers.addCustomerOrder();// 2
-    // 	//  ActiveCustomers: [2, 1, _]
-    //     customers.addCustomerOrder();// 3
-    // 	//  ActiveCustomers: [3, 2, 1]
-    // 	//  Deck looks like: [5, 4]
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+
+        // ADD!
+        assertEquals(order1, customers.addCustomerOrder());
+
+        // Active customers should be order4 -> order3 -> order2 || order1 is now inactive
+        assertEquals(3, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order2, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+
+        // Active customers should be order3 -> order2 -> null || order1 is inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order1));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> order3 -> order2
+        assertEquals(3, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order2, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order2);
+
+        // Active customers should be order3 -> null -> order1 || order2 is inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order2));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> order3 -> order1
+        assertEquals(3, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample4() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order3);
+
+        // Active customers should be null -> order2 -> order1 || order3 is inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> order2 -> order1
+        assertEquals(3, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample5() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+        customers.remove(order2);
+
+        // Active customers should be order3 -> null -> null || order1 and order2 are inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> order3 -> null
+        assertEquals(2, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample6() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+        customers.remove(order3);
+
+        // Active customers should be null -> order2 -> null || order1 and order3 are inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> order2 -> null
+        assertEquals(2, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample7() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order2);
+        customers.remove(order3);
+
+        // Active customers should be null -> null -> order1 || order1 and order2 are inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> null -> order1
+        assertEquals(2, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample8() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+        customers.remove(order2);
+        customers.remove(order3);
+
+        // Active customers should be null -> null -> null || order1, order2 and order3 are inactive
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls, the remove(), or the various state functions. Fix them first
+        assertEquals(0, customers.size());
+        assertEquals(2, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertNull(customers.addCustomerOrder());
+
+        // Active customers should be order4 -> null -> null
+        assertEquals(1, customers.size());
+        assertEquals(1, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+    }
+
+
+    @Test
+    public void testAddCustomerOrder__PDFExample9() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+
+        // Active customers should be order5 -> order4 -> order3 || order1 and order2 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(3, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> order5 -> order4 || order3 is now inactive
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample10() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+
+        // Active customers should be order5 -> order4 -> null || order1, order2, and order3 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> order5 -> order4
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample11() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order4);
+
+        // Active customers should be order5 -> null -> order3 || order1, order2, and order4 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order4));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> order5 -> order3
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample12() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order5);
+
+        // Active customers should be null -> order4 -> order3 || order1, order2, and order5 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+        assertFalse(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order5));
+
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> null -> order4 || order3 becomes inactive
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample13() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+        customers.remove(order4);
+
+        // Active customers should be order5 -> null -> null || order1, order2, order3, and order4 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(inactiveCustomers.contains(order4));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> order5 -> null
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample14() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+        customers.remove(order5);
+
+        // Active customers should be null -> order4 -> null || order1, order2, order3, and order5 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+        assertFalse(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(inactiveCustomers.contains(order5));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> null -> order4
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample15() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order4);
+        customers.remove(order5);
+
+        // Active customers should be null -> null -> order3 || order1, order2, order4, and order5 are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertFalse(customers.getActiveCustomers().contains(order4));
+        assertFalse(customers.getActiveCustomers().contains(order5));
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order4));
+        assertTrue(inactiveCustomers.contains(order5));
+
+        assertTrue(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> null -> null || order3 became inactive
+        assertEquals(0, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(5, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
+    }
+
+    @Test
+    public void testAddCustomerOrder__PDFExample16() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+        customers.remove(order4);
+        customers.remove(order5);
+
+        // Active customers should be null -> null -> null || all orders are inactive || The deck is empty
+
+        // Sanity checking: if there is an error before the next addCustomerOrder(), something is wrong with the earlier addCustomer() calls or the various state functions. Fix them first
+        assertEquals(0, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(5, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(inactiveCustomers.contains(order4));
+        assertTrue(inactiveCustomers.contains(order5));
+
+        assertFalse(customers.customerWillLeaveSoon());
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+
+        // ADD!
+        assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
+
+        // Active customers should be null -> null -> null
+        assertEquals(0, customers.size());
+        assertEquals(0, customerDeck.size());
+        assertEquals(5, inactiveCustomers.size());
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+    }
+
+    @Test
+    public void testRemoveCustomerOrder() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+	//  Deck looks like: [5, 4, 3, 2, 1]
+        customers.addCustomerOrder();// 1 
+	//  ActiveCustomers: [1, _, _]
+        customers.addCustomerOrder();// 2
+	//  ActiveCustomers: [2, 1, _]
+        customers.addCustomerOrder();// 3
+	//  ActiveCustomers: [3, 2, 1]
+	//  Deck looks like: [5, 4]
 	
-    // 	//  BUT TEST AUTHOR THINKS  ActiveCustomers: [1, 2, 3]
-    // 	System.out.println("rm part1");
-    // 	System.out.println("active     " + customers.getActiveCustomers());
+	//  BUT TEST AUTHOR THINKS  ActiveCustomers: [1, 2, 3]
+	System.out.println("rm part1");
+	System.out.println("active     " + customers.getActiveCustomers());
 	
-    // 	System.out.println("expecting  " + order1 + " " + order2);
-    //     customers.remove(order3);
-    // 	//  TEST AUTHOR THINKS      ActiveCustomers: [1, 2, _]
-    // 	//  BUT IS ACTUALLY         ActiveCustomers: [_, 2, 1]
-    // 	System.out.println("active     " + customers.getActiveCustomers());
-    // 	System.out.println("rm part1.01 ");
-    //     assertFalse(customers.customerWillLeaveSoon());  // Wrong assertFalse, customer #1 will leave soon.
-    // 	System.out.println("rm part1.05 ");
-    //     assertFalse(customers.isEmpty());
-    // 	System.out.println("rm part1.1 ");
-    // 	System.out.println("active customers" + customers.getActiveCustomers());
-    // 	System.out.println("order1 " +order1);
-    //     assertEquals(order1, customers.peek());
-    // 	System.out.println("rm part1.2");
-    //     assertEquals(2, customers.size());
-    // 	System.out.println("rm part1.3");
-    //     assertEquals(1, inactiveCustomers.size());
-    // 	System.out.println("rm part1.4");
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    // 	System.out.println("rm part2");
-    //     customers.remove(order1);
-    // 	//  ActiveCustomers: [_, 2, _]
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    // 	System.out.println("rm part2.2");
-    //     assertNull(customers.peek());
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-
-    // 	System.out.println("rm part3");
-    //     assertNull(customers.addCustomerOrder());
-    // 	//  ActiveCustomers: [4, _, 2]
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    // 	System.out.println("rm part3.3");
-    //     assertNull(customers.peek());
-    //     assertEquals(2, customers.size());
-    //     assertFalse(customerDeck.contains(order4));
-    //     assertEquals(1, customerDeck.size());
-
-    // 	System.out.println("rm part4");
-    //     customers.remove(order2);
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertFalse(customers.isEmpty());
-    // 	System.out.println("rm part4.4");
-    //     assertNull(customers.peek());
-    //     assertEquals(1, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order2));
-
-    // 	System.out.println("rm part5");
-    //     customers.remove(order4);
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertEquals(0, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order4));
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-
-    // 	System.out.println("##  TP PDFExample 1 - emulates 2 player test (initialises with 2x level #1 orders, then 1x level #2 order)");
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-
-    //     // Active customers should be order3 -> order2 -> order1
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    // 	System.out.println("ex1 part 0");
-
-    //     assertEquals(3, customers.size());
-    //     assertEquals(0, inactiveCustomers.size());
-    // 	System.out.println("ex1 part 0.5");
-
-    // 	// System.out.println(customers.getActiveCustomers());
-
-    // 	try {
-    // 	    System.out.println(customers.getActiveCustomers().contains(order1));
-    // 	    System.out.println(order1);
-    // 	    System.out.println(order2);
-    // 	    System.out.println(order3);
-    // 	} catch (Exception e ) {
-    // 	    System.out.println("contains failed" + e);
-
-    // 	}
-
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    // 	System.out.println("ex1 part 0.5.1");
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    // 	System.out.println("ex1 part 0.5.2");
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-
-    // 	System.out.println("ex1 part 1");
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    // 	System.out.println("ex1 part 1.5");
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-
-    // 	System.out.println("ex1 part 2");
-
-    //     // Time passes!
-    //     assertEquals(order1, customers.timePasses());
-    // 	System.out.println("ex1 part 2.5");
-
-
-    //     // Active customers should be empty -> order3 -> order2 || order1 is now inactive
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-
-    // 	System.out.println("ex1 part 3");
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order2, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    // 	System.out.println("ex1 part 3.5");
-
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    // 	System.out.println("ex1 part 4");
-
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    // 	System.out.println("##  TP PDFExample 2");
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-
-    //     // Active customers should be order3 -> order2 -> null || order1 is now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order3 -> order2 
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order2, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    // 	System.out.println("##  TP PDFExample 3");
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order2);
-
-    //     // Active customers should be order3 -> null -> order1 || order2 is now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order3 -> order1 
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order2));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample4() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> order2 -> order1 || order3 is now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order2 -> order1
-    //     assertEquals(2, customers.size());
-    //     assertEquals(1, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample5() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-    //     customers.remove(order2);
-
-    //     // Active customers should be order3 -> null -> null || order1 and order2 are now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order3 -> null 
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample6() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> order2 -> null || order1 and order3 are now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertFalse(customers.getActiveCustomers().contains(order1));
-    //     assertTrue(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order2 -> null 
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample7() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order2);
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> null -> order1 || order2 and order3 are now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getActiveCustomers().contains(order1));
-    //     assertFalse(customers.getActiveCustomers().contains(order2));
-    //     assertFalse(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> null -> order1 
-    //     assertEquals(1, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order1, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample8() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.remove(order1);
-    //     customers.remove(order2);
-    //     customers.remove(order3);
-
-    //     // Active customers should be null -> null -> null || order1, order2, and order3 are now inactive
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(0, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> null -> null 
-    //     assertEquals(0, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample9() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-
-    //     // Active customers should be order5 -> order4 -> order3 || order1 and order2 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(3, customers.size());
-    //     assertEquals(2, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-
-    //     // Time passes!
-    //     assertEquals(order3, customers.timePasses());
-
-    //     // Active customers should be null -> order5 -> order4 || order3 is now also inactive
-    //     assertEquals(2, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample10() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-
-    //     // Active customers should be order5 -> order4 -> null || order1, order2, and order3 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order5 -> order4
-    //     assertEquals(2, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample11() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order4);
-
-    //     // Active customers should be order5 -> null -> order3 || order1, order2, and order4 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order5 -> order3
-    //     assertEquals(2, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample12() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> order4 -> order3 || order1, order2, and order5 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(2, customers.size());
-    //     assertEquals(3, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order5));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertEquals(order3, customers.timePasses());
-
-    //     // Active customers should be null -> null -> order4 || order3 is now also inactive
-    //     assertEquals(1, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(inactiveCustomers.contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample13() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-    //     customers.remove(order4);
-
-    //     // Active customers should be order5 -> null -> null || order1, order2, order3, and order4 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(inactiveCustomers.contains(order4));
-    //     assertTrue(customers.getActiveCustomers().contains(order5));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> order5 -> null
-    //     assertEquals(1, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample14() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> order4 -> null || order1, order2, order3, and order5 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(inactiveCustomers.contains(order5));
-    //     assertTrue(customers.getActiveCustomers().contains(order4));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should be null -> null -> order4
-    //     assertEquals(1, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order4, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample15() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order4);
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> null -> order3 || order1, order2, order4, and order5 are inactive || the customerDeck is empty
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(1, customers.size());
-    //     assertEquals(4, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order5));
-    //     assertTrue(customers.getActiveCustomers().contains(order3));
-
-    //     assertFalse(customers.isEmpty());
-    //     assertEquals(order3, customers.peek());
-    //     assertTrue(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertEquals(order3, customers.timePasses());
-
-    //     // Active customers should be null -> null -> null || order3 is now inactive too
-    //     assertEquals(0, customers.size());
-    //     assertEquals(5, inactiveCustomers.size());
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    //     assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
-    // }
-
-    // @Test
-    // public void testTimePasses__PDFExample16() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-    //     Customers customers = getDeterministicCustomers();
-    //     // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
-
-    //     @SuppressWarnings("unchecked")
-    // 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
-
-    //     customers.addCustomerOrder(); // order1 in active set
-    //     customers.addCustomerOrder(); // order2 in active set
-    //     customers.addCustomerOrder(); // order3 in active set
-    //     customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
-    //     customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
-    //     customers.remove(order3);
-    //     customers.remove(order4);
-    //     customers.remove(order5);
-
-    //     // Active customers should be null -> null -> null || all orders are inactive || the customerDeck is empty || the game should end soon
-
-    //     // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-    //     assertEquals(0, customers.size());
-    //     assertEquals(5, inactiveCustomers.size());
-    //     assertTrue(customers.getCustomerDeck().isEmpty());
-    //     assertTrue(inactiveCustomers.contains(order1));
-    //     assertTrue(inactiveCustomers.contains(order2));
-    //     assertTrue(inactiveCustomers.contains(order3));
-    //     assertTrue(inactiveCustomers.contains(order4));
-    //     assertTrue(inactiveCustomers.contains(order5));
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-
-    //     // Time passes!
-    //     assertNull(customers.timePasses());
-
-    //     // Active customers should still be null -> null -> null
-    //     assertEquals(0, customers.size());
-    //     assertEquals(5, inactiveCustomers.size());
-
-    //     assertTrue(customers.isEmpty());
-    //     assertNull(customers.peek());
-    //     assertFalse(customers.customerWillLeaveSoon());
-    // }
+	System.out.println("expecting  " + order1 + " " + order2);
+        customers.remove(order3);
+	//  TEST AUTHOR THINKS      ActiveCustomers: [1, 2, _]
+	//  BUT IS ACTUALLY         ActiveCustomers: [_, 2, 1]
+	System.out.println("active     " + customers.getActiveCustomers());
+	System.out.println("rm part1.01 ");
+        assertFalse(customers.customerWillLeaveSoon());  // Wrong assertFalse, customer #1 will leave soon.
+	System.out.println("rm part1.05 ");
+        assertFalse(customers.isEmpty());
+	System.out.println("rm part1.1 ");
+	System.out.println("active customers" + customers.getActiveCustomers());
+	System.out.println("order1 " +order1);
+        assertEquals(order1, customers.peek());
+	System.out.println("rm part1.2");
+        assertEquals(2, customers.size());
+	System.out.println("rm part1.3");
+        assertEquals(1, inactiveCustomers.size());
+	System.out.println("rm part1.4");
+        assertTrue(inactiveCustomers.contains(order3));
+
+	System.out.println("rm part2");
+        customers.remove(order1);
+	//  ActiveCustomers: [_, 2, _]
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+	System.out.println("rm part2.2");
+        assertNull(customers.peek());
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+
+	System.out.println("rm part3");
+        assertNull(customers.addCustomerOrder());
+	//  ActiveCustomers: [4, _, 2]
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+	System.out.println("rm part3.3");
+        assertNull(customers.peek());
+        assertEquals(2, customers.size());
+        assertFalse(customerDeck.contains(order4));
+        assertEquals(1, customerDeck.size());
+
+	System.out.println("rm part4");
+        customers.remove(order2);
+        assertFalse(customers.customerWillLeaveSoon());
+        assertFalse(customers.isEmpty());
+	System.out.println("rm part4.4");
+        assertNull(customers.peek());
+        assertEquals(1, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order2));
+
+	System.out.println("rm part5");
+        customers.remove(order4);
+        assertFalse(customers.customerWillLeaveSoon());
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertEquals(0, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order4));
+    }
+
+    @Test
+    public void testTimePasses__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+
+	System.out.println("##  TP PDFExample 1 - emulates 2 player test (initialises with 2x level #1 orders, then 1x level #2 order)");
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+
+        // Active customers should be order3 -> order2 -> order1
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+	System.out.println("ex1 part 0");
+
+        assertEquals(3, customers.size());
+        assertEquals(0, inactiveCustomers.size());
+	System.out.println("ex1 part 0.5");
+
+	// System.out.println(customers.getActiveCustomers());
+
+	try {
+	    System.out.println(customers.getActiveCustomers().contains(order1));
+	    System.out.println(order1);
+	    System.out.println(order2);
+	    System.out.println(order3);
+	} catch (Exception e ) {
+	    System.out.println("contains failed" + e);
+
+	}
+
+        assertTrue(customers.getActiveCustomers().contains(order1));
+	System.out.println("ex1 part 0.5.1");
+        assertTrue(customers.getActiveCustomers().contains(order2));
+	System.out.println("ex1 part 0.5.2");
+        assertTrue(customers.getActiveCustomers().contains(order3));
+
+	System.out.println("ex1 part 1");
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+	System.out.println("ex1 part 1.5");
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+
+	System.out.println("ex1 part 2");
+
+        // Time passes!
+        assertEquals(order1, customers.timePasses());
+	System.out.println("ex1 part 2.5");
+
+
+        // Active customers should be empty -> order3 -> order2 || order1 is now inactive
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+
+	System.out.println("ex1 part 3");
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order2, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+	System.out.println("ex1 part 3.5");
+
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+	System.out.println("ex1 part 4");
+
+    }
+
+    @Test
+    public void testTimePasses__PDFExample2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+	System.out.println("##  TP PDFExample 2");
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+
+        // Active customers should be order3 -> order2 -> null || order1 is now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order3 -> order2 
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order2, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+	System.out.println("##  TP PDFExample 3");
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order2);
+
+        // Active customers should be order3 -> null -> order1 || order2 is now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order3 -> order1 
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order2));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample4() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order3);
+
+        // Active customers should be null -> order2 -> order1 || order3 is now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order2 -> order1
+        assertEquals(2, customers.size());
+        assertEquals(1, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample5() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+        customers.remove(order2);
+
+        // Active customers should be order3 -> null -> null || order1 and order2 are now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order3 -> null 
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample6() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+        customers.remove(order3);
+
+        // Active customers should be null -> order2 -> null || order1 and order3 are now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertFalse(customers.getActiveCustomers().contains(order1));
+        assertTrue(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order2 -> null 
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample7() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order2);
+        customers.remove(order3);
+
+        // Active customers should be null -> null -> order1 || order2 and order3 are now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getActiveCustomers().contains(order1));
+        assertFalse(customers.getActiveCustomers().contains(order2));
+        assertFalse(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> null -> order1 
+        assertEquals(1, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order1, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample8() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.remove(order1);
+        customers.remove(order2);
+        customers.remove(order3);
+
+        // Active customers should be null -> null -> null || order1, order2, and order3 are now inactive
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(0, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> null -> null 
+        assertEquals(0, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample9() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+
+        // Active customers should be order5 -> order4 -> order3 || order1 and order2 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(3, customers.size());
+        assertEquals(2, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+
+        // Time passes!
+        assertEquals(order3, customers.timePasses());
+
+        // Active customers should be null -> order5 -> order4 || order3 is now also inactive
+        assertEquals(2, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample10() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+
+        // Active customers should be order5 -> order4 -> null || order1, order2, and order3 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order5 -> order4
+        assertEquals(2, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample11() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order4);
+
+        // Active customers should be order5 -> null -> order3 || order1, order2, and order4 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order5 -> order3
+        assertEquals(2, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample12() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order5);
+
+        // Active customers should be null -> order4 -> order3 || order1, order2, and order5 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(2, customers.size());
+        assertEquals(3, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order5));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertEquals(order3, customers.timePasses());
+
+        // Active customers should be null -> null -> order4 || order3 is now also inactive
+        assertEquals(1, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(inactiveCustomers.contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample13() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+        customers.remove(order4);
+
+        // Active customers should be order5 -> null -> null || order1, order2, order3, and order4 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(inactiveCustomers.contains(order4));
+        assertTrue(customers.getActiveCustomers().contains(order5));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> order5 -> null
+        assertEquals(1, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample14() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+        customers.remove(order5);
+
+        // Active customers should be null -> order4 -> null || order1, order2, order3, and order5 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(inactiveCustomers.contains(order5));
+        assertTrue(customers.getActiveCustomers().contains(order4));
+
+        assertFalse(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should be null -> null -> order4
+        assertEquals(1, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order4, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order4.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample15() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order4);
+        customers.remove(order5);
+
+        // Active customers should be null -> null -> order3 || order1, order2, order4, and order5 are inactive || the customerDeck is empty
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(1, customers.size());
+        assertEquals(4, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order4));
+        assertTrue(inactiveCustomers.contains(order5));
+        assertTrue(customers.getActiveCustomers().contains(order3));
+
+        assertFalse(customers.isEmpty());
+        assertEquals(order3, customers.peek());
+        assertTrue(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertEquals(order3, customers.timePasses());
+
+        // Active customers should be null -> null -> null || order3 is now inactive too
+        assertEquals(0, customers.size());
+        assertEquals(5, inactiveCustomers.size());
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+        assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order3.getStatus());
+    }
+
+    @Test
+    public void testTimePasses__PDFExample16() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+        Customers customers = getDeterministicCustomers();
+        // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
+
+        @SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+
+        customers.addCustomerOrder(); // order1 in active set
+        customers.addCustomerOrder(); // order2 in active set
+        customers.addCustomerOrder(); // order3 in active set
+        customers.addCustomerOrder(); // order4 in active set, order1 becomes inactive
+        customers.addCustomerOrder(); // order5 in active set, order2 becomes inactive
+        customers.remove(order3);
+        customers.remove(order4);
+        customers.remove(order5);
+
+        // Active customers should be null -> null -> null || all orders are inactive || the customerDeck is empty || the game should end soon
+
+        // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        assertEquals(0, customers.size());
+        assertEquals(5, inactiveCustomers.size());
+        assertTrue(customers.getCustomerDeck().isEmpty());
+        assertTrue(inactiveCustomers.contains(order1));
+        assertTrue(inactiveCustomers.contains(order2));
+        assertTrue(inactiveCustomers.contains(order3));
+        assertTrue(inactiveCustomers.contains(order4));
+        assertTrue(inactiveCustomers.contains(order5));
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+
+        // Time passes!
+        assertNull(customers.timePasses());
+
+        // Active customers should still be null -> null -> null
+        assertEquals(0, customers.size());
+        assertEquals(5, inactiveCustomers.size());
+
+        assertTrue(customers.isEmpty());
+        assertNull(customers.peek());
+        assertFalse(customers.customerWillLeaveSoon());
+    }
     
-    // // --- drawCustomer() ---
+    // --- drawCustomer() ---
 
     @Test
     public void testDrawCustomer__Init() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
