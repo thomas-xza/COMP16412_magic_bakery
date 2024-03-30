@@ -125,6 +125,8 @@ public class MagicBakery
 	
 	Collections.shuffle(((Stack)this.pantryDeck), this.random);
 
+	System.out.println("pantryDeck post-shuf: " + this.pantryDeck);
+
 	// System.out.println("Initialising hand");
 	
 	for (Player player : this.players) {

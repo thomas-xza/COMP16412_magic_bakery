@@ -77,7 +77,7 @@ public class Customers
 
 	if ( this.customerDeck.size() > 0 ) {
 
-	    System.out.println("customerDeck > 0");
+	    // System.out.println("customerDeck > 0");
 
 	    ((LinkedList)this.activeCustomers).set(
 			     0,
@@ -86,7 +86,7 @@ public class Customers
 
 	}
 
-	System.out.println("activeCustomers: " + this.activeCustomers);
+	// System.out.println("activeCustomers: " + this.activeCustomers);
 
 	return last_cust;
 

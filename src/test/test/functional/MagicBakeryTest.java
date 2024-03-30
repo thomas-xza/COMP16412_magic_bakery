@@ -2481,6 +2481,8 @@ public class MagicBakeryTest {
 
 		// First check the pantryDeck contents. If this is wrong, something is seriously wrong with either the pantryDeck itself, or pantryDeck is initialised before customers, or the seed is not used right
 
+		System.out.println("Expecting sugar at 0, 7, 13, 23, 31");
+
 		@SuppressWarnings("unchecked")
 		ArrayList<Ingredient> pantryDeck = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
 		assertEquals("sugar", pantryDeck.get(0).toString());
@@ -2497,7 +2499,7 @@ public class MagicBakeryTest {
 
 		System.out.println("counts  " + counts);
 
-		System.out.println("pantry  " + pantry);
+		System.out.println("expecting  butter=2, eggs=2, sugar=1");
 
 		System.out.println(counts.get(new Ingredient("butter")));
 		assertEquals(2, counts.get(new Ingredient("butter")));
