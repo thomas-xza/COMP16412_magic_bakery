@@ -2492,19 +2492,31 @@ public class MagicBakeryTest {
 		// Check the pantry. If pantryDeck was okay but pantry was not, it was probably initialised in the wrong order
 
 		HashMap<Ingredient, Integer> counts = countIngredients(bakery.getPantry());
+
+		System.out.println("shuf #2, part 2");
+
+		System.out.println("counts  " + counts);
+
+		System.out.println("pantry  " + pantry);
+
+		System.out.println(counts.get(new Ingredient("butter")));
 		assertEquals(2, counts.get(new Ingredient("butter")));
+		System.out.println("shuf #2, part 2.1");
 		assertEquals(2, counts.get(new Ingredient("eggs")));
+		System.out.println("shuf #2, part 2.2");
 		assertEquals(1, counts.get(new Ingredient("sugar")));
 
 		// If the players hands are wrong, they got the cards in the wrong order
 
 		Player[] players = bakery.getPlayers().toArray(new Player[0]);
 
+		System.out.println("shuf #2, part 3");
 		counts = countIngredients(players[0].getHand());
 		assertEquals(1, counts.get(new Ingredient("butter")));
 		assertEquals(1, counts.get(new Ingredient("eggs")));
 		assertEquals(1, counts.get(new Ingredient("sugar")));
 
+		System.out.println("shuf #2, part 4");
 		counts = countIngredients(players[1].getHand());
 		assertEquals(1, counts.get(new Ingredient("flour")));
 		assertEquals(1, counts.get(new Ingredient("eggs")));
