@@ -585,7 +585,7 @@ public class MagicBakery
 
     public void refreshPantry() throws TooManyActionsException {
 
-	System.out.println("called refreshPantry()");
+	// System.out.println("called refreshPantry()");
 	
 	// System.out.println(this.pantry);
 	
@@ -613,7 +613,7 @@ public class MagicBakery
 	
 	// System.out.println(this.pantry);
 	
-	System.out.println("exiting refreshPantry()");
+	// System.out.println("exiting refreshPantry()");
 	
     }
 

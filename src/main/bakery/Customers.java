@@ -36,8 +36,8 @@ public class Customers
 
     public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
 
-	this.activeCustomers = new Stack<CustomerOrder>();
-	
+	this.activeCustomers = new LinkedList<CustomerOrder>();
+
 	this.customerDeck = new LinkedList<CustomerOrder>();
 	
 	this.inactiveCustomers = new ArrayList<CustomerOrder>();
@@ -56,6 +56,14 @@ public class Customers
 		
 	}
 
+	int i = 0;
+
+	for ( i = 0 ; i < 3 ; i++ ) {
+
+	    this.activeCustomers.add(null);
+
+	}
+	
     }
 
     /**
@@ -65,11 +73,18 @@ public class Customers
 
     public CustomerOrder addCustomerOrder() {
 
-	
+	CustomerOrder last_cust = timePasses();
 
-	CustomerOrder a = CustomerOrder.fast_order();
+	if ( this.customerDeck.size() > 0 ) {
 
-	return a;
+	    ((LinkedList)this.activeCustomers).set(
+			     0,
+			     ((LinkedList)this.customerDeck).pop()
+						   );
+
+	}
+
+	return last_cust;
 
     }
 
@@ -79,6 +94,20 @@ public class Customers
      */
 
     public boolean customerWillLeaveSoon() {
+
+	CustomerOrder c = null;
+
+	try {
+
+	    c = (CustomerOrder)((LinkedList)this.activeCustomers).get(2);
+
+	} catch (Exception e) { ; }
+
+	if ( c == null ) {
+
+	    return false;
+
+	}
 
 	return true;
 
@@ -125,10 +154,20 @@ public class Customers
     
     public Collection<CustomerOrder> getFulfilable(List<Ingredient> hand) {
 
-	List<CustomerOrder> a = CustomerOrder.fast_order_list();
+	List<CustomerOrder> can_ff = new LinkedList<CustomerOrder>();
+	
+	for ( CustomerOrder a_cust : activeCustomers ) {
+	    
+	    if ( a_cust.canFulfill(hand) == true ) {
 
-	return a;
+		can_ff.add(a_cust);
 
+	    }
+
+	}
+
+	return can_ff;
+	
     }
 
     /**
@@ -139,9 +178,19 @@ public class Customers
     
     public Collection<CustomerOrder> getInactiveCustomersWithStatus(CustomerOrderStatus status) {
 
-	List<CustomerOrder> a = CustomerOrder.fast_order_list();
+	List<CustomerOrder> matches = new LinkedList<CustomerOrder>();
 
-	return a;
+	for ( CustomerOrder order : this.inactiveCustomers ) {
+
+	    if ( order.getStatus() == status ) {
+
+		matches.add(order);
+
+	    }
+
+	}
+	    
+	return matches;
 
     }
 
@@ -155,7 +204,7 @@ public class Customers
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
-	List<CustomerOrder> customers_list = null;
+	List<CustomerOrder> customers_list = new LinkedList<>();
 
 	// System.out.println("reading customer file");
 	
@@ -220,7 +269,9 @@ public class Customers
     
     public boolean isEmpty() {
 
-	return true;
+	if ( this.activeCustomers.size() == 0 ) { return true; }
+
+	return false;
 
     }
 
@@ -231,9 +282,13 @@ public class Customers
     
     public CustomerOrder peek() {
 
-	CustomerOrder a = CustomerOrder.fast_order();
+	if ( this.activeCustomers.size() == 0 ) {
 
-	return a;
+	    return null;
+
+	}
+
+	return (CustomerOrder)((LinkedList)this.activeCustomers).getLast();
 
     }
 
@@ -253,20 +308,46 @@ public class Customers
     
     public int size() {
 
-	return 0;
+	return activeCustomers.size();
 
     }
 
     /**
-     * something
+     * Assumes activeCustomers is consistently of length 3
      * @return order
      */    
 
     public CustomerOrder timePasses() {
 
-	CustomerOrder a = CustomerOrder.fast_order();
+	CustomerOrder last = (CustomerOrder)((LinkedList)this.activeCustomers).get(2);
 
-	return a;
+	if ( last != null ) {
+
+	    this.inactiveCustomers.add(last);
+
+	    ((LinkedList)this.activeCustomers).set(2, null);
+	    
+	}
+	    
+	//  Move card #1 to slot #2, clear slot #1
+
+	((LinkedList)this.activeCustomers).set(
+			     2,
+		             ((LinkedList)this.activeCustomers).get(1)
+					       );
+
+	((LinkedList)this.activeCustomers).set(1, null);
+
+	//  Move card #0 to slot #1, clear slot #0
+
+	((LinkedList)this.activeCustomers).set(
+			     1,
+		             ((LinkedList)this.activeCustomers).get(0)
+					       );
+
+	((LinkedList)this.activeCustomers).set(0, null);
+
+	return last;
 
     }
 
