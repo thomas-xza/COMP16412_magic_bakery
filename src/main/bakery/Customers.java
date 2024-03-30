@@ -87,20 +87,11 @@ public class Customers
 
     public CustomerOrder addCustomerOrder() {
 
+	System.out.println("customerDeck pretime: " + " " + this.customerDeck);
+
 	CustomerOrder last_cust = timePasses();
 
-	System.out.println("customerDeck: " + " " + this.customerDeck);
-
-	if ( this.customerDeck.size() > 0 ) {
-
-	    // System.out.println("customerDeck > 0");
-
-	    ((LinkedList)this.activeCustomers).set(
-			     0,
-			     ((LinkedList)this.customerDeck).removeLast()
-						   );
-
-	}
+	System.out.println("customerDeck posttime: " + " " + this.customerDeck);
 
 	System.out.println("activeCustomers: " + this.activeCustomers);
 
@@ -108,6 +99,65 @@ public class Customers
 
     }
 
+    /**
+     * Assumes activeCustomers is consistently of length 3
+     * @return order
+     */    
+
+    public CustomerOrder timePasses() {
+
+	int i = 0;
+
+	boolean filled_a_blank = false;
+
+	boolean overflowed = false;
+
+	LinkedList<CustomerOrder> picked_up = new LinkedList<>();
+
+	picked_up.addFirst(
+	     (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
+			   );
+
+	while ( overflowed == false && filled_a_blank == false ) {
+
+	    picked_up.addLast(
+		(CustomerOrder)((LinkedList)this.activeCustomers).get(i)
+				       );
+		
+	    if ( ((LinkedList)this.activeCustomers).get(i) == null ) {
+
+		filled_a_blank = true;
+
+		System.out.println("FILLED A BLANK");
+
+	    }
+
+	    ((LinkedList)this.activeCustomers).set(i,
+						   picked_up.removeFirst()
+						   );
+
+	    if ( i + 1 == 3 ) {
+
+		overflowed = true;
+
+		System.out.println("OVERFLOWED");
+
+		this.inactiveCustomers.add(
+					   picked_up.getFirst()
+					   );
+
+		return picked_up.getLast();
+
+	    }
+
+	    i += 1;
+
+	}
+
+	return null;
+	
+    }
+    
     /**
      * leave
      * @return true
@@ -392,10 +442,16 @@ public class Customers
     
     public void remove(CustomerOrder customer) {
 
-	int pos = ((LinkedList)this.activeCustomers).indexOf(customer);
-	((LinkedList)this.activeCustomers).set(pos, null);	
+	if ( this.activeCustomers.contains(customer) ) {
 
-	this.inactiveCustomers.add(customer);
+	    this.inactiveCustomers.add(customer);
+	    int pos = ((LinkedList)this.activeCustomers).indexOf(customer);
+
+	    System.out.println("pos  " + pos);
+	
+	    ((LinkedList)this.activeCustomers).set(pos, null);
+
+	}
 
     }
 
@@ -420,61 +476,6 @@ public class Customers
 
 	return i;
 
-    }
-
-    /**
-     * Assumes activeCustomers is consistently of length 3
-     * @return order
-     */    
-
-    public CustomerOrder timePasses() {
-
-	int i = 0;
-
-	boolean filled_a_blank = false;
-
-	boolean overflowed = false;
-
-	LinkedList<CustomerOrder> picked_up = new LinkedList<>();
-
-	picked_up.addFirst(
-	     (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
-			   );
-
-	while ( overflowed == false || filled_a_blank == false ) {
-
-	    picked_up.addLast(
-		(CustomerOrder)((LinkedList)this.activeCustomers).get(i)
-				       );
-		
-	    if ( ((LinkedList)this.activeCustomers).get(i) == null ) {
-
-		filled_a_blank = true;
-
-	    }
-
-	    ((LinkedList)this.activeCustomers).set(i,
-						   picked_up.removeFirst()
-						   );
-
-	    if ( i + 1 == 3 ) {
-
-		overflowed = true;
-
-		this.inactiveCustomers.add(
-					   picked_up.getLast()
-					   );
-
-		return picked_up.getLast();
-
-	    }
-
-	    i += 1;
-
-	}
-
-	return null;
-	
     }
 
     /**
