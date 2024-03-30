@@ -563,7 +563,6 @@ public class CustomerOrder
      * @return a
      */
 
-    @Override
     public String toString() {
 
 	return this.name;

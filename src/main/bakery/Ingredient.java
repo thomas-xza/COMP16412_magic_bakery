@@ -40,7 +40,6 @@ public class Ingredient
      * @return a
      */
 
-    @Override
     public boolean equals(Object o) {
 
 	if (o == null ||
@@ -60,7 +59,6 @@ public class Ingredient
      * @return a
      */
 
-    @Override
     public int hashCode() {
 
 	return this.name.hashCode();
@@ -73,7 +71,6 @@ public class Ingredient
      * @return a
      */
 
-    @Override
     public int compareTo(Ingredient o) {
 
 	if ( o.toString() == null ) {
@@ -90,18 +87,6 @@ public class Ingredient
 
     }
 
-
-    // @Override
-    // /**
-    //  *  func
-    //  * @param o a
-    //  * @return a
-    //  */
-    // public int compareTo(Object o) {
-
-    // 	this.name.compareTo(o.name);
-
-    // }
 
     /**
      *  func
