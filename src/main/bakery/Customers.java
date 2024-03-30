@@ -89,7 +89,7 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
-	timePasses();
+	System.out.println("customerDeck: " + " " + this.customerDeck);
 
 	if ( this.customerDeck.size() > 0 ) {
 
@@ -97,12 +97,12 @@ public class Customers
 
 	    ((LinkedList)this.activeCustomers).set(
 			     0,
-			     ((LinkedList)this.customerDeck).removeFirst()
+			     ((LinkedList)this.customerDeck).removeLast()
 						   );
 
 	}
 
-	// System.out.println("activeCustomers: " + this.activeCustomers);
+	System.out.println("activeCustomers: " + this.activeCustomers);
 
 	return last_cust;
 
@@ -128,6 +128,8 @@ public class Customers
 	    return false;
 
 	}
+
+	System.out.println("customerWillLeaveSoon() true:  " + c);
 
 	return true;
 

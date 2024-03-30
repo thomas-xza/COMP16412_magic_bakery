@@ -228,12 +228,12 @@ public class CustomerOrder
 
     }
 
+    @Override
     /**
      *  func
      * @param o a
      * @return a
      */
-
     public boolean equals(Object o) {
 
 	if (o == null ||
@@ -248,23 +248,23 @@ public class CustomerOrder
 
     }
 
+    @Override
     /**
      *  func
      * @return a
      */
-
     public int hashCode() {
 
 	return this.name.hashCode();
 
     }
 
+    @Override
     /**
      *  func
      * @param o a
      * @return a
      */
-
     public int compareTo(CustomerOrder o) {
 
 	if ( o.toString() == null ) {

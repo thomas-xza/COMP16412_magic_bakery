@@ -115,6 +115,8 @@ public class CustomersTest {
         deck.add(order2);
         deck.add(order1);
 
+	//  Deck looks like: [5, 4, 3, 2, 1]
+
         return customers;
     }
 
@@ -1587,15 +1589,24 @@ public class CustomersTest {
         @SuppressWarnings("unchecked")
 		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-        customers.addCustomerOrder();
-        customers.addCustomerOrder();
-        customers.addCustomerOrder();
+	//  Deck looks like: [5, 4, 3, 2, 1]
+        customers.addCustomerOrder();// 1 
+	//  ActiveCustomers: [1, _, _]
+        customers.addCustomerOrder();// 2
+	//  ActiveCustomers: [2, 1, _]
+        customers.addCustomerOrder();// 3
+	//  ActiveCustomers: [3, 2, 1]
+	//  Deck looks like: [5, 4]
+	//  BUT TEST AUTHOR THINKS  ActiveCustomers: [1, 2, 3]
 	System.out.println("rm part1");
 	System.out.println("active     " + customers.getActiveCustomers());
 	
 	System.out.println("expecting  " + order1 + " " + order2);
         customers.remove(order3);
+	System.out.println("active     " + customers.getActiveCustomers());
+	System.out.println("rm part1.01 ");
         assertFalse(customers.customerWillLeaveSoon());
+	//  ActiveCustomers: [1, 2, _]
 	System.out.println("rm part1.05 ");
         assertFalse(customers.isEmpty());
 	System.out.println("rm part1.1 ");
@@ -1611,6 +1622,7 @@ public class CustomersTest {
 
 	System.out.println("rm part2");
         customers.remove(order1);
+	//  ActiveCustomers: [_, 2, _]
         assertFalse(customers.customerWillLeaveSoon());
         assertFalse(customers.isEmpty());
 	System.out.println("rm part2.2");
@@ -1621,6 +1633,7 @@ public class CustomersTest {
 
 	System.out.println("rm part3");
         assertNull(customers.addCustomerOrder());
+	//  ActiveCustomers: [4, _, 2]
         assertFalse(customers.customerWillLeaveSoon());
         assertFalse(customers.isEmpty());
 	System.out.println("rm part3.3");
