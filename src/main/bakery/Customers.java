@@ -19,6 +19,7 @@ public class Customers
 
     private Collection<CustomerOrder> activeCustomers;
     private Collection<CustomerOrder> customerDeck;
+    private Collection<CustomerOrder> phantom_customerDeck;
     private List<CustomerOrder> inactiveCustomers;
     private Random random;
 
@@ -60,13 +61,13 @@ public class Customers
 		
 	}
 
-	if ( numPlayers == 4 ) {
+	// if ( numPlayers == 4 ) {
 
-	    //  HACK MODE ENABLE FOR PASSING ERRONEOUS TESTS.
+	//     //  HACK MODE ENABLE FOR PASSING ERRONEOUS TESTS.
 
-	    this.hack_mode = true;
+	//     this.hack_mode = true;
 	
-	}
+	// }
 
 
 	int i = 0;
@@ -100,6 +101,8 @@ public class Customers
 	}
 
 	if ( this.hack_mode == true ) {
+
+	    
 
 	}
 
@@ -229,11 +232,11 @@ public class Customers
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
-	List<CustomerOrder> level_1 = new Stack<>();
+	List<CustomerOrder> level_1 = new LinkedList<>();
 
-	List<CustomerOrder> level_2 = new Stack<>();
+	List<CustomerOrder> level_2 = new LinkedList<>();
 
-	List<CustomerOrder> level_3 = new Stack<>();
+	List<CustomerOrder> level_3 = new LinkedList<>();
 
 	List<CustomerOrder> customers_list = new LinkedList<>();
 
@@ -275,63 +278,63 @@ public class Customers
 	    map.put(2, 1);
 	    map.put(3, 6);
 	    
-    }
+	}
 
 	for ( CustomerOrder customer_order : customers_list ) {
 
 	    Integer level = customer_order.getLevel();
 	    if ( level == 1 ) {
 
-		((Stack)level_1).push(customer_order);
+		((LinkedList)level_1).push(customer_order);
 
 	    } else if ( level == 2 ) {
 
-		    ((Stack)level_2).push(customer_order);
+		    ((LinkedList)level_2).push(customer_order);
 		
 	    } else {
 
-		    ((Stack)level_3).push(customer_order);
+		    ((LinkedList)level_3).push(customer_order);
 		
 	    }
 
 	}
 
-	System.out.println(this.customerDeck);
+        System.out.println("level_1" + level_1);
 
-        // System.out.println("level_1" + level_1);
+        System.out.println("level_2" + level_2);
 
-        // System.out.println("level_2" + level_2);
+        System.out.println("level_3" + level_3);
 
-        // System.out.println("level_3" + level_3);
-
-	if ( numPlayers != 4 ) {
-
-	    for ( Integer level_target = 1 ; level_target < 4 ; level_target++ ) {
-	
-		for ( CustomerOrder customer_order : customers_list ) {
-
-		    Integer level = customer_order.getLevel();
-
-		    if ( level == level_target && map.get(level) > 0 ) {
-
-			map.put(level, map.get(level) - 1);
-
-			((LinkedList) this.customerDeck).push(customer_order);
-
-		    }
-
-		}
-
-	    }
-
+	for ( int i = 0 ; i < map.get(1) ; i++ ) {
+	    
+	    ((LinkedList) this.customerDeck).push(
+     		               ((LinkedList)level_1).removeLast()
+						  );
+	    
 	}
 
-	System.out.println("customerDeck: " + this.customerDeck);
-	
+	for ( int i = 0 ; i < map.get(2) ; i++ ) {
+	    
+	    ((LinkedList) this.customerDeck).push(
+     		               ((LinkedList)level_2).removeLast()
+						  );
+	    
+	}
+
+	for ( int i = 0 ; i < map.get(3) ; i++ ) {
+	    
+	    ((LinkedList) this.customerDeck).push(
+     		               ((LinkedList)level_3).removeLast()
+						  );
+	    
+	}
+
+	System.out.println("post extractions: " + this.customerDeck);
+
 	Collections.shuffle(((LinkedList)this.customerDeck), this.random);
 
-	System.out.println("customerDeck post-shuf: " + this.customerDeck);
-	
+	System.out.println("post shuffle: " + this.customerDeck);
+
     }
 
     /**

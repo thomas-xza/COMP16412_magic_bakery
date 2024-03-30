@@ -2609,20 +2609,25 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__TwoPlayers__EulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-        Customers customers = new Customers("./io/customers.csv", new Random(271828), layers, 2);
+
+	System.out.println("##  customer shuf 2");
+	Customers customers = new Customers("./io/customers.csv", new Random(271828), layers, 2);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
-        assertEquals("millionaire's shortbread", customerDeck.get(0).toString());
-        assertEquals("viennese whirls", customerDeck.get(1).toString());
-        assertEquals("chocolate bombe", customerDeck.get(2).toString());
-        assertEquals("custard tart", customerDeck.get(3).toString());
-        assertEquals("chocolate chip scones", customerDeck.get(4).toString());
-        assertEquals("pistachio ganache macarons", customerDeck.get(5).toString());
-        assertEquals("mille feuille", customerDeck.get(6).toString());
+        assertEquals("millionaire's shortbread", customerDeck.get(0).toString());   // l1
+        assertEquals("chocolate bombe", customerDeck.get(2).toString());            // l1
+        assertEquals("chocolate chip scones", customerDeck.get(4).toString());      // l1
+        assertEquals("pistachio ganache macarons", customerDeck.get(5).toString()); // l1
+	
+        assertEquals("custard tart", customerDeck.get(3).toString());               // l2
+        assertEquals("mille feuille", customerDeck.get(6).toString());              // l2
+	
+        assertEquals("viennese whirls", customerDeck.get(1).toString());            // l3
     }
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__FivePlayers__EulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	System.out.println("##  customer shuf 5a");
         Customers customers = new Customers("./io/customers.csv", new Random(271828), layers, 5);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
@@ -2637,6 +2642,7 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__FivePlayers__AvoSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	System.out.println("##  customer shuf 5b");
         Customers customers = new Customers("./io/customers.csv", new Random(602214076), layers, 5);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
@@ -2651,6 +2657,7 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__FivePlayers__TauSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	System.out.println("##  customer shuf 5c");
         Customers customers = new Customers("./io/customers.csv", new Random(628318530), layers, 5);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
