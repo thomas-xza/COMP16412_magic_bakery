@@ -127,12 +127,6 @@ public class MagicBakery
 
 	// System.out.println("Initialising hand");
 	
-	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
-	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
-	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
-	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
-	pantry.add(((Ingredient)((Stack)this.pantryDeck).pop()));
-	
 	for (Player player : this.players) {
 
 	    player.addToHand(((Ingredient)((Stack)this.pantryDeck).pop()));
