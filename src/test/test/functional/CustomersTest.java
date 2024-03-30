@@ -1632,6 +1632,8 @@ public class CustomersTest {
 
     @Test
     public void testTimePasses__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+
+	System.out.println("##  TP PDFExample 1");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -1645,37 +1647,67 @@ public class CustomersTest {
         // Active customers should be order3 -> order2 -> order1
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+	System.out.println("ex1 part 0");
+
         assertEquals(3, customers.size());
         assertEquals(0, inactiveCustomers.size());
+	System.out.println("ex1 part 0.5");
+
+	// System.out.println(customers.getActiveCustomers());
+
+	try {
+	    System.out.println(customers.getActiveCustomers().contains(order1));
+	} catch (Exception e ) {
+	    System.out.println("contains failed" + e);
+	    System.out.println(order1);
+
+	}
+
         assertTrue(customers.getActiveCustomers().contains(order1));
+	System.out.println("ex1 part 0.5.1");
         assertTrue(customers.getActiveCustomers().contains(order2));
+	System.out.println("ex1 part 0.5.2");
         assertTrue(customers.getActiveCustomers().contains(order3));
+
+	System.out.println("ex1 part 1");
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
         assertTrue(customers.customerWillLeaveSoon());
+	System.out.println("ex1 part 1.5");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
 
+	System.out.println("ex1 part 2");
+
         // Time passes!
         assertEquals(order1, customers.timePasses());
+	System.out.println("ex1 part 2.5");
+
 
         // Active customers should be empty -> order3 -> order2 || order1 is now inactive
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order1));
 
+	System.out.println("ex1 part 3");
+
         assertFalse(customers.isEmpty());
         assertEquals(order2, customers.peek());
         assertFalse(customers.customerWillLeaveSoon());
+	System.out.println("ex1 part 3.5");
+
         assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
+	System.out.println("ex1 part 4");
+
     }
 
     @Test
     public void testTimePasses__PDFExample2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+	System.out.println("##  TP PDFExample 2");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -1717,6 +1749,7 @@ public class CustomersTest {
 
     @Test
     public void testTimePasses__PDFExample3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+	System.out.println("##  TP PDFExample 3");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 

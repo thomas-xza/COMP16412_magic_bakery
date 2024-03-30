@@ -467,7 +467,7 @@ public class MagicBakery
 
     public Collection<Layer> getLayers() {
 
-	System.out.println(this.layers);
+	// System.out.println(this.layers);
 
 	return this.layers;
 

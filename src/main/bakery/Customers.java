@@ -77,12 +77,16 @@ public class Customers
 
 	if ( this.customerDeck.size() > 0 ) {
 
+	    System.out.println("customerDeck > 0");
+
 	    ((LinkedList)this.activeCustomers).set(
 			     0,
 			     ((LinkedList)this.customerDeck).pop()
 						   );
 
 	}
+
+	System.out.println("activeCustomers: " + this.activeCustomers);
 
 	return last_cust;
 
@@ -131,7 +135,11 @@ public class Customers
     
     public Collection<CustomerOrder> getActiveCustomers() {
 
-	return activeCustomers;
+	System.out.println(
+		"size of activeCustomers: " + this.activeCustomers.size());
+	System.out.println(this.activeCustomers);
+
+	return this.activeCustomers;
 
     }
 

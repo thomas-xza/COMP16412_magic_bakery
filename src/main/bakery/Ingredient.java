@@ -39,13 +39,15 @@ public class Ingredient
      * @param o a
      * @return a
      */
+
+    @Override
     public boolean equals(Object o) {
 
 	if (o == null) {
 
 	    return false;
 
-	} if ( this.name == o.toString() ) {
+	} if ( this.name.equals(o.toString()) ) {
 
 	    return true;
 
@@ -57,15 +59,15 @@ public class Ingredient
 
     }
 
-    /**
-     *  func
-     * @return a
-     */
-    public int hashCode() {
+    // /**
+    //  *  func
+    //  * @return a
+    //  */
+    // public int hashCode() {
 
-	return 1;
+    // 	return 1;
 
-    }
+    // }
 
     /**
      *  func
@@ -74,19 +76,19 @@ public class Ingredient
      */
 
     @Override
-    public int compareTo(Ingredient ingredient) {
+    public int compareTo(Object o) {
 
-	if ( ingredient.name == null ) {
+	if ( o.toString() == null ) {
 
 	    return -1;
 
-	} else if ( this.name == ingredient.name ) {
+	} else if ( this.name.equals(o.toString()) ) {
 
 	    return 0;
 
 	}
 
-	return this.name.compareTo(ingredient.name);
+	return this.name.compareTo(o.toString());
 
     }
 

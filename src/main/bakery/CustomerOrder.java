@@ -12,8 +12,8 @@ import bakery.*;
  */
 
 public class CustomerOrder
-    implements Serializable {
-
+    implements Serializable, Comparable<CustomerOrder> {
+    
     private String name;
 
     private int level;
@@ -225,6 +225,64 @@ public class CustomerOrder
 	}
 
 	return output;
+
+    }
+
+    /**
+     *  func
+     * @param o a
+     * @return a
+     */
+
+    @Override
+    public boolean equals(Object o) {
+
+	if (o == null) {
+
+	    return false;
+
+	} if ( this.name.equals(o.toString()) ) {
+
+	    return true;
+
+	} else {
+
+	    return false;
+
+	}
+
+    }
+
+    // /**
+    //  *  func
+    //  * @return a
+    //  */
+    // public int hashCode() {
+
+    // 	return 1;
+
+    // }
+
+    /**
+     *  func
+     * @param ingredient a
+     * @return a
+     */
+
+    @Override
+    public int compareTo(Object o) {
+
+	if ( o.toString() == null ) {
+
+	    return -1;
+
+	} else if ( this.name.equals(o.toString()) ) {
+
+	    return 0;
+
+	}
+
+	return this.name.compareTo(o.toString());
 
     }
 
@@ -482,10 +540,11 @@ public class CustomerOrder
      * a
      * @return a
      */
-    
+
+    @Override
     public String toString() {
 
-	return name;
+	return this.name;
 	
     }
 

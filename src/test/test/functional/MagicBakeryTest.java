@@ -1408,7 +1408,7 @@ public class MagicBakeryTest {
 			counts.merge(ing.toString(), 1, Integer::sum);
 		}
 
-		System.out.println(counts);
+		// System.out.println(counts);
 
 		assertEquals(6, counts.size());
 		assertEquals(1, counts.get("biscuit"));
@@ -2063,7 +2063,7 @@ public class MagicBakeryTest {
 
 		assertEquals(5, pantry.size());
 
-		System.out.println("New pantry");
+		// System.out.println("New pantry");
 
 		ArrayList<Ingredient> pantryCopy = new ArrayList<Ingredient>(pantry);
 		ArrayList<Ingredient> pantryDiscardCopy = new ArrayList<Ingredient>(pantryDiscard);
@@ -2071,7 +2071,7 @@ public class MagicBakeryTest {
 		bakery.refreshPantry();
 		assertEquals(5, pantry.size());
 		
-		System.out.println("New pantry #2");
+		// System.out.println("New pantry #2");
 
 		assertEquals(pantryCopy.size() + pantryDiscardCopy.size(), pantryDiscard.size());
 		for (Ingredient ing: pantryCopy) {
