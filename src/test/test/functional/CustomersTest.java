@@ -2438,23 +2438,29 @@ public class CustomersTest {
 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
         assertEquals(5, customerDeck.size());
+        System.out.println("p1");
 
         assertEquals(order1, customers.drawCustomer());
+        System.out.println("p2");
         assertEquals(4, customerDeck.size());
         assertFalse(customerDeck.contains(order1));
 
+        System.out.println("p3");
         assertEquals(order2, customers.drawCustomer());
         assertEquals(3, customerDeck.size());
         assertFalse(customerDeck.contains(order2));
 
+        System.out.println("p4");
         assertEquals(order3, customers.drawCustomer());
         assertEquals(2, customerDeck.size());
         assertFalse(customerDeck.contains(order3));
 
+        System.out.println("p5");
         assertEquals(order4, customers.drawCustomer());
         assertEquals(1, customerDeck.size());
         assertFalse(customerDeck.contains(order4));
 
+        System.out.println("p6");
         assertEquals(order5, customers.drawCustomer());
         assertEquals(0, customerDeck.size());
         assertFalse(customerDeck.contains(order5));
@@ -2464,6 +2470,7 @@ public class CustomersTest {
 	public void testDrawCustomer__AddAll() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
         Customers customers = new Customers("./io/customers.csv", new Random(12345), layers, 4);
 
+	System.out.println("testDrawCustomer__AddAll()");
         @SuppressWarnings("unchecked")
 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 

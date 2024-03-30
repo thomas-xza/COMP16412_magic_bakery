@@ -195,7 +195,7 @@ public class Customers
    
     public CustomerOrder drawCustomer() {
 
-	return (CustomerOrder)((LinkedList)this.customerDeck).pop();
+	return (CustomerOrder)((LinkedList)this.customerDeck).removeLast();
 
     }
 
@@ -236,12 +236,16 @@ public class Customers
 	List<CustomerOrder> can_ff = new LinkedList<CustomerOrder>();
 	
 	for ( CustomerOrder a_cust : activeCustomers ) {
+
+	    try {
 	    
-	    if ( a_cust.canFulfill(hand) == true ) {
+		if ( a_cust.canFulfill(hand) == true ) {
 
-		can_ff.add(a_cust);
+		    can_ff.add(a_cust);
 
-	    }
+		}
+
+	    } catch (Exception e) {;}
 
 	}
 
@@ -358,11 +362,11 @@ public class Customers
 
 	}
 
-        System.out.println("level_1" + level_1);
+        // System.out.println("level_1" + level_1);
 
-        System.out.println("level_2" + level_2);
+        // System.out.println("level_2" + level_2);
 
-        System.out.println("level_3" + level_3);
+        // System.out.println("level_3" + level_3);
 
 	for ( int i = 0 ; i < map.get(1) ; i++ ) {
 	    
@@ -388,7 +392,7 @@ public class Customers
 	    
 	}
 
-	System.out.println("post extractions: " + this.customerDeck);
+	// System.out.println("post extractions: " + this.customerDeck);
 
 	Collections.shuffle(((LinkedList)this.customerDeck), this.random);
 
