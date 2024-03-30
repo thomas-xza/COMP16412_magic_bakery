@@ -242,13 +242,13 @@ public class Customers
 		System.out.println(CustomerOrder.list_to_quantities(a_cust.getRecipe(), 0));
 		System.out.println(CustomerOrder.list_to_quantities(hand, 0));
 	
-		boolean res = compare_quantities(
+		boolean res = CustomerOrder.compare_quantities(
 				CustomerOrder.list_to_quantities(a_cust.getRecipe(), 0),
 				CustomerOrder.list_to_quantities(hand, 0),
 				0
 				);
 	    
-		if ( a_cust.canFulfill(hand) == true ) {
+		if ( res == true ) {
 
 		    can_ff.add(a_cust);
 

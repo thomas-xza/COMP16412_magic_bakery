@@ -292,9 +292,6 @@ public class CustomerOrder
 
 	// System.out.println(this.name);
 
-	System.out.println(list_to_quantities(recipe, 0));
-	System.out.println(list_to_quantities(ingredients, 0));
-	
 	boolean res = compare_quantities(
 					 list_to_quantities(recipe, 1),
 					 list_to_quantities(ingredients, 1),
