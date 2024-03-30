@@ -593,7 +593,7 @@ public class MagicBakery
 
 	int i = 0;
 
-	for ( i = 0 ; i < 5 ; i++ ) {
+	while ( this.pantry.size() > 0 ) {
 
 	    ((Stack) this.pantryDiscard).push(
 		        ((LinkedList)this.pantry).removeLast()
