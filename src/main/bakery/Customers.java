@@ -97,7 +97,7 @@ public class Customers
 
 	    ((LinkedList)this.activeCustomers).set(
 			     0,
-			     ((LinkedList)this.customerDeck).pop()
+			     ((LinkedList)this.customerDeck).removeFirst()
 						   );
 
 	}
@@ -340,7 +340,23 @@ public class Customers
     
     public boolean isEmpty() {
 
-	if ( this.activeCustomers.size() == 0 ) { return true; }
+	int count = 0;
+
+	for ( CustomerOrder c : this.activeCustomers ) {
+
+	    if ( c != null ) {
+
+		count += 1;
+
+	    }
+
+	}
+
+	if ( count == 0 ) {
+
+	    return true;
+
+	}
 
 	return false;
 

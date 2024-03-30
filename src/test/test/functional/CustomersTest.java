@@ -107,7 +107,7 @@ public class CustomersTest {
         order4.setStatus(CustomerOrderStatus.WAITING);
         order5.setStatus(CustomerOrderStatus.WAITING);
 
-	System.out.println("Deterministic customers" + " " + order1 + " " + order2 + " " + order3 + " " + order4 + " " + order5);
+	System.out.println("getDeterministicCustomers()" + " " + order1 + " " + order2 + " " + order3 + " " + order4 + " " + order5 + "\n");
 
         deck.add(order5);
         deck.add(order4);
@@ -1591,13 +1591,22 @@ public class CustomersTest {
         customers.addCustomerOrder();
         customers.addCustomerOrder();
 	System.out.println("rm part1");
+	System.out.println("active     " + customers.getActiveCustomers());
+	
+	System.out.println("expecting  " + order1 + " " + order2);
         customers.remove(order3);
         assertFalse(customers.customerWillLeaveSoon());
+	System.out.println("rm part1.05 ");
         assertFalse(customers.isEmpty());
-	System.out.println("rm part1.1");
+	System.out.println("rm part1.1 ");
+	System.out.println("active customers" + customers.getActiveCustomers());
+	System.out.println("order1 " +order1);
         assertEquals(order1, customers.peek());
+	System.out.println("rm part1.2");
         assertEquals(2, customers.size());
+	System.out.println("rm part1.3");
         assertEquals(1, inactiveCustomers.size());
+	System.out.println("rm part1.4");
         assertTrue(inactiveCustomers.contains(order3));
 
 	System.out.println("rm part2");
