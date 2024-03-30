@@ -238,6 +238,15 @@ public class Customers
 	for ( CustomerOrder a_cust : activeCustomers ) {
 
 	    try {
+
+		System.out.println(CustomerOrder.list_to_quantities(a_cust.getRecipe(), 0));
+		System.out.println(CustomerOrder.list_to_quantities(hand, 0));
+	
+		boolean res = compare_quantities(
+				CustomerOrder.list_to_quantities(a_cust.getRecipe(), 0),
+				CustomerOrder.list_to_quantities(hand, 0),
+				0
+				);
 	    
 		if ( a_cust.canFulfill(hand) == true ) {
 
