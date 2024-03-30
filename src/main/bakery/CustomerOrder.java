@@ -292,9 +292,12 @@ public class CustomerOrder
 
 	// System.out.println(this.name);
 
+	System.out.println(list_to_quantities(recipe, 0));
+	System.out.println(list_to_quantities(ingredients, 0));
+	
 	boolean res = compare_quantities(
-					 list_to_quantities(recipe),
-					 list_to_quantities(ingredients),
+					 list_to_quantities(recipe, 0),
+					 list_to_quantities(ingredients, 0),
 					 0
 					 );
 
@@ -339,8 +342,8 @@ public class CustomerOrder
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = compare_quantities(
-					 list_to_quantities(garnish),
-					 list_to_quantities(ingredients),
+					 list_to_quantities(garnish, 1),
+					 list_to_quantities(ingredients, 1),
 					 0
 					 );
 
@@ -400,8 +403,8 @@ public class CustomerOrder
 	}
 
 	can_f_g = compare_quantities(
-				     list_to_quantities(recipe_and_garnish),
-				     list_to_quantities(ingredients),
+				     list_to_quantities(recipe_and_garnish, 1),
+				     list_to_quantities(ingredients, 1),
 				     1
 				     );
 
@@ -578,10 +581,11 @@ public class CustomerOrder
     /**
      * a
      * @param elements a
+     * @param fragment a
      * @return a
      */
 
-    public static Map<String, Integer> list_to_quantities(List<Ingredient> elements) {
+    public static Map<String, Integer> list_to_quantities(List<Ingredient> elements, int fragment) {
 
 	List<Ingredient> raw_ingrds = new ArrayList<>();
 
@@ -589,7 +593,11 @@ public class CustomerOrder
 
 	String e_str = "";
 
-	raw_ingrds = to_raw_ingredients(elements);
+	if ( fragment == 1 ) {
+
+	    raw_ingrds = to_raw_ingredients(elements);
+
+	} else { raw_ingrds.addAll(elements); }
 
 	for ( Ingredient e : raw_ingrds ) {
 

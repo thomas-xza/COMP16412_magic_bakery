@@ -141,7 +141,7 @@ public class Player
      
     public String getHandStr() {
 
-	Map<String, Integer> hand_map = CustomerOrder.list_to_quantities(hand);
+	Map<String, Integer> hand_map = CustomerOrder.list_to_quantities(hand, 1);
 
 	List<String> hand_list = new ArrayList<String>();
 

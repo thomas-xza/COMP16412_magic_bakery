@@ -83,8 +83,8 @@ public class Layer extends Ingredient
     public boolean canBake(List<Ingredient> ingredients) {
 
         boolean res = CustomerOrder.compare_quantities(
-			CustomerOrder.list_to_quantities(this.recipe),
-		        CustomerOrder.list_to_quantities(ingredients),
+			CustomerOrder.list_to_quantities(this.recipe, 1),
+			CustomerOrder.list_to_quantities(ingredients, 1),
 			0
                                          );
 
