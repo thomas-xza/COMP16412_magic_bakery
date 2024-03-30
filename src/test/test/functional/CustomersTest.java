@@ -490,7 +490,7 @@ public class CustomersTest {
 	System.out.println("AddCustomerOrder p6");
         assertFalse(customers.isEmpty());
 	System.out.println("AddCustomerOrder p7");
-        assertNull(customers.peek()); 
+        assertNull(customers.peek());  //  Another bug, as isEmpty() was false, and customers.size() was 1...
     }
 
     @Test
