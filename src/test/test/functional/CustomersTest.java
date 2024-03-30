@@ -1597,16 +1597,18 @@ public class CustomersTest {
         customers.addCustomerOrder();// 3
 	//  ActiveCustomers: [3, 2, 1]
 	//  Deck looks like: [5, 4]
+	
 	//  BUT TEST AUTHOR THINKS  ActiveCustomers: [1, 2, 3]
 	System.out.println("rm part1");
 	System.out.println("active     " + customers.getActiveCustomers());
 	
 	System.out.println("expecting  " + order1 + " " + order2);
         customers.remove(order3);
+	//  TEST AUTHOR THINKS      ActiveCustomers: [1, 2, _]
+	//  BUT IS ACTUALLY         ActiveCustomers: [_, 2, 1]
 	System.out.println("active     " + customers.getActiveCustomers());
 	System.out.println("rm part1.01 ");
-        assertFalse(customers.customerWillLeaveSoon());
-	//  ActiveCustomers: [1, 2, _]
+        assertFalse(customers.customerWillLeaveSoon());  // Wrong assertFalse, customer #1 will leave soon.
 	System.out.println("rm part1.05 ");
         assertFalse(customers.isEmpty());
 	System.out.println("rm part1.1 ");
@@ -2399,6 +2401,8 @@ public class CustomersTest {
 
     @Test
     public void testDrawCustomer__Init() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+
+	System.out.println("testDrawCustomer__INIT()");
         Customers customers = getDeterministicCustomers();
 
         @SuppressWarnings("unchecked")
