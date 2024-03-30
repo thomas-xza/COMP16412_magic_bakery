@@ -12,7 +12,7 @@ import bakery.*;
  */
 
 public class CustomerOrder
-    implements Serializable, Comparable<CustomerOrder> {
+    implements Serializable { //, Comparable<CustomerOrder> {
     
     private String name;
 
@@ -228,30 +228,30 @@ public class CustomerOrder
 
     }
 
-    /**
-     *  func
-     * @param o a
-     * @return a
-     */
+    // /**
+    //  *  func
+    //  * @param o a
+    //  * @return a
+    //  */
 
-    @Override
-    public boolean equals(Object o) {
+    // @Override
+    // public boolean equals(Object o) {
 
-	if (o == null) {
+    // 	if (o == null) {
 
-	    return false;
+    // 	    return false;
 
-	} if ( this.name.equals(o.toString()) ) {
+    // 	} if ( this.name.equals(o.toString()) ) {
 
-	    return true;
+    // 	    return true;
 
-	} else {
+    // 	} else {
 
-	    return false;
+    // 	    return false;
 
-	}
+    // 	}
 
-    }
+    // }
 
     /**
      *  func
@@ -259,7 +259,7 @@ public class CustomerOrder
      */
     public int hashCode() {
 
-	return 1;
+	return this.name.hashCode() + this.recipe.hashCode();
 
     }
     
@@ -286,27 +286,27 @@ public class CustomerOrder
 
     // }
 
-    /**
-     *  func
-     * @param o a
-     * @return a
-     */
+    // /**
+    //  *  func
+    //  * @param o a
+    //  * @return a
+    //  */
 
-    public int compareTo(Object o) {
+    // public int compareTo(Object o) {
 
-	if ( o.toString() == null ) {
+    // 	if ( o.toString() == null ) {
 
-	    return -1;
+    // 	    return -1;
 
-	} else if ( this.name.equals(o.toString()) ) {
+    // 	} else if ( this.name.equals(o.toString()) ) {
 
-	    return 0;
+    // 	    return 0;
 
-	}
+    // 	}
 
-	return this.name.compareTo(o.toString());
+    // 	return this.name.compareTo(o.toString());
 
-    }
+    // }
 
     /**
      * a

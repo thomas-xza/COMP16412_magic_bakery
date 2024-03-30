@@ -63,7 +63,7 @@ public class Ingredient
     @Override
     public int hashCode() {
 
-	return 1;
+	return this.name.hashCode();
 
     }
 
@@ -73,7 +73,8 @@ public class Ingredient
      * @return a
      */
 
-    public int compareTo(Object o) {
+    @Override
+    public int compareTo(Ingredient o) {
 
 	if ( o.toString() == null ) {
 
@@ -88,30 +89,6 @@ public class Ingredient
 	return this.name.compareTo(o.toString());
 
     }
-
-
-    /**
-     *  func
-     * @param o a
-     * @return a
-     */
-
-    // @Override
-    // public int compareTo(Ingredient o) {
-
-    // 	if ( o.toString() == null ) {
-
-    // 	    return -1;
-
-    // 	} else if ( this.name.equals(o.toString()) ) {
-
-    // 	    return 0;
-
-    // 	}
-
-    // 	return this.name.compareTo(o.toString());
-
-    // }
 
 
     // @Override

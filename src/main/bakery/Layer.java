@@ -99,7 +99,7 @@ public class Layer extends Ingredient
     
     public int hashCode() {
 
-	return 1;
+	return this.toString().hashCode() + this.recipe.hashCode();
 
     }
 
