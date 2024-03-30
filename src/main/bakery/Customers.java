@@ -307,7 +307,7 @@ public class Customers
 
 	for ( int i = 0 ; i < map.get(1) ; i++ ) {
 	    
-	    ((LinkedList) this.customerDeck).push(
+	    ((LinkedList) this.customerDeck).addLast(
      		               ((LinkedList)level_1).removeLast()
 						  );
 	    
@@ -315,7 +315,7 @@ public class Customers
 
 	for ( int i = 0 ; i < map.get(2) ; i++ ) {
 	    
-	    ((LinkedList) this.customerDeck).push(
+	    ((LinkedList) this.customerDeck).addLast(
      		               ((LinkedList)level_2).removeLast()
 						  );
 	    
@@ -323,7 +323,7 @@ public class Customers
 
 	for ( int i = 0 ; i < map.get(3) ; i++ ) {
 	    
-	    ((LinkedList) this.customerDeck).push(
+	    ((LinkedList) this.customerDeck).addLast(
      		               ((LinkedList)level_3).removeLast()
 						  );
 	    
