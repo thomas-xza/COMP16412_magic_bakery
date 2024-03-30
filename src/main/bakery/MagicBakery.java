@@ -127,6 +127,8 @@ public class MagicBakery
 
 	System.out.println("pantryDeck post-shuf: " + this.pantryDeck);
 
+	refreshPantry();
+	
 	// System.out.println("Initialising hand");
 	
 	for (Player player : this.players) {
@@ -139,7 +141,8 @@ public class MagicBakery
 
 	}
 
-	refreshPantry();
+	System.out.println("pantryDeck post-hands: " + this.pantryDeck);
+
 	this.actions_taken -= 1;  // Hotfix for refreshPantry() call.
 
 	// System.out.println("pantryDeck oshuf " + this.pantryDeck);
@@ -611,6 +614,8 @@ public class MagicBakery
 
 	}
 	
+	System.out.println("pantryDeck post-pantry: " + this.pantryDeck);
+
 	this.actions_taken += 1;
 	
 	// System.out.println(this.pantry);
