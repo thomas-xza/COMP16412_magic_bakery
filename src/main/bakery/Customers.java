@@ -357,7 +357,19 @@ public class Customers
     
     public int size() {
 
-	return activeCustomers.size();
+	int i = 0;
+
+	for ( CustomerOrder c : this.activeCustomers ) {
+
+	    if ( c != null ) {
+
+		i += 1;
+
+	    }
+
+	}
+
+	return i;
 
     }
 
