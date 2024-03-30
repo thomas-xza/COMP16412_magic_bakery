@@ -253,23 +253,45 @@ public class CustomerOrder
 
     }
 
+    /**
+     *  func
+     * @return a
+     */
+    public int hashCode() {
+
+	return 1;
+
+    }
+    
     // /**
     //  *  func
+    //  * @param o a
     //  * @return a
     //  */
-    // public int hashCode() {
 
-    // 	return 1;
+    // @Override
+    // public int compareTo(CustomerOrder o) {
+
+    // 	if ( o.toString() == null ) {
+
+    // 	    return -1;
+
+    // 	} else if ( this.name.equals(o.toString()) ) {
+
+    // 	    return 0;
+
+    // 	}
+
+    // 	return this.name.compareTo(o.toString());
 
     // }
 
     /**
      *  func
-     * @param ingredient a
+     * @param o a
      * @return a
      */
 
-    @Override
     public int compareTo(Object o) {
 
 	if ( o.toString() == null ) {
