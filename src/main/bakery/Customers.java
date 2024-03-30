@@ -22,6 +22,7 @@ public class Customers
     private Collection<CustomerOrder> phantom_customerDeck;
     private List<CustomerOrder> inactiveCustomers;
     private Random random;
+    private boolean initialised_already;
 
     private static final long serialVersionUID = 0;
 
@@ -47,6 +48,8 @@ public class Customers
 
 	LinkedList<CustomerOrder> custs = new LinkedList<CustomerOrder>();
 	
+	this.initialised_already = false;
+
 	File file = new File(deckFile);
 
 	this.random = random;
@@ -280,6 +283,16 @@ public class Customers
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
+	System.out.println("initialiseCustomerDeck called");
+
+	// Hotfix for a buggy test.
+
+	if ( this.initialised_already == true ) {
+
+	    ((LinkedList)this.customerDeck).clear();
+
+	}
+	
 	List<CustomerOrder> level_1 = new LinkedList<>();
 
 	List<CustomerOrder> level_2 = new LinkedList<>();
@@ -288,8 +301,6 @@ public class Customers
 
 	List<CustomerOrder> customers_list = new LinkedList<>();
 
-	// System.out.println("reading customer file");
-	
 	try {
 	    
 	    customers_list = CardUtils.readCustomerFile(deckFile, layers);
@@ -347,11 +358,11 @@ public class Customers
 
 	}
 
-        // System.out.println("level_1" + level_1);
+        System.out.println("level_1" + level_1);
 
-        // System.out.println("level_2" + level_2);
+        System.out.println("level_2" + level_2);
 
-        // System.out.println("level_3" + level_3);
+        System.out.println("level_3" + level_3);
 
 	for ( int i = 0 ; i < map.get(1) ; i++ ) {
 	    
@@ -377,10 +388,11 @@ public class Customers
 	    
 	}
 
-	// System.out.println("post extractions: " + this.customerDeck);
+	System.out.println("post extractions: " + this.customerDeck);
 
 	Collections.shuffle(((LinkedList)this.customerDeck), this.random);
 
+	this.initialised_already = true;
 	// System.out.println("post shuffle: " + this.customerDeck);
 
     }

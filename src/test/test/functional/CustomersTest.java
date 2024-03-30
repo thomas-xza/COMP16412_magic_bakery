@@ -350,6 +350,7 @@ public class CustomersTest {
 
     @Test
 	public void testInitialiseCustomerDeck__TwoPlayersPiSeed() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+	System.out.println("testInitialiseCustomerDeck__TwoPlayersPiSeed");
         Customers customers = new Customers("./io/customers.csv", new Random(-1), layers, 2);
 
         Method mtd = FunctionalHelper.getMethod(customers, "initialiseCustomerDeck", String.class, Collection.class, int.class);
@@ -366,8 +367,10 @@ public class CustomersTest {
 		@SuppressWarnings("unchecked")
 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
+		System.out.println("deck  " + customerDeck.toArray());
         List<Integer> lvlCounts = countLevels(customerDeck);
 
+	System.out.println("level counts");
 		assertEquals(4, lvlCounts.get(1));
 		assertEquals(2, lvlCounts.get(2));
 		assertEquals(1, lvlCounts.get(3));
@@ -386,6 +389,9 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeck__HasLIFOSemantics() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+
+	        System.out.println("Deck__HasLifo");
+
         Customers customers = new Customers("./io/customers.csv", new Random(314159265), layers, 2);
         
 		@SuppressWarnings("unchecked")
@@ -2475,41 +2481,52 @@ public class CustomersTest {
     @Test
     public void testGetFulfillable() throws ClassNotFoundException, FileNotFoundException, InvocationTargetException, IOException, NoSuchFieldException, IllegalAccessException {
         Customers customers = getDeterministicCustomers();
-
+	System.out.println("##  GetFulfillable");
 		Collection<CustomerOrder> fulfillable = getFulfilableWrapper(customers, pantry);
+	System.out.println("p0");
+        assertNotNull(fulfillable);
+	System.out.println("p0.1");
+        assertTrue(fulfillable.isEmpty());
+	System.out.println("p0.2");
+
+        customers.addCustomerOrder();
+
+	System.out.println("p1");
+	fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertTrue(fulfillable.isEmpty());
 
         customers.addCustomerOrder();
 
-        fulfillable = getFulfilableWrapper(customers, pantry);
-        assertNotNull(fulfillable);
-        assertTrue(fulfillable.isEmpty());
-
-        customers.addCustomerOrder();
-
+        System.out.println("p2");
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertEquals(1, fulfillable.size());
+        System.out.println("p2.1");
         assertEquals(order2, fulfillable.toArray()[0]);
 
         customers.addCustomerOrder();
         
+        System.out.println("p3");
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertEquals(2, fulfillable.size());
         assertTrue(fulfillable.contains(order2));
+        System.out.println("p3.1");
         assertTrue(fulfillable.contains(order3));
 
         customers.remove(order2);
+        System.out.println("p4");
 
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertEquals(1, fulfillable.size());
+        System.out.println("p4.2");
         assertEquals(order3, fulfillable.toArray()[0]);
 
         customers.remove(order3);
 
+        System.out.println("p5");
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertTrue(fulfillable.isEmpty());
