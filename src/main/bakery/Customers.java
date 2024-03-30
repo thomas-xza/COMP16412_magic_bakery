@@ -429,36 +429,52 @@ public class Customers
 
     public CustomerOrder timePasses() {
 
-	CustomerOrder last = (CustomerOrder)((LinkedList)this.activeCustomers).get(2);
+	int i = 0;
 
-	if ( last != null ) {
+	boolean filled_a_blank = false;
 
-	    this.inactiveCustomers.add(last);
+	boolean overflowed = false;
 
-	    ((LinkedList)this.activeCustomers).set(2, null);
-	    
+	LinkedList<CustomerOrder> picked_up = new LinkedList<>();
+
+	picked_up.addFirst(
+	     (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
+			   );
+
+	while ( overflowed == false || filled_a_blank == false ) {
+
+	    picked_up.addLast(
+		(CustomerOrder)((LinkedList)this.activeCustomers).get(i)
+				       );
+		
+	    if ( ((LinkedList)this.activeCustomers).get(i) == null ) {
+
+		filled_a_blank = true;
+
+	    }
+
+	    ((LinkedList)this.activeCustomers).set(i,
+						   picked_up.removeFirst()
+						   );
+
+	    if ( i + 1 == 3 ) {
+
+		overflowed = true;
+
+		this.inactiveCustomers.add(
+					   picked_up.getLast()
+					   );
+
+		return picked_up.getLast();
+
+	    }
+
+	    i += 1;
+
 	}
-	    
-	//  Move card #1 to slot #2, clear slot #1
 
-	((LinkedList)this.activeCustomers).set(
-			     2,
-		             ((LinkedList)this.activeCustomers).get(1)
-					       );
-
-	((LinkedList)this.activeCustomers).set(1, null);
-
-	//  Move card #0 to slot #1, clear slot #0
-
-	((LinkedList)this.activeCustomers).set(
-			     1,
-		             ((LinkedList)this.activeCustomers).get(0)
-					       );
-
-	((LinkedList)this.activeCustomers).set(0, null);
-
-	return last;
-
+	return null;
+	
     }
 
     /**
