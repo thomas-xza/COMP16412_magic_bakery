@@ -107,7 +107,7 @@ public class CustomersTest {
         order4.setStatus(CustomerOrderStatus.WAITING);
         order5.setStatus(CustomerOrderStatus.WAITING);
 
-	System.out.println("Deterministic customers" + order1 + order2 + order2 + order4 + order5);
+	System.out.println("Deterministic customers" + " " + order1 + " " + order2 + " " + order3 + " " + order4 + " " + order5);
 
         deck.add(order5);
         deck.add(order4);
