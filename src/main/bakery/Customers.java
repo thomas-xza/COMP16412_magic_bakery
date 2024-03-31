@@ -90,7 +90,7 @@ public class Customers
 
     public CustomerOrder addCustomerOrder() {
 
-	System.out.println("customerDeck pretime: " + " " + this.customerDeck);
+	// System.out.println("customerDeck pretime: " + " " + this.customerDeck);
 
 	Stack<Integer> dummy_stack = new Stack<>();
 
@@ -110,7 +110,7 @@ public class Customers
 	    
 	} catch ( Exception e ) {
 
-	    System.out.println("activeCustomers: " + this.activeCustomers);
+	    // System.out.println("activeCustomers: " + this.activeCustomers);
 
 	    //  Trick for tests that expect Stack instead of LinkedList.
 
@@ -118,9 +118,9 @@ public class Customers
 	    	    
 	}
 
-	System.out.println("customerDeck posttime: " + " " + this.customerDeck);
+	// System.out.println("customerDeck posttime: " + " " + this.customerDeck);
 
-	System.out.println("activeCustomers: " + this.activeCustomers);
+	// System.out.println("activeCustomers: " + this.activeCustomers);
 
 	return last_cust;
 
@@ -163,7 +163,7 @@ public class Customers
 
 		filled_a_blank = true;
 
-		System.out.println("FILLED A BLANK");
+		// System.out.println("FILLED A BLANK");
 
 	    }
 
@@ -181,7 +181,7 @@ public class Customers
 
 		overflowed = true;
 
-		System.out.println("OVERFLOWED");
+		// System.out.println("OVERFLOWED");
 
 		this.inactiveCustomers.add(
 					   picked_up.getFirst()
@@ -338,7 +338,7 @@ public class Customers
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
 
-	System.out.println("initialiseCustomerDeck called");
+	// System.out.println("initialiseCustomerDeck called");
 
 	// Hotfix for a buggy test.
 

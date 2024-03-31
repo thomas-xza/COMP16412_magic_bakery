@@ -440,15 +440,24 @@ public class MagicBakery
 
 	Collection<CustomerOrder> fulfilables = new ArrayList<>();
 
-	// for ( CustomerOrder order : this.customers ) {
+	for ( CustomerOrder order : this.customers.getActiveCustomers() ) {
 
-	    
+	    boolean res = CustomerOrder.compare_quantities(
+		CustomerOrder.list_to_quantities(order.getRecipe(), 0),
+                CustomerOrder.list_to_quantities(
+		    getCurrentPlayer().getHand(), 0),
+                                         0
+                                         );
 
-	// }
+	    if ( res == true ) {
 
-	 List<CustomerOrder> a = CustomerOrder.fast_order_list();
+		fulfilables.add(order);
 
-	 return a;
+	    }
+
+	}
+
+	return fulfilables;
 
     }
 
