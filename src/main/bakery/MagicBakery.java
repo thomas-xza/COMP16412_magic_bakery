@@ -27,8 +27,6 @@ public class MagicBakery
 
     private static final long serialVersionUID = 3;
 
-    private int actions_taken = 0;
-
     /**
      * Initiate Magic
      * @param seed a
@@ -143,7 +141,8 @@ public class MagicBakery
 
 	// System.out.println("pantryDeck post-hands: " + this.pantryDeck);
 
-	this.actions_taken -= 1;  // Hotfix for refreshPantry() call.
+	// Hotfix for refreshPantry() call.
+	getPlayer().reset_actions_taken();
 
 	// System.out.println("pantryDeck oshuf " + this.pantryDeck);
 
@@ -180,7 +179,7 @@ public class MagicBakery
 	
 	if ( layer.canBake(getCurrentPlayer().getHand()) == true ) {
 
-	    this.actions_taken += 1;
+	    getPlayer().inc_actions_taken();
 
 	    // System.out.println("\nrecipe " + layer.getRecipe());
 	    // System.out.println("hand   " + getCurrentPlayer().getHand());
@@ -232,7 +231,7 @@ public class MagicBakery
 
 	}
 	
-	this.actions_taken += 1;
+	getPlayer().inc_actions_taken();
 	
 	return (Ingredient)((Stack)this.pantryDeck).pop();
 	
@@ -291,7 +290,7 @@ public class MagicBakery
 
 	}
 	
-	this.actions_taken += 1;
+	getPlayer().inc_actions_taken();
 
 	pantry_to_hand(ingredientName);
 
@@ -313,7 +312,7 @@ public class MagicBakery
 
 	}
 
-	this.actions_taken += 1;
+	getPlayer().inc_actions_taken();
 
 	pantry_to_hand(ingredient.toString());
 
@@ -324,6 +323,8 @@ public class MagicBakery
      * @return a
      */
     public boolean endTurn() {
+
+	LinkedList<Player> tmp = new LinkedList<>();
 
 	return true;
 
@@ -342,7 +343,7 @@ public class MagicBakery
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	    
 
-	this.actions_taken += 1;
+	getPlayer().inc_actions_taken();
 
 	List<Ingredient> hand_used = new ArrayList<>();
 
@@ -377,7 +378,7 @@ public class MagicBakery
      */
     public int getActionsRemaining() {
 
-	return getActionsPermitted() - this.actions_taken;
+	return getActionsPermitted() - getPlayer().get_actions_taken();
 
     }
 
@@ -442,16 +443,20 @@ public class MagicBakery
 
 	for ( CustomerOrder order : this.customers.getActiveCustomers() ) {
 
-	    boolean res = CustomerOrder.compare_quantities(
-		CustomerOrder.list_to_quantities(order.getRecipe(), 0),
-                CustomerOrder.list_to_quantities(
-		    getCurrentPlayer().getHand(), 0),
-                                         0
-                                         );
+	    if ( order != null ) {
 
-	    if ( res == true ) {
+		boolean res = CustomerOrder.compare_quantities(
+		    CustomerOrder.list_to_quantities(order.getRecipe(), 0),
+		    CustomerOrder.list_to_quantities(
+			getCurrentPlayer().getHand(), 0),
+					     0
+					     );
 
-		fulfilables.add(order);
+		if ( res == true ) {
+
+		    fulfilables.add(order);
+
+		}
 
 	    }
 
@@ -468,9 +473,30 @@ public class MagicBakery
 
     public Collection<CustomerOrder> getGarnishableCustomers() {
 
-	 List<CustomerOrder> a = CustomerOrder.fast_order_list();
+	Collection<CustomerOrder> garnishables = new ArrayList<>();
 
-	 return a;
+	for ( CustomerOrder order : this.customers.getActiveCustomers() ) {
+
+	    if ( order != null ) {
+
+		boolean res = CustomerOrder.compare_quantities(
+		    CustomerOrder.list_to_quantities(order.getGarnish(), 0),
+		    CustomerOrder.list_to_quantities(
+			getCurrentPlayer().getHand(), 0),
+					     0
+					     );
+
+		if ( res == true ) {
+
+		    garnishables.add(order);
+
+		}
+
+	    }
+
+	}
+
+	return garnishables;
 
     }
 
@@ -481,9 +507,19 @@ public class MagicBakery
 
     public Collection<Layer> getLayers() {
 
-	// System.out.println(this.layers);
+	LinkedList<Layer> unique_layers = new LinkedList<>();
 
-	return this.layers;
+	for ( Layer l : this.layers ) {
+
+	    if ( unique_layers.contains(l) == false ) {
+
+		unique_layers.add(l);
+
+	    }
+
+	}
+
+	return unique_layers;
 
     }
 
@@ -572,7 +608,7 @@ public class MagicBakery
 
 	recipient.addToHand(ingredient);
 	
-	this.actions_taken += 1;
+	getPlayer().inc_actions_taken();
 	
     }
 
@@ -625,7 +661,7 @@ public class MagicBakery
 	
 	// System.out.println("pantryDeck post-pantry: " + this.pantryDeck);
 
-	this.actions_taken += 1;
+	getPlayer().inc_actions_taken();
 	
 	// System.out.println(this.pantry);
 	

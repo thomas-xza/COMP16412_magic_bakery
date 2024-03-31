@@ -21,6 +21,8 @@ public class Player
 
     private static final long serialVersionUID = 4;
 
+    private int actions_taken = 0;
+    
     /**
      *  Initiate player
      * @param name Player name
@@ -185,6 +187,37 @@ public class Player
     public String toString() {
 
 	return name;
+
+    }
+ 
+    /**
+     * get actions taken
+     * @return actions
+     */
+
+    public int get_actions_taken() {
+
+	return this.actions_taken;
+
+    }
+ 
+    /**
+     * inc actions taken
+     */
+
+    public void inc_actions_taken() {
+
+	this.actions_taken += 1;
+
+    }
+ 
+    /**
+     * reset actions taken
+     */
+
+    public void reset_actions_taken() {
+
+	this.actions_taken = 0;
 
     }
  

@@ -544,6 +544,8 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testEndTurn__FirstRound() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("EndTurn 1st");
+	    
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -561,20 +563,27 @@ public class MagicBakeryTest {
 		int customersOriginal = customers.size();
 
 		bakery.drawFromPantry(pantry[0]);
+		System.out.println("EndTurn 1st p1");
 		assertEquals(1, bakery.getActionsPermitted() - bakery.getActionsRemaining());
+		System.out.println("EndTurn 1st p2");
 		assertEquals(players[0], bakery.getCurrentPlayer());
 
 		for (int i = 1; i < players.length; i++) {
 			bakery.endTurn();
+		System.out.println("EndTurn 1st p3");
 			assertEquals(0, bakery.getActionsPermitted() - bakery.getActionsRemaining());
+		System.out.println("EndTurn 1st p4");
 			assertEquals(players[i], bakery.getCurrentPlayer());
+		System.out.println("EndTurn 1st p5");
 			assertEquals(deckSizeOriginal, customerDeck.size());
+		System.out.println("EndTurn 1st p6");
 			assertEquals(customersOriginal, customers.size());
 		}
 	}
 
 	@Test
 	public void testEndTurn__EndRound() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+            System.out.println("EndTurn Round");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -609,6 +618,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testEndTurn__EndGame() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+            System.out.println("EndTurn EndGame");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
