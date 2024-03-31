@@ -95,6 +95,17 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
+	if ( last_cust != null ) {
+
+	    last_cust.setStatus(CustomerOrderStatus.GIVEN_UP);
+
+	}
+
+	if ( peek() != null ) {
+
+	    peek().setStatus(CustomerOrderStatus.IMPATIENT);
+
+	}
 
 	try {
 	
@@ -102,6 +113,10 @@ public class Customers
                 (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
 						       );
 
+	    ((LinkedList)this.activeCustomers).get(0).setStatus(
+		CustomerOrderStatus.WAITING
+		);
+	    
 	} catch ( Exception e ) {
 
 	    System.out.println("activeCustomers: " + this.activeCustomers);
