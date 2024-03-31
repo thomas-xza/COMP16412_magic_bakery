@@ -93,19 +93,13 @@ public class Customers
 
 	System.out.println("customerDeck pretime: " + " " + this.customerDeck);
 
-	CustomerOrder last_cust = null;
+	CustomerOrder last_cust = timePasses();
 
 	try {
 	
-	    last_cust = timePasses();
-
-	    if ( this.customerDeck.size() != 0 ) {
-
-		((LinkedList)this.activeCustomers).set(0,
-                  (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
+	    ((LinkedList)this.activeCustomers).set(0,
+                (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
 						       );
-
-	    }
 
 	} catch ( Exception e ) {
 
