@@ -96,18 +96,6 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
-	if ( last_cust != null ) {
-
-	    last_cust.setStatus(CustomerOrderStatus.GIVEN_UP);
-
-	}
-
-	if ( peek() != null ) {
-
-	    peek().setStatus(CustomerOrderStatus.IMPATIENT);
-
-	}
-
 	try {
 	
 	    ((LinkedList)this.activeCustomers).set(0,
@@ -183,6 +171,12 @@ public class Customers
 						   picked_up.removeFirst()
 						   );
 
+	    if ( i == 2 && peek() != null ) {
+
+		peek().setStatus(CustomerOrderStatus.IMPATIENT);
+
+	    }
+	    
 	    if ( i + 1 == 3 && filled_a_blank == false ) {
 
 		overflowed = true;
@@ -192,12 +186,18 @@ public class Customers
 		this.inactiveCustomers.add(
 					   picked_up.getFirst()
 					   );
+		
+		picked_up.setStatus(CustomerOrderStatus.GIVEN_UP);
 
-		return picked_up.getLast();
+		return picked_up.getFirst();
 
 	    }
 
 	    i += 1;
+
+	}
+
+	if ( last_cust != null ) {
 
 	}
 

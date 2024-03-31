@@ -751,7 +751,7 @@ public class CustomersTest {
         assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
         // State after addCustomerOrder() should be: null -> null -> order5
-        System.out.println("drain2 p1");
+        System.out.println("drain2 np1");
         assertEquals(1, customers.size());
         assertEquals(0, customerDeck.size());
         assertEquals(4, inactiveCustomers.size());
@@ -2071,7 +2071,9 @@ public class CustomersTest {
 
     @Test
     public void testTimePasses__PDFExample9() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-        Customers customers = getDeterministicCustomers();
+
+	System.out.println("TP PDF9");
+	Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
         @SuppressWarnings("unchecked")
