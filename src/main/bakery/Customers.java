@@ -187,17 +187,13 @@ public class Customers
 					   picked_up.getFirst()
 					   );
 		
-		picked_up.setStatus(CustomerOrderStatus.GIVEN_UP);
+		picked_up.getFirst().setStatus(CustomerOrderStatus.GIVEN_UP);
 
 		return picked_up.getFirst();
 
 	    }
 
 	    i += 1;
-
-	}
-
-	if ( last_cust != null ) {
 
 	}
 
@@ -211,6 +207,8 @@ public class Customers
      */
 
     public boolean customerWillLeaveSoon() {
+
+	System.out.println("activeCustomers: " + this.activeCustomers);
 
 	CustomerOrder c = null;
 
