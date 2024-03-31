@@ -27,6 +27,8 @@ public class MagicBakery
 
     private static final long serialVersionUID = 3;
 
+    private int new_round_chk = 0;
+
     /**
      * Initiate Magic
      * @param seed a
@@ -142,7 +144,7 @@ public class MagicBakery
 	// System.out.println("pantryDeck post-hands: " + this.pantryDeck);
 
 	// Hotfix for refreshPantry() call.
-	getPlayer().reset_actions_taken();
+	getCurrentPlayer().reset_actions_taken();
 
 	// System.out.println("pantryDeck oshuf " + this.pantryDeck);
 
@@ -179,7 +181,7 @@ public class MagicBakery
 	
 	if ( layer.canBake(getCurrentPlayer().getHand()) == true ) {
 
-	    getPlayer().inc_actions_taken();
+	    getCurrentPlayer().inc_actions_taken();
 
 	    // System.out.println("\nrecipe " + layer.getRecipe());
 	    // System.out.println("hand   " + getCurrentPlayer().getHand());
@@ -231,7 +233,7 @@ public class MagicBakery
 
 	}
 	
-	getPlayer().inc_actions_taken();
+	getCurrentPlayer().inc_actions_taken();
 	
 	return (Ingredient)((Stack)this.pantryDeck).pop();
 	
@@ -290,7 +292,7 @@ public class MagicBakery
 
 	}
 	
-	getPlayer().inc_actions_taken();
+	getCurrentPlayer().inc_actions_taken();
 
 	pantry_to_hand(ingredientName);
 
@@ -312,7 +314,7 @@ public class MagicBakery
 
 	}
 
-	getPlayer().inc_actions_taken();
+	getCurrentPlayer().inc_actions_taken();
 
 	pantry_to_hand(ingredient.toString());
 
@@ -324,9 +326,31 @@ public class MagicBakery
      */
     public boolean endTurn() {
 
-	LinkedList<Player> tmp = new LinkedList<>();
+	boolean turn_ended = false;
 
-	return true;
+	getCurrentPlayer().reset_actions_taken();
+
+	((LinkedList)players).addLast(
+	    (Player)((LinkedList)players).removeFirst()
+				      );
+
+	turn_ended = true;
+
+	this.new_round_chk += 1;
+
+	//  The tests expect that there is no next round!
+
+	// if ( this.new_round_chk == this.players.size() ) {
+
+	//     for ( Player p : this.players ) {
+
+	// 	p.reset_actions_taken();
+
+	//     }
+
+	// }
+
+	return turn_ended;
 
     }
 
@@ -343,7 +367,7 @@ public class MagicBakery
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	    
 
-	getPlayer().inc_actions_taken();
+	getCurrentPlayer().inc_actions_taken();
 
 	List<Ingredient> hand_used = new ArrayList<>();
 
@@ -378,7 +402,7 @@ public class MagicBakery
      */
     public int getActionsRemaining() {
 
-	return getActionsPermitted() - getPlayer().get_actions_taken();
+	return getActionsPermitted() - getCurrentPlayer().get_actions_taken();
 
     }
 
@@ -608,7 +632,7 @@ public class MagicBakery
 
 	recipient.addToHand(ingredient);
 	
-	getPlayer().inc_actions_taken();
+	getCurrentPlayer().inc_actions_taken();
 	
     }
 
@@ -661,7 +685,7 @@ public class MagicBakery
 	
 	// System.out.println("pantryDeck post-pantry: " + this.pantryDeck);
 
-	getPlayer().inc_actions_taken();
+	getCurrentPlayer().inc_actions_taken();
 	
 	// System.out.println(this.pantry);
 	
