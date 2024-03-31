@@ -227,7 +227,7 @@ public class Customers
 	System.out.println("customerWillLeaveSoon() true:  " + c);
 
 	return true;
-
+	
     }
 
     /**
