@@ -693,7 +693,10 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testFulfillOrder__NoLayersNoGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-		MagicBakery bakery = bakeryFactory();
+	    int i = 0;
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i);
+	    i += 1;
+    MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
 		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
@@ -722,15 +725,35 @@ public class MagicBakeryTest {
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, false);
+		System.out.println("FulfillOrder NoLayersNoGarnish  " + i);  // 1
+	    i += 1;
 		assertTrue(drawn.isEmpty());
+		System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 2
+	    i += 1;
 		assertEquals(2, hand.size());
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 3
+	    i += 1;
 		assertEquals(2, customers.size());
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 4
+	    i += 1;
 		assertEquals(1, inactiveCustomers.size());
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 5
+	    i += 1;
 		assertTrue(inactiveCustomers.contains(customer));
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 6
+	    i += 1;
 		assertEquals(layersOrig, layers.size());
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 7
+	    i += 1;
 		assertEquals(3, pantryDiscard.size());
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 8
+	    i += 1;
 		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 9
+	    i += 1;
 		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+	    System.out.println("FulfillOrder NoLayersNoGarnish  " + i); // 10
+	    i += 1;
 		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
 		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
 		assertEquals(1, actionsTaken);
@@ -1660,6 +1683,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testPrintCustomerServiceRecord__OnlyFulfilled() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("print fulfilled");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -1676,6 +1700,7 @@ public class MagicBakeryTest {
 			inactiveCustomers.add(customer);
 		}
 
+		bakery.printCustomerServiceRecord();
 		PrintStream stdout = System.out;
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(output));
@@ -2192,6 +2217,8 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testStartGame__TwoPlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+
+	    System.out.println("Start 2");
 		List<String> playerNames = new ArrayList<String>();
 		playerNames.add("A");
 		playerNames.add("B");
@@ -2202,6 +2229,7 @@ public class MagicBakeryTest {
 
 		// ======== customers ========
 
+	    System.out.println("Start 2 p1");
 		// customers was initialised and 1 Customer is ready
 		assertEquals(1, bakery.getCustomers().size());
 
@@ -2210,9 +2238,11 @@ public class MagicBakeryTest {
 		// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
 		@SuppressWarnings("unchecked")
 		Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
+	    System.out.println("Start 2 p2");
 		assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
 
 		// pantryDeck was properly shuffled
+	    System.out.println("Start 2 p3");
 		Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
 		assertEquals("sugar", pantryDeckArray[0].toString());
 		assertEquals("chocolate", pantryDeckArray[4].toString());
@@ -2223,39 +2253,52 @@ public class MagicBakeryTest {
 
 		// The pantry has 5 cards
 		Collection<Ingredient> pantry = bakery.getPantry();
+	    System.out.println("Start 2 p4");
 		assertEquals(5, pantry.size());
 
 		// The pantry was populated after shuffling pantryDeck, but before the players get their cards
 		HashMap<Ingredient, Integer> counts = countIngredients(pantry);
+	    System.out.println("Start 2 p4.1");
 		assertEquals(2, counts.get(new Ingredient("butter")));
+	    System.out.println("Start 2 p4.2");
 		assertEquals(2, counts.get(new Ingredient("eggs")));
+	    System.out.println("Start 2 p4.3");
 		assertEquals(1, counts.get(new Ingredient("sugar")));
 
 		// ======== players ========
 
 		// We have two players
+	    System.out.println("Start 2 p5");
 		Player[] players = bakery.getPlayers().toArray(new Player[0]);
 		assertEquals(2, players.length);
 
 		// Player names are correct
 		for (int i = 0; i < players.length; ++i) {
+	    System.out.println("Start 2 p5.1");
 			assertEquals(playerNames.get(i), players[i].toString());
 		}
 
 		// Each player has three Ingredient cards
 		for (Player player: players) {
+	    System.out.println("Start 2 p5.2");
 			assertEquals(3, player.getHand().size());
 		}
 
 		// Players took cards in the right order
 		counts = countIngredients(players[0].getHand());
+	    System.out.println("Start 2 p5.3");
 		assertEquals(1, counts.get(new Ingredient("butter")));
+	    System.out.println("Start 2 p5.4");
 		assertEquals(1, counts.get(new Ingredient("eggs")));
+	    System.out.println("Start 2 p5.5");
 		assertEquals(1, counts.get(new Ingredient("sugar")));
 
 		counts = countIngredients(players[1].getHand());
+	    System.out.println("Start 2 p5.6");
 		assertEquals(1, counts.get(new Ingredient("flour")));
+	    System.out.println("Start 2 p5.7");
 		assertEquals(1, counts.get(new Ingredient("eggs")));
+	    System.out.println("Start 2 p5.8");
 		assertEquals(1, counts.get(new Ingredient("sugar")));		
 	}
 
