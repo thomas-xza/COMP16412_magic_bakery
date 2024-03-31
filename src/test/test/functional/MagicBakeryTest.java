@@ -691,350 +691,350 @@ public class MagicBakeryTest {
 		assertEquals(deckSizeOriginal + customersOriginal, inactiveCustomers.size());
 	}
 
-	// @Test
-	// public void testFulfillOrder__NoLayersNoGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testFulfillOrder__NoLayersNoGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 		
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
-	// 	int layersOrig = layers.size();
+		int layersOrig = layers.size();
 
-	// 	String[] recipe = {"flour", "butter", "sugar"};
-	// 	String[] garnish = {"chocolate", "walnuts"};
-	// 	CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
+		String[] recipe = {"flour", "butter", "sugar"};
+		String[] garnish = {"chocolate", "walnuts"};
+		CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
-	// 	List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
+		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
+		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
-	// 	List<Ingredient> drawn = bakery.fulfillOrder(customer, false);
-	// 	assertTrue(drawn.isEmpty());
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	assertEquals(3, pantryDiscard.size());
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("flour")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("butter")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
-	// 	int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(1, actionsTaken);
-	// }
+		List<Ingredient> drawn = bakery.fulfillOrder(customer, false);
+		assertTrue(drawn.isEmpty());
+		assertEquals(2, hand.size());
+		assertEquals(2, customers.size());
+		assertEquals(1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer));
+		assertEquals(layersOrig, layers.size());
+		assertEquals(3, pantryDiscard.size());
+		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(1, actionsTaken);
+	}
 
-	// @Test
-	// public void testFulfillOrder__NoLayersNoGarnish2() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testFulfillOrder__NoLayersNoGarnish2() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 		
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
-	// 	int layersOrig = layers.size();
+		int layersOrig = layers.size();
 
-	// 	String[] recipe = {"flour", "butter", "sugar"};
-	// 	String[] garnish = {"chocolate", "strawberries"};
-	// 	CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
+		String[] recipe = {"flour", "butter", "sugar"};
+		String[] garnish = {"chocolate", "strawberries"};
+		CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
-	// 	List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
+		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
+		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
-	// 	List<Ingredient> drawn = bakery.fulfillOrder(customer, false);
-	// 	assertTrue(drawn.isEmpty());
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	assertEquals(3, pantryDiscard.size());
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("flour")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("butter")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
-	// 	int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(1, actionsTaken);	
-	// }
+		List<Ingredient> drawn = bakery.fulfillOrder(customer, false);
+		assertTrue(drawn.isEmpty());
+		assertEquals(2, hand.size());
+		assertEquals(2, customers.size());
+		assertEquals(1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer));
+		assertEquals(layersOrig, layers.size());
+		assertEquals(3, pantryDiscard.size());
+		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(1, actionsTaken);	
+	}
 
-	// @Test
-	// public void testFulfillOrder__NoLayersWithGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testFulfillOrder__NoLayersWithGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 		
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
-	// 	int layersOrig = layers.size();
+		int layersOrig = layers.size();
 
-	// 	String[] recipe = {"flour", "butter", "sugar"};
-	// 	String[] garnish = {"chocolate", "walnuts"};
-	// 	CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
+		String[] recipe = {"flour", "butter", "sugar"};
+		String[] garnish = {"chocolate", "walnuts"};
+		CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
-	// 	List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
+		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
+		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
-	// 	List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
-	// 	assertEquals(2, drawn.size());
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(hand, drawn);
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	assertEquals(5, pantryDiscard.size());
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("flour")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("butter")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
-	// 	int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(1, actionsTaken);
-	// }
+		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
+		assertEquals(2, drawn.size());
+		assertEquals(2, hand.size());
+		assertEquals(hand, drawn);
+		assertEquals(2, customers.size());
+		assertEquals(1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer));
+		assertEquals(layersOrig, layers.size());
+		assertEquals(5, pantryDiscard.size());
+		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
+		assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
+		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(1, actionsTaken);
+	}
 
-	// @Test
-	// public void testFulfillOrder__WithLayersWithGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testFulfillOrder__WithLayersWithGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 		
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
-	// 	int layersOrig = layers.size();
+		int layersOrig = layers.size();
 
-	// 	String[] recipe = {"flour", "butter", "sugar", "biscuit"};
-	// 	String[] garnish = {"chocolate", "walnuts"};
-	// 	CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
+		String[] recipe = {"flour", "butter", "sugar", "biscuit"};
+		String[] garnish = {"chocolate", "walnuts"};
+		CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts", "biscuit"};
-	// 	List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
+		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts", "biscuit"};
+		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 		
-	// 	List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
+		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
 
-	// 	System.out.println("drawn");
-	// 	assertEquals(2, drawn.size());
-	// 	System.out.println("hand");
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(hand, drawn);
-	// 	System.out.println("hand drawn");
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	assertEquals(5, pantryDiscard.size());
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("flour")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("butter")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
-	// 	int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(1, actionsTaken);
-	// }
+		System.out.println("drawn");
+		assertEquals(2, drawn.size());
+		System.out.println("hand");
+		assertEquals(2, hand.size());
+		assertEquals(hand, drawn);
+		System.out.println("hand drawn");
+		assertEquals(2, customers.size());
+		assertEquals(1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer));
+		assertEquals(layersOrig, layers.size());
+		assertEquals(5, pantryDiscard.size());
+		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
+		assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
+		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(1, actionsTaken);
+	}
 
-	// @Test
-	// public void testFulfillOrder__WithLayersWithGarnishBakeLayer() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testFulfillOrder__WithLayersWithGarnishBakeLayer() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 		
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
-	// 	int layersOrig = layers.size();
+		int layersOrig = layers.size();
 
-	// 	String[] recipe = {"flour", "butter", "sugar", "biscuit"};
-	// 	String[] garnish = {"chocolate", "walnuts"};
-	// 	CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
+		String[] recipe = {"flour", "butter", "sugar", "biscuit"};
+		String[] garnish = {"chocolate", "walnuts"};
+		CustomerOrder customer = createCustomerOrder(layers, "some recipe", recipe, garnish);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	String[] ingredients = {"flour", "flour", "butter", "eggs", "sugar", "sugar",  "chocolate", "walnuts"};
-	// 	List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
+		String[] ingredients = {"flour", "flour", "butter", "eggs", "sugar", "sugar",  "chocolate", "walnuts"};
+		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
-	// 	Layer layer = (Layer)stringToIngredient(layers, "biscuit");
-	// 	bakery.bakeLayer(layer);
-	// 	assertEquals(layersOrig - 1, layers.size());
+		Layer layer = (Layer)stringToIngredient(layers, "biscuit");
+		bakery.bakeLayer(layer);
+		assertEquals(layersOrig - 1, layers.size());
 
-	// 	List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
-	// 	assertEquals(2, drawn.size());
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(hand, drawn);
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	assertEquals(8, pantryDiscard.size());
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("flour")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("butter")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
-	// 	int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(2, actionsTaken);
-	// }
+		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
+		assertEquals(2, drawn.size());
+		assertEquals(2, hand.size());
+		assertEquals(hand, drawn);
+		assertEquals(2, customers.size());
+		assertEquals(1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer));
+		assertEquals(layersOrig, layers.size());
+		assertEquals(8, pantryDiscard.size());
+		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
+		assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
+		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(2, actionsTaken);
+	}
 
-	// @Test
-	// public void testFulfillOrder__OldestCustomerNotImpatient() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testFulfillOrder__OldestCustomerNotImpatient() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 		
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> inactiveCustomers = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDiscard = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
-	// 	int layersOrig = layers.size();
+		int layersOrig = layers.size();
 
-	// 	String[] recipe1 = {"flour", "butter", "sugar"};
-	// 	String[] garnish1 = {"chocolate", "walnuts"};
-	// 	CustomerOrder customer1 = createCustomerOrder(layers, "some recipe", recipe1, garnish1);
-	// 	CustomerOrder customer2 = createCustomerOrder(layers, "some other recipe", recipe1, garnish1);
-	// 	CustomerOrder customer3 = createCustomerOrder(layers, "yet another recipe", recipe1, garnish1);
+		String[] recipe1 = {"flour", "butter", "sugar"};
+		String[] garnish1 = {"chocolate", "walnuts"};
+		CustomerOrder customer1 = createCustomerOrder(layers, "some recipe", recipe1, garnish1);
+		CustomerOrder customer2 = createCustomerOrder(layers, "some other recipe", recipe1, garnish1);
+		CustomerOrder customer3 = createCustomerOrder(layers, "yet another recipe", recipe1, garnish1);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer1);
-	// 	customCustomers.add(customer2);
-	// 	customCustomers.add(customer3);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer1);
+		customCustomers.add(customer2);
+		customCustomers.add(customer3);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	// BUGFIX: add one more order in the deck to make sure we trigger the right behaviour
-	// 	CustomerOrder customer4 = createCustomerOrder(layers, "yet one more recipe", recipe1, garnish1);
+		// BUGFIX: add one more order in the deck to make sure we trigger the right behaviour
+		CustomerOrder customer4 = createCustomerOrder(layers, "yet one more recipe", recipe1, garnish1);
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> deck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
-	// 	deck.add(customer4);
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> deck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+		deck.add(customer4);
 
-	// 	// Oldest Customer should be impatient since the list of active customers is full
-	// 	assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
+		// Oldest Customer should be impatient since the list of active customers is full
+		assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
 
-	// 	String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
-	// 	List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
+		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
+		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
-	// 	int inactiveBefore = inactiveCustomers.size();
+		int inactiveBefore = inactiveCustomers.size();
 
-	// 	List<Ingredient> drawn = bakery.fulfillOrder(customer1, false);
-	// 	assertTrue(drawn.isEmpty());
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(inactiveBefore + 1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer1));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	assertEquals(3, pantryDiscard.size());
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("flour")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("butter")));
-	// 	assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
-	// 	int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(1, actionsTaken);
+		List<Ingredient> drawn = bakery.fulfillOrder(customer1, false);
+		assertTrue(drawn.isEmpty());
+		assertEquals(2, hand.size());
+		assertEquals(2, customers.size());
+		assertEquals(inactiveBefore + 1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer1));
+		assertEquals(layersOrig, layers.size());
+		assertEquals(3, pantryDiscard.size());
+		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(1, actionsTaken);
 
-	// 	// Oldest Customer should not be impatient now
-	// 	assertEquals(CustomerOrderStatus.WAITING, customers.peek().getStatus());
+		// Oldest Customer should not be impatient now
+		assertEquals(CustomerOrderStatus.WAITING, customers.peek().getStatus());
 
-	// 	// ------------------------------------------------------------
-	// 	// Well, this should be an extra test, but let's keep it simple
-	// 	// Same case, but the deck is empty, so the front customer
-	// 	// should not go to waiting
-	// 	// ------------------------------------------------------------
+		// ------------------------------------------------------------
+		// Well, this should be an extra test, but let's keep it simple
+		// Same case, but the deck is empty, so the front customer
+		// should not go to waiting
+		// ------------------------------------------------------------
 
-	// 	customer1 = createCustomerOrder(layers, "some recipe", recipe1, garnish1);
-	// 	customer2 = createCustomerOrder(layers, "some other recipe", recipe1, garnish1);
-	// 	customer3 = createCustomerOrder(layers, "yet another recipe", recipe1, garnish1);
+		customer1 = createCustomerOrder(layers, "some recipe", recipe1, garnish1);
+		customer2 = createCustomerOrder(layers, "some other recipe", recipe1, garnish1);
+		customer3 = createCustomerOrder(layers, "yet another recipe", recipe1, garnish1);
 
-	// 	customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer1);
-	// 	customCustomers.add(customer2);
-	// 	customCustomers.add(customer3);
+		customCustomers = new ArrayList<>();
+		customCustomers.add(customer1);
+		customCustomers.add(customer2);
+		customCustomers.add(customer3);
 
-	// 	setupActiveCustomers(bakery, customCustomers);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	// Oldest Customer should be impatient since the list of active customers is full
-	// 	assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
+		// Oldest Customer should be impatient since the list of active customers is full
+		assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
 
-	// 	hand = setupCurrentHand(bakery, ingredients);
+		hand = setupCurrentHand(bakery, ingredients);
 
-	// 	inactiveBefore = inactiveCustomers.size();
+		inactiveBefore = inactiveCustomers.size();
 
-	// 	drawn = bakery.fulfillOrder(customer1, false);
-	// 	assertTrue(drawn.isEmpty());
-	// 	assertEquals(2, hand.size());
-	// 	assertEquals(2, customers.size());
-	// 	assertEquals(inactiveBefore + 1, inactiveCustomers.size());
-	// 	assertTrue(inactiveCustomers.contains(customer1));
-	// 	assertEquals(layersOrig, layers.size());
-	// 	actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
-	// 	assertEquals(2, actionsTaken);
+		drawn = bakery.fulfillOrder(customer1, false);
+		assertTrue(drawn.isEmpty());
+		assertEquals(2, hand.size());
+		assertEquals(2, customers.size());
+		assertEquals(inactiveBefore + 1, inactiveCustomers.size());
+		assertTrue(inactiveCustomers.contains(customer1));
+		assertEquals(layersOrig, layers.size());
+		actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		assertEquals(2, actionsTaken);
 
-	// 	// Oldest Customer should still be impatient, because the customersDeck is empty
-	// 	assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
+		// Oldest Customer should still be impatient, because the customersDeck is empty
+		assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
 
 
-	// }
+	}
 
 	@Test
 	public void testGetActionsPermitted__TwoPlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
@@ -1658,426 +1658,426 @@ public class MagicBakeryTest {
 		assertEquals(2, bakery.getActionsPermitted() - bakery.getActionsRemaining());
 	}
 
-	// @Test
-	// public void testPrintCustomerServiceRecord__OnlyFulfilled() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPrintCustomerServiceRecord__OnlyFulfilled() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	ArrayList<CustomerOrder> inactiveCustomers = (ArrayList<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		ArrayList<CustomerOrder> inactiveCustomers = (ArrayList<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	for (CustomerOrder customer: customerDeck) {
-	// 		customer.setStatus(CustomerOrder.CustomerOrderStatus.FULFILLED);
-	// 		inactiveCustomers.add(customer);
-	// 	}
+		for (CustomerOrder customer: customerDeck) {
+			customer.setStatus(CustomerOrder.CustomerOrderStatus.FULFILLED);
+			inactiveCustomers.add(customer);
+		}
 
-	// 	PrintStream stdout = System.out;
-	// 	ByteArrayOutputStream output = new ByteArrayOutputStream();
-	// 	System.setOut(new PrintStream(output));
-	// 	bakery.printCustomerServiceRecord();
-	// 	System.setOut(stdout);
+		PrintStream stdout = System.out;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output));
+		bakery.printCustomerServiceRecord();
+		System.setOut(stdout);
 
-	// 	String expected = """
-	// 		Happy customers eating baked goods: 5 (0 garnished) 
-	// 		Gone to Greggs instead: 0
-	// 		""";
+		String expected = """
+			Happy customers eating baked goods: 5 (0 garnished) 
+			Gone to Greggs instead: 0
+			""";
 
-	// 	//assertEquals(expected, output.toString());
-	// 	String txt = output.toString().toLowerCase();
-	// 	assertTrue((txt.contains("0") || txt.contains("zero")));
-	// 	assertTrue((txt.contains("5") || txt.contains("five")));
+		//assertEquals(expected, output.toString());
+		String txt = output.toString().toLowerCase();
+		assertTrue((txt.contains("0") || txt.contains("zero")));
+		assertTrue((txt.contains("5") || txt.contains("five")));
 		
-	// }
+	}
 
-	// @Test
-	// public void testPrintCustomerServiceRecord__OnlyGarnished() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPrintCustomerServiceRecord__OnlyGarnished() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	ArrayList<CustomerOrder> inactiveCustomers = (ArrayList<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		ArrayList<CustomerOrder> inactiveCustomers = (ArrayList<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	for (CustomerOrder customer: customerDeck) {
-	// 		customer.setStatus(CustomerOrder.CustomerOrderStatus.GARNISHED);
-	// 		inactiveCustomers.add(customer);
-	// 	}
+		for (CustomerOrder customer: customerDeck) {
+			customer.setStatus(CustomerOrder.CustomerOrderStatus.GARNISHED);
+			inactiveCustomers.add(customer);
+		}
 
-	// 	PrintStream stdout = System.out;
-	// 	ByteArrayOutputStream output = new ByteArrayOutputStream();
-	// 	System.setOut(new PrintStream(output));
-	// 	bakery.printCustomerServiceRecord();
-	// 	System.setOut(stdout);
+		PrintStream stdout = System.out;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output));
+		bakery.printCustomerServiceRecord();
+		System.setOut(stdout);
 
-	// 	String expected = """
-	// 		Happy customers eating baked goods: 5 (5 garnished) 
-	// 		Gone to Greggs instead: 0
-	// 		""";
+		String expected = """
+			Happy customers eating baked goods: 5 (5 garnished) 
+			Gone to Greggs instead: 0
+			""";
 
-	// 	//assertEquals(expected, output.toString());
-	// 	String txt = output.toString().toLowerCase();
-	// 	assertTrue((txt.contains("0") || txt.contains("zero")));
-	// 	assertTrue((txt.contains("5") || txt.contains("five")));
-	// }
+		//assertEquals(expected, output.toString());
+		String txt = output.toString().toLowerCase();
+		assertTrue((txt.contains("0") || txt.contains("zero")));
+		assertTrue((txt.contains("5") || txt.contains("five")));
+	}
 
-	// @Test
-	// public void testPrintCustomerServiceRecord__Mixed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPrintCustomerServiceRecord__Mixed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
+		Customers customers = (Customers)FunctionalHelper.getFieldValue(bakery, "customers");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
+		@SuppressWarnings("unchecked")
+		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	ArrayList<CustomerOrder> inactiveCustomers = (ArrayList<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
+		@SuppressWarnings("unchecked")
+		ArrayList<CustomerOrder> inactiveCustomers = (ArrayList<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "inactiveCustomers");
 
-	// 	for (CustomerOrder customer: customerDeck) {
-	// 		inactiveCustomers.add(customer);
-	// 	}
+		for (CustomerOrder customer: customerDeck) {
+			inactiveCustomers.add(customer);
+		}
 
-	// 	for (int i = 0; i < 5; i++) {
-	// 		if ((i % 3) == 0) inactiveCustomers.get(i).setStatus(CustomerOrder.CustomerOrderStatus.GIVEN_UP);
-	// 		if ((i % 3) == 1) inactiveCustomers.get(i).setStatus(CustomerOrder.CustomerOrderStatus.FULFILLED);
-	// 		if ((i % 3) == 2) inactiveCustomers.get(i).setStatus(CustomerOrder.CustomerOrderStatus.GARNISHED);
-	// 	}
+		for (int i = 0; i < 5; i++) {
+			if ((i % 3) == 0) inactiveCustomers.get(i).setStatus(CustomerOrder.CustomerOrderStatus.GIVEN_UP);
+			if ((i % 3) == 1) inactiveCustomers.get(i).setStatus(CustomerOrder.CustomerOrderStatus.FULFILLED);
+			if ((i % 3) == 2) inactiveCustomers.get(i).setStatus(CustomerOrder.CustomerOrderStatus.GARNISHED);
+		}
 
-	// 	PrintStream stdout = System.out;
-	// 	ByteArrayOutputStream output = new ByteArrayOutputStream();
-	// 	System.setOut(new PrintStream(output));
-	// 	bakery.printCustomerServiceRecord();
-	// 	System.setOut(stdout);
+		PrintStream stdout = System.out;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output));
+		bakery.printCustomerServiceRecord();
+		System.setOut(stdout);
 
-	// 	String expected = """
-	// 		Happy customers eating baked goods: 3 (1 garnished) 
-	// 		Gone to Greggs instead: 2
-	// 		""";
+		String expected = """
+			Happy customers eating baked goods: 3 (1 garnished) 
+			Gone to Greggs instead: 2
+			""";
 
-	// 	//assertEquals(expected, output.toString());
-	// 	String txt = output.toString().toLowerCase();
-	// 	assertTrue((txt.contains("1") || txt.contains("one")));
-	// 	assertTrue((txt.contains("2") || txt.contains("two")));
-	// 	assertTrue((txt.contains("3") || txt.contains("three")));
-	// }
+		//assertEquals(expected, output.toString());
+		String txt = output.toString().toLowerCase();
+		assertTrue((txt.contains("1") || txt.contains("one")));
+		assertTrue((txt.contains("2") || txt.contains("two")));
+		assertTrue((txt.contains("3") || txt.contains("three")));
+	}
 
-	// @Test
-	// public void testPrintGameState__WaitingCustomers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPrintGameState__WaitingCustomers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	// Setup pantry
+		// Setup pantry
 
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
+		Collection<Ingredient> pantry = bakery.getPantry();
 
-	// 	String[] pantryIngredients = {"flour", "eggs", "oil", "butter", "eggs"};
-	// 	pantry.clear();
-	// 	for (String ing: pantryIngredients) {
-	// 		pantry.add(stringToIngredient(layers, ing));
-	// 	}
+		String[] pantryIngredients = {"flour", "eggs", "oil", "butter", "eggs"};
+		pantry.clear();
+		for (String ing: pantryIngredients) {
+			pantry.add(stringToIngredient(layers, ing));
+		}
 
-	// 	// Setup active customers
-	// 	String[] recipe1 = {"biscuit", "butter", "chocolate"};
-	// 	String[] garnish1 = {"chocolate"};
-	// 	CustomerOrder customer1 = createCustomerOrder(layers, "chocolate bombe", recipe1, garnish1);
+		// Setup active customers
+		String[] recipe1 = {"biscuit", "butter", "chocolate"};
+		String[] garnish1 = {"chocolate"};
+		CustomerOrder customer1 = createCustomerOrder(layers, "chocolate bombe", recipe1, garnish1);
 
-	// 	String[] recipe2 = {"biscuit", "butter", "chocolate", "sugar"};
-	// 	String[] garnish2 = {};
-	// 	CustomerOrder customer2 = createCustomerOrder(layers, "millionaire's shortbread", recipe2, garnish2);
+		String[] recipe2 = {"biscuit", "butter", "chocolate", "sugar"};
+		String[] garnish2 = {};
+		CustomerOrder customer2 = createCustomerOrder(layers, "millionaire's shortbread", recipe2, garnish2);
 
-	// 	String[] recipe3 = {"icing", "sponge", "chocolate"};
-	// 	String[] garnish3 = {"chocolate"};
-	// 	CustomerOrder customer3 = createCustomerOrder(layers, "almond & chocolate torte", recipe3, garnish3);
+		String[] recipe3 = {"icing", "sponge", "chocolate"};
+		String[] garnish3 = {"chocolate"};
+		CustomerOrder customer3 = createCustomerOrder(layers, "almond & chocolate torte", recipe3, garnish3);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer1);
-	// 	customCustomers.add(customer2);
-	// 	customCustomers.add(customer3);
-	// 	setupActiveCustomers(bakery, customCustomers);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer1);
+		customCustomers.add(customer2);
+		customCustomers.add(customer3);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	// Setup Hand
+		// Setup Hand
 		
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
 		
-	// 	String[] handIngredients = {"flour", "flour", "butter", "butter", "butter", "eggs", "sugar", "sugar", "chocolate", "walnuts"};
-	// 	setupCurrentHand(bakery, handIngredients);
+		String[] handIngredients = {"flour", "flour", "butter", "butter", "butter", "eggs", "sugar", "sugar", "chocolate", "walnuts"};
+		setupCurrentHand(bakery, handIngredients);
 
-	// 	bakery.bakeLayer((Layer)stringToIngredient(layers, "biscuit"));
-	// 	bakery.bakeLayer((Layer)stringToIngredient(layers, "icing"));
-	// 	bakery.fulfillOrder(customer1, false);
+		bakery.bakeLayer((Layer)stringToIngredient(layers, "biscuit"));
+		bakery.bakeLayer((Layer)stringToIngredient(layers, "icing"));
+		bakery.fulfillOrder(customer1, false);
 
-	// 	String expected = """
-	// 			Layers:
-	// 			  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
-	// 			  |     BISCUIT      ||    CRÈME PÂT     ||      ICING       ||       JAM        ||      PASTRY      ||      SPONGE      |
-	// 			  | Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          |
-	// 			  |   Eggs, Flour,   ||  Butter, Eggs,   ||  Butter, Sugar   ||   Fruit, Sugar   ||  Butter, Flour   ||  Butter, Eggs,   |
-	// 			  |      Sugar       ||      Sugar       ||                  ||                  ||                  ||   Flour, Sugar   |
-	// 			  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
-	// 			Pantry:
-	// 			  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
-	// 			  |        FLOUR         ||         EGGS         ||         OIL          ||        BUTTER        ||         EGGS         |
-	// 			  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
-	// 			Waiting for service:
-	// 			  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
-	// 			  |                                      ||       MILLIONAIRE'S SHORTBREAD       ||       ALMOND & CHOCOLATE TORTE       |
-	// 			  |                                      || Recipe:                              || Recipe:                              |
-	// 			  |                                      ||  Biscuit, Butter, Chocolate, Sugar   ||       Icing, Sponge, Chocolate       |
-	// 			  |                                      ||                                      || Garnish:                             |
-	// 			  |                                      ||                                      ||              Chocolate               |
-	// 			  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
+		String expected = """
+				Layers:
+				  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
+				  |     BISCUIT      ||    CRÈME PÂT     ||      ICING       ||       JAM        ||      PASTRY      ||      SPONGE      |
+				  | Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          |
+				  |   Eggs, Flour,   ||  Butter, Eggs,   ||  Butter, Sugar   ||   Fruit, Sugar   ||  Butter, Flour   ||  Butter, Eggs,   |
+				  |      Sugar       ||      Sugar       ||                  ||                  ||                  ||   Flour, Sugar   |
+				  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
+				Pantry:
+				  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
+				  |        FLOUR         ||         EGGS         ||         OIL          ||        BUTTER        ||         EGGS         |
+				  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
+				Waiting for service:
+				  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
+				  |                                      ||       MILLIONAIRE'S SHORTBREAD       ||       ALMOND & CHOCOLATE TORTE       |
+				  |                                      || Recipe:                              || Recipe:                              |
+				  |                                      ||  Biscuit, Butter, Chocolate, Sugar   ||       Icing, Sponge, Chocolate       |
+				  |                                      ||                                      || Garnish:                             |
+				  |                                      ||                                      ||              Chocolate               |
+				  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
 				
-	// 			Happy customers eating baked goods: 1 (0 garnished)
-	// 			Gone to Greggs instead: 2
+				Happy customers eating baked goods: 1 (0 garnished)
+				Gone to Greggs instead: 2
 				
-	// 			PlayerC it's your turn. Your hand contains: Butter, Flour, Icing, Walnuts
-	// 			""";
+				PlayerC it's your turn. Your hand contains: Butter, Flour, Icing, Walnuts
+				""";
 
-	// 	PrintStream stdout = System.out;
-	// 	ByteArrayOutputStream output = new ByteArrayOutputStream();
+		PrintStream stdout = System.out;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
 
-	// 	System.setOut(new PrintStream(output));
-	// 	bakery.printGameState();
-	// 	System.setOut(stdout);
+		System.setOut(new PrintStream(output));
+		bakery.printGameState();
+		System.setOut(stdout);
 
-	// 	//assertEquals(expected, output.toString());
+		//assertEquals(expected, output.toString());
 
-	// 	// Ideally we would test whether what you printed matches the expected string
-	// 	// but you are free to not use the StringUtils
-	// 	// So, instead I'll just check whether you print every single word we would expect in the output
+		// Ideally we would test whether what you printed matches the expected string
+		// but you are free to not use the StringUtils
+		// So, instead I'll just check whether you print every single word we would expect in the output
 
-	// 	assertTrue(output.toString().length() > 10);
-	// 	assertTrue(output.toString().toLowerCase().contains("biscuit"));
-	// 	assertTrue(output.toString().toLowerCase().contains("CRÈME PÂT".toLowerCase()));
-	// 	assertTrue(output.toString().toLowerCase().contains("icing"));
-	// 	assertTrue(output.toString().toLowerCase().contains("jam"));
-	// 	assertTrue(output.toString().toLowerCase().contains("pastry"));
-	// 	assertTrue(output.toString().toLowerCase().contains("sponge"));
-	// 	assertTrue(output.toString().toLowerCase().contains("flour"));
-	// 	assertTrue(output.toString().toLowerCase().contains("eggs"));
-	// 	assertTrue(output.toString().toLowerCase().contains("oil"));
-	// 	assertTrue(output.toString().toLowerCase().contains("butter"));
-	// 	assertTrue(output.toString().toLowerCase().contains("eggs"));
-	// 	assertTrue(output.toString().toLowerCase().contains("millionaire's shortbread"));
-	// 	assertTrue(output.toString().toLowerCase().contains("almond & chocolate torte"));
-	// }
+		assertTrue(output.toString().length() > 10);
+		assertTrue(output.toString().toLowerCase().contains("biscuit"));
+		assertTrue(output.toString().toLowerCase().contains("CRÈME PÂT".toLowerCase()));
+		assertTrue(output.toString().toLowerCase().contains("icing"));
+		assertTrue(output.toString().toLowerCase().contains("jam"));
+		assertTrue(output.toString().toLowerCase().contains("pastry"));
+		assertTrue(output.toString().toLowerCase().contains("sponge"));
+		assertTrue(output.toString().toLowerCase().contains("flour"));
+		assertTrue(output.toString().toLowerCase().contains("eggs"));
+		assertTrue(output.toString().toLowerCase().contains("oil"));
+		assertTrue(output.toString().toLowerCase().contains("butter"));
+		assertTrue(output.toString().toLowerCase().contains("eggs"));
+		assertTrue(output.toString().toLowerCase().contains("millionaire's shortbread"));
+		assertTrue(output.toString().toLowerCase().contains("almond & chocolate torte"));
+	}
 
-	// @Test
-	// public void testPrintGameState__WaitingCustomersGarnished() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPrintGameState__WaitingCustomersGarnished() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	// Setup pantry
+		// Setup pantry
 
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
+		Collection<Ingredient> pantry = bakery.getPantry();
 
-	// 	String[] pantryIngredients = {"flour", "eggs", "oil", "butter", "eggs"};
-	// 	pantry.clear();
-	// 	for (String ing: pantryIngredients) {
-	// 		pantry.add(stringToIngredient(layers, ing));
-	// 	}
+		String[] pantryIngredients = {"flour", "eggs", "oil", "butter", "eggs"};
+		pantry.clear();
+		for (String ing: pantryIngredients) {
+			pantry.add(stringToIngredient(layers, ing));
+		}
 
-	// 	// Setup active customers
-	// 	String[] recipe1 = {"biscuit", "butter", "chocolate"};
-	// 	String[] garnish1 = {"chocolate"};
-	// 	CustomerOrder customer1 = createCustomerOrder(layers, "chocolate bombe", recipe1, garnish1);
+		// Setup active customers
+		String[] recipe1 = {"biscuit", "butter", "chocolate"};
+		String[] garnish1 = {"chocolate"};
+		CustomerOrder customer1 = createCustomerOrder(layers, "chocolate bombe", recipe1, garnish1);
 
-	// 	String[] recipe2 = {"biscuit", "butter", "chocolate", "sugar"};
-	// 	String[] garnish2 = {};
-	// 	CustomerOrder customer2 = createCustomerOrder(layers, "millionaire's shortbread", recipe2, garnish2);
+		String[] recipe2 = {"biscuit", "butter", "chocolate", "sugar"};
+		String[] garnish2 = {};
+		CustomerOrder customer2 = createCustomerOrder(layers, "millionaire's shortbread", recipe2, garnish2);
 
-	// 	String[] recipe3 = {"icing", "sponge", "chocolate"};
-	// 	String[] garnish3 = {"chocolate"};
-	// 	CustomerOrder customer3 = createCustomerOrder(layers, "almond & chocolate torte", recipe3, garnish3);
+		String[] recipe3 = {"icing", "sponge", "chocolate"};
+		String[] garnish3 = {"chocolate"};
+		CustomerOrder customer3 = createCustomerOrder(layers, "almond & chocolate torte", recipe3, garnish3);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer1);
-	// 	customCustomers.add(customer2);
-	// 	customCustomers.add(customer3);
-	// 	setupActiveCustomers(bakery, customCustomers);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer1);
+		customCustomers.add(customer2);
+		customCustomers.add(customer3);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	// Setup Hand
+		// Setup Hand
 		
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
 		
-	// 	String[] handIngredients = {"flour", "butter", "butter", "eggs", "sugar", "sugar", "chocolate", "chocolate", "walnuts"};
-	// 	setupCurrentHand(bakery, handIngredients);
+		String[] handIngredients = {"flour", "butter", "butter", "eggs", "sugar", "sugar", "chocolate", "chocolate", "walnuts"};
+		setupCurrentHand(bakery, handIngredients);
 
-	// 	bakery.bakeLayer((Layer)stringToIngredient(layers, "biscuit"));
-	// 	bakery.bakeLayer((Layer)stringToIngredient(layers, "icing"));
-	// 	bakery.fulfillOrder(customer1, true);
+		bakery.bakeLayer((Layer)stringToIngredient(layers, "biscuit"));
+		bakery.bakeLayer((Layer)stringToIngredient(layers, "icing"));
+		bakery.fulfillOrder(customer1, true);
 
-	// 	String expected = """
-	// 			Layers:
-	// 			  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
-	// 			  |     BISCUIT      ||    CRÈME PÂT     ||      ICING       ||       JAM        ||      PASTRY      ||      SPONGE      |
-	// 			  | Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          |
-	// 			  |   Eggs, Flour,   ||  Butter, Eggs,   ||  Butter, Sugar   ||   Fruit, Sugar   ||  Butter, Flour   ||  Butter, Eggs,   |
-	// 			  |      Sugar       ||      Sugar       ||                  ||                  ||                  ||   Flour, Sugar   |
-	// 			  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
-	// 			Pantry:
-	// 			  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
-	// 			  |        FLOUR         ||         EGGS         ||         OIL          ||        BUTTER        ||         EGGS         |
-	// 			  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
-	// 			Waiting for service:
-	// 			  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
-	// 			  |                                      ||       MILLIONAIRE'S SHORTBREAD       ||       ALMOND & CHOCOLATE TORTE       |
-	// 			  |                                      || Recipe:                              || Recipe:                              |
-	// 			  |                                      ||  Biscuit, Butter, Chocolate, Sugar   ||       Icing, Sponge, Chocolate       |
-	// 			  |                                      ||                                      || Garnish:                             |
-	// 			  |                                      ||                                      ||              Chocolate               |
-	// 			  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
+		String expected = """
+				Layers:
+				  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
+				  |     BISCUIT      ||    CRÈME PÂT     ||      ICING       ||       JAM        ||      PASTRY      ||      SPONGE      |
+				  | Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          |
+				  |   Eggs, Flour,   ||  Butter, Eggs,   ||  Butter, Sugar   ||   Fruit, Sugar   ||  Butter, Flour   ||  Butter, Eggs,   |
+				  |      Sugar       ||      Sugar       ||                  ||                  ||                  ||   Flour, Sugar   |
+				  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
+				Pantry:
+				  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
+				  |        FLOUR         ||         EGGS         ||         OIL          ||        BUTTER        ||         EGGS         |
+				  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
+				Waiting for service:
+				  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
+				  |                                      ||       MILLIONAIRE'S SHORTBREAD       ||       ALMOND & CHOCOLATE TORTE       |
+				  |                                      || Recipe:                              || Recipe:                              |
+				  |                                      ||  Biscuit, Butter, Chocolate, Sugar   ||       Icing, Sponge, Chocolate       |
+				  |                                      ||                                      || Garnish:                             |
+				  |                                      ||                                      ||              Chocolate               |
+				  | ------------------------------------ || ------------------------------------ || ------------------------------------ |
 				
-	// 			Happy customers eating baked goods: 1 (1 garnished)
-	// 			Gone to Greggs instead: 2
+				Happy customers eating baked goods: 1 (1 garnished)
+				Gone to Greggs instead: 2
 				
-	// 			PlayerC it's your turn. Your hand contains:""";
+				PlayerC it's your turn. Your hand contains:""";
 
-	// 	PrintStream stdout = System.out;
-	// 	ByteArrayOutputStream output = new ByteArrayOutputStream();
-	// 	System.setOut(new PrintStream(output));
-	// 	bakery.printGameState();
-	// 	System.setOut(stdout);
+		PrintStream stdout = System.out;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output));
+		bakery.printGameState();
+		System.setOut(stdout);
 
-	// 	//assertEquals(expected, output.toString().substring(0, output.toString().lastIndexOf(":") + 1));
+		//assertEquals(expected, output.toString().substring(0, output.toString().lastIndexOf(":") + 1));
 
-	// 	// Ideally we would test whether what you printed matches the expected string
-	// 	// but you are free to not use the StringUtils
-	// 	// So, instead I'll just check whether you print every single word we would expect in the output
+		// Ideally we would test whether what you printed matches the expected string
+		// but you are free to not use the StringUtils
+		// So, instead I'll just check whether you print every single word we would expect in the output
 
-	// 	assertTrue(output.toString().length() > 10);
-	// 	assertTrue(output.toString().toLowerCase().contains("biscuit"));
-	// 	assertTrue(output.toString().toLowerCase().contains("CRÈME PÂT".toLowerCase()));
-	// 	assertTrue(output.toString().toLowerCase().contains("icing"));
-	// 	assertTrue(output.toString().toLowerCase().contains("jam"));
-	// 	assertTrue(output.toString().toLowerCase().contains("pastry"));
-	// 	assertTrue(output.toString().toLowerCase().contains("sponge"));
-	// 	assertTrue(output.toString().toLowerCase().contains("flour"));
-	// 	assertTrue(output.toString().toLowerCase().contains("eggs"));
-	// 	assertTrue(output.toString().toLowerCase().contains("oil"));
-	// 	assertTrue(output.toString().toLowerCase().contains("butter"));
-	// 	assertTrue(output.toString().toLowerCase().contains("eggs"));
-	// 	assertTrue(output.toString().toLowerCase().contains("millionaire's shortbread"));
-	// 	assertTrue(output.toString().toLowerCase().contains("almond & chocolate torte"));
-	// }
+		assertTrue(output.toString().length() > 10);
+		assertTrue(output.toString().toLowerCase().contains("biscuit"));
+		assertTrue(output.toString().toLowerCase().contains("CRÈME PÂT".toLowerCase()));
+		assertTrue(output.toString().toLowerCase().contains("icing"));
+		assertTrue(output.toString().toLowerCase().contains("jam"));
+		assertTrue(output.toString().toLowerCase().contains("pastry"));
+		assertTrue(output.toString().toLowerCase().contains("sponge"));
+		assertTrue(output.toString().toLowerCase().contains("flour"));
+		assertTrue(output.toString().toLowerCase().contains("eggs"));
+		assertTrue(output.toString().toLowerCase().contains("oil"));
+		assertTrue(output.toString().toLowerCase().contains("butter"));
+		assertTrue(output.toString().toLowerCase().contains("eggs"));
+		assertTrue(output.toString().toLowerCase().contains("millionaire's shortbread"));
+		assertTrue(output.toString().toLowerCase().contains("almond & chocolate torte"));
+	}
 
 
-	// @Test
-	// public void testPrintGameState__NoWaitingCustomers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	MagicBakery bakery = bakeryFactory();
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
+	@Test
+	public void testPrintGameState__NoWaitingCustomers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		MagicBakery bakery = bakeryFactory();
+		bakery.startGame(playerNames, "./io/customers.csv");
 
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
+		@SuppressWarnings("unchecked")
+		Collection<Layer> layers = (Collection<Layer>)FunctionalHelper.getFieldValue(bakery, "layers");
 
-	// 	// Setup pantry
+		// Setup pantry
 
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
+		Collection<Ingredient> pantry = bakery.getPantry();
 
-	// 	String[] pantryIngredients = {"flour", "eggs", "oil", "butter", "eggs"};
-	// 	pantry.clear();
-	// 	for (String ing: pantryIngredients) {
-	// 		pantry.add(stringToIngredient(layers, ing));
-	// 	}
+		String[] pantryIngredients = {"flour", "eggs", "oil", "butter", "eggs"};
+		pantry.clear();
+		for (String ing: pantryIngredients) {
+			pantry.add(stringToIngredient(layers, ing));
+		}
 
-	// 	// Setup active customers
-	// 	String[] recipe1 = {"biscuit", "butter", "chocolate"};
-	// 	String[] garnish1 = {"chocolate"};
-	// 	CustomerOrder customer1 = createCustomerOrder(layers, "chocolate bombe", recipe1, garnish1);
+		// Setup active customers
+		String[] recipe1 = {"biscuit", "butter", "chocolate"};
+		String[] garnish1 = {"chocolate"};
+		CustomerOrder customer1 = createCustomerOrder(layers, "chocolate bombe", recipe1, garnish1);
 
-	// 	String[] recipe2 = {"biscuit", "butter", "chocolate", "sugar"};
-	// 	String[] garnish2 = {};
-	// 	CustomerOrder customer2 = createCustomerOrder(layers, "millionaire's shortbread", recipe2, garnish2);
+		String[] recipe2 = {"biscuit", "butter", "chocolate", "sugar"};
+		String[] garnish2 = {};
+		CustomerOrder customer2 = createCustomerOrder(layers, "millionaire's shortbread", recipe2, garnish2);
 
-	// 	String[] recipe3 = {"icing", "sponge", "chocolate"};
-	// 	String[] garnish3 = {"chocolate"};
-	// 	CustomerOrder customer3 = createCustomerOrder(layers, "almond & chocolate torte", recipe3, garnish3);
+		String[] recipe3 = {"icing", "sponge", "chocolate"};
+		String[] garnish3 = {"chocolate"};
+		CustomerOrder customer3 = createCustomerOrder(layers, "almond & chocolate torte", recipe3, garnish3);
 
-	// 	ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
-	// 	customCustomers.add(customer1);
-	// 	customCustomers.add(customer2);
-	// 	customCustomers.add(customer3);
-	// 	setupActiveCustomers(bakery, customCustomers);
+		ArrayList<CustomerOrder> customCustomers = new ArrayList<>();
+		customCustomers.add(customer1);
+		customCustomers.add(customer2);
+		customCustomers.add(customer3);
+		setupActiveCustomers(bakery, customCustomers);
 
-	// 	// Setup Hand
+		// Setup Hand
 		
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
-	// 	bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
 		
-	// 	String[] handIngredients = {"flour", "flour", "butter", "butter", "butter", "eggs", "sugar", "sugar", "chocolate", "walnuts"};
-	// 	setupCurrentHand(bakery, handIngredients);
+		String[] handIngredients = {"flour", "flour", "butter", "butter", "butter", "eggs", "sugar", "sugar", "chocolate", "walnuts"};
+		setupCurrentHand(bakery, handIngredients);
 
-	// 	bakery.bakeLayer((Layer)stringToIngredient(layers, "biscuit"));
-	// 	bakery.bakeLayer((Layer)stringToIngredient(layers, "icing"));
-	// 	bakery.fulfillOrder(customer1, false);
+		bakery.bakeLayer((Layer)stringToIngredient(layers, "biscuit"));
+		bakery.bakeLayer((Layer)stringToIngredient(layers, "icing"));
+		bakery.fulfillOrder(customer1, false);
 
-	// 	String expected = """
-	// 	Layers:
-	// 	  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
-	// 	  |     BISCUIT      ||    CRÈME PÂT     ||      ICING       ||       JAM        ||      PASTRY      ||      SPONGE      |
-	// 	  | Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          |
-	// 	  |   Eggs, Flour,   ||  Butter, Eggs,   ||  Butter, Sugar   ||   Fruit, Sugar   ||  Butter, Flour   ||  Butter, Eggs,   |
-	// 	  |      Sugar       ||      Sugar       ||                  ||                  ||                  ||   Flour, Sugar   |
-	// 	  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
-	// 	Pantry:
-	// 	  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
-	// 	  |        FLOUR         ||         EGGS         ||         OIL          ||        BUTTER        ||         EGGS         |
-	// 	  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
-	// 	No customers waiting -- time for a brew :)
+		String expected = """
+		Layers:
+		  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
+		  |     BISCUIT      ||    CRÈME PÂT     ||      ICING       ||       JAM        ||      PASTRY      ||      SPONGE      |
+		  | Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          || Recipe:          |
+		  |   Eggs, Flour,   ||  Butter, Eggs,   ||  Butter, Sugar   ||   Fruit, Sugar   ||  Butter, Flour   ||  Butter, Eggs,   |
+		  |      Sugar       ||      Sugar       ||                  ||                  ||                  ||   Flour, Sugar   |
+		  | ---------------- || ---------------- || ---------------- || ---------------- || ---------------- || ---------------- |
+		Pantry:
+		  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
+		  |        FLOUR         ||         EGGS         ||         OIL          ||        BUTTER        ||         EGGS         |
+		  | -------------------- || -------------------- || -------------------- || -------------------- || -------------------- |
+		No customers waiting -- time for a brew :)
 		  
-	// 	Happy customers eating baked goods: 1 (0 garnished)
-	// 	Gone to Greggs instead: 4
+		Happy customers eating baked goods: 1 (0 garnished)
+		Gone to Greggs instead: 4
 		  
-	// 	PlayerA it's your turn. Your hand contains: Butter, Flour, Icing, Walnuts
-	// 	""";
+		PlayerA it's your turn. Your hand contains: Butter, Flour, Icing, Walnuts
+		""";
 
-	// 	PrintStream stdout = System.out;
-	// 	ByteArrayOutputStream output = new ByteArrayOutputStream();
-	// 	System.setOut(new PrintStream(output));
-	// 	bakery.printGameState();
-	// 	System.setOut(stdout);
+		PrintStream stdout = System.out;
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output));
+		bakery.printGameState();
+		System.setOut(stdout);
 
-	// 	//assertEquals(expected, output.toString());
+		//assertEquals(expected, output.toString());
 		
-	// 	// Ideally we would test whether what you printed matches the expected string
-	// 	// but you are free to not use the StringUtils
-	// 	// So, instead I'll just check whether you print every single word we would expect in the output
+		// Ideally we would test whether what you printed matches the expected string
+		// but you are free to not use the StringUtils
+		// So, instead I'll just check whether you print every single word we would expect in the output
 
-	// 	assertTrue(output.toString().length() > 10);
-	// 	assertTrue(output.toString().toLowerCase().contains("biscuit"));
-	// 	assertTrue(output.toString().toLowerCase().contains("CRÈME PÂT".toLowerCase()));
-	// 	assertTrue(output.toString().toLowerCase().contains("icing"));
-	// 	assertTrue(output.toString().toLowerCase().contains("jam"));
-	// 	assertTrue(output.toString().toLowerCase().contains("pastry"));
-	// 	assertTrue(output.toString().toLowerCase().contains("sponge"));
-	// 	assertTrue(output.toString().toLowerCase().contains("flour"));
-	// 	assertTrue(output.toString().toLowerCase().contains("eggs"));
-	// 	assertTrue(output.toString().toLowerCase().contains("oil"));
-	// 	assertTrue(output.toString().toLowerCase().contains("butter"));
-	// 	assertTrue(output.toString().toLowerCase().contains("eggs"));
-	// 	assertTrue(output.toString().toLowerCase().contains("walnuts"));
-	// }
+		assertTrue(output.toString().length() > 10);
+		assertTrue(output.toString().toLowerCase().contains("biscuit"));
+		assertTrue(output.toString().toLowerCase().contains("CRÈME PÂT".toLowerCase()));
+		assertTrue(output.toString().toLowerCase().contains("icing"));
+		assertTrue(output.toString().toLowerCase().contains("jam"));
+		assertTrue(output.toString().toLowerCase().contains("pastry"));
+		assertTrue(output.toString().toLowerCase().contains("sponge"));
+		assertTrue(output.toString().toLowerCase().contains("flour"));
+		assertTrue(output.toString().toLowerCase().contains("eggs"));
+		assertTrue(output.toString().toLowerCase().contains("oil"));
+		assertTrue(output.toString().toLowerCase().contains("butter"));
+		assertTrue(output.toString().toLowerCase().contains("eggs"));
+		assertTrue(output.toString().toLowerCase().contains("walnuts"));
+	}
 	
 
 	@Test
@@ -2190,314 +2190,314 @@ public class MagicBakeryTest {
 		assertEquals(2, bakery.getActionsPermitted() - bakery.getActionsRemaining());
 	}
 
-	// @Test
-	// public void testStartGame__TwoPlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("A");
-	// 	playerNames.add("B");
-	// 	MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
-
-	// 	// This is what we test
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
-
-	// 	// ======== customers ========
-
-	// 	// customers was initialised and 1 Customer is ready
-	// 	assertEquals(1, bakery.getCustomers().size());
-
-	// 	// ======== pantryDeck ========
-
-	// 	// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
-	// 	assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
-
-	// 	// pantryDeck was properly shuffled
-	// 	Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
-	// 	assertEquals("sugar", pantryDeckArray[0].toString());
-	// 	assertEquals("chocolate", pantryDeckArray[4].toString());
-	// 	assertEquals("eggs", pantryDeckArray[8].toString());
-	// 	assertEquals("sugar", pantryDeckArray[12].toString());
-
-	// 	// ======== pantry ========
-
-	// 	// The pantry has 5 cards
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
-	// 	assertEquals(5, pantry.size());
-
-	// 	// The pantry was populated after shuffling pantryDeck, but before the players get their cards
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(pantry);
-	// 	assertEquals(2, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	// ======== players ========
-
-	// 	// We have two players
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
-	// 	assertEquals(2, players.length);
-
-	// 	// Player names are correct
-	// 	for (int i = 0; i < players.length; ++i) {
-	// 		assertEquals(playerNames.get(i), players[i].toString());
-	// 	}
-
-	// 	// Each player has three Ingredient cards
-	// 	for (Player player: players) {
-	// 		assertEquals(3, player.getHand().size());
-	// 	}
-
-	// 	// Players took cards in the right order
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));		
-	// }
-
-	// @Test
-	// public void testStartGame__ThreePlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("Jill");
-	// 	playerNames.add("Jack");
-	// 	playerNames.add("Joe");
-	// 	MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
-
-	// 	// This is what we test
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
-
-	// 	// ======== customers ========
-
-	// 	// customers was initialised and 2 Customer are ready
-	// 	assertEquals(2, bakery.getCustomers().size());
-
-	// 	// ======== pantryDeck ========
-
-	// 	// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
-	// 	assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
-
-	// 	// pantryDeck was properly shuffled
-	// 	Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
-	// 	assertEquals("sugar", pantryDeckArray[1].toString());
-	// 	assertEquals("sugar", pantryDeckArray[7].toString());
-	// 	assertEquals("sugar", pantryDeckArray[13].toString());
-	// 	assertEquals("chocolate", pantryDeckArray[22].toString());
-
-	// 	// ======== pantry ========
-
-	// 	// The pantry has 5 cards
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
-	// 	assertEquals(5, pantry.size());
-
-	// 	// The pantry was populated after shuffling pantryDeck, but before the players get their cards
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(pantry);
-	// 	assertEquals(2, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	// ======== players ========
-
-	// 	// We have three players
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
-	// 	assertEquals(3, players.length);
-
-	// 	// Player names are correct
-	// 	for (int i = 0; i < players.length; ++i) {
-	// 		assertEquals(playerNames.get(i), players[i].toString());
-	// 	}
-
-	// 	// Each player has three Ingredient cards
-	// 	for (Player player: players) {
-	// 		assertEquals(3, player.getHand().size());
-	// 	}
-
-	// 	// Players took cards in the right order
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[2].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("fruit")));
-	// }
-
-	// @Test
-	// public void testStartGame__FourPlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("P1");
-	// 	playerNames.add("P2");
-	// 	playerNames.add("P3");
-	// 	playerNames.add("P4");
-	// 	MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
-
-	// 	// This is what we test
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
-
-	// 	// ======== customers ========
-
-	// 	// customers was initialised and 1 Customer is ready
-	// 	assertEquals(1, bakery.getCustomers().size());
-
-	// 	// ======== pantryDeck ========
-
-	// 	// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
-	// 	assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
-
-	// 	// pantryDeck was properly shuffled
-	// 	Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
-	// 	assertEquals("sugar", pantryDeckArray[0].toString());
-	// 	assertEquals("sugar", pantryDeckArray[12].toString());
-	// 	assertEquals("eggs", pantryDeckArray[17].toString());
-	// 	assertEquals("flour", pantryDeckArray[29].toString());
-
-	// 	// ======== pantry ========
-
-	// 	// The pantry has 5 cards
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
-	// 	assertEquals(5, pantry.size());
-
-	// 	// The pantry was populated after shuffling pantryDeck, but before the players get their cards
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(pantry);
-	// 	assertEquals(2, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	// ======== players ========
-
-	// 	// We have four players
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
-	// 	assertEquals(4, players.length);
-
-	// 	// Player names are correct
-	// 	for (int i = 0; i < players.length; ++i) {
-	// 		assertEquals(playerNames.get(i), players[i].toString());
-	// 	}
-
-	// 	// Each player has three Ingredient cards
-	// 	for (Player player: players) {
-	// 		assertEquals(3, player.getHand().size());
-	// 	}
-
-	// 	// Players took cards in the right order
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[2].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("fruit")));
-
-	// 	counts = countIngredients(players[3].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("chocolate")));
-	// }
-
-	// @Test
-	// public void testStartGame__FivePlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	// 	List<String> playerNames = new ArrayList<String>();
-	// 	playerNames.add("One");
-	// 	playerNames.add("Two");
-	// 	playerNames.add("Four");
-	// 	playerNames.add("Eight");
-	// 	playerNames.add("Sixteen");
-	// 	MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
-
-	// 	// This is what we test
-	// 	bakery.startGame(playerNames, "./io/customers.csv");
-
-	// 	// ======== customers ========
-
-	// 	// customers was initialised and 2 Customers are ready
-	// 	assertEquals(2, bakery.getCustomers().size());
-
-	// 	// ======== pantryDeck ========
-
-	// 	// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
-	// 	@SuppressWarnings("unchecked")
-	// 	Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
-	// 	assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
-
-	// 	// pantryDeck was properly shuffled
-	// 	Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
-	// 	assertEquals("sugar", pantryDeckArray[7].toString());
-	// 	assertEquals("eggs", pantryDeckArray[17].toString());
-	// 	assertEquals("eggs", pantryDeckArray[37].toString());
-	// 	assertEquals("butter", pantryDeckArray[41].toString());
-
-	// 	// ======== pantry ========
-
-	// 	// The pantry has 5 cards
-	// 	Collection<Ingredient> pantry = bakery.getPantry();
-	// 	assertEquals(5, pantry.size());
-
-	// 	// The pantry was populated after shuffling pantryDeck, but before the players get their cards
-	// 	HashMap<Ingredient, Integer> counts = countIngredients(pantry);
-	// 	assertEquals(2, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	// ======== players ========
-
-	// 	// We have five players
-	// 	Player[] players = bakery.getPlayers().toArray(new Player[0]);
-	// 	assertEquals(5, players.length);
-
-	// 	// Player names are correct
-	// 	for (int i = 0; i < players.length; ++i) {
-	// 		assertEquals(playerNames.get(i), players[i].toString());
-	// 	}
-
-	// 	// Each player has three Ingredient cards
-	// 	for (Player player: players) {
-	// 		assertEquals(3, player.getHand().size());
-	// 	}
-
-	// 	// Players took cards in the right order
-	// 	counts = countIngredients(players[0].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[1].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("sugar")));
-
-	// 	counts = countIngredients(players[2].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(2, counts.get(new Ingredient("fruit")));
-
-	// 	counts = countIngredients(players[3].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("chocolate")));
-
-	// 	counts = countIngredients(players[4].getHand());
-	// 	assertEquals(1, counts.get(new Ingredient("butter")));
-	// 	assertEquals(1, counts.get(new Ingredient("eggs")));
-	// 	assertEquals(1, counts.get(new Ingredient("flour")));
-	// }
+	@Test
+	public void testStartGame__TwoPlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("A");
+		playerNames.add("B");
+		MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
+
+		// This is what we test
+		bakery.startGame(playerNames, "./io/customers.csv");
+
+		// ======== customers ========
+
+		// customers was initialised and 1 Customer is ready
+		assertEquals(1, bakery.getCustomers().size());
+
+		// ======== pantryDeck ========
+
+		// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
+		assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
+
+		// pantryDeck was properly shuffled
+		Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
+		assertEquals("sugar", pantryDeckArray[0].toString());
+		assertEquals("chocolate", pantryDeckArray[4].toString());
+		assertEquals("eggs", pantryDeckArray[8].toString());
+		assertEquals("sugar", pantryDeckArray[12].toString());
+
+		// ======== pantry ========
+
+		// The pantry has 5 cards
+		Collection<Ingredient> pantry = bakery.getPantry();
+		assertEquals(5, pantry.size());
+
+		// The pantry was populated after shuffling pantryDeck, but before the players get their cards
+		HashMap<Ingredient, Integer> counts = countIngredients(pantry);
+		assertEquals(2, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		// ======== players ========
+
+		// We have two players
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		assertEquals(2, players.length);
+
+		// Player names are correct
+		for (int i = 0; i < players.length; ++i) {
+			assertEquals(playerNames.get(i), players[i].toString());
+		}
+
+		// Each player has three Ingredient cards
+		for (Player player: players) {
+			assertEquals(3, player.getHand().size());
+		}
+
+		// Players took cards in the right order
+		counts = countIngredients(players[0].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));		
+	}
+
+	@Test
+	public void testStartGame__ThreePlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("Jill");
+		playerNames.add("Jack");
+		playerNames.add("Joe");
+		MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
+
+		// This is what we test
+		bakery.startGame(playerNames, "./io/customers.csv");
+
+		// ======== customers ========
+
+		// customers was initialised and 2 Customer are ready
+		assertEquals(2, bakery.getCustomers().size());
+
+		// ======== pantryDeck ========
+
+		// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
+		assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
+
+		// pantryDeck was properly shuffled
+		Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
+		assertEquals("sugar", pantryDeckArray[1].toString());
+		assertEquals("sugar", pantryDeckArray[7].toString());
+		assertEquals("sugar", pantryDeckArray[13].toString());
+		assertEquals("chocolate", pantryDeckArray[22].toString());
+
+		// ======== pantry ========
+
+		// The pantry has 5 cards
+		Collection<Ingredient> pantry = bakery.getPantry();
+		assertEquals(5, pantry.size());
+
+		// The pantry was populated after shuffling pantryDeck, but before the players get their cards
+		HashMap<Ingredient, Integer> counts = countIngredients(pantry);
+		assertEquals(2, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		// ======== players ========
+
+		// We have three players
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		assertEquals(3, players.length);
+
+		// Player names are correct
+		for (int i = 0; i < players.length; ++i) {
+			assertEquals(playerNames.get(i), players[i].toString());
+		}
+
+		// Each player has three Ingredient cards
+		for (Player player: players) {
+			assertEquals(3, player.getHand().size());
+		}
+
+		// Players took cards in the right order
+		counts = countIngredients(players[0].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[2].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("fruit")));
+	}
+
+	@Test
+	public void testStartGame__FourPlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("P1");
+		playerNames.add("P2");
+		playerNames.add("P3");
+		playerNames.add("P4");
+		MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
+
+		// This is what we test
+		bakery.startGame(playerNames, "./io/customers.csv");
+
+		// ======== customers ========
+
+		// customers was initialised and 1 Customer is ready
+		assertEquals(1, bakery.getCustomers().size());
+
+		// ======== pantryDeck ========
+
+		// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
+		assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
+
+		// pantryDeck was properly shuffled
+		Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
+		assertEquals("sugar", pantryDeckArray[0].toString());
+		assertEquals("sugar", pantryDeckArray[12].toString());
+		assertEquals("eggs", pantryDeckArray[17].toString());
+		assertEquals("flour", pantryDeckArray[29].toString());
+
+		// ======== pantry ========
+
+		// The pantry has 5 cards
+		Collection<Ingredient> pantry = bakery.getPantry();
+		assertEquals(5, pantry.size());
+
+		// The pantry was populated after shuffling pantryDeck, but before the players get their cards
+		HashMap<Ingredient, Integer> counts = countIngredients(pantry);
+		assertEquals(2, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		// ======== players ========
+
+		// We have four players
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		assertEquals(4, players.length);
+
+		// Player names are correct
+		for (int i = 0; i < players.length; ++i) {
+			assertEquals(playerNames.get(i), players[i].toString());
+		}
+
+		// Each player has three Ingredient cards
+		for (Player player: players) {
+			assertEquals(3, player.getHand().size());
+		}
+
+		// Players took cards in the right order
+		counts = countIngredients(players[0].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[2].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("fruit")));
+
+		counts = countIngredients(players[3].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("chocolate")));
+	}
+
+	@Test
+	public void testStartGame__FivePlayers() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("One");
+		playerNames.add("Two");
+		playerNames.add("Four");
+		playerNames.add("Eight");
+		playerNames.add("Sixteen");
+		MagicBakery bakery = new MagicBakery(314159265, "./io/ingredients.csv", "./io/layers.csv");
+
+		// This is what we test
+		bakery.startGame(playerNames, "./io/customers.csv");
+
+		// ======== customers ========
+
+		// customers was initialised and 2 Customers are ready
+		assertEquals(2, bakery.getCustomers().size());
+
+		// ======== pantryDeck ========
+
+		// pantryDeck has the right number of cards: numIngredientCards - numPlayers * 3 cards - 5
+		@SuppressWarnings("unchecked")
+		Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
+		assertEquals(63 - 5 - 3 * playerNames.size(), pantryDeck.size());
+
+		// pantryDeck was properly shuffled
+		Ingredient[] pantryDeckArray = pantryDeck.toArray(new Ingredient[0]);
+		assertEquals("sugar", pantryDeckArray[7].toString());
+		assertEquals("eggs", pantryDeckArray[17].toString());
+		assertEquals("eggs", pantryDeckArray[37].toString());
+		assertEquals("butter", pantryDeckArray[41].toString());
+
+		// ======== pantry ========
+
+		// The pantry has 5 cards
+		Collection<Ingredient> pantry = bakery.getPantry();
+		assertEquals(5, pantry.size());
+
+		// The pantry was populated after shuffling pantryDeck, but before the players get their cards
+		HashMap<Ingredient, Integer> counts = countIngredients(pantry);
+		assertEquals(2, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		// ======== players ========
+
+		// We have five players
+		Player[] players = bakery.getPlayers().toArray(new Player[0]);
+		assertEquals(5, players.length);
+
+		// Player names are correct
+		for (int i = 0; i < players.length; ++i) {
+			assertEquals(playerNames.get(i), players[i].toString());
+		}
+
+		// Each player has three Ingredient cards
+		for (Player player: players) {
+			assertEquals(3, player.getHand().size());
+		}
+
+		// Players took cards in the right order
+		counts = countIngredients(players[0].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[1].getHand());
+		assertEquals(1, counts.get(new Ingredient("flour")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("sugar")));
+
+		counts = countIngredients(players[2].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(2, counts.get(new Ingredient("fruit")));
+
+		counts = countIngredients(players[3].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("chocolate")));
+
+		counts = countIngredients(players[4].getHand());
+		assertEquals(1, counts.get(new Ingredient("butter")));
+		assertEquals(1, counts.get(new Ingredient("eggs")));
+		assertEquals(1, counts.get(new Ingredient("flour")));
+	}
 
 	@Test
 	public void testPantryDeckIsShuffledCorrectly__TwoPlayersPiSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
@@ -2664,61 +2664,61 @@ public class MagicBakeryTest {
 		System.out.println("c f s");
 	}
 
-// 	@Test
-// 	public void testSerialisation__RecreatingOriginalBakery() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, ClassNotFoundException {
-// 	    System.out.println("test_Serialiation__Recreating");
-// 		List<String> playerNames = new ArrayList<String>();
-// 		playerNames.add("A");
-// 		playerNames.add("B");
-// 		playerNames.add("C");
+	@Test
+	public void testSerialisation__RecreatingOriginalBakery() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, ClassNotFoundException {
+	    System.out.println("test_Serialiation__Recreating");
+		List<String> playerNames = new ArrayList<String>();
+		playerNames.add("A");
+		playerNames.add("B");
+		playerNames.add("C");
 
-// 		MagicBakery bakery = new MagicBakery(12854, "./io/ingredients.csv", "./io/layers.csv");
-// 		bakery.startGame(playerNames, "./io/customers.csv");
-// 		bakery.endTurn();
-// 		bakery.endTurn();
-// 		bakery.endTurn();
-// 		bakery.endTurn();
-// 		bakery.endTurn();
+		MagicBakery bakery = new MagicBakery(12854, "./io/ingredients.csv", "./io/layers.csv");
+		bakery.startGame(playerNames, "./io/customers.csv");
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
+		bakery.endTurn();
 
-// 		File output = File.createTempFile("serial", ".bin");
-// 		bakery.saveState(output);
+		File output = File.createTempFile("serial", ".bin");
+		bakery.saveState(output);
 
 
-// 		MagicBakery bakery2 = assertDoesNotThrow(() -> MagicBakery.loadState(output));
+		MagicBakery bakery2 = assertDoesNotThrow(() -> MagicBakery.loadState(output));
 
-// 		assertEquals(bakery.getCurrentPlayer().toString(), bakery2.getCurrentPlayer().toString());
-// 		//assertEquals(bakery.getCustomers().getCustomers(), bakery2.getCustomers().getCustomers());
+		assertEquals(bakery.getCurrentPlayer().toString(), bakery2.getCurrentPlayer().toString());
+		//assertEquals(bakery.getCustomers().getCustomers(), bakery2.getCustomers().getCustomers());
 
-// 		assertEquals(bakery.getLayers(), bakery2.getLayers());
-// 		assertNotSame(bakery.getLayers(), bakery2.getLayers());
-// 		assertEquals(bakery.getPantry(), bakery2.getPantry());
-// 		assertNotSame(bakery.getPantry(), bakery2.getPantry());
-// 		assertEquals(bakery.getPlayers().stream().map(Player::toString).collect(Collectors.toList()), bakery2.getPlayers().stream().map(Player::toString).collect(Collectors.toList()));
-// 		assertNotSame(bakery.getPlayers(), bakery2.getPlayers());
+		assertEquals(bakery.getLayers(), bakery2.getLayers());
+		assertNotSame(bakery.getLayers(), bakery2.getLayers());
+		assertEquals(bakery.getPantry(), bakery2.getPantry());
+		assertNotSame(bakery.getPantry(), bakery2.getPantry());
+		assertEquals(bakery.getPlayers().stream().map(Player::toString).collect(Collectors.toList()), bakery2.getPlayers().stream().map(Player::toString).collect(Collectors.toList()));
+		assertNotSame(bakery.getPlayers(), bakery2.getPlayers());
 
-// 		PrintStream stdout = System.out;
+		PrintStream stdout = System.out;
 
-// 		ByteArrayOutputStream output1 = new ByteArrayOutputStream();
-// 		System.setOut(new PrintStream(output1));
-// 		bakery.printCustomerServiceRecord();
+		ByteArrayOutputStream output1 = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output1));
+		bakery.printCustomerServiceRecord();
 
-// 		ByteArrayOutputStream output2 = new ByteArrayOutputStream();
-// 		System.setOut(new PrintStream(output2));
-// 		bakery2.printCustomerServiceRecord();
+		ByteArrayOutputStream output2 = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output2));
+		bakery2.printCustomerServiceRecord();
 
-// 		assertEquals(output1.toString(), output2.toString());
+		assertEquals(output1.toString(), output2.toString());
 
-// 		output1 = new ByteArrayOutputStream();
-// 		System.setOut(new PrintStream(output1));
-// 		bakery.printGameState();
+		output1 = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output1));
+		bakery.printGameState();
 
-// 		output2 = new ByteArrayOutputStream();
-// 		System.setOut(new PrintStream(output2));
-// 		bakery2.printGameState();
+		output2 = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(output2));
+		bakery2.printGameState();
 
-// 		assertEquals(output1.toString(), output2.toString());
+		assertEquals(output1.toString(), output2.toString());
 
-// 		System.setOut(stdout);
-// 	}
+		System.setOut(stdout);
+	}
     
 }

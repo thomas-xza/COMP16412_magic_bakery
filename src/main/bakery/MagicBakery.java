@@ -366,7 +366,6 @@ public class MagicBakery
 	
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	    
-
 	getCurrentPlayer().inc_actions_taken();
 
 	List<Ingredient> hand_used = new ArrayList<>();

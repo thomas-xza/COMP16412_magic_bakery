@@ -21,7 +21,7 @@ public class Player
 
     private static final long serialVersionUID = 4;
 
-    private int actions_taken = 0;
+    private int actions_taken;
     
     /**
      *  Initiate player
@@ -31,6 +31,8 @@ public class Player
     public Player(String name) {
 
 	this.name = name;
+
+	this.actions_taken = 0;
 
 	hand = new ArrayList<Ingredient>();
 
