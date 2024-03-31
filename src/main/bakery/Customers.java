@@ -94,6 +94,14 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
+	if ( this.customerDeck.size() != 0 ) {
+
+	    ((LinkedList)this.activeCustomers).set(0,
+     	        (CustomerOrder)((LinkedList)this.customerDeck).removeLast();
+						   );
+
+	}
+
 	System.out.println("customerDeck posttime: " + " " + this.customerDeck);
 
 	System.out.println("activeCustomers: " + this.activeCustomers);
@@ -117,9 +125,9 @@ public class Customers
 
 	LinkedList<CustomerOrder> picked_up = new LinkedList<>();
 
-	picked_up.addFirst(
-	     (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
-			   );
+	CustomerOrder placeholder = null;
+
+	picked_up.addFirst(placeholder);
 
 	while ( overflowed == false && filled_a_blank == false ) {
 
