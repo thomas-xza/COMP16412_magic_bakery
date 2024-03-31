@@ -1,4 +1,3 @@
-Note: you cannot edit commit messages on a protected branch, it seems. Logging out in lieu of that...
 
 ## Deadline and Submission
 
