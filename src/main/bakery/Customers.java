@@ -137,16 +137,15 @@ public class Customers
 
 	picked_up.addFirst(placeholder);
 
-	// //  Cycle to 
+	if ( this.customerDeck.size() == 0 &&
+	     this.activeCustomers.size() != 0 ) {
 
-	if ( this.customerDeck.size() == 0 ) {
+	    i = ((LinkedList)this.activeCustomers).indexOf(anti_peek());
 
-	    for ( i = 0 ; ((LinkedList)this.activeCustomers).get(i) !=
-		      null ; i++ ) { ; }
-	    
 	}
 
-	while ( overflowed == false && filled_a_blank == false ) {
+	while ( overflowed == false && filled_a_blank == false &&
+		this.activeCustomers.size() != 0 ) {
 
 	    picked_up.addLast(
 		(CustomerOrder)((LinkedList)this.activeCustomers).get(i)
@@ -472,6 +471,27 @@ public class Customers
     public CustomerOrder peek() {
 
 	return (CustomerOrder)((LinkedList)this.activeCustomers).get(2);
+
+    }
+
+    /**
+     * something
+     * @return ok
+     */
+    
+    public CustomerOrder anti_peek() {
+
+	for ( CustomerOrder c : this.activeCustomers ) {
+
+	    if ( c != null ) {
+
+		return c;
+
+	    }
+
+	}
+
+	return null;
 
     }
 
