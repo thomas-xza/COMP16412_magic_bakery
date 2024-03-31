@@ -751,7 +751,7 @@ public class CustomersTest {
         assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
         // State after addCustomerOrder() should be: null -> null -> order5
-        System.out.println("drain2 p1");
+        System.out.println("drain2 np1");
         assertEquals(1, customers.size());
         assertEquals(0, customerDeck.size());
         assertEquals(4, inactiveCustomers.size());

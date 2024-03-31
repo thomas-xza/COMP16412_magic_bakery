@@ -95,6 +95,7 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
+
 	try {
 	
 	    ((LinkedList)this.activeCustomers).set(0,
@@ -103,6 +104,8 @@ public class Customers
 
 	} catch ( Exception e ) {
 
+	    System.out.println("activeCustomers: " + this.activeCustomers);
+	    
 	    throw new EmptyStackException();
 	    
 	}
@@ -133,6 +136,15 @@ public class Customers
 	CustomerOrder placeholder = null;
 
 	picked_up.addFirst(placeholder);
+
+	// //  Cycle to 
+
+	if ( this.customerDeck.size() == 0 ) {
+
+	    for ( i = 0 ; ((LinkedList)this.activeCustomers).get(i) !=
+		      null ; i++ ) { ; }
+	    
+	}
 
 	while ( overflowed == false && filled_a_blank == false ) {
 
