@@ -940,7 +940,9 @@ public class CustomersTest {
         assertFalse(customers.getActiveCustomers().contains(order4));
         assertTrue(inactiveCustomers.contains(order2));
 
+        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() entry");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() exit");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
 
@@ -955,7 +957,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
+        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() entry");
         assertTrue(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() exit");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
@@ -989,7 +993,9 @@ public class CustomersTest {
         assertFalse(customers.getActiveCustomers().contains(order4));
         assertTrue(inactiveCustomers.contains(order3));
 
+        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() ex");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
 
@@ -1003,8 +1009,10 @@ public class CustomersTest {
         assertTrue(customers.getActiveCustomers().contains(order4));
 
         assertFalse(customers.isEmpty());
-        assertEquals(order1, customers.peek());
+        assertEquals(order1, customers.peek()); 
+        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() en");
         assertTrue(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() ex");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
@@ -1140,7 +1148,9 @@ public class CustomersTest {
         assertTrue(inactiveCustomers.contains(order2));
         assertTrue(inactiveCustomers.contains(order3));
 
+        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() ex");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
 
@@ -1155,7 +1165,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
+        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() ex");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
     }
@@ -1343,7 +1355,9 @@ public class CustomersTest {
         assertTrue(inactiveCustomers.contains(order2));
         assertTrue(inactiveCustomers.contains(order4));
 
+        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() ex");
         assertFalse(customers.isEmpty());
         assertEquals(order3, customers.peek());
 
@@ -1357,7 +1371,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order3, customers.peek());
+        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() en");
         assertTrue(customers.customerWillLeaveSoon());
+        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() ex");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
     }
@@ -1797,28 +1813,38 @@ public class CustomersTest {
         // Active customers should be order3 -> order2 -> null || order1 is now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        System.out.println("TP ex2 part 2");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
         assertFalse(customers.getActiveCustomers().contains(order1));
+        System.out.println("TP ex2 part 2.1");
         assertTrue(customers.getActiveCustomers().contains(order2));
+        System.out.println("TP ex2 part 2.2");
         assertTrue(customers.getActiveCustomers().contains(order3));
 
+        System.out.println("TP ex2 part 3");
         assertFalse(customers.isEmpty());
         assertNull(customers.peek());
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
+        System.out.println("TP ex2 part 4");
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order3 -> order2 
+        System.out.println("TP ex2 part 5");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order1));
 
+        System.out.println("TP ex2 part 6");
         assertFalse(customers.isEmpty());
         assertEquals(order2, customers.peek());
+        System.out.println("TP ex2 part 6.1");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("TP ex2 part 6.2");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
+        System.out.println("TP ex2 part 6.3");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
     }
 
@@ -1839,27 +1865,40 @@ public class CustomersTest {
         // Active customers should be order3 -> null -> order1 || order2 is now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        System.out.println("TP ex3 p1");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
+        System.out.println("TP ex3 p1.2");
         assertTrue(customers.getActiveCustomers().contains(order1));
+        System.out.println("TP ex3 p1.3");
         assertFalse(customers.getActiveCustomers().contains(order2));
+        System.out.println("TP ex3 p1.4");
         assertTrue(customers.getActiveCustomers().contains(order3));
 
+        System.out.println("TP ex3 p1.5");
         assertFalse(customers.isEmpty());
+        System.out.println("TP ex3 p1.6");
         assertEquals(order1, customers.peek());
+        System.out.println("TP ex3 p1.7");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order3 -> order1 
+        System.out.println("TP ex3 p2");
         assertEquals(2, customers.size());
+        System.out.println("TP ex3 p2.1");
         assertEquals(1, inactiveCustomers.size());
+        System.out.println("TP ex3 p2.2");
         assertTrue(inactiveCustomers.contains(order2));
 
+        System.out.println("TP ex3 p3");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
+        System.out.println("TP ex3 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("TP ex3.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
     }
@@ -1880,27 +1919,39 @@ public class CustomersTest {
         // Active customers should be null -> order2 -> order1 || order3 is now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        System.out.println("TP ex4 p1");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
+        System.out.println("TP ex4 p1.1");
         assertTrue(customers.getActiveCustomers().contains(order1));
+        System.out.println("TP ex4 p1.2");
         assertTrue(customers.getActiveCustomers().contains(order2));
+        System.out.println("TP ex4 p1.3");
         assertFalse(customers.getActiveCustomers().contains(order3));
 
+        System.out.println("TP ex4 p2");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
+        System.out.println("TP ex4 p2.2");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order2 -> order1
+        System.out.println("TP ex4 p3");
         assertEquals(2, customers.size());
+        System.out.println("TP ex4 p3.1");
         assertEquals(1, inactiveCustomers.size());
+        System.out.println("TP ex4 p3.2");
         assertTrue(inactiveCustomers.contains(order3));
 
+        System.out.println("TP ex4 p4");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
+        System.out.println("TP ex4 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("TP ex4.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
     }
@@ -1943,7 +1994,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertNull(customers.peek());
+        System.out.println("TP ex5 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("TP ex5.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
     }
 
@@ -2006,28 +2059,36 @@ public class CustomersTest {
         // Active customers should be null -> null -> order1 || order2 and order3 are now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        System.out.println("TP ex7 p1");
         assertEquals(1, customers.size());
         assertEquals(2, inactiveCustomers.size());
         assertTrue(customers.getActiveCustomers().contains(order1));
         assertFalse(customers.getActiveCustomers().contains(order2));
         assertFalse(customers.getActiveCustomers().contains(order3));
 
+        System.out.println("TP ex7 p2");
         assertFalse(customers.isEmpty());
+        System.out.println("TP ex7 p2.1");
         assertEquals(order1, customers.peek());
+        System.out.println("TP ex7 p2.2");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> null -> order1 
+        System.out.println("TP ex7 p3");
         assertEquals(1, customers.size());
         assertEquals(2, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order2));
         assertTrue(inactiveCustomers.contains(order3));
 
+        System.out.println("TP ex7 p4");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
+        System.out.println("TP ex7 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
+        System.out.println("TP ex7.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
     }
 
@@ -2185,30 +2246,46 @@ public class CustomersTest {
         // Active customers should be order5 -> null -> order3 || order1, order2, and order4 are inactive || the customerDeck is empty
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
+        System.out.println("TP ex11 p1");
         assertEquals(2, customers.size());
         assertEquals(3, inactiveCustomers.size());
+        System.out.println("TP ex11 p1.2");
         assertTrue(customers.getCustomerDeck().isEmpty());
+        System.out.println("TP ex11 p1.3");
         assertTrue(inactiveCustomers.contains(order1));
+        System.out.println("TP ex11 p1.4");
         assertTrue(inactiveCustomers.contains(order2));
+        System.out.println("TP ex11 p1.5");
         assertTrue(inactiveCustomers.contains(order4));
+        System.out.println("TP ex11 p1.6");
         assertTrue(customers.getActiveCustomers().contains(order3));
+        System.out.println("TP ex11 p1.7");
         assertTrue(customers.getActiveCustomers().contains(order5));
 
+        System.out.println("TP ex11 p2");
         assertFalse(customers.isEmpty());
+        System.out.println("TP ex11 p2.1");
         assertEquals(order3, customers.peek());
+        System.out.println("TP ex11 p2.2");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order5 -> order3
+        System.out.println("TP ex11 p3");
         assertEquals(2, customers.size());
         assertEquals(3, inactiveCustomers.size());
 
+        System.out.println("TP ex11 p4");
         assertFalse(customers.isEmpty());
+        System.out.println("TP ex11 p4.1");
         assertEquals(order3, customers.peek());
+        System.out.println("TP ex11 customerWillLeaveSoon");
         assertTrue(customers.customerWillLeaveSoon());
+        System.out.println("TP ex11.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
+        System.out.println("TP ex11 p5");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
     }
 
