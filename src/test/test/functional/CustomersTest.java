@@ -1767,7 +1767,9 @@ public class CustomersTest {
 	System.out.println("ex1 part 3");
 
         assertFalse(customers.isEmpty());
+	System.out.println("ex1 part 3.1");
         assertEquals(order2, customers.peek());
+	System.out.println("ex1 part 3.2");
         assertFalse(customers.customerWillLeaveSoon());
 	System.out.println("ex1 part 3.5");
 
