@@ -372,6 +372,11 @@ public class MagicBakery
 
 	hand_used = customer.fulfill(getCurrentPlayer().getHand(), garnish);
 
+	//  Arguably this function should also remove the card...
+	//  But this breaks all the tests!
+
+	// customers.move_fulfilled_card(customer);
+	
 	return hand_used;
 
     }
@@ -640,6 +645,10 @@ public class MagicBakery
      */
 
     public void printCustomerServiceRecord() {
+
+	System.out.println(this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.FULFILLED).size());
+	
+	System.out.println(this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.GIVEN_UP).size());
 
     }
 

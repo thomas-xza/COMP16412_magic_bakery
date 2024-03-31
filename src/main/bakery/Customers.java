@@ -266,6 +266,19 @@ public class Customers
 	return customerDeck;
 
     }
+
+    /**
+     * getter
+     * @param customer a
+     */
+    
+    public void move_fulfilled_card(CustomerOrder customer) {
+
+	((LinkedList)this.activeCustomers).remove(customer);
+
+	this.inactiveCustomers.add(customer);
+
+    }
  
     /**
      * getter
