@@ -86,20 +86,31 @@ public class Customers
     /**
      * add
      * @return order
+     * @throws EmptyStackException a
      */
 
-    public CustomerOrder addCustomerOrder() {
+    public CustomerOrder addCustomerOrder() throws EmptyStackException {
 
 	System.out.println("customerDeck pretime: " + " " + this.customerDeck);
 
-	CustomerOrder last_cust = timePasses();
+	CustomerOrder last_cust = null;
 
-	if ( this.customerDeck.size() != 0 ) {
+	try {
+	
+	    last_cust = timePasses();
 
-	    ((LinkedList)this.activeCustomers).set(0,
-     	        (CustomerOrder)((LinkedList)this.customerDeck).removeLast();
-						   );
+	    if ( this.customerDeck.size() != 0 ) {
 
+		((LinkedList)this.activeCustomers).set(0,
+                  (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
+						       );
+
+	    }
+
+	} catch ( Exception e ) {
+
+	    throw new EmptyStackException();
+	    
 	}
 
 	System.out.println("customerDeck posttime: " + " " + this.customerDeck);

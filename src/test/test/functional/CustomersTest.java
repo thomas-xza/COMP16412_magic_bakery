@@ -674,6 +674,7 @@ public class CustomersTest {
 
     @Test
     public void testAddCustomerOrder__Draining1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
+	System.out.println("Draining1");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
