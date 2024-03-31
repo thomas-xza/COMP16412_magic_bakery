@@ -338,17 +338,17 @@ public class MagicBakery
 
 	this.new_round_chk += 1;
 
-	//  The tests expect that there is no next round!
+	try {
 
-	// if ( this.new_round_chk == this.players.size() ) {
+	    if ( this.new_round_chk == this.players.size() ) {
 
-	//     for ( Player p : this.players ) {
+		this.customers.addCustomerOrder();
 
-	// 	p.reset_actions_taken();
+		this.new_round_chk = 0;
 
-	//     }
+	    }
 
-	// }
+	} catch ( Exception e ) {;}
 
 	return turn_ended;
 

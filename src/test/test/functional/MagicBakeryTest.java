@@ -336,6 +336,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testDrawFromPantryDeck__Normal() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+            System.out.println("DrawFromPantryDeck__Normal");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -343,13 +344,17 @@ public class MagicBakeryTest {
 		Collection<Ingredient> pantryDeck = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck");
 
 		Ingredient[] deckArray = pantryDeck.toArray(new Ingredient[0]);
+
+		System.out.println("deck size " + pantryDeck.size());
 		
 		// pantryDeck has LIFO semantics: latest items added should be the first returned by drawFromPantryDeck
 		Method mtd = FunctionalHelper.getMethod(MagicBakery.class, "drawFromPantryDeck");
 		for (int i = deckArray.length - 1; i >= 0; i--) {
 			// Compare position i with the return value of drawFromPantryDeck()
+            System.out.println("p1");
 			assertEquals(deckArray[i], mtd.invoke(bakery));
 			// pantryDeck should be one item smaller
+            System.out.println("p2");
 			assertEquals(i, pantryDeck.size());
 		}
 	}
@@ -602,17 +607,25 @@ public class MagicBakeryTest {
 		}
 
 		// State just before the end of the round
+            System.out.println("EndRound p1");
 		assertEquals(0, bakery.getActionsPermitted() - bakery.getActionsRemaining());
+            System.out.println("EndRound p1.1");
 		assertEquals(players[players.length - 1], bakery.getCurrentPlayer());
+            System.out.println("EndRound p1.2");
 		assertEquals(deckSizeOriginal, customerDeck.size());
+            System.out.println("EndRound p1.3");
 		assertEquals(customersOriginal, customers.size());
 
 		// Round ends
 		bakery.endTurn();
 
+            System.out.println("EndRound p2");
 		assertEquals(0, bakery.getActionsPermitted() - bakery.getActionsRemaining());
+            System.out.println("EndRound p2.1");
 		assertEquals(players[0], bakery.getCurrentPlayer());
+            System.out.println("EndRound p2.2");
 		assertEquals(deckSizeOriginal - 1, customerDeck.size());
+            System.out.println("EndRound p2.3");
 		assertEquals(customersOriginal + 1, customers.size());
 	}
 
@@ -645,28 +658,36 @@ public class MagicBakeryTest {
 			bakery.endTurn();
 		}
 
+            System.out.println("EndGame p1");
 		assertEquals(0, bakery.getActionsPermitted() - bakery.getActionsRemaining());
+            System.out.println("EndGame p1.1");
 		assertEquals(players[players.length - 1], bakery.getCurrentPlayer());
-		assertEquals(0, customerDeck.size());
+            System.out.println("EndGame p1.2");
+	    assertEquals(0, customerDeck.size());
 
-		assertEquals(3, customers.size());
+            System.out.println("EndGame p1.3");
+	    assertEquals(3, customers.size()); 
 
 		// Three more rounds to push out all remaining customers
 		for (int i = 0; i < players.length; i++) {
 			bakery.endTurn();
 		}
+            System.out.println("EndGame p1.4");
 		assertEquals(2, customers.size());
 
 		for (int i = 0; i < players.length; i++) {
 			bakery.endTurn();
 		}
+            System.out.println("EndGame p1.5");
 		assertEquals(1, customers.size());
 
 		for (int i = 0; i < players.length; i++) {
 			bakery.endTurn();
 		}
+            System.out.println("EndGame p1.6");
 		assertEquals(0, customers.size());
 
+            System.out.println("EndGame p1.7");
 		assertEquals(deckSizeOriginal + customersOriginal, inactiveCustomers.size());
 	}
 
