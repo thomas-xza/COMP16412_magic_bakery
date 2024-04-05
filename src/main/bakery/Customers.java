@@ -118,12 +118,49 @@ public class Customers
 	    	    
 	}
 
+	status_refresh_fix();
+
 	// System.out.println("customerDeck posttime: " + " " + this.customerDeck);
 
 	// System.out.println("activeCustomers: " + this.activeCustomers);
 
 	return last_cust;
 
+    }
+
+    /**
+     * add
+     */
+
+    public void status_refresh_fix() {
+
+	for (CustomerOrder c : this.activeCustomers) {
+
+	    if ( c != null ) {
+
+		c.setStatus(CustomerOrderStatus.WAITING);
+
+	    }
+
+	}
+
+	if ( this.size() == 3 && peek() != null ) {
+
+	    peek().setStatus(CustomerOrderStatus.IMPATIENT);
+
+	} else if ( this.customerDeck.size() == 0 ) {
+
+	    if ( ( this.size() == 1 && peek() != null ) ||
+		 ( this.size() == 2 &&
+		   (CustomerOrder)((LinkedList)this.activeCustomers).get(1) != null &&
+		   (CustomerOrder)((LinkedList)this.activeCustomers).get(2) != null ) ) {
+
+		     peek().setStatus(CustomerOrderStatus.IMPATIENT);
+
+		 }
+
+	}
+	
     }
 
     /**
@@ -144,6 +181,8 @@ public class Customers
 	CustomerOrder placeholder = null;
 
 	picked_up.addFirst(placeholder);
+
+	status_refresh_fix();
 
 	if ( this.customerDeck.size() == 0 &&
 	     this.activeCustomers.size() != 0 ) {
@@ -171,12 +210,6 @@ public class Customers
 						   picked_up.removeFirst()
 						   );
 
-	    if ( i == 2 && peek() != null ) {
-
-		peek().setStatus(CustomerOrderStatus.IMPATIENT);
-
-	    }
-	    
 	    if ( i + 1 == 3 && filled_a_blank == false ) {
 
 		overflowed = true;
@@ -188,6 +221,8 @@ public class Customers
 					   );
 		
 		picked_up.getFirst().setStatus(CustomerOrderStatus.GIVEN_UP);
+
+		status_refresh_fix();
 
 		return picked_up.getFirst();
 
@@ -210,6 +245,32 @@ public class Customers
 
 	System.out.println("activeCustomers: " + this.activeCustomers);
 
+	status_refresh_fix();
+
+	for ( CustomerOrder select : this.activeCustomers ) {
+
+	    if ( select != null ) {
+	    
+		if ( select.getStatus() == CustomerOrderStatus.WAITING ) {
+
+		    System.out.printf(" W");
+
+		} else if ( select.getStatus() == CustomerOrderStatus.IMPATIENT ) {
+
+		    System.out.printf(" I");
+
+		} else {
+
+		    System.out.printf(" ?");
+		    
+		}
+		
+	    } else { System.out.printf(" _"); }
+
+	}
+
+	System.out.println("");
+
 	CustomerOrder c = null;
 
 	try {
@@ -218,16 +279,15 @@ public class Customers
 
 	} catch (Exception e) { ; }
 
-	if ( c == null ) {
+	if ( peek() != null &&
+	     peek().getStatus() == CustomerOrderStatus.IMPATIENT ) {
 
-	    return false;
+	    return true;
 
-	}
+	     }
 
-	System.out.println("customerWillLeaveSoon() true:  " + c);
+	return false;
 
-	return true;
-	
     }
 
     /**

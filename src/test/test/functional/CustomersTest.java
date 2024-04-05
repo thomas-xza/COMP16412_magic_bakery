@@ -691,6 +691,7 @@ public class CustomersTest {
         customers.addCustomerOrder();
         customers.addCustomerOrder();
 
+	System.out.println("p1");
         // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
         // Alternatively, there is a problem with adding the first five orders. Check the previous tests.
         assertEquals(3, customers.size());
@@ -698,20 +699,26 @@ public class CustomersTest {
         assertEquals(2, inactiveCustomers.size());
         assertFalse(inactiveCustomers.contains(order3));
 
+	System.out.println("p2");
         assertTrue(customers.customerWillLeaveSoon());
+	System.out.println("p2.1");
         assertFalse(customers.isEmpty());
+	System.out.println("p2.2");
         assertEquals(order3, customers.peek()); 
 
         // ADD!
         assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
         // State after addCustomerOrder() should be: null -> order5 -> order4
+	System.out.println("p3");
         assertEquals(2, customers.size());
         assertEquals(0, customerDeck.size());
         assertEquals(3, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order3));
 
+	System.out.println("p4");
         assertTrue(customers.customerWillLeaveSoon());
+	System.out.println("p4.1");
         assertFalse(customers.isEmpty());
         assertEquals(order4, customers.peek()); 
     }
