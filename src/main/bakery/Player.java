@@ -126,8 +126,8 @@ public class Player
 
 	}
 
-	System.out.println("removed" + ingredient);
-
+	// System.out.println("removed" + ingredient);
+	
     }
 
     /**

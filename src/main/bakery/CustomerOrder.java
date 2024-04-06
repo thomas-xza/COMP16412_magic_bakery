@@ -212,9 +212,9 @@ public class CustomerOrder
 	recipe_and_garnish.addAll(this.recipe);
 	recipe_and_garnish.addAll(this.garnish);
 
-	System.out.println("inputs: " + ingredients);
-	System.out.println("inputs: " + SL.list_to_quantities(ingredients));
-	System.out.println("recipe: " + this.recipe);
+	// System.out.println("inputs: " + ingredients);
+	// System.out.println("inputs: " + SL.list_to_quantities(ingredients));
+	// System.out.println("recipe: " + this.recipe);
 
 	// if ( garnish == true ) {
 
@@ -232,7 +232,7 @@ public class CustomerOrder
 	    used = used_remain.get(0);
 	    remain = used_remain.get(1);
 
-	    System.out.println("#1 used, remain:  " + used_remain);
+	    // System.out.println("#1 used, remain:  " + used_remain);
 	    // System.out.println("used:  " + used);
 	    // System.out.println("remain:  " + remain);
 
@@ -246,14 +246,14 @@ public class CustomerOrder
 
 	if ( garnish == true && canGarnish(remain) == true ) {
 
-	    System.out.println("ATTEMPTING GARNISH");
+	    // System.out.println("ATTEMPTING GARNISH");
 
 	    used_remain_2 = SL.used_quantities_v2(
 					       this.garnish,
 					       remain
 					     );
 
-	    System.out.println("#2 used, remain:  " + used_remain_2);
+	    // System.out.println("#2 used, remain:  " + used_remain_2);
 
 	    if ( used_remain_2.get(0).size() != 0 ) {
 

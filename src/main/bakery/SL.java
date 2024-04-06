@@ -25,9 +25,9 @@ public class SL {
 
     public static boolean compare_quantities(Map<String, Boolean> target_layers, Map<String, Boolean> source_layers, Map<String, Integer> target_map, Map<String, Integer> source_map, int verbose) {
 
-	System.out.println("source_map:  " + source_map + source_layers);
+	// System.out.println("source_map:  " + source_map + source_layers);
 
-	System.out.println("target_map:  " + target_map + target_layers);
+	// System.out.println("target_map:  " + target_map + target_layers);
 
 	int missing_in = 0;
 	int missing_total = 0;
@@ -81,7 +81,7 @@ public class SL {
 	    
 	}
 
-	System.out.println(res);
+	// System.out.println(res);
 	
 	return res;
 
