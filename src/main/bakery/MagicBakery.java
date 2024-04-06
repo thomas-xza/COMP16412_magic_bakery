@@ -251,7 +251,7 @@ public class MagicBakery
 
 	}
 	
-	getCurrentPlayer().inc_actions_taken();
+	// getCurrentPlayer().inc_actions_taken();
 	
 	return (Ingredient)((Stack)this.pantryDeck).pop();
 	

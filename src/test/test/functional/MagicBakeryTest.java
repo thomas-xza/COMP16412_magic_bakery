@@ -351,10 +351,10 @@ public class MagicBakeryTest {
 		Method mtd = FunctionalHelper.getMethod(MagicBakery.class, "drawFromPantryDeck");
 		for (int i = deckArray.length - 1; i >= 0; i--) {
 			// Compare position i with the return value of drawFromPantryDeck()
-            System.out.println("p1");
+		    System.out.println("p1");
 			assertEquals(deckArray[i], mtd.invoke(bakery));
 			// pantryDeck should be one item smaller
-            System.out.println("p2");
+			System.out.println("p2");
 			assertEquals(i, pantryDeck.size());
 		}
 	}
