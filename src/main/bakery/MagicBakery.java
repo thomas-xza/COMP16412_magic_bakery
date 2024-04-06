@@ -414,6 +414,8 @@ public class MagicBakery
 
 	} catch ( Exception e ) {;}
 
+	System.out.println(customers.getActiveCustomers());
+	
 	return turn_ended;
 
     }
