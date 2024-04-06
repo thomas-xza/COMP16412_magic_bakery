@@ -1,3 +1,5 @@
+
+
 package bakery;
 
 import java.util.*;
@@ -76,8 +78,6 @@ public class MagicBakery
 	}
 
 	this.layers = CardUtils.readLayerFile(layerDeckFile);
-
-	SL.layers_loaded = new ArrayList<Layer>(layers);
 
 	// System.out.println("Just read layers!" + this.layers);
 
@@ -460,7 +460,7 @@ public class MagicBakery
 
 	}
 
-	if ( customer.get_status() == CustomerOrderStatus.GARNISHED ) {
+	if ( customer.getStatus() == CustomerOrderStatus.GARNISHED ) {
 
 	    for ( Ingredient i : customer.getGarnish() ) {
 

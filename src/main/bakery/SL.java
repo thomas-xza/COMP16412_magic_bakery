@@ -13,8 +13,6 @@ import bakery.*;
 
 public class SL {
 
-    public static List<Layer> layers_loaded;
-    
     /**
      * WARNING_DUMB_INVERTED_PARAMETER_ORDER
      * @param target_map a

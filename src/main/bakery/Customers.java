@@ -259,11 +259,11 @@ public class Customers
 
 	//     if ( select != null ) {
 	    
-	// 	if ( select.get_status() == CustomerOrderStatus.WAITING ) {
+	// 	if ( select.getStatus() == CustomerOrderStatus.WAITING ) {
 
 	// 	    System.out.printf(" W");
 
-	// 	} else if ( select.get_status() == CustomerOrderStatus.IMPATIENT ) {
+	// 	} else if ( select.getStatus() == CustomerOrderStatus.IMPATIENT ) {
 
 	// 	    System.out.printf(" I");
 
@@ -290,7 +290,7 @@ public class Customers
 	} catch (Exception e) { ; }
 
 	if ( peek() != null &&
-	     peek().get_status() == CustomerOrderStatus.IMPATIENT ) {
+	     peek().getStatus() == CustomerOrderStatus.IMPATIENT ) {
 
 	    return true;
 
@@ -405,7 +405,7 @@ public class Customers
 
 	for ( CustomerOrder order : this.inactiveCustomers ) {
 
-	    if ( order.get_status() == status ) {
+	    if ( order.getStatus() == status ) {
 
 		matches.add(order);
 

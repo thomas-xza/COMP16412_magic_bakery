@@ -7,9 +7,9 @@ import bakery.*;
 import util.*;
 
 /**
- * class
- * @author thomas.
- * @version 1.5
+ * CustomerOrder class
+ * @author thomas
+ * @version 1.0
  * @since 1.0
 */
 
@@ -28,12 +28,10 @@ public class CustomerOrder
    
     private static final long serialVersionUID = 7;
 
-    public static List<Layer> layers_loaded;
-
     /**
-     *  function passes_jdoc
+     *  Contains the various customer order statuses
      */
-
+    
     public enum CustomerOrderStatus {
 
 	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
@@ -41,25 +39,14 @@ public class CustomerOrder
     }
     
     /**
-     * aaaaaa
-     * @return a
+     * Constructor
+     * @param name of order
+     * @param recipe ingredients
+     * @param garnish ingredients
+     * @param level of difficulty
+     * @throws WrongIngredientsException if bad recipe input
      */
-    
-    public CustomerOrderStatus get_status() {
 
-	return status;
-
-    }
-
-    /**
-     * a passes_jdoc 
-     * @param name a
-     * @param recipe b
-     * @param garnish c
-     * @param level d
-     * @throws WrongIngredientsException a
-     */
-    
     public CustomerOrder(String name, List<Ingredient> recipe, List<Ingredient> garnish, int level) throws WrongIngredientsException {
 
         if ( recipe == null || recipe.size() == 0 ) {
@@ -83,13 +70,13 @@ public class CustomerOrder
 	this.status = CustomerOrderStatus.WAITING;
 
     }
-
-    /**
-     * a passes_jdoc
-     * @param ingredients a
-     * @return a
-     */
     
+    /**
+     * Check if recipe is fulfillable with ingredients provided
+     * @param ingredients to try to fulfill with
+     * @return true or false
+     */
+
     public boolean canFulfill(List<Ingredient> ingredients) {
 
 	// System.out.println(this.name);
@@ -109,13 +96,13 @@ public class CustomerOrder
 	return res;
 	
     }
-
-    /**
-     * a passes_jdoc
-     * @param ingredients a
-     * @return a
-     */
     
+    /**
+     * Check if recipe can be garnished
+     * @param ingredients to try to garnish with
+     * @return result
+     */
+
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = SL.compare_quantities(
@@ -135,14 +122,15 @@ public class CustomerOrder
 	
     }
 
-    /**
-     * a passes_jdoc
-     * @param ingredients a
-     * @param garnish a
-     * @return a
-     * @throws WrongIngredientsException a
-     */
     
+    /**
+     * fulfill
+     * @param ingredients to try and fulfill with
+     * @param garnish as in whether to do so
+     * @return ingredients used to fulfill/garnish
+     * @throws WrongIngredientsException if cannot fulfill
+     */
+
     public List<Ingredient> fulfill(List<Ingredient> ingredients, boolean garnish) throws WrongIngredientsException {
 
 	List<String> ingredients_used = new ArrayList<>();
@@ -233,10 +221,10 @@ public class CustomerOrder
     }
 
     /**
-     * a passes_jdoc
-     * @return a
+     * get garnish for this recipe
+     * @return ingredients of garnish
      */
-    
+
     public List<Ingredient> getGarnish() {
 
 	return garnish;
@@ -244,10 +232,10 @@ public class CustomerOrder
     }
 
     /**
-     * a passes_jdoc
-     * @return a
+     * get garnish desc
+     * @return as string
      */
-    
+
     public String getGarnishDescription() {
 
 	List<String> g_list = new ArrayList<>();
@@ -265,21 +253,21 @@ public class CustomerOrder
     }
 
     /**
-     * a passes_jdoc
-     * @return a
+     * get level of recipe
+     * @return int
      */
-    
+
     public int getLevel() {
 
 	return level;
 
     }
-
-    /**
-     * a passes_jdoc
-     * @return a
-     */
     
+    /**
+     * get recipe of order
+     * @return ingredients
+     */
+
     public List<Ingredient> getRecipe() {
 
 	return recipe;
@@ -287,10 +275,10 @@ public class CustomerOrder
     }
 
     /**
-     * a passes_jdoc
-     * @return a
+     * get recipe desc
+     * @return as string
      */
-    
+
     public String getRecipeDescription() {
 
 	List<String> r_list = new ArrayList<>();
@@ -308,8 +296,8 @@ public class CustomerOrder
     }
 
     /**
-     * a passes_jdoc
-     * @return a
+     * convert to string
+     * @return as string
      */
 
     public String toString() {
@@ -317,33 +305,34 @@ public class CustomerOrder
 	return this.name;
 	
     }
-
-    /**
-     * a passes_jdoc
-     * @return a
-     */
     
+    /**
+     * get status of order
+     * @return as enum
+     */
+
     public CustomerOrderStatus getStatus() {
 
 	return status;
 
     }
-
-    /**
-     * a passes_jdoc
-     * @param status a
-     */
     
+    /**
+     * set status of order
+     * @param status to set
+     */
+
     public void setStatus(CustomerOrderStatus status) {
 
 	this.status = status;
 
     }
 
-    /**
-     * a passes_jdoc
-     */
     
+    /**
+     *  abandon order
+     */
+
     public void abandon() {
 
 	this.status = CustomerOrderStatus.GIVEN_UP;
