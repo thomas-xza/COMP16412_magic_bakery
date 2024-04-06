@@ -96,31 +96,39 @@ public class Player
 
     public void removeFromHand(Ingredient ingredient) throws WrongIngredientsException {
 
-	boolean i_in_hand = false;
+	boolean removed = false;
 
 	for ( Ingredient i : hand ) {
 
 	    if ( i.toString().equals(ingredient.toString()) ) {
 
-		i_in_hand = true;
+		System.out.println("match: " + i + " " + ingredient);
 
-		hand.remove(i);
+		removed = true;
+
+		this.hand.remove(i);
+
+		System.out.println("new hand " + this.hand);
 		
 		break;
+
+	    } else {
+
+		System.out.println("no match: " + i + " " + ingredient);
 
 	    }
 
 	}
 
-	if ( hasIngredient(ingredient) == true && i_in_hand == false ) {
+	if ( hasIngredient(ingredient) == true && removed == false ) {
 
-	    i_in_hand = true;
+	    removed = true;
 
-	    hand.remove(ingredient);
+	    this.hand.remove(ingredient);
 
 	}
 
-	if ( i_in_hand == false ) {
+	if ( removed == false ) {
 
 	    throw new WrongIngredientsException(ingredient.toString());
 

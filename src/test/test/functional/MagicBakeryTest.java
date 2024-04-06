@@ -1738,8 +1738,8 @@ public class MagicBakeryTest {
 
 		bakery.passCard(new Ingredient("flour"), targetPlayer);
 		
-		System.out.println("after pass, source" + sourceHand);
-		System.out.println("after pass, target" + targetHand);
+		System.out.println("expecting, source" + sourceHand);
+		System.out.println("expecting, target" + targetHand);
 
 	    System.out.println("GetPassCard2 p3");
 		assertEquals(1, sourceHand.size());

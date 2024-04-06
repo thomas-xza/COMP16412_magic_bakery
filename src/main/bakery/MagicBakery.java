@@ -28,6 +28,7 @@ public class MagicBakery
 
     private static final long serialVersionUID = 3;
 
+    private int player_ptr = 0;
     private int new_round_chk = 0;
 
     /**
@@ -91,8 +92,6 @@ public class MagicBakery
      */
     
     public void startGame(List<String> playerNames, String customerDeckFile) throws FileNotFoundException, IllegalArgumentException {
-
-	// System.out.println("Initialising players");
 
 	if ( playerNames.size() > 5 || playerNames.size() < 2 ) {
 
@@ -345,13 +344,21 @@ public class MagicBakery
      */
     public boolean endTurn() {
 
+	System.out.println("player changing from:  " + getCurrentPlayer());
+
 	boolean turn_ended = false;
 
 	getCurrentPlayer().reset_actions_taken();
 
-	((LinkedList)players).addLast(
-	    (Player)((LinkedList)players).removeFirst()
-				      );
+	this.player_ptr += 1;
+
+	if ( this.player_ptr == this.players.size() ) {
+
+	    this.player_ptr = 0;
+
+	}
+
+	System.out.println("player changed to:  " + getCurrentPlayer());
 
 	turn_ended = true;
 
@@ -497,7 +504,7 @@ public class MagicBakery
 
     public Player getCurrentPlayer() {
 
-	return (Player)((Queue)this.players).peek();
+	return (Player)((LinkedList)this.players).get(player_pointer);
 
     }
 
@@ -707,19 +714,26 @@ public class MagicBakery
 
     public void passCard(Ingredient ingredient, Player recipient) throws TooManyActionsException {
 
+	for ( Player p : this.players ) {
+
+	    System.out.println(p + " " + p.getHand());
+
+	}
+
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
-
-	System.out.println("Passing from " + getCurrentPlayer() + " to " + recipient);
-
-	System.out.println(getCurrentPlayer() + " before " + getCurrentPlayer().getHandStr());
 	
 	getCurrentPlayer().removeFromHand(ingredient);
 
 	recipient.addToHand(ingredient);
 	
-	System.out.println(getCurrentPlayer() + " after " + getCurrentPlayer().getHandStr());
 	getCurrentPlayer().inc_actions_taken();
 	
+	for ( Player p : this.players ) {
+
+	    System.out.println(p + " " + p.getHand());
+
+	}
+
     }
 
     /**
