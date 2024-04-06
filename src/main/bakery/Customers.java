@@ -616,10 +616,7 @@ public class Customers
 
 	for ( CustomerOrder c : this.activeCustomers ) {
 
-	    if ( c != null &&
-		 c.getStatus() != CustomerOrderStatus.GARNISHED &&
-		 c.getStatus() != CustomerOrderStatus.FULFILLED
-		 ) {
+	    if ( c != null ) {
 
 		i += 1;
 
