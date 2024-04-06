@@ -187,7 +187,7 @@ public class MagicBakery
 	    getCurrentPlayer().inc_actions_taken();
 
 	    // System.out.println("\nrecipe " + layer.getRecipe());
-	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    // System.out.println("hand   " + getCurrentPlayer().getHand());
 
 	    used_remain = SL.used_quantities_v2(
 			    SL.to_raw_ingredients(
@@ -204,19 +204,15 @@ public class MagicBakery
 
 	    this.layers.remove(layer);
 
-	    System.out.println("removed layer");
-	    
-	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    // System.out.println("removed layer");
 	    
 	    for ( Ingredient i : used ) {
 
-		System.out.println("Trying to remove " + i);
+		// System.out.println("Trying to remove " + i);
 
 		getCurrentPlayer().removeFromHand(i);
 
 	    }
-	    
-	    System.out.println("adding layer " + layer);
 	    
 	    getCurrentPlayer().addToHand(layer);
 
