@@ -314,10 +314,10 @@ public class CustomerOrder
 
 	boolean res = compare_quantities(
 					 list_to_quantities(
-					  to_raw_ingredients(recipe)
+					  recipe
 							    ),
 					 list_to_quantities(
-					  to_raw_ingredients(ingredients)
+					  ingredients
 							    ),
 					 0
 					 );
@@ -411,9 +411,9 @@ public class CustomerOrder
 	recipe_and_garnish.addAll(this.recipe);
 	recipe_and_garnish.addAll(this.garnish);
 
-	// System.out.println("inputs: " + ingredients);
-	// System.out.println("inputs: " + list_to_quantities(ingredients));
-	// System.out.println("recipe: " + this.recipe);
+	System.out.println("inputs: " + ingredients);
+	System.out.println("inputs: " + list_to_quantities(ingredients));
+	System.out.println("recipe: " + this.recipe);
 
 	// if ( garnish == true ) {
 
