@@ -210,8 +210,6 @@ public class MagicBakery
 	    
 	    // System.out.println("bakeLayer used, remain" + used_remain);
 
-	    this.layers.remove(layer);
-
 	    // System.out.println("removed layer");
 	    
 	    for ( Ingredient i : used ) {
@@ -382,6 +380,8 @@ public class MagicBakery
      * @throws TooManyActionsException a
      */
     public List<Ingredient> fulfillOrder(CustomerOrder customer, boolean garnish) throws TooManyActionsException{
+
+	boolean garnished = false;
 	
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	    
@@ -393,7 +393,7 @@ public class MagicBakery
 
 	for ( Ingredient i : hand_used ) {
 
-	    getCurrentPlayer().removeFromHand(i);		
+	    getCurrentPlayer().removeFromHand(i);
 
 	}
 
@@ -405,22 +405,14 @@ public class MagicBakery
 
 	    }
 
-	    return customer.getGarnish();
+	    garnished = true;
 	    
 	}
 
-	System.out.println("hand" + getCurrentPlayer().getHand());
+	customers.remove(customer);
 
-	System.out.println("recipe" + customer.getRecipe());
-	
-	System.out.println("hand_used" + hand_used);
-
-	System.out.println("customers size" + customers.getActiveCustomers().size());
-
-	System.out.println("customers" + customers.getActiveCustomers());
-
-	// customers.move_fulfilled_card(customer);
-	
+	if ( garnished == true ) { return customer.getGarnish(); }
+	    
 	return null;
 
     }
@@ -710,26 +702,33 @@ public class MagicBakery
 
     public void printGameState() {
 
+	System.out.println("Layers");
+
 	for ( Layer l : this.layers ) {
 
-	    System.out.println(l);
-	    System.out.println(l.getRecipe());
+	    System.out.println(l + " " + l.getRecipe());
 	}
+
+	System.out.println("\nPantry");
 
 	for ( Ingredient p : this.pantry ) {
 
 	    System.out.println(p);
 	}
 
+	System.out.println("\nActive customers");
+
 	for ( CustomerOrder c : this.customers.getActiveCustomers() ) {
 
 	    try {
-		System.out.println(c);
-		System.out.println(c.getRecipeDescription());
-		System.out.println(c.getGarnishDescription());
+		System.out.println(c + ": " + c.getRecipeDescription() + " " + c.getGarnishDescription());
 
 	    } catch (Exception e) {;}
 	}
+
+	System.out.println("\nPlayer hand:");
+
+	System.out.println(this.getCurrentPlayer().getHandStr());
 
     }
 

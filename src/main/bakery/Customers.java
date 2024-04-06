@@ -320,18 +320,18 @@ public class Customers
 
     }
 
-    /**
-     * getter
-     * @param customer a
-     */
+    // /**
+    //  * getter
+    //  * @param customer a
+    //  */
     
-    public void move_fulfilled_card(CustomerOrder customer) {
+    // public void move_fulfilled_card(CustomerOrder customer) {
 
-	((LinkedList)this.activeCustomers).remove(customer);
+    // 	((LinkedList)this.activeCustomers).remove(customer);
 
-	this.inactiveCustomers.add(customer);
+    // 	this.inactiveCustomers.add(customer);
 
-    }
+    // }
  
     /**
      * getter
@@ -592,14 +592,20 @@ public class Customers
     
     public void remove(CustomerOrder customer) {
 
-	if ( this.activeCustomers.contains(customer) ) {
+	int i;
 
-	    this.inactiveCustomers.add(customer);
-	    int pos = ((LinkedList)this.activeCustomers).indexOf(customer);
+	for ( i = 0 ; i < 3 ; i++ ) {
 
-	    // System.out.println("pos  " + pos);
-	
-	    ((LinkedList)this.activeCustomers).set(pos, null);
+	    if ( ((LinkedList)this.activeCustomers).get(i) != null &&
+		 ((LinkedList)this.activeCustomers).get(i).toString().equals(customer.toString()) ) {
+
+		this.inactiveCustomers.add(customer);
+		
+		((LinkedList)this.activeCustomers).set(i, null);
+
+		break;
+
+	    }
 
 	}
 
