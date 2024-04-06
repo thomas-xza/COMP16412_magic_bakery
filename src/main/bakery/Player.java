@@ -159,15 +159,15 @@ public class Player
 
 	    if (hand_map.get(key) > 1) {
 
-		if ( key.contains("𓅭") ) {
-
-		    i_str = key + "(x" + hand_map.get(key) + ")";
-
-		} else {
+		// if ( key.contains("𓅭") ) {
 
 		    i_str = key + " (x" + hand_map.get(key) + ")";
 
-		}
+		// } else {
+
+		//     i_str = key + " (x" + hand_map.get(key) + ")";
+
+		// }
 
 	    }
 
