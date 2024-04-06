@@ -35,10 +35,10 @@ public class Customers
      * @param random b
      * @param layers c
      * @param numPlayers d
-     * @throws IOException a
+     * @throws FileNotFoundException a
      */
 
-    public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws IOException {
+    public Customers(String deckFile, Random random, Collection<Layer> layers, int numPlayers) throws FileNotFoundException {
 
 	this.activeCustomers = new LinkedList<CustomerOrder>();
 
@@ -420,7 +420,6 @@ public class Customers
      * @param deckFile a
      * @param layers b
      * @param numPlayers c
-     * @return list
      */
     
     private void initialiseCustomerDeck(String deckFile, Collection<Layer> layers, int numPlayers) {
@@ -628,7 +627,7 @@ public class Customers
 
     /**
      * size
-     * @return 0
+     * @return a
      */
     
     public int size() {
@@ -651,6 +650,7 @@ public class Customers
 
     /**
      * something
+     * @return b
      */
 
     public String toString() {

@@ -7,13 +7,14 @@ import bakery.*;
 import util.*;
 
 /**
- * Create customer order
- * @author thomas
- * @version 1.0
- */
+ * class
+ * @author thomas.
+ * @version 1.5
+ * @since 1.0
+*/
 
 public class CustomerOrder
-    implements Serializable, Comparable<CustomerOrder> {
+    implements Serializable {
     
     private String name;
 
@@ -30,9 +31,9 @@ public class CustomerOrder
     public static List<Layer> layers_loaded;
 
     /**
-     *  func
+     *  function passes_jdoc
      */
-    
+
     public enum CustomerOrderStatus {
 
 	WAITING,FULFILLED,GARNISHED,IMPATIENT,GIVEN_UP;
@@ -40,7 +41,18 @@ public class CustomerOrder
     }
     
     /**
-     *  Initiate order
+     * aaaaaa
+     * @return a
+     */
+    
+    public CustomerOrderStatus get_status() {
+
+	return status;
+
+    }
+
+    /**
+     * a passes_jdoc 
      * @param name a
      * @param recipe b
      * @param garnish c
@@ -72,62 +84,8 @@ public class CustomerOrder
 
     }
 
-    @Override
     /**
-     *  func
-     * @param o a
-     * @return a
-     */
-    public boolean equals(Object o) {
-
-	if (o == null ||
-	    !this.name.equals(o.toString()) ) {
-	    //	    this.getClass() != obj.getClass()) ||
-
-	    return false;
-
-	}
-
-	return true;
-
-    }
-
-    @Override
-    /**
-     *  func
-     * @return a
-     */
-    public int hashCode() {
-
-	return this.name.hashCode();
-
-    }
-
-    @Override
-    /**
-     *  func
-     * @param o a
-     * @return a
-     */
-    public int compareTo(CustomerOrder o) {
-
-	if ( o.toString() == null ) {
-
-	    return -1;
-
-	} else if ( this.name.equals(o.toString()) ) {
-
-	    return 0;
-
-	}
-
-	return this.name.compareTo(o.toString());
-
-    }
-
-
-    /**
-     * a
+     * a passes_jdoc
      * @param ingredients a
      * @return a
      */
@@ -153,7 +111,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @param ingredients a
      * @return a
      */
@@ -178,7 +136,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @param ingredients a
      * @param garnish a
      * @return a
@@ -275,7 +233,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
     
@@ -286,7 +244,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
     
@@ -307,7 +265,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
     
@@ -318,7 +276,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
     
@@ -329,7 +287,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
     
@@ -350,7 +308,7 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
 
@@ -361,26 +319,18 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @return a
      */
     
     public CustomerOrderStatus getStatus() {
-
-	
-
-	return status;
-
-    }
-
-    public CustomerOrderStatus get_status() {
 
 	return status;
 
     }
 
     /**
-     * a
+     * a passes_jdoc
      * @param status a
      */
     
@@ -391,41 +341,12 @@ public class CustomerOrder
     }
 
     /**
-     * a
+     * a passes_jdoc
      */
     
     public void abandon() {
 
 	this.status = CustomerOrderStatus.GIVEN_UP;
-
-    }
-    
-    /**
-     * a
-     * @return a
-     */
-    
-    public static CustomerOrder fast_order() {
-	
-        List<Ingredient> a = Ingredient.fast_ingrd_list();
-
-	CustomerOrder blah = new CustomerOrder("test", a, a, 1);
-
-	return blah;
-
-    }
-
-    /**
-     * a
-     * @return a
-     */
-    
-    public static List<CustomerOrder> fast_order_list() {
-
-	List<CustomerOrder> blah = new ArrayList<>();
-        blah.add(fast_order());
-
-	return blah;
 
     }
 

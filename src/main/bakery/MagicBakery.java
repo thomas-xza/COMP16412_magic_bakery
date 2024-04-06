@@ -163,7 +163,7 @@ public class MagicBakery
     }
     
     /**
-     *  function
+     *  function passes_jdoc
      */
     
     public enum ActionType {
