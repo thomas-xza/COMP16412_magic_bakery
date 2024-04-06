@@ -407,6 +407,8 @@ public class MagicBakery
 	
 	System.out.println("hand_used" + hand_used);
 
+	System.out.println("customers size" + customers.getActiveCustomers().size());
+
 	// customers.move_fulfilled_card(customer);
 	
 	return null;
