@@ -413,11 +413,11 @@ public class MagicBakery
 
 	for ( Ingredient i : hand_used ) {
 
-	    if ( !(i instanceof Layer) ) {
+	    if ( i.is_layer() == false) {
 
 		((Stack)this.pantryDiscard).push(i);
 
-	    } else if (i instanceof Layer) {
+	    } else {
 
 		this.layers.add(i);
 
