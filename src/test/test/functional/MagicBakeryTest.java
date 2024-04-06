@@ -1089,6 +1089,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testFulfillOrder__OldestCustomerNotImpatient() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testFulfillOrder__OldestCustomerNotImpatient");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -1126,6 +1127,7 @@ public class MagicBakeryTest {
 		deck.add(customer4);
 
 		// Oldest Customer should be impatient since the list of active customers is full
+		System.out.println("p1");
 		assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
 
 		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
@@ -1134,20 +1136,26 @@ public class MagicBakeryTest {
 		int inactiveBefore = inactiveCustomers.size();
 
 		List<Ingredient> drawn = bakery.fulfillOrder(customer1, false);
+		System.out.println("p2");
 		assertTrue(drawn.isEmpty());
 		assertEquals(2, hand.size());
 		assertEquals(2, customers.size());
 		assertEquals(inactiveBefore + 1, inactiveCustomers.size());
+		System.out.println("p2");
 		assertTrue(inactiveCustomers.contains(customer1));
 		assertEquals(layersOrig, layers.size());
 		assertEquals(3, pantryDiscard.size());
+		System.out.println("p3");
 		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		System.out.println("p3.1");
 		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		System.out.println("p3.2");
 		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
 		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
 		assertEquals(1, actionsTaken);
 
 		// Oldest Customer should not be impatient now
+		System.out.println("p4");
 		assertEquals(CustomerOrderStatus.WAITING, customers.peek().getStatus());
 
 		// ------------------------------------------------------------
@@ -1156,18 +1164,22 @@ public class MagicBakeryTest {
 		// should not go to waiting
 		// ------------------------------------------------------------
 
+		System.out.println("p5");
 		customer1 = createCustomerOrder(layers, "some recipe", recipe1, garnish1);
 		customer2 = createCustomerOrder(layers, "some other recipe", recipe1, garnish1);
 		customer3 = createCustomerOrder(layers, "yet another recipe", recipe1, garnish1);
 
+		System.out.println("p6");
 		customCustomers = new ArrayList<>();
 		customCustomers.add(customer1);
 		customCustomers.add(customer2);
 		customCustomers.add(customer3);
 
+		System.out.println("p7");
 		setupActiveCustomers(bakery, customCustomers);
 
-		// Oldest Customer should be impatient since the list of active customers is full
+		// Oldest Customer should be impatient since the list of active customers is full	
+		System.out.println("p8");
 		assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
 
 		hand = setupCurrentHand(bakery, ingredients);
@@ -1175,16 +1187,25 @@ public class MagicBakeryTest {
 		inactiveBefore = inactiveCustomers.size();
 
 		drawn = bakery.fulfillOrder(customer1, false);
+		System.out.println("p9");
 		assertTrue(drawn.isEmpty());
+		System.out.println("p9.1");
 		assertEquals(2, hand.size());
+		System.out.println("p9.2");
 		assertEquals(2, customers.size());
+		System.out.println("p9.3");
 		assertEquals(inactiveBefore + 1, inactiveCustomers.size());
+		System.out.println("p9.4");
 		assertTrue(inactiveCustomers.contains(customer1));
+		System.out.println("p9.5");
 		assertEquals(layersOrig, layers.size());
+		System.out.println("p9.6");
 		actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		System.out.println("p9.7");
 		assertEquals(2, actionsTaken);
 
 		// Oldest Customer should still be impatient, because the customersDeck is empty
+		System.out.println("p9.8");
 		assertEquals(CustomerOrderStatus.IMPATIENT, customers.peek().getStatus());
 
 
