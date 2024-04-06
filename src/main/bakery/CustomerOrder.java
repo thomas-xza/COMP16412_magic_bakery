@@ -79,14 +79,16 @@ public class CustomerOrder
 
     public static boolean compare_quantities(Map<String, Integer> target_map, Map<String, Integer> source_map, int verbose) {
 
-	// System.out.println("source_map:  " + source_map);
+	System.out.println("source_map:  " + source_map);
 
-	// System.out.println(target_map);
+	System.out.println("target_map:  " + target_map);
 
 	int missing = 0;
 
 	Integer i_source = 0;
 	Integer i_target = 0;
+
+	boolean res = false;
 	
 	// System.out.println(target_map.keySet());
 
@@ -120,11 +122,13 @@ public class CustomerOrder
 
 	if ( missing == 0 || ( ducks >= missing ) ) {
 
-	    return true;
+	    res = true;
 	    
 	}
+
+	System.out.println(res);
 	
-	return false;
+	return res;
 
     }
 
@@ -139,10 +143,9 @@ public class CustomerOrder
 
 	List<List<Ingredient>> output = new ArrayList<>();
 
-	List<Ingredient> raw_i = in;
-	List<Ingredient> raw_i_copy = new ArrayList<>();
-	raw_i_copy.addAll(raw_i);
-	List<Ingredient> target_raw = target;
+	List<Ingredient> ing = in;
+	List<Ingredient> ing_copy = new ArrayList<>();
+	ing_copy.addAll(ing);
 	List<Ingredient> used = new ArrayList<>();
 
 	int missing = 0;
@@ -150,10 +153,14 @@ public class CustomerOrder
 	int ducks_used = 0;
 
 	// System.out.println("in: " + in);
-	
-	for (Ingredient t : target_raw ) {
 
-	    for (Ingredient i : raw_i ) {
+	//  Iterate through the target ingredients,
+	//    sub-iterate through the hand, look for matches.
+	//  Add them to an array of used ingredients.
+	
+	for (Ingredient t : target ) {
+
+	    for (Ingredient i : ing ) {
 
 		// System.out.println(t.toString() + " " + i.toString());
 
@@ -162,7 +169,7 @@ public class CustomerOrder
 		    // System.out.println("match!");
 
 		    used.add(i);
-		    raw_i.remove(i);
+		    ing.remove(i);
 		    break;
 
 		}
@@ -171,9 +178,11 @@ public class CustomerOrder
 
 	}
 
-	missing = target_raw.size() - used.size();
+	//  Calculate how many ingredients missing, ducks needed.
+	
+	missing = target.size() - used.size();
 
-	for ( Ingredient i : raw_i ) {
+	for ( Ingredient i : ing ) {
 
 	    if ( i.toString() == "helpful duck 𓅭 " ) {
 
@@ -185,17 +194,19 @@ public class CustomerOrder
 
 	// System.out.println("missing: " + missing);
 	// System.out.println("ducks_avail: " + ducks_avail);
+
+	//  Find ducks if needed, extract them to used ingredients.
 	
 	if ( missing > 0 && ducks_avail >= missing ) {
 
-	    while ( target_raw.size() != used.size() ) {
+	    while ( target.size() != used.size() ) {
 
-		for ( Ingredient i : raw_i ) {
+		for ( Ingredient i : ing ) {
 
 		    if ( i.toString().equals("helpful duck 𓅭 ") ) {
 
 			    used.add(i);
-			    raw_i.remove(i);
+			    ing.remove(i);
 			    break;
 
 			}
@@ -206,21 +217,24 @@ public class CustomerOrder
 
 	}
 
-	// System.out.println("raw_i: " + raw_i);
+	// System.out.println("ing: " + ing);
 
-	// System.out.println("target_raw:  " + target_raw);
+	// System.out.println("target:  " + target);
 
 	// System.out.println("used:  " + used);
 
-	if ( target_raw.size() == used.size() ) {
+	//  If managed to make target, return ingredients used.
+	//  Else return original stuff.
+
+	if ( target.size() == used.size() ) {
 	    
 	    output.add(used);
-	    output.add(raw_i);
+	    output.add(ing);
 
 	} else {
 
 	    output.add(new ArrayList<>());
-	    output.add(raw_i_copy);
+	    output.add(ing_copy);
 
 	}
 
@@ -425,7 +439,7 @@ public class CustomerOrder
 
 	if ( garnish == true && canGarnish(remain) == true ) {
 
-	    // System.out.println("ATTEMPTING GARNISH");
+	    System.out.println("ATTEMPTING GARNISH");
 
 	    used_remain_2 = used_quantities_v2(
 					       to_raw_ingredients(this.garnish),
