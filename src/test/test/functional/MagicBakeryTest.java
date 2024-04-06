@@ -384,6 +384,8 @@ public class MagicBakeryTest {
 		// pantryDeck has LIFO semantics: latest items added should be the first returned by drawFromPantryDeck
 		Method mtd = FunctionalHelper.getMethod(MagicBakery.class, "drawFromPantryDeck");
 
+
+		System.out.println("p1");
 		Ingredient[] deckArray = pantryDeck.toArray(new Ingredient[0]);
 		for (int i = deckArray.length - 1; i >= 0; i--) {
 			assertEquals(deckArray[i], mtd.invoke(bakery));
@@ -392,6 +394,7 @@ public class MagicBakeryTest {
 		}
 
 		// This should trigger a refill
+		System.out.println("p2");
 		Ingredient ingredient = (Ingredient) mtd.invoke(bakery);
 
 		// Fetch these objects again just in case the developer created new ones instead of manipulating the old ones
@@ -400,21 +403,26 @@ public class MagicBakeryTest {
 		Collection<Ingredient> pantryDiscard2 = (Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDiscard");
 
 		// PantryDiscard should be empty again
+		System.out.println("p3");
 		assertTrue(pantryDiscard2.isEmpty());
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Ingredient> pantryDeck2 = new ArrayList<Ingredient>((Collection<Ingredient>)FunctionalHelper.getFieldValue(bakery, "pantryDeck"));
 
 		// While the pantryDeck should be full minus one
+		System.out.println("p4");
 		assertEquals(deckArray.length - 1, pantryDeck2.size());
-
+	
+		System.out.println("p5");
 		HashMap<Ingredient, Integer> countsRefill = countIngredients(pantryDeck2);
 		countsRefill.merge(ingredient, 1, Integer::sum);
 
 		// Make sure the new pantryDeck contains all the cards from the original pantryDeck
+		System.out.println("p6");
 		assertEquals(countsOriginal, countsRefill);
 
 		// The new pantryDeck should be shuffled in the way specified in the specs
+		System.out.println("p7");
 		assertEquals("butter", pantryDeck2.get(0).toString());
 		assertEquals("flour", pantryDeck2.get(4).toString());
 		assertEquals("butter", pantryDeck2.get(8).toString());

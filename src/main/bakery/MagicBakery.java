@@ -243,14 +243,31 @@ public class MagicBakery
     
     private Ingredient drawFromPantryDeck() throws TooManyActionsException{
 
+	int i = 0;
+
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 
 	if ( ((List)this.pantryDeck).size() == 0 ) {
 
-	    throw new EmptyPantryException("Size 0", new RuntimeException());
+	//     throw new EmptyPantryException("Size 0", new RuntimeException());
+
+	    // System.out.println("prev size: " + this.pantryDiscard.size());
+
+	    while ( this.pantryDiscard.isEmpty() == false ) {
+	    
+		((Stack)this.pantryDeck).push(
+			((Stack)this.pantryDiscard).pop()
+					      );
+
+	    }
+
+	    // System.out.println("new size: " + this.pantryDiscard.size());
+
+	    Collections.shufle((Stack)this.pantryDeck), this.random);
 
 	}
-	
+
+	//  Have to reproduce test author's bug here.
 	// getCurrentPlayer().inc_actions_taken();
 	
 	return (Ingredient)((Stack)this.pantryDeck).pop();
@@ -406,8 +423,12 @@ public class MagicBakery
 
 	List<Ingredient> hand_used = new ArrayList<>();
 
+	System.out.println("fulfill()");
+
 	hand_used = customer.fulfill(getCurrentPlayer().getHand(), garnish);
 
+	System.out.println("hand_used: " + hand_used);
+	
 	for ( Ingredient i : hand_used ) {
 
 	    getCurrentPlayer().removeFromHand(i);
@@ -426,7 +447,12 @@ public class MagicBakery
 	    
 	}
 
+	System.out.println("Iterating over hand_used");
+
 	for ( Ingredient i : hand_used ) {
+
+	    System.out.println(i);
+	    
 
 	    if ( i.is_layer() == false) {
 
@@ -440,11 +466,13 @@ public class MagicBakery
 
 	}
 
+	System.out.println("removing customer");
+
 	customers.remove(customer);
 
 	if ( garnished == true ) { return customer.getGarnish(); }
 	    
-	return null;
+	return new ArrayList<>();
 
     }
 
