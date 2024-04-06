@@ -736,19 +736,31 @@ public class MagicBakery
 
 	    }
 
-	MagicBakery bakery = null;
+	// MagicBakery bakery = new MagicBakery(12854, "./io/ingredients.csv", "./io/layers.csv");
+	
+	// bakery.startGame(playerNames, "./io/customers.csv");
 
+	MagicBakery bakery_load = null;
+		
 	try {
 	    
 	    FileInputStream in = new FileInputStream(file);
 	    
 	    ObjectInputStream in_obj = new ObjectInputStream(in);
 	    
-	    bakery = (MagicBakery)in_obj.readObject();
+	    bakery_load = (MagicBakery)in_obj.readObject();
 	    
 	    in_obj.close();
 	    
 	    in.close();
+
+	    return bakery_load;
+
+	    // this.players.addAll(bakery.getPlayers());
+
+	    // this.pantry.addAll(bakery.getPantry());
+
+	    // this.layers.addAll(bakery.getLayers());
 
 	} catch (IOException e ) {
 
@@ -760,9 +772,7 @@ public class MagicBakery
 
 	}
 	
-	// a = new MagicBakery(0, "./io/ingredients.csv", "./io/layers.csv");
-
-	return bakery;
+	// return bakery_load;
 	
     }
 
@@ -803,11 +813,11 @@ public class MagicBakery
 
     public void printCustomerServiceRecord() {
 
-	System.out.println(this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.FULFILLED).size());
+	System.out.println("Fulfilled: " + this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.FULFILLED).size());
 	
-	System.out.println(this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.GARNISHED).size());
+	System.out.println("Garnished: " + this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.GARNISHED).size());
 	
-	System.out.println(this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.GIVEN_UP).size());
+	System.out.println("Given up: " + this.customers.getInactiveCustomersWithStatus(CustomerOrderStatus.GIVEN_UP).size());
 
 	System.out.println("0 1 2 3 4 5 6 7 8 9 10");
 
@@ -904,6 +914,22 @@ public class MagicBakery
 
 	}
 
+        FileOutputStream file_out = null;
+	
+        ObjectOutputStream out_stream = null;
+	
+        try {
+	    
+            file_out = new FileOutputStream(file);
+	    
+            out_stream = new ObjectOutputStream(file_out);
+	    
+            out_stream.writeObject(this);
+	    
+            out_stream.close();
+	    
+        } catch (Exception e) { ; }
+	
     }
 
 }
