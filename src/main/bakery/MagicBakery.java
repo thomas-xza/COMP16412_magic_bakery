@@ -495,6 +495,8 @@ public class MagicBakery
 	    if ( order != null ) {
 
 		boolean res = CustomerOrder.compare_quantities(
+                        CustomerOrder.list_to_layer_bool(order.getRecipe),
+                        CustomerOrder.list_to_layer_bool(getCurrentPlayer().getHand()),
 		    CustomerOrder.list_to_quantities(order.getRecipe()),
 		    CustomerOrder.list_to_quantities(
 						     getCurrentPlayer().getHand()),
