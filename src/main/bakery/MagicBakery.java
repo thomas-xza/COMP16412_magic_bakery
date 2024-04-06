@@ -210,6 +210,8 @@ public class MagicBakery
 	    
 	    // System.out.println("bakeLayer used, remain" + used_remain);
 
+	    // this.layers.remove(layer);
+
 	    // System.out.println("removed layer");
 	    
 	    for ( Ingredient i : used ) {

@@ -884,14 +884,16 @@ public class MagicBakeryTest {
 
 		setupActiveCustomers(bakery, customCustomers);
 
+		System.out.println("layers size #2: " + layers.size());
 		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts", "biscuit"};
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 		
+		System.out.println("layers size #3: " + layers.size());
 		System.out.println("before p0 " + customers);
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
 
 		i = 0;
-		System.out.println("layers size: " + layers.size());
+		System.out.println("layers size #4: " + layers.size());
 		System.out.println("p" + i);
 		assertEquals(2, drawn.size());
 		System.out.println("p0.1");
@@ -908,7 +910,6 @@ public class MagicBakeryTest {
 		
 		assertTrue(inactiveCustomers.contains(customer));
 		System.out.println("p1.1");
-		bakery.printGameState();
 		assertEquals(layersOrig, layers.size());
 		System.out.println("p1.2");
 		assertEquals(5, pantryDiscard.size());
