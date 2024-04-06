@@ -261,9 +261,12 @@ public class MagicBakery
 
 	    }
 
-	    // System.out.println("new size: " + this.pantryDiscard.size());
+	    Collections.reverse((Stack)this.pantryDeck);
 
-	    Collections.shufle((Stack)this.pantryDeck), this.random);
+	    // System.out.println("new size: " + this.pantryDiscard.size());
+	    Collections.shuffle(((Stack)this.pantryDeck), this.random);
+
+	    System.out.println(this.pantryDeck);
 
 	}
 
