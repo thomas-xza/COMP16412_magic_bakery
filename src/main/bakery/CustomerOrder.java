@@ -116,7 +116,11 @@ public class CustomerOrder
 
 	    for ( Ingredient l : layers_loaded ) {
 
+		System.out.println(l.toString());
+
 		if ( l.toString().equals(key) && missing_in > 0 ) {
+
+		    System.out.println("Found layer while comparing quantities " + l);
 
 		    return false;
 

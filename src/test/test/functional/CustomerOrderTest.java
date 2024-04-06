@@ -244,6 +244,7 @@ public class CustomerOrderTest {
 	@Test
 	public void testCanFulfill__MissingLayerIngredient_WithOneDuck() throws NoSuchFieldException, IllegalAccessException {
 		// What if the recipe contains a missing layer?
+	    System.out.println("testCanFulfill__MissingLayerIngredient_WithOneDuck");
 		List<Ingredient> layer_recipe = new ArrayList<Ingredient>();
 		layer_recipe.add(new Ingredient("flour"));
 		layer_recipe.add(new Ingredient("olive oil"));
