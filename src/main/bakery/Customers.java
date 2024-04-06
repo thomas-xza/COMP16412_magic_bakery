@@ -118,7 +118,7 @@ public class Customers
 	    	    
 	}
 
-	status_refresh_fix();
+	statuses_a_c_refresh();
 
 	// System.out.println("customerDeck posttime: " + " " + this.customerDeck);
 
@@ -132,7 +132,7 @@ public class Customers
      * add
      */
 
-    public void status_refresh_fix() {
+    public void statuses_a_c_refresh() {
 
 	for (CustomerOrder c : this.activeCustomers) {
 
@@ -182,8 +182,6 @@ public class Customers
 
 	picked_up.addFirst(placeholder);
 
-	status_refresh_fix();
-
 	if ( this.customerDeck.size() == 0 &&
 	     this.activeCustomers.size() != 0 ) {
 
@@ -222,7 +220,7 @@ public class Customers
 		
 		picked_up.getFirst().setStatus(CustomerOrderStatus.GIVEN_UP);
 
-		status_refresh_fix();
+		statuses_a_c_refresh();
 
 		return picked_up.getFirst();
 
@@ -231,6 +229,8 @@ public class Customers
 	    i += 1;
 
 	}
+
+	statuses_a_c_refresh();
 
 	return null;
 	
@@ -243,33 +243,33 @@ public class Customers
 
     public boolean customerWillLeaveSoon() {
 
-	System.out.println("activeCustomers: " + this.activeCustomers);
+	// System.out.println("activeCustomers: " + this.activeCustomers);
 
-	status_refresh_fix();
+	// for ( CustomerOrder select : this.activeCustomers ) {
 
-	for ( CustomerOrder select : this.activeCustomers ) {
-
-	    if ( select != null ) {
+	//     if ( select != null ) {
 	    
-		if ( select.getStatus() == CustomerOrderStatus.WAITING ) {
+	// 	if ( select.getStatus() == CustomerOrderStatus.WAITING ) {
 
-		    System.out.printf(" W");
+	// 	    System.out.printf(" W");
 
-		} else if ( select.getStatus() == CustomerOrderStatus.IMPATIENT ) {
+	// 	} else if ( select.getStatus() == CustomerOrderStatus.IMPATIENT ) {
 
-		    System.out.printf(" I");
+	// 	    System.out.printf(" I");
 
-		} else {
+	// 	} else {
 
-		    System.out.printf(" ?");
+	// 	    System.out.printf(" ?");
 		    
-		}
+	// 	}
 		
-	    } else { System.out.printf(" _"); }
+	//     } else { System.out.printf(" _"); }
 
-	}
+	// }
 
-	System.out.println("");
+	// System.out.println("");
+
+	// statuses_a_c_refresh();
 
 	CustomerOrder c = null;
 
