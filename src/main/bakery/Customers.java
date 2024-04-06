@@ -350,14 +350,14 @@ public class Customers
 		// System.out.println(CustomerOrder.list_to_quantities(a_cust.getRecipe()));
 		// System.out.println(CustomerOrder.list_to_quantities(hand));
 	
-		boolean res = CustomerOrder.compare_quantities(
-                        CustomerOrder.list_to_layer_bool(
+		boolean res = SL.compare_quantities(
+                        SL.list_to_layer_bool(
 							 a_cust.getRecipe()),
-                        CustomerOrder.list_to_layer_bool(
+                        SL.list_to_layer_bool(
 							 hand),
-			CustomerOrder.list_to_quantities(
+			SL.list_to_quantities(
 							 a_cust.getRecipe()),
-			CustomerOrder.list_to_quantities(
+			SL.list_to_quantities(
 							 hand),
 				0
 				);

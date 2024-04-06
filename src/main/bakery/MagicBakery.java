@@ -76,7 +76,7 @@ public class MagicBakery
 
 	this.layers = CardUtils.readLayerFile(layerDeckFile);
 
-	CustomerOrder.layers_loaded = new ArrayList<Layer>(layers);
+	SL.layers_loaded = new ArrayList<Layer>(layers);
 
 	// System.out.println("Just read layers!" + this.layers);
 
@@ -189,8 +189,8 @@ public class MagicBakery
 	    // System.out.println("\nrecipe " + layer.getRecipe());
 	    System.out.println("hand   " + getCurrentPlayer().getHand());
 
-	    used_remain = CustomerOrder.used_quantities_v2(
-			    CustomerOrder.to_raw_ingredients(
+	    used_remain = SL.used_quantities_v2(
+			    SL.to_raw_ingredients(
 			      layer.getRecipe()
 				),
 			      getCurrentPlayer().getHand()
@@ -494,11 +494,11 @@ public class MagicBakery
 
 	    if ( order != null ) {
 
-		boolean res = CustomerOrder.compare_quantities(
-							       CustomerOrder.list_to_layer_bool(order.getRecipe()),
-                        CustomerOrder.list_to_layer_bool(getCurrentPlayer().getHand()),
-		    CustomerOrder.list_to_quantities(order.getRecipe()),
-		    CustomerOrder.list_to_quantities(
+		boolean res = SL.compare_quantities(
+							       SL.list_to_layer_bool(order.getRecipe()),
+                        SL.list_to_layer_bool(getCurrentPlayer().getHand()),
+		    SL.list_to_quantities(order.getRecipe()),
+		    SL.list_to_quantities(
 						     getCurrentPlayer().getHand()),
 					     0
 					     );
@@ -530,11 +530,11 @@ public class MagicBakery
 
 	    if ( order != null ) {
 
-		boolean res = CustomerOrder.compare_quantities(
-							       CustomerOrder.list_to_layer_bool(order.getGarnish()),
-                        CustomerOrder.list_to_layer_bool(getCurrentPlayer().getHand()),
-		    CustomerOrder.list_to_quantities(order.getGarnish()),
-		    CustomerOrder.list_to_quantities(
+		boolean res = SL.compare_quantities(
+							       SL.list_to_layer_bool(order.getGarnish()),
+                        SL.list_to_layer_bool(getCurrentPlayer().getHand()),
+		    SL.list_to_quantities(order.getGarnish()),
+		    SL.list_to_quantities(
 			getCurrentPlayer().getHand()),
 					     0
 					     );

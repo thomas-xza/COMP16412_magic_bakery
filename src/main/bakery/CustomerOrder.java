@@ -72,193 +72,193 @@ public class CustomerOrder
 
     }
 
-    /**
-     * WARNING_DUMB_INVERTED_PARAMETER_ORDER
-     * @param target_map a
-     * @param source_map a
-     * @param verbose v
-     * @return bool
-     */
+    // /**
+    //  * WARNING_DUMB_INVERTED_PARAMETER_ORDER
+    //  * @param target_map a
+    //  * @param source_map a
+    //  * @param verbose v
+    //  * @return bool
+    //  */
 
-    public static boolean compare_quantities(Map<String, Boolean> target_layers, Map<String, Boolean> source_layers, Map<String, Integer> target_map, Map<String, Integer> source_map, int verbose) {
+    // public static boolean compare_quantities(Map<String, Boolean> target_layers, Map<String, Boolean> source_layers, Map<String, Integer> target_map, Map<String, Integer> source_map, int verbose) {
 
-	System.out.println("source_map:  " + source_map + source_layers);
+    // 	System.out.println("source_map:  " + source_map + source_layers);
 
-	System.out.println("target_map:  " + target_map + target_layers);
+    // 	System.out.println("target_map:  " + target_map + target_layers);
 
-	int missing_in = 0;
-	int missing_total = 0;
+    // 	int missing_in = 0;
+    // 	int missing_total = 0;
 
-	Integer i_source = 0;
-	Integer i_target = 0;
+    // 	Integer i_source = 0;
+    // 	Integer i_target = 0;
 
-	boolean res = false;
+    // 	boolean res = false;
 	
-	// System.out.println(target_map.keySet());
+    // 	// System.out.println(target_map.keySet());
 
-	for (String key : target_map.keySet()) {
+    // 	for (String key : target_map.keySet()) {
 
-	    i_source = source_map.get(key);
-	    i_target = target_map.get(key);
+    // 	    i_source = source_map.get(key);
+    // 	    i_target = target_map.get(key);
 
-	    if (i_source == null) { i_source = 0; }
-	    if (i_target == null) { i_target = 0; }
+    // 	    if (i_source == null) { i_source = 0; }
+    // 	    if (i_target == null) { i_target = 0; }
 
-	    if ( verbose == 1 ) {
+    // 	    if ( verbose == 1 ) {
 
-		// System.out.println("have: " + key + ": " + i_source);
+    // 		// System.out.println("have: " + key + ": " + i_source);
 
-		// System.out.println("want: " + key + ": " + i_target);
+    // 		// System.out.println("want: " + key + ": " + i_target);
 
-	    }
+    // 	    }
 
-	    missing_in = i_target - i_source;
+    // 	    missing_in = i_target - i_source;
 
-	    if ( target_layers.get(key) == true && missing_in > 0 ) {
+    // 	    if ( target_layers.get(key) == true && missing_in > 0 ) {
 
-		return false;
+    // 		return false;
 		
-	    }
+    // 	    }
 
-	    if (i_target > i_source) {
+    // 	    if (i_target > i_source) {
 
-		missing_total += missing_in;
+    // 		missing_total += missing_in;
 
-	    }
+    // 	    }
 
-	}
+    // 	}
 
-	Integer ducks = source_map.get(Ingredient.duck_str());
+    // 	Integer ducks = source_map.get(Ingredient.duck_str());
 
-	if ( ducks == null ) { ducks = 0; }
+    // 	if ( ducks == null ) { ducks = 0; }
 
-	if ( missing_total == 0 || ( ducks >= missing_total ) ) {
+    // 	if ( missing_total == 0 || ( ducks >= missing_total ) ) {
 
-	    res = true;
+    // 	    res = true;
 	    
-	}
+    // 	}
 
-	System.out.println(res);
+    // 	System.out.println(res);
 	
-	return res;
+    // 	return res;
 
-    }
+    // }
 
-    /**
-     * WARNING_PARAMETER_ORDER_INVERTED
-     * @param target a
-     * @param in ingredients
-     * @return a
-     */
+    // /**
+    //  * WARNING_PARAMETER_ORDER_INVERTED
+    //  * @param target a
+    //  * @param in ingredients
+    //  * @return a
+    //  */
 
-    public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> in_target, List<Ingredient> in_src) {
+    // public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> in_target, List<Ingredient> in_src) {
 
-	List<List<Ingredient>> output = new ArrayList<>();
+    // 	List<List<Ingredient>> output = new ArrayList<>();
 
-	List<Ingredient> target = new ArrayList<>();
-	target.addAll(in_target);
+    // 	List<Ingredient> target = new ArrayList<>();
+    // 	target.addAll(in_target);
 
-	List<Ingredient> in = new ArrayList<>();
-	in.addAll(in_src);
+    // 	List<Ingredient> in = new ArrayList<>();
+    // 	in.addAll(in_src);
 
-	List<Ingredient> in_copy = new ArrayList<>();
-	in_copy.addAll(in);
+    // 	List<Ingredient> in_copy = new ArrayList<>();
+    // 	in_copy.addAll(in);
 	
-	List<Ingredient> used = new ArrayList<>();
+    // 	List<Ingredient> used = new ArrayList<>();
 
-	int missing = 0;
-	int ducks_avail = 0;
-	int ducks_used = 0;
+    // 	int missing = 0;
+    // 	int ducks_avail = 0;
+    // 	int ducks_used = 0;
 
-	// System.out.println("in: " + in);
+    // 	// System.out.println("in: " + in);
 
-	//  Iterate through the target ingredients,
-	//    sub-iterate through the hand, look for matches.
-	//  Add them to an array of used ingredients.
+    // 	//  Iterate through the target ingredients,
+    // 	//    sub-iterate through the hand, look for matches.
+    // 	//  Add them to an array of used ingredients.
 	
-	for (Ingredient t : target ) {
+    // 	for (Ingredient t : target ) {
 
-	    for (Ingredient i : in ) {
+    // 	    for (Ingredient i : in ) {
 
-		// System.out.println(t.toString() + " " + i.toString());
+    // 		// System.out.println(t.toString() + " " + i.toString());
 
-		if ( t.toString().trim().equals(i.toString().trim()) ) {
+    // 		if ( t.toString().trim().equals(i.toString().trim()) ) {
 
-		    // System.out.println("match!");
+    // 		    // System.out.println("match!");
 
-		    used.add(i);
-		    in.remove(i);
-		    break;
+    // 		    used.add(i);
+    // 		    in.remove(i);
+    // 		    break;
 
-		}
+    // 		}
 
-	    }
+    // 	    }
 
-	}
+    // 	}
 
-	//  Calculate how many ingredients missing, ducks needed.
+    // 	//  Calculate how many ingredients missing, ducks needed.
 	
-	missing = target.size() - used.size();
+    // 	missing = target.size() - used.size();
 
-	for ( Ingredient i : in ) {
+    // 	for ( Ingredient i : in ) {
 
-	    if ( i.toString().equals(Ingredient.duck_str()) ) {
+    // 	    if ( i.toString().equals(Ingredient.duck_str()) ) {
 
-		ducks_avail += 1;
+    // 		ducks_avail += 1;
 
-	    }
+    // 	    }
 
-	}
+    // 	}
 
-	// System.out.println("missing: " + missing);
-	// System.out.println("ducks_avail: " + ducks_avail);
+    // 	// System.out.println("missing: " + missing);
+    // 	// System.out.println("ducks_avail: " + ducks_avail);
 
-	//  Find ducks if needed, extract them to used ingredients.
+    // 	//  Find ducks if needed, extract them to used ingredients.
 	
-	if ( missing > 0 && ducks_avail >= missing ) {
+    // 	if ( missing > 0 && ducks_avail >= missing ) {
 
-	    while ( target.size() != used.size() ) {
+    // 	    while ( target.size() != used.size() ) {
 
-		for ( Ingredient i : in ) {
+    // 		for ( Ingredient i : in ) {
 
-		    if ( i.toString().equals(Ingredient.duck_str()) ) {
+    // 		    if ( i.toString().equals(Ingredient.duck_str()) ) {
 
-			    used.add(i);
-			    in.remove(i);
-			    break;
+    // 			    used.add(i);
+    // 			    in.remove(i);
+    // 			    break;
 
-			}
+    // 			}
 
-		}
+    // 		}
 
-	    }
+    // 	    }
 
-	}
+    // 	}
 
-	// System.out.println("ing: " + ing);
+    // 	// System.out.println("ing: " + ing);
 
-	// System.out.println("target:  " + target);
+    // 	// System.out.println("target:  " + target);
 
-	// System.out.println("used:  " + used);
+    // 	// System.out.println("used:  " + used);
 
-	//  If managed to make target, return ingredients used.
-	//  Else return original stuff.
+    // 	//  If managed to make target, return ingredients used.
+    // 	//  Else return original stuff.
 
-	if ( target.size() == used.size() ) {
+    // 	if ( target.size() == used.size() ) {
 	    
-	    output.add(used);
-	    output.add(in);
+    // 	    output.add(used);
+    // 	    output.add(in);
 
-	} else {
+    // 	} else {
 
-	    output.add(new ArrayList<>());
-	    output.add(in_copy);
+    // 	    output.add(new ArrayList<>());
+    // 	    output.add(in_copy);
 
-	}
+    // 	}
 
-	return output;
+    // 	return output;
 
-    }
+    // }
 
     @Override
     /**
@@ -324,13 +324,13 @@ public class CustomerOrder
 
 	// System.out.println(this.name);
 
-	boolean res = compare_quantities(
-					 list_to_layer_bool(recipe),
-					 list_to_layer_bool(ingredients),
-					 list_to_quantities(
+	boolean res = SL.compare_quantities(
+					 SL.list_to_layer_bool(recipe),
+					 SL.list_to_layer_bool(ingredients),
+					 SL.list_to_quantities(
 					  recipe
 							    ),
-					 list_to_quantities(
+					 SL.list_to_quantities(
 					  ingredients
 							    ),
 					 0
@@ -340,33 +340,33 @@ public class CustomerOrder
 	
     }
 
-    /**
-     * a
-     * @param elements a
-     * @return a
-     */
+    // /**
+    //  * a
+    //  * @param elements a
+    //  * @return a
+    //  */
     
-    public static List<Ingredient> to_raw_ingredients(List<Ingredient> elements) {
+    // public static List<Ingredient> to_raw_ingredients(List<Ingredient> elements) {
 
-	List<Ingredient> raw_ingredients = new ArrayList<>();
+    // 	List<Ingredient> raw_ingredients = new ArrayList<>();
 
-	for ( Ingredient e : elements ) {
+    // 	for ( Ingredient e : elements ) {
 
-	    if ( e instanceof Layer ) {
+    // 	    if ( e instanceof Layer ) {
 
-		raw_ingredients.addAll(((Layer)e).getRecipe());
+    // 		raw_ingredients.addAll(((Layer)e).getRecipe());
 
-	    } else {
+    // 	    } else {
 
-		raw_ingredients.add(e);
+    // 		raw_ingredients.add(e);
 
-	    }
+    // 	    }
 
-	}
+    // 	}
 
-	return raw_ingredients;
+    // 	return raw_ingredients;
 	
-    }
+    // }
 
     /**
      * a
@@ -376,14 +376,14 @@ public class CustomerOrder
     
     public boolean canGarnish(List<Ingredient> ingredients) {
 
-	boolean res = compare_quantities(
-					 list_to_layer_bool(garnish),
-					 list_to_layer_bool(ingredients),
-					 list_to_quantities(
-					   to_raw_ingredients(garnish)
+	boolean res = SL.compare_quantities(
+					 SL.list_to_layer_bool(garnish),
+					 SL.list_to_layer_bool(ingredients),
+					 SL.list_to_quantities(
+					   SL.to_raw_ingredients(garnish)
 							    ),
-					 list_to_quantities(
-					   to_raw_ingredients(ingredients)
+					 SL.list_to_quantities(
+					   SL.to_raw_ingredients(ingredients)
 							    ),
 					 0
 					 );
@@ -428,7 +428,7 @@ public class CustomerOrder
 	recipe_and_garnish.addAll(this.garnish);
 
 	System.out.println("inputs: " + ingredients);
-	System.out.println("inputs: " + list_to_quantities(ingredients));
+	System.out.println("inputs: " + SL.list_to_quantities(ingredients));
 	System.out.println("recipe: " + this.recipe);
 
 	// if ( garnish == true ) {
@@ -439,9 +439,9 @@ public class CustomerOrder
 
 	if ( canFulfill(ingredients) == true ) {
 
-	    used_remain = used_quantities_v2(
-					     to_raw_ingredients(this.recipe),
-					     to_raw_ingredients(ingredients)
+	    used_remain = SL.used_quantities_v2(
+					     SL.to_raw_ingredients(this.recipe),
+					     SL.to_raw_ingredients(ingredients)
 					     );
 
 	    used = used_remain.get(0);
@@ -463,9 +463,9 @@ public class CustomerOrder
 
 	    System.out.println("ATTEMPTING GARNISH");
 
-	    used_remain_2 = used_quantities_v2(
-					       to_raw_ingredients(this.garnish),
-					       to_raw_ingredients(remain)
+	    used_remain_2 = SL.used_quantities_v2(
+					       SL.to_raw_ingredients(this.garnish),
+					       SL.to_raw_ingredients(remain)
 					     );
 
 	    System.out.println("#2 used, remain:  " + used_remain_2);
@@ -607,46 +607,46 @@ public class CustomerOrder
 
     }
 
-    /**
-     * a
-     * @param elements a
-     * @param fragment a
-     * @return a
-     */
+    // /**
+    //  * a
+    //  * @param elements a
+    //  * @param fragment a
+    //  * @return a
+    //  */
 
-    public static Map<String, Integer> list_to_quantities(List<Ingredient> elements) {
+    // public static Map<String, Integer> list_to_quantities(List<Ingredient> elements) {
 
-	Map<String, Integer> map = new HashMap<>();
+    // 	Map<String, Integer> map = new HashMap<>();
 
-	String e_str = "";
+    // 	String e_str = "";
 
-	for ( Ingredient e : elements ) {
+    // 	for ( Ingredient e : elements ) {
 
-	    e_str = e.toString();
+    // 	    e_str = e.toString();
 
-	    map.put(e_str, map.getOrDefault(e_str, 0) + 1);
+    // 	    map.put(e_str, map.getOrDefault(e_str, 0) + 1);
 
-	}
+    // 	}
 
-	return map;
+    // 	return map;
 
-    }
+    // }
     
-    public static Map<String, Boolean> list_to_layer_bool(List<Ingredient> elements) {
+    // public static Map<String, Boolean> list_to_layer_bool(List<Ingredient> elements) {
 
-	Map<String, Boolean> map = new HashMap<>();
+    // 	Map<String, Boolean> map = new HashMap<>();
 
-	for ( Ingredient e : elements ) {
+    // 	for ( Ingredient e : elements ) {
 
-	    if ( e instanceof Layer ) { map.put(e.toString(), true);
+    // 	    if ( e instanceof Layer ) { map.put(e.toString(), true);
 
-	    } else { map.put(e.toString(), false); }
+    // 	    } else { map.put(e.toString(), false); }
 
-	}
+    // 	}
 
-	return map;
+    // 	return map;
 
-    }
+    // }
     
     /**
      * a

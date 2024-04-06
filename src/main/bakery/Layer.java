@@ -82,13 +82,13 @@ public class Layer extends Ingredient
     
     public boolean canBake(List<Ingredient> ingredients) {
 	
-        boolean res = CustomerOrder.compare_quantities(
-                        CustomerOrder.list_to_layer_bool(
-			  CustomerOrder.to_raw_ingredients(this.recipe)),
-                        CustomerOrder.list_to_layer_bool(ingredients),
-			CustomerOrder.list_to_quantities(
-			  CustomerOrder.to_raw_ingredients(this.recipe)),
-			CustomerOrder.list_to_quantities(ingredients),
+        boolean res = SL.compare_quantities(
+                        SL.list_to_layer_bool(
+			  SL.to_raw_ingredients(this.recipe)),
+                        SL.list_to_layer_bool(ingredients),
+			SL.list_to_quantities(
+			  SL.to_raw_ingredients(this.recipe)),
+			SL.list_to_quantities(ingredients),
 			0
                                          );
 
