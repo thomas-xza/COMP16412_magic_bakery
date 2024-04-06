@@ -532,24 +532,31 @@ public class MagicBakeryTest {
 		int pantrySize = bakery.getPantry().size();
 		int actionsCount = 0;
 
+		System.out.println("p1");
 		assertEquals(actionsCount, bakery.getActionsPermitted() - bakery.getActionsRemaining());
 
 		for (int repeat = 0; repeat < 3; repeat++) {
 			HashMap<Ingredient, Integer> countsBefore = countIngredients(bakery.getPantry());
 
+			System.out.println("p2");
 			Ingredient selected = bakery.getPantry().toArray(new Ingredient[0])[3];
 			bakery.drawFromPantry(selected.toString());
 			actionsCount++;
 			handSize++;
 			
+			System.out.println("p2.1");
 			assertEquals(handSize, player.getHand().size());
+			System.out.println("p2.2");
 			assertTrue(player.getHand().contains(selected));
+			System.out.println("p2.3");
 			assertEquals(pantrySize, bakery.getPantry().size());
+			System.out.println("p2.4");
 			assertEquals(actionsCount, bakery.getActionsPermitted() - bakery.getActionsRemaining());
 
 			HashMap<Ingredient, Integer> countsAfter = countIngredients(bakery.getPantry());
 
 			// There was one selected ingredient, it should be none left (or perhaps there's one if replaced by another ing)
+			System.out.println("p2.5");
 			if (countsBefore.get(selected) == 1) {
 				if (countsAfter.containsKey(selected)) {
 					assertEquals(1, countsAfter.get(selected));
@@ -774,6 +781,9 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testFulfillOrder__NoLayersNoGarnish2() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    int i = 0;
+	    System.out.println("FulfillOrder NoLayersNoGarnish2  " + i);
+	    i += 1;
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -802,18 +812,36 @@ public class MagicBakeryTest {
 		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts"};
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
+		i = 1;
+		System.out.println("p" + i);
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, false);
 		assertTrue(drawn.isEmpty());
-		assertEquals(2, hand.size());
+		assertEquals(2, hand.size());	
+		i = 2;
+		System.out.println("p" + i);
 		assertEquals(2, customers.size());
 		assertEquals(1, inactiveCustomers.size());
+		i = 3;
+		System.out.println("p" + i);
 		assertTrue(inactiveCustomers.contains(customer));
+		i = 4;
+		System.out.println("p" + i);
 		assertEquals(layersOrig, layers.size());
+		i = 5;
+		System.out.println("p" + i);
 		assertEquals(3, pantryDiscard.size());
+		i = 6;
+		System.out.println("p" + i);
 		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		i = 7;
+		System.out.println("p" + i);
 		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		i = 8;
+		System.out.println("p" + i);
 		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
 		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		i = 9;
+		System.out.println("p" + i);
 		assertEquals(1, actionsTaken);	
 	}
 

@@ -314,6 +314,10 @@ public class MagicBakery
 
 	pantry_to_hand(ingredientName);
 
+	((LinkedList)this.pantry).push(
+				       (Ingredient)((Stack)this.pantryDeck).pop()
+				       );
+	
     }
 
 
@@ -362,7 +366,7 @@ public class MagicBakery
 
 	}
 
-	System.out.println("player changed to:  " + getCurrentPlayer());
+	// System.out.println("player changed to:  " + getCurrentPlayer());
 
 	turn_ended = true;
 
