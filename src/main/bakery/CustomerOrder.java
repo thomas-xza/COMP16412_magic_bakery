@@ -293,8 +293,12 @@ public class CustomerOrder
 	// System.out.println(this.name);
 
 	boolean res = compare_quantities(
-					 list_to_quantities(recipe),
-					 list_to_quantities(ingredients),
+					 list_to_quantities(
+					  to_raw_ingredients(recipe)
+							    ),
+					 list_to_quantities(
+					  to_raw_ingredients(ingredients)
+							    ),
 					 0
 					 );
 
@@ -339,8 +343,12 @@ public class CustomerOrder
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = compare_quantities(
-					 list_to_quantities(garnish),
-					 list_to_quantities(ingredients),
+					 list_to_quantities(
+					   to_raw_ingredients(garnish)
+							    ),
+					 list_to_quantities(
+					   to_raw_ingredients(ingredients)
+							    ),
 					 0
 					 );
 
@@ -400,16 +408,20 @@ public class CustomerOrder
 	}
 
 	can_f_g = compare_quantities(
-				     list_to_quantities(recipe_and_garnish),
-				     list_to_quantities(ingredients),
+				     list_to_quantities(
+				       to_raw_ingredients(recipe_and_garnish)
+							),
+				     list_to_quantities(
+				       to_raw_ingredients(ingredients)
+							),
 				     1
 				     );
 
 	if ( canFulfill(ingredients) == true ) {
 
 	    used_remain = used_quantities_v2(
-					     this.recipe,
-					     ingredients
+					     to_raw_ingredients(this.recipe),
+					     to_raw_ingredients(ingredients)
 					     );
 
 	    used = used_remain.get(0);
@@ -432,8 +444,8 @@ public class CustomerOrder
 	    // System.out.println("ATTEMPTING GARNISH");
 
 	    used_remain_2 = used_quantities_v2(
-					     this.garnish,
-					     remain
+					       to_raw_ingredients(this.garnish),
+					       to_raw_ingredients(remain)
 					     );
 
 	    // System.out.println("#2 used, remain:  " + used_remain_2);

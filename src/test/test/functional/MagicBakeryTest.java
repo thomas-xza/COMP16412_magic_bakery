@@ -854,6 +854,9 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testFulfillOrder__WithLayersWithGarnish() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("FulfillOrder__WithLayersWithGarnish");
+	    int i = 0;
+	    
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -884,7 +887,8 @@ public class MagicBakeryTest {
 		
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
 
-		System.out.println("drawn");
+		i = 0;
+		System.out.println("p" + i);
 		assertEquals(2, drawn.size());
 		System.out.println("hand");
 		assertEquals(2, hand.size());
@@ -892,20 +896,51 @@ public class MagicBakeryTest {
 		System.out.println("hand drawn");
 		assertEquals(2, customers.size());
 		assertEquals(1, inactiveCustomers.size());
+
+		i = 1;
+		System.out.println("p" + i);
+		
 		assertTrue(inactiveCustomers.contains(customer));
 		assertEquals(layersOrig, layers.size());
 		assertEquals(5, pantryDiscard.size());
+
+                i = 2;
+                System.out.println("p" + i);
+
 		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+
+                i = 3;
+                System.out.println("p" + i);
+
 		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+
+                i = 4;
+                System.out.println("p" + i);
+
 		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+
+                i = 5;
+                System.out.println("p" + i);
+
 		assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
+
+                i = 6;
+                System.out.println("p" + i);
+
 		assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
 		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+
+                i = 7;
+                System.out.println("p" + i);
+
 		assertEquals(1, actionsTaken);
 	}
 
 	@Test
 	public void testFulfillOrder__WithLayersWithGarnishBakeLayer() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+
+	    System.out.println("FulfillOrder__WithLayersWithGarnishBakeLayer");
+	    int i = 0;
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -934,25 +969,62 @@ public class MagicBakeryTest {
 		String[] ingredients = {"flour", "flour", "butter", "eggs", "sugar", "sugar",  "chocolate", "walnuts"};
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 
+		i = 0;
+		System.out.println("p" + i);
 		Layer layer = (Layer)stringToIngredient(layers, "biscuit");
 		bakery.bakeLayer(layer);
 		assertEquals(layersOrig - 1, layers.size());
 
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
+		i = 1;
+		System.out.println("p" + i);
+		
 		assertEquals(2, drawn.size());
 		assertEquals(2, hand.size());
 		assertEquals(hand, drawn);
+		
+		i = 2;
+		System.out.println("p" + i);
+		
 		assertEquals(2, customers.size());
 		assertEquals(1, inactiveCustomers.size());
+		
+		i = 3;
+		System.out.println("p" + i);
+		
 		assertTrue(inactiveCustomers.contains(customer));
 		assertEquals(layersOrig, layers.size());
 		assertEquals(8, pantryDiscard.size());
+		
+		i = 4;
+		System.out.println("p" + i);
+		
 		assertTrue(pantryDiscard.contains(new Ingredient("flour")));
+		
+		i = 5;
+		System.out.println("p" + i);
+		
 		assertTrue(pantryDiscard.contains(new Ingredient("butter")));
+		
+		i = 6;
+		System.out.println("p" + i);
+		
 		assertTrue(pantryDiscard.contains(new Ingredient("sugar")));
+		
+		i = 7;
+		System.out.println("p" + i);
+		
 		assertTrue(pantryDiscard.contains(new Ingredient("chocolate")));
+		
+		i = 8;
+		System.out.println("p" + i);
+		
 		assertTrue(pantryDiscard.contains(new Ingredient("walnuts")));
 		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+		
+		i = 9;
+		System.out.println("p" + i);
+		
 		assertEquals(2, actionsTaken);
 	}
 
