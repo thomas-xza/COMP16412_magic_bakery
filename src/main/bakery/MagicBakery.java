@@ -396,6 +396,8 @@ public class MagicBakery
 		getCurrentPlayer().addToHand(i);
 
 	    }
+
+	    return customer.getGarnish();
 	    
 	}
 
@@ -407,7 +409,7 @@ public class MagicBakery
 
 	customers.move_fulfilled_card(customer);
 	
-	return hand_used;
+	return null;
 
     }
 
