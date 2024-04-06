@@ -188,8 +188,12 @@ public class MagicBakery
 	    // System.out.println("hand   " + getCurrentPlayer().getHand());
 
 	    used_remain = CustomerOrder.used_quantities_v2(
-			      layer.getRecipe(),
+			    CustomerOrder.to_raw_ingredients(
+			      layer.getRecipe()
+				),
+			    CustomerOrder.to_raw_ingredients(
 			      getCurrentPlayer().getHand()
+			        )
 					     );
 	    
 	    used = used_remain.get(0);
