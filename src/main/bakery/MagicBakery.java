@@ -709,10 +709,15 @@ public class MagicBakery
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 
+	System.out.println("Passing from " + getCurrentPlayer() + " to " + recipient);
+
+	System.out.println(getCurrentPlayer() + " before " + getCurrentPlayer().getHandStr());
+	
 	getCurrentPlayer().removeFromHand(ingredient);
 
 	recipient.addToHand(ingredient);
 	
+	System.out.println(getCurrentPlayer() + " after " + getCurrentPlayer().getHandStr());
 	getCurrentPlayer().inc_actions_taken();
 	
     }
