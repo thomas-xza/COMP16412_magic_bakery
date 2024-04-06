@@ -27,7 +27,7 @@ public class CustomerOrder
    
     private static final long serialVersionUID = 7;
 
-    private static Collection<Ingredient> layers_in;
+    private static Collection<Ingredient> layers_loaded;
 
     /**
      *  func
@@ -78,9 +78,9 @@ public class CustomerOrder
 
     public void add_layers(Collection<Ingredient> layers) {
 
-	this.layers_in = new ArrayList<>();
+	this.layers_loaded = new ArrayList<>();
 
-	this.layers_in.addAll((ArrayList)layers);
+	this.layers_loaded.addAll((ArrayList)layers);
 
     }
 
@@ -126,7 +126,7 @@ public class CustomerOrder
 
 	    missing_in = i_target - i_source;
 
-	    for ( Ingredient l : this.layers_in ) {
+	    for ( Ingredient l : layers_loaded ) {
 
 		if ( l.toString().equals(key) && missing_in > 0 ) {
 

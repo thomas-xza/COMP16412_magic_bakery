@@ -64,14 +64,7 @@ public class Customers
 		
 	}
 
-	// if ( numPlayers == 4 ) {
-
-	//     //  HACK MODE ENABLE FOR PASSING ERRONEOUS TESTS.
-
-	//     this.hack_mode = true;
-	
-	// }
-
+	((LinkedList)this.customerDeck).get(0).add_layers(layers);
 
 	int i = 0;
 
