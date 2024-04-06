@@ -98,7 +98,7 @@ public class CardUtils {
 
 	while (quantity > 0) {
 
-	    sublist.add(new Ingredient(name));
+	    sublist.add(new Ingredient(name.trim()));
 
 	    quantity = quantity - 1;
 
@@ -199,7 +199,7 @@ public class CardUtils {
 
 	for ( i = 0 ; i < 4 ; i++ ) {
 	
-	    one_layer_list.add(new Layer(layer_name, layer_ingrds));
+	    one_layer_list.add(new Layer(layer_name.trim(), layer_ingrds));
 
 	}
 

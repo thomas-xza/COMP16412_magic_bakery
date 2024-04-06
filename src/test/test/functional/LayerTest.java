@@ -129,7 +129,11 @@ public class LayerTest {
 	// Let's check what happens if we have a Helpful Duck
 	@Test
 	public void testCanBake_WithOneDuck() throws NoSuchFieldException, IllegalAccessException {
+	    System.out.println("CanBake_WithOneDuck");
+
+	    System.out.println("layer multi");
 		assertTrue(layer_multi.canBake(pantryWithOneDuck));
+	    System.out.println("layer snigle");
 		assertTrue(layer_single.canBake(pantryWithOneDuck));
 	}
 

@@ -19,9 +19,19 @@ public class Ingredient
      * something (not sure)
      */
 
-    public final static Ingredient HELPFUL_DUCK = new Ingredient("helpful duck 𓅭 ");
+    public final static Ingredient HELPFUL_DUCK = new Ingredient(duck_str());
 
     private static final long serialVersionUID = 1;
+
+    /**
+     *  func
+     * @return duck_str
+     */
+    public static String duck_str() {
+
+	return "helpful duck 𓅭";
+
+    }
 
     /**
      *  func

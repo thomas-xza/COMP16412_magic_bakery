@@ -204,9 +204,13 @@ public class MagicBakery
 	    
 	    for ( Ingredient i : used ) {
 
+		System.out.println("Trying to remove " + i);
+
 		getCurrentPlayer().removeFromHand(i);
 
 	    }
+	    
+	    System.out.println("adding layer " + layer);
 	    
 	    getCurrentPlayer().addToHand(layer);
 

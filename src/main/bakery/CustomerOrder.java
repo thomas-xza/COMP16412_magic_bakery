@@ -116,7 +116,7 @@ public class CustomerOrder
 
 	}
 
-	Integer ducks = source_map.get("helpful duck 𓅭 " );
+	Integer ducks = source_map.get(Ingredient.duck_str());
 
 	if ( ducks == null ) { ducks = 0; }
 
@@ -184,7 +184,7 @@ public class CustomerOrder
 
 	for ( Ingredient i : ing ) {
 
-	    if ( i.toString() == "helpful duck 𓅭 " ) {
+	    if ( i.toString().equals(Ingredient.duck_str()) ) {
 
 		ducks_avail += 1;
 
@@ -203,7 +203,7 @@ public class CustomerOrder
 
 		for ( Ingredient i : ing ) {
 
-		    if ( i.toString().equals("helpful duck 𓅭 ") ) {
+		    if ( i.toString().equals(Ingredient.duck_str()) ) {
 
 			    used.add(i);
 			    ing.remove(i);
