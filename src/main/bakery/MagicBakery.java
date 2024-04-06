@@ -442,17 +442,17 @@ public class MagicBakery
 
 	boolean garnished = false;
 	
+	System.out.println("fulfill()");
+
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	    
 	getCurrentPlayer().inc_actions_taken();
 
 	List<Ingredient> hand_used = new ArrayList<>();
 
-	System.out.println("fulfill()");
-
 	hand_used = customer.fulfill(getCurrentPlayer().getHand(), garnish);
 
-	System.out.println("hand_used: " + hand_used);
+	// System.out.println("hand_used: " + hand_used);
 	
 	for ( Ingredient i : hand_used ) {
 
@@ -494,6 +494,8 @@ public class MagicBakery
 	System.out.println("removing customer");
 
 	customers.remove(customer);
+
+	customers.statuses_a_c_refresh();
 
 	if ( garnished == true ) { return customer.getGarnish(); }
 	    

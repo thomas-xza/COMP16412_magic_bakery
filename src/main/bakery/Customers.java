@@ -95,11 +95,13 @@ public class Customers
                 (CustomerOrder)((LinkedList)this.customerDeck).removeLast()
 						       );
 
-	    if ( ((LinkedList)this.activeCustomers).get(0) != null ) {
+	    statuses_a_c_refresh();
 
-		anti_peek().setStatus(CustomerOrderStatus.WAITING);
+	    // if ( ((LinkedList)this.activeCustomers).get(0) != null ) {
+
+	    // 	anti_peek().setStatus(CustomerOrderStatus.WAITING);
 				      
-	    }
+	    // }
 	    
 	} catch ( Exception e ) {
 

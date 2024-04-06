@@ -193,7 +193,7 @@ public class ConsoleUtils {
      */
     public CustomerOrder promptForCustomer(String prompt, Collection<CustomerOrder> customers) {
 
-	CustomerOrder a = CustomerOrder.fast_order();
+	CustomerOrder a = null;
 
 	return a;
 
