@@ -139,13 +139,19 @@ public class CustomerOrder
      * @return a
      */
 
-    public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> target, List<Ingredient> in) {
+    public static List<List<Ingredient>> used_quantities_v2(List<Ingredient> in_target, List<Ingredient> in_src) {
 
 	List<List<Ingredient>> output = new ArrayList<>();
 
-	List<Ingredient> ing = in;
-	List<Ingredient> ing_copy = new ArrayList<>();
-	ing_copy.addAll(ing);
+	List<Ingredient> target = new ArrayList<>();
+	target.addAll(in_target);
+
+	List<Ingredient> in = new ArrayList<>();
+	in.addAll(in_src);
+
+	List<Ingredient> in_copy = new ArrayList<>();
+	in_copy.addAll(in);
+	
 	List<Ingredient> used = new ArrayList<>();
 
 	int missing = 0;
@@ -160,7 +166,7 @@ public class CustomerOrder
 	
 	for (Ingredient t : target ) {
 
-	    for (Ingredient i : ing ) {
+	    for (Ingredient i : in ) {
 
 		// System.out.println(t.toString() + " " + i.toString());
 
@@ -169,7 +175,7 @@ public class CustomerOrder
 		    // System.out.println("match!");
 
 		    used.add(i);
-		    ing.remove(i);
+		    in.remove(i);
 		    break;
 
 		}
@@ -182,7 +188,7 @@ public class CustomerOrder
 	
 	missing = target.size() - used.size();
 
-	for ( Ingredient i : ing ) {
+	for ( Ingredient i : in ) {
 
 	    if ( i.toString().equals(Ingredient.duck_str()) ) {
 
@@ -201,12 +207,12 @@ public class CustomerOrder
 
 	    while ( target.size() != used.size() ) {
 
-		for ( Ingredient i : ing ) {
+		for ( Ingredient i : in ) {
 
 		    if ( i.toString().equals(Ingredient.duck_str()) ) {
 
 			    used.add(i);
-			    ing.remove(i);
+			    in.remove(i);
 			    break;
 
 			}
@@ -229,12 +235,12 @@ public class CustomerOrder
 	if ( target.size() == used.size() ) {
 	    
 	    output.add(used);
-	    output.add(ing);
+	    output.add(in);
 
 	} else {
 
 	    output.add(new ArrayList<>());
-	    output.add(ing_copy);
+	    output.add(in_copy);
 
 	}
 

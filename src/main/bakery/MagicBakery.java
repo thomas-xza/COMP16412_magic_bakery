@@ -196,11 +196,15 @@ public class MagicBakery
 	    
 	    used = used_remain.get(0);
 
+	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    
 	    System.out.println("bakeLayer used, remain" + used_remain);
 
 	    this.layers.remove(layer);
 
 	    System.out.println("removed layer");
+	    
+	    System.out.println("hand   " + getCurrentPlayer().getHand());
 	    
 	    for ( Ingredient i : used ) {
 

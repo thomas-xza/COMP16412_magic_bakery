@@ -96,7 +96,7 @@ public class Player
 
     public void removeFromHand(Ingredient ingredient) throws WrongIngredientsException {
 
-	i_in_hand = false;
+	boolean i_in_hand = false;
 
 	for ( Ingredient i : hand ) {
 
@@ -112,7 +112,7 @@ public class Player
 
 	}
 
-	if ( hasIngredient(ingredient) == true ) {
+	if ( hasIngredient(ingredient) == true && i_in_hand == false ) {
 
 	    i_in_hand = true;
 
