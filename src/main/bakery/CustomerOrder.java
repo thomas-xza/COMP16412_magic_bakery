@@ -380,10 +380,6 @@ public class CustomerOrder
 	
 	List<Ingredient> remain = new ArrayList<>();
 
-	List<Ingredient> used_2 = new ArrayList<>();
-	
-	List<Ingredient> remain_2 = new ArrayList<>();
-
 	boolean can_f_g = false;
 
 	int i = 0;
@@ -427,9 +423,9 @@ public class CustomerOrder
 	    used = used_remain.get(0);
 	    remain = used_remain.get(1);
 
-	    // System.out.println("#1 used, remain:  " + used_remain);
-	    // System.out.println("used:  " + used);
-	    // System.out.println("remain:  " + remain);
+	    System.out.println("#1 used, remain:  " + used_remain);
+	    System.out.println("used:  " + used);
+	    System.out.println("remain:  " + remain);
 
 	    this.status = CustomerOrderStatus.FULFILLED;
 	    
