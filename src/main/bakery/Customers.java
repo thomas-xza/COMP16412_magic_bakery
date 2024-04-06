@@ -115,8 +115,6 @@ public class Customers
 
 	// System.out.println("activeCustomers: " + this.activeCustomers);
 
-	statuses_a_c_refresh();
-	
 	return last_cust;
 
     }
@@ -140,8 +138,7 @@ public class Customers
 
 	for (CustomerOrder c : this.activeCustomers) {
 
-	    if ( c != null &&
-		 c.getStatus() == CustomerOrderStatus.IMPATIENT ) {
+	    if ( c != null ) {
 
 		c.setStatus(CustomerOrderStatus.WAITING);
 
@@ -153,18 +150,19 @@ public class Customers
 
 	    peek().setStatus(CustomerOrderStatus.IMPATIENT);
 
-	} else if ( this.customerDeck.size() == 0 &&
-		    this.size() == 1 && peek() != null ) {
+	} else if ( this.customerDeck.size() == 0 ) {
 
-	    peek().setStatus(CustomerOrderStatus.IMPATIENT);
+	    if ( ( this.size() == 1 && peek() != null ) ||
+		 ( this.size() == 2 &&
+		   (CustomerOrder)((LinkedList)this.activeCustomers).get(1) != null &&
+		   (CustomerOrder)((LinkedList)this.activeCustomers).get(2) != null ) ) {
 
-	} else if ( this.customerDeck.size() == 0 &&
-		    this.size() == 2 &&
-		    ((LinkedList)this.activeCustomers).get(1) != null &&
-		    peek() != null ) {
+		     peek().setStatus(CustomerOrderStatus.IMPATIENT);
+
+		 }
 
 	}
-
+	
     }
 
     /**
@@ -174,7 +172,7 @@ public class Customers
 
     public CustomerOrder timePasses() {
 
-	// System.out.println("TIME PASSES");
+	System.out.println("TIME PASSES");
 
 	int i = 0;
 
@@ -240,6 +238,8 @@ public class Customers
 
 	}
 
+	statuses_a_c_refresh();
+
 	return null;
 	
     }
@@ -276,6 +276,8 @@ public class Customers
 	// }
 
 	// System.out.println("");
+
+	statuses_a_c_refresh();
 
 	CustomerOrder c = null;
 
