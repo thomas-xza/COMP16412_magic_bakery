@@ -383,14 +383,27 @@ public class MagicBakery
 
 	hand_used = customer.fulfill(getCurrentPlayer().getHand(), garnish);
 
+	for ( Ingredient i : hand_used ) {
+
+	    getCurrentPlayer().removeFromHand(i);		
+
+	}
+
+	if ( customer.getStatus() == CustomerOrderStatus.GARNISHED ) {
+
+	    for ( Ingredient i : customer.getGarnish() ) {
+
+		getCurrentPlayer().addToHand(i);
+
+	    }
+	    
+	}
+
 	System.out.println("hand" + getCurrentPlayer().getHand());
 
 	System.out.println("recipe" + customer.getRecipe());
 	
 	System.out.println("hand_used" + hand_used);
-
-	//  Arguably this function should also remove the card...
-	//  But this breaks all the tests!
 
 	customers.move_fulfilled_card(customer);
 	

@@ -255,15 +255,15 @@ public class CustomerOrder
 
 	    System.out.println("#2 used, remain:  " + used_remain_2);
 
-	    used.addAll(used_remain_2.get(0));
-	    remain = used_remain_2.get(1);
-
 	    if ( used_remain_2.get(0).size() != 0 ) {
 
 		this.status = CustomerOrderStatus.GARNISHED;
 
 	    }
 	    
+	    used.addAll(used_remain_2.get(0));
+	    remain = used_remain_2.get(1);
+
 	}
 
 	Collections.sort(used);
