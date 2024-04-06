@@ -460,7 +460,7 @@ public class MagicBakery
 
 	}
 
-	if ( customer.getStatus() == CustomerOrderStatus.GARNISHED ) {
+	if ( customer.get_status() == CustomerOrderStatus.GARNISHED ) {
 
 	    for ( Ingredient i : customer.getGarnish() ) {
 

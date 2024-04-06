@@ -367,6 +367,14 @@ public class CustomerOrder
     
     public CustomerOrderStatus getStatus() {
 
+	
+
+	return status;
+
+    }
+
+    public CustomerOrderStatus get_status() {
+
 	return status;
 
     }

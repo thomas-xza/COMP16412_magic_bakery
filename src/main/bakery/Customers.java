@@ -172,7 +172,7 @@ public class Customers
 
     public CustomerOrder timePasses() {
 
-	System.out.println("TIME PASSES");
+	// System.out.println("TIME PASSES");
 
 	int i = 0;
 
@@ -257,11 +257,11 @@ public class Customers
 
 	//     if ( select != null ) {
 	    
-	// 	if ( select.getStatus() == CustomerOrderStatus.WAITING ) {
+	// 	if ( select.get_status() == CustomerOrderStatus.WAITING ) {
 
 	// 	    System.out.printf(" W");
 
-	// 	} else if ( select.getStatus() == CustomerOrderStatus.IMPATIENT ) {
+	// 	} else if ( select.get_status() == CustomerOrderStatus.IMPATIENT ) {
 
 	// 	    System.out.printf(" I");
 
@@ -288,7 +288,7 @@ public class Customers
 	} catch (Exception e) { ; }
 
 	if ( peek() != null &&
-	     peek().getStatus() == CustomerOrderStatus.IMPATIENT ) {
+	     peek().get_status() == CustomerOrderStatus.IMPATIENT ) {
 
 	    return true;
 
@@ -403,7 +403,7 @@ public class Customers
 
 	for ( CustomerOrder order : this.inactiveCustomers ) {
 
-	    if ( order.getStatus() == status ) {
+	    if ( order.get_status() == status ) {
 
 		matches.add(order);
 
