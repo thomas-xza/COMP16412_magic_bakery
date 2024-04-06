@@ -64,8 +64,6 @@ public class Customers
 		
 	}
 
-        CustomerOrder.add_layers(layers);
-
 	int i = 0;
 
 	for ( i = 0 ; i < 3 ; i++ ) {

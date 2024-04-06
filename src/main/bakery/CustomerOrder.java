@@ -27,7 +27,7 @@ public class CustomerOrder
    
     private static final long serialVersionUID = 7;
 
-    private static Collection<Layer> layers_loaded;
+    public static List<Layer> layers_loaded;
 
     /**
      *  func
@@ -69,18 +69,6 @@ public class CustomerOrder
 	this.recipe = recipe;
 
 	this.status = CustomerOrderStatus.WAITING;
-
-    }
-
-    /**
-     * store list of layers inside CustomerOrder object
-     */
-
-    public void add_layers(Collection<Layer> layers) {
-
-	this.layers_loaded = new ArrayList<>();
-
-	this.layers_loaded.addAll((ArrayList)layers);
 
     }
 

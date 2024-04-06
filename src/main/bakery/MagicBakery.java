@@ -76,6 +76,8 @@ public class MagicBakery
 
 	this.layers = CardUtils.readLayerFile(layerDeckFile);
 
+	CustomerOrder.layers_loaded = new ArrayList<Layer>(layers);
+
 	// System.out.println("Just read layers!" + this.layers);
 
     }
@@ -117,7 +119,7 @@ public class MagicBakery
 	    try {
 		
 		this.customers = new Customers(customerDeckFile, this.random, this.layers, this.players.size());
-
+		
 	    } catch (IOException e) { ; }
 
 	}
