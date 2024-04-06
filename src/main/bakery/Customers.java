@@ -64,7 +64,7 @@ public class Customers
 		
 	}
 
-	((LinkedList)this.customerDeck).get(0).add_layers(layers);
+	((CustomerOrder)((LinkedList)this.customerDeck).get(0)).add_layers(layers);
 
 	int i = 0;
 
