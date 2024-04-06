@@ -380,8 +380,6 @@ public class CustomerOrder
 	
 	List<Ingredient> remain = new ArrayList<>();
 
-	boolean can_f_g = false;
-
 	int i = 0;
 
 	int quantity = 0;
@@ -397,21 +395,11 @@ public class CustomerOrder
 	// System.out.println("inputs: " + list_to_quantities(ingredients));
 	// System.out.println("recipe: " + this.recipe);
 
-	if ( garnish == true ) {
+	// if ( garnish == true ) {
 
 	    // System.out.println("garnish: " + this.garnish); //
 
-	}
-
-	can_f_g = compare_quantities(
-				     list_to_quantities(
-				       to_raw_ingredients(recipe_and_garnish)
-							),
-				     list_to_quantities(
-				       to_raw_ingredients(ingredients)
-							),
-				     1
-				     );
+	// }
 
 	if ( canFulfill(ingredients) == true ) {
 
@@ -424,8 +412,8 @@ public class CustomerOrder
 	    remain = used_remain.get(1);
 
 	    System.out.println("#1 used, remain:  " + used_remain);
-	    System.out.println("used:  " + used);
-	    System.out.println("remain:  " + remain);
+	    // System.out.println("used:  " + used);
+	    // System.out.println("remain:  " + remain);
 
 	    this.status = CustomerOrderStatus.FULFILLED;
 	    
@@ -444,7 +432,7 @@ public class CustomerOrder
 					       to_raw_ingredients(remain)
 					     );
 
-	    // System.out.println("#2 used, remain:  " + used_remain_2);
+	    System.out.println("#2 used, remain:  " + used_remain_2);
 
 	    used.addAll(used_remain_2.get(0));
 	    remain = used_remain_2.get(1);
