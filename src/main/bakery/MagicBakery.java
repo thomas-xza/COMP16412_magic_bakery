@@ -561,16 +561,37 @@ public class MagicBakery
 
 	    if ( order != null ) {
 
-		boolean res = SL.compare_quantities(
-							       SL.list_to_layer_bool(order.getGarnish()),
-                        SL.list_to_layer_bool(getCurrentPlayer().getHand()),
-		    SL.list_to_quantities(order.getGarnish()),
+		boolean res_fulfill = SL.compare_quantities(
+	      	    SL.list_to_layer_bool(
+					  order.getRecipe()
+					  ),
+                    SL.list_to_layer_bool(
+					  getCurrentPlayer().getHand()
+					  ),
 		    SL.list_to_quantities(
-			getCurrentPlayer().getHand()),
+					  order.getRecipe()
+					  ),
+		    SL.list_to_quantities(
+					  getCurrentPlayer().getHand()),
 					     0
 					     );
 
-		if ( res == true ) {
+		boolean res_garn = SL.compare_quantities(
+	      	    SL.list_to_layer_bool(
+					  order.getGarnish()
+					  ),
+                    SL.list_to_layer_bool(
+					  getCurrentPlayer().getHand()
+					  ),
+		    SL.list_to_quantities(
+					  order.getGarnish()
+					  ),
+		    SL.list_to_quantities(
+					  getCurrentPlayer().getHand()),
+					     0
+					     );
+
+		if ( res_fulfill == true && res_garn == true ) {
 
 		    garnishables.add(order);
 

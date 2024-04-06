@@ -1498,6 +1498,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testGetGarnishableCustomers__None() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testGetGarnishableCustomers__None");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
