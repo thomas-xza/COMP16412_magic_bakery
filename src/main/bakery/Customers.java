@@ -630,6 +630,28 @@ public class Customers
 
     /**
      * something
+     */
+
+    public String toString() {
+
+	String out = "";
+	
+	out += "[ ";
+
+	for ( CustomerOrder c : this.activeCustomers ) {
+
+	    out += c + "  ";
+	    
+	}
+
+	out += "]";
+
+	return out;
+	    
+    }
+    
+    /**
+     * something
      * @return fast
      */    
 

@@ -885,16 +885,19 @@ public class MagicBakeryTest {
 		String[] ingredients = {"flour", "sugar", "butter",  "chocolate", "walnuts", "biscuit"};
 		List<Ingredient> hand = setupCurrentHand(bakery, ingredients);
 		
+		System.out.println("before p0 " + customers);
 		List<Ingredient> drawn = bakery.fulfillOrder(customer, true);
 
 		i = 0;
 		System.out.println("p" + i);
 		assertEquals(2, drawn.size());
-		System.out.println("hand");
+		System.out.println("p0.1");
 		assertEquals(2, hand.size());
+		System.out.println("p0.2");
 		assertEquals(hand, drawn);
-		System.out.println("hand drawn");
+		System.out.println("p0.3" + customers);
 		assertEquals(2, customers.size());
+		System.out.println("p0.4");
 		assertEquals(1, inactiveCustomers.size());
 
 		i = 1;

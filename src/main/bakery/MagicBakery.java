@@ -131,6 +131,14 @@ public class MagicBakery
 	// System.out.println("pantryDeck post-shuf: " + this.pantryDeck);
 
 	refreshPantry();
+
+	this.customers.addCustomerOrder();
+	
+	if ( this.players.size() == 3 || this.players.size() == 5 ) {
+
+	    this.customers.addCustomerOrder();
+
+	}
 	
 	// System.out.println("Initialising hand");
 	
@@ -198,9 +206,9 @@ public class MagicBakery
 	    
 	    used = used_remain.get(0);
 
-	    System.out.println("hand   " + getCurrentPlayer().getHand());
+	    // System.out.println("hand   " + getCurrentPlayer().getHand());
 	    
-	    System.out.println("bakeLayer used, remain" + used_remain);
+	    // System.out.println("bakeLayer used, remain" + used_remain);
 
 	    this.layers.remove(layer);
 
@@ -216,7 +224,7 @@ public class MagicBakery
 	    
 	    getCurrentPlayer().addToHand(layer);
 
-	    System.out.println("new hand   " + getCurrentPlayer().getHand());
+	    // System.out.println("new hand   " + getCurrentPlayer().getHand());
 	    
 	    this.pantryDiscard.addAll(used);
 
@@ -408,6 +416,8 @@ public class MagicBakery
 	System.out.println("hand_used" + hand_used);
 
 	System.out.println("customers size" + customers.getActiveCustomers().size());
+
+	System.out.println("customers" + customers.getActiveCustomers());
 
 	// customers.move_fulfilled_card(customer);
 	

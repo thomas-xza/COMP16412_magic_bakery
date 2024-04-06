@@ -244,7 +244,7 @@ public class CustomerOrderTest {
 	@Test
 	public void testCanFulfill__MissingLayerIngredient_WithOneDuck() throws NoSuchFieldException, IllegalAccessException {
 		// What if the recipe contains a missing layer?
-	    System.out.println("testCanFulfill__MissingLayerIngredient_WithOneDuck");
+	    // System.out.println("testCanFulfill__MissingLayerIngredient_WithOneDuck");
 		List<Ingredient> layer_recipe = new ArrayList<Ingredient>();
 		layer_recipe.add(new Ingredient("flour"));
 		layer_recipe.add(new Ingredient("olive oil"));
@@ -295,6 +295,7 @@ public class CustomerOrderTest {
 	public void testCanGarnish__MissingLayer() throws NoSuchFieldException, IllegalAccessException {
 	    // System.out.println("testCanGarnish__MissingLayer()");
 		// What if the garnish contains a layer?
+	    // System.out.println("testCanGarnish__MissingLayer");
 		List<Ingredient> layer_recipe = new ArrayList<Ingredient>();
 		layer_recipe.add(new Ingredient("pecans"));
 		layer_recipe.add(new Ingredient("sugar"));
@@ -333,6 +334,7 @@ public class CustomerOrderTest {
 	@Test
 	public void testCanGarnish__MissingLayer_WithOneDuck() throws NoSuchFieldException, IllegalAccessException {
 		// What if the garnish contains a layer?
+	    // System.out.println("testCanGarnish__MissingLayer_WithOneDuck");
 		List<Ingredient> layer_recipe = new ArrayList<Ingredient>();
 		layer_recipe.add(new Ingredient("pecans"));
 		layer_recipe.add(new Ingredient("sugar"));
