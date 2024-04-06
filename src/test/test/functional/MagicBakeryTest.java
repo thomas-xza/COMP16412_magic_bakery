@@ -369,6 +369,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testDrawFromPantryDeck__Refill() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testDrawFromPantry__Refill()");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -425,6 +426,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testDrawFromPantry__EmptyInitialState() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testDrawFromPantry__EmptyInitialState()");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -436,6 +438,7 @@ public class MagicBakeryTest {
 
 		int actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
 
+	    System.out.println("p1");
 		pantry.clear();
 		pantry.add(new Ingredient("flour"));
 		pantry.add(new Ingredient("butter"));
@@ -445,34 +448,43 @@ public class MagicBakeryTest {
 
 		hand.clear();
 
+	    System.out.println("p2");
 		assertTrue(hand.isEmpty());
 		assertEquals(5, pantry.size());
 		assertEquals(0, actionsTaken);
 
+	    System.out.println("p3");
 		bakery.drawFromPantry(new Ingredient("flour"));
 		assertEquals(1, hand.size());
 		assertTrue(hand.contains(new Ingredient("flour")));
 		assertEquals(5, pantry.size());
+	    System.out.println("p3.1");
 		actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
 		assertEquals(1, actionsTaken);
 
+	    System.out.println("p4");
 		bakery.drawFromPantry(new Ingredient("oil"));
 		assertEquals(2, hand.size());
 		assertTrue(hand.contains(new Ingredient("oil")));
 		assertEquals(5, pantry.size());
+	    System.out.println("p4.1");
 		actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
 		assertEquals(2, actionsTaken);
 
+	    System.out.println("p5");
 		bakery.drawFromPantry(new Ingredient("eggs"));
 		assertEquals(3, hand.size());
 		assertTrue(hand.contains(new Ingredient("eggs")));
 		assertEquals(5, pantry.size());
+	    System.out.println("p5.1");
 		actionsTaken = bakery.getActionsPermitted() - bakery.getActionsRemaining();
+	    System.out.println("p5.2");
 		assertEquals(3, actionsTaken);
 	}
 
 	@Test
 	public void testDrawFromPantry__NormalInitialState() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testDrawFromPantry__NormalInitialState()");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -511,6 +523,7 @@ public class MagicBakeryTest {
 
 	@Test
 	public void testDrawFromPantry__NormalInitialState2() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
+	    System.out.println("testDrawFromPantry__NormalInitialState2()");
 		MagicBakery bakery = bakeryFactory();
 		bakery.startGame(playerNames, "./io/customers.csv");
 
@@ -1721,31 +1734,31 @@ public class MagicBakeryTest {
 		@SuppressWarnings("unchecked")
 		List<Ingredient> targetHand = (List<Ingredient>)FunctionalHelper.getFieldValue(targetPlayer, "hand");
 
-	    System.out.println("GetPassCard2 p1");
+	    //  System.out.println("GetPassCard2 p1");
 		sourceHand.clear();
 
 		sourceHand.add(new Ingredient("flour"));
 		sourceHand.add(new Ingredient("fruit"));
-		System.out.println("pre pass, source" + sourceHand);
+		//  System.out.println("pre pass, source" + sourceHand);
 
-	    System.out.println("GetPassCard2 p2");
+	    //  System.out.println("GetPassCard2 p2");
 		targetHand.clear();
 
 		targetHand.add(new Ingredient("flour"));
 		targetHand.add(new Ingredient("eggs"));
-		System.out.println("pre pass, target" + targetHand);
+		//  System.out.println("pre pass, target" + targetHand);
 
 
 		bakery.passCard(new Ingredient("flour"), targetPlayer);
 		
-		System.out.println("expecting, source" + sourceHand);
-		System.out.println("expecting, target" + targetHand);
+		//  System.out.println("expecting, source" + sourceHand);
+		//  System.out.println("expecting, target" + targetHand);
 
-	    System.out.println("GetPassCard2 p3");
+	    //  System.out.println("GetPassCard2 p3");
 		assertEquals(1, sourceHand.size());
 		assertTrue(sourceHand.contains(new Ingredient("fruit")));
 
-	    System.out.println("GetPassCard2 p4");
+	    //  System.out.println("GetPassCard2 p4");
 		assertEquals(3, targetHand.size());
 		assertTrue(targetHand.contains(new Ingredient("flour")));
 		assertTrue(targetHand.contains(new Ingredient("eggs")));
@@ -1755,16 +1768,16 @@ public class MagicBakeryTest {
 				countFlour++;
 			}
 		}
-	    System.out.println("GetPassCard2 p5");
+	    //  System.out.println("GetPassCard2 p5");
 		assertEquals(2, countFlour);
 		assertEquals(1, bakery.getActionsPermitted() - bakery.getActionsRemaining());
 
 		bakery.passCard(new Ingredient("fruit"), targetPlayer);
 
-	    System.out.println("GetPassCard2 p6");
+	    //  System.out.println("GetPassCard2 p6");
 		assertEquals(0, sourceHand.size());
 
-	    System.out.println("GetPassCard2 p7");
+	    //  System.out.println("GetPassCard2 p7");
 		assertEquals(4, targetHand.size());
 		assertTrue(targetHand.contains(new Ingredient("flour")));
 		assertTrue(targetHand.contains(new Ingredient("eggs")));
@@ -1776,7 +1789,7 @@ public class MagicBakeryTest {
 				countFlour++;
 			}
 		}
-	    System.out.println("GetPassCard2 p8");
+	    //  System.out.println("GetPassCard2 p8");
 		assertEquals(2, countFlour);
 		assertEquals(2, bakery.getActionsPermitted() - bakery.getActionsRemaining());
 	}

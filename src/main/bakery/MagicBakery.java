@@ -336,6 +336,10 @@ public class MagicBakery
 
 	pantry_to_hand(ingredient.toString());
 
+	((LinkedList)this.pantry).push(
+				       (Ingredient)((Stack)this.pantryDeck).pop()
+				       );
+	
     }
 
     /**
@@ -344,7 +348,7 @@ public class MagicBakery
      */
     public boolean endTurn() {
 
-	System.out.println("player changing from:  " + getCurrentPlayer());
+	// System.out.println("player changing from:  " + getCurrentPlayer());
 
 	boolean turn_ended = false;
 
@@ -504,7 +508,7 @@ public class MagicBakery
 
     public Player getCurrentPlayer() {
 
-	return (Player)((LinkedList)this.players).get(player_pointer);
+	return (Player)((LinkedList)this.players).get(player_ptr);
 
     }
 
@@ -714,11 +718,11 @@ public class MagicBakery
 
     public void passCard(Ingredient ingredient, Player recipient) throws TooManyActionsException {
 
-	for ( Player p : this.players ) {
+	// for ( Player p : this.players ) {
 
-	    System.out.println(p + " " + p.getHand());
+	//     System.out.println(p + " " + p.getHand());
 
-	}
+	// }
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
 	
@@ -728,11 +732,11 @@ public class MagicBakery
 	
 	getCurrentPlayer().inc_actions_taken();
 	
-	for ( Player p : this.players ) {
+	// for ( Player p : this.players ) {
 
-	    System.out.println(p + " " + p.getHand());
+	//     System.out.println(p + " " + p.getHand());
 
-	}
+	// }
 
     }
 

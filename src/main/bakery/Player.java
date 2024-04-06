@@ -102,19 +102,19 @@ public class Player
 
 	    if ( i.toString().equals(ingredient.toString()) ) {
 
-		System.out.println("match: " + i + " " + ingredient);
+		// System.out.println("match: " + i + " " + ingredient);
 
 		removed = true;
 
 		this.hand.remove(i);
 
-		System.out.println("new hand " + this.hand);
+		// System.out.println("new hand " + this.hand);
 		
 		break;
 
 	    } else {
 
-		System.out.println("no match: " + i + " " + ingredient);
+		// System.out.println("no match: " + i + " " + ingredient);
 
 	    }
 
