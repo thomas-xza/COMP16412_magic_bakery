@@ -115,8 +115,8 @@ public class SL {
 
 	// System.out.println("in: " + in);
 
-	//  Iterate through the target ingredients,
-	//    sub-iterate through the hand, look for matches.
+	//  Iterate through the recipe ingredients,
+	//    sub-iterate through the hand ingredients, look for matches.
 	//  Add them to an array of used ingredients.
 	
 	for (Ingredient t : target ) {

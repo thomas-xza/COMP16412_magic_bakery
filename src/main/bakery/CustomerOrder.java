@@ -161,13 +161,12 @@ public class CustomerOrder
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = SL.compare_quantities(
+					    SL.list_to_layer_bool(
+								  garnish),
 					 SL.list_to_layer_bool(
-					   SL.to_raw_ingredients(garnish)
-							       ),
-					 SL.list_to_layer_bool(ingredients),
-					 SL.list_to_quantities(
-					   SL.to_raw_ingredients(garnish)
-							    ),
+							       ingredients),
+					    SL.list_to_quantities(
+								  garnish),
 					 SL.list_to_quantities(
 					   ingredients
 							    ),
@@ -226,8 +225,8 @@ public class CustomerOrder
 	if ( canFulfill(ingredients) == true ) {
 
 	    used_remain = SL.used_quantities_v2(
-					     SL.to_raw_ingredients(this.recipe),
-					     SL.to_raw_ingredients(ingredients)
+					     this.recipe,
+					     ingredients
 					     );
 
 	    used = used_remain.get(0);
@@ -250,8 +249,8 @@ public class CustomerOrder
 	    System.out.println("ATTEMPTING GARNISH");
 
 	    used_remain_2 = SL.used_quantities_v2(
-					       SL.to_raw_ingredients(this.garnish),
-					       SL.to_raw_ingredients(remain)
+					       this.garnish,
+					       remain
 					     );
 
 	    System.out.println("#2 used, remain:  " + used_remain_2);
