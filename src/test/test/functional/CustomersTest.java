@@ -107,7 +107,7 @@ public class CustomersTest {
         order4.setStatus(CustomerOrderStatus.WAITING);
         order5.setStatus(CustomerOrderStatus.WAITING);
 
-	System.out.println("getDeterministicCustomers()" + " " + order1 + " " + order2 + " " + order3 + " " + order4 + " " + order5 + "\n");
+	// System.out.println("getDeterministicCustomers()" + " " + order1 + " " + order2 + " " + order3 + " " + order4 + " " + order5 + "\n");
 
         deck.add(order5);
         deck.add(order4);
@@ -350,7 +350,7 @@ public class CustomersTest {
 
     @Test
 	public void testInitialiseCustomerDeck__TwoPlayersPiSeed() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-	System.out.println("testInitialiseCustomerDeck__TwoPlayersPiSeed");
+	// System.out.println("testInitialiseCustomerDeck__TwoPlayersPiSeed");
         Customers customers = new Customers("./io/customers.csv", new Random(-1), layers, 2);
 
         Method mtd = FunctionalHelper.getMethod(customers, "initialiseCustomerDeck", String.class, Collection.class, int.class);
@@ -367,10 +367,10 @@ public class CustomersTest {
 		@SuppressWarnings("unchecked")
 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
-		System.out.println("deck  " + customerDeck.toArray());
+		// System.out.println("deck  " + customerDeck.toArray());
         List<Integer> lvlCounts = countLevels(customerDeck);
 
-	System.out.println("level counts");
+	// System.out.println("level counts");
 		assertEquals(4, lvlCounts.get(1));
 		assertEquals(2, lvlCounts.get(2));
 		assertEquals(1, lvlCounts.get(3));
@@ -390,7 +390,7 @@ public class CustomersTest {
     @Test
 	public void testCustomerDeck__HasLIFOSemantics() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
 
-	        System.out.println("Deck__HasLifo");
+	        // System.out.println("Deck__HasLifo");
 
         Customers customers = new Customers("./io/customers.csv", new Random(314159265), layers, 2);
         
@@ -463,39 +463,39 @@ public class CustomersTest {
 
         // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
 
-	System.out.println("AddCustomerOrder p1");
+	// System.out.println("AddCustomerOrder p1");
         assertEquals(0, customers.size());
-	System.out.println("AddCustomerOrder p1.5");
+	// System.out.println("AddCustomerOrder p1.5");
         assertEquals(5, customerDeck.size());
-	System.out.println("AddCustomerOrder p1.6");
+	// System.out.println("AddCustomerOrder p1.6");
         assertTrue(customerDeck.contains(order1));
-	System.out.println("AddCustomerOrder p1.7");
+	// System.out.println("AddCustomerOrder p1.7");
         assertEquals(0, inactiveCustomers.size());
-	System.out.println("AddCustomerOrder p2");
+	// System.out.println("AddCustomerOrder p2");
 
         assertFalse(customers.customerWillLeaveSoon());
-	System.out.println("AddCustomerOrder p2.1");
+	// System.out.println("AddCustomerOrder p2.1");
         assertTrue(customers.isEmpty());
-	System.out.println("AddCustomerOrder p2.3");
+	// System.out.println("AddCustomerOrder p2.3");
         assertNull(customers.peek());
-	System.out.println("AddCustomerOrder p3");
+	// System.out.println("AddCustomerOrder p3");
 
         // ADD!
         assertNull(customers.addCustomerOrder());
-	System.out.println("AddCustomerOrder p3.1");
+	// System.out.println("AddCustomerOrder p3.1");
 
         // State after addCustomerOrder() should be: order1 -> null -> null
         assertEquals(1, customers.size());
         assertEquals(4, customerDeck.size());
-	System.out.println("AddCustomerOrder p4");
+	// System.out.println("AddCustomerOrder p4");
         assertFalse(customerDeck.contains(order1));
         assertEquals(0, inactiveCustomers.size());
 
-	System.out.println("AddCustomerOrder p5");
+	// System.out.println("AddCustomerOrder p5");
         assertFalse(customers.customerWillLeaveSoon());
-	System.out.println("AddCustomerOrder p6");
+	// System.out.println("AddCustomerOrder p6");
         assertFalse(customers.isEmpty());
-	System.out.println("AddCustomerOrder p7");
+	// System.out.println("AddCustomerOrder p7");
         assertNull(customers.peek());  
     }
 
@@ -555,35 +555,35 @@ public class CustomersTest {
 
         // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
         // Alternatively, there is a problem with adding the first two orders. Check the previous tests.
-        System.out.println("Add custo 3rd p1");
+        // System.out.println("Add custo 3rd p1");
 	assertEquals(2, customers.size());
         assertEquals(3, customerDeck.size());
         assertTrue(customerDeck.contains(order3));
         assertEquals(0, inactiveCustomers.size());
-        System.out.println("Add custo 3rd p2");
+        // System.out.println("Add custo 3rd p2");
 
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("Add custo 3rd p3");
+        // System.out.println("Add custo 3rd p3");
         assertFalse(customers.isEmpty());
-        System.out.println("Add custo 3rd p4");
+        // System.out.println("Add custo 3rd p4");
         assertNull(customers.peek()); 
 
-        System.out.println("Add custo 3rd p5");
+        // System.out.println("Add custo 3rd p5");
         // ADD!
         assertNull(customers.addCustomerOrder());
 
         // State after addCustomerOrder() should be: order3 -> order2 -> order1
-        System.out.println("Add custo 3rd p6");
+        // System.out.println("Add custo 3rd p6");
         assertEquals(3, customers.size());
         assertEquals(2, customerDeck.size());
         assertFalse(customerDeck.contains(order3));
         assertEquals(0, inactiveCustomers.size());
-        System.out.println("Add custo 3rd p7");
+        // System.out.println("Add custo 3rd p7");
 
         assertTrue(customers.customerWillLeaveSoon());
-        System.out.println("Add custo 3rd p8");
+        // System.out.println("Add custo 3rd p8");
         assertFalse(customers.isEmpty());
-        System.out.println("Add custo 3rd p9");
+        // System.out.println("Add custo 3rd p9");
         assertEquals(order1, customers.peek()); 
     }
 
@@ -674,7 +674,7 @@ public class CustomersTest {
 
     @Test
     public void testAddCustomerOrder__Draining1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-	System.out.println("Draining1");
+	// System.out.println("Draining1");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -691,7 +691,7 @@ public class CustomersTest {
         customers.addCustomerOrder();
         customers.addCustomerOrder();
 
-	System.out.println("p1");
+	// System.out.println("p1");
         // Initial State Sanity Checks: If one of these checks fails, there is a problem with various state accessing methods. Fix them first!
         // Alternatively, there is a problem with adding the first five orders. Check the previous tests.
         assertEquals(3, customers.size());
@@ -699,33 +699,33 @@ public class CustomersTest {
         assertEquals(2, inactiveCustomers.size());
         assertFalse(inactiveCustomers.contains(order3));
 
-	System.out.println("p2");
+	// System.out.println("p2");
         assertTrue(customers.customerWillLeaveSoon());
-	System.out.println("p2.1");
+	// System.out.println("p2.1");
         assertFalse(customers.isEmpty());
-	System.out.println("p2.2");
+	// System.out.println("p2.2");
         assertEquals(order3, customers.peek()); 
 
         // ADD!
         assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
         // State after addCustomerOrder() should be: null -> order5 -> order4
-	System.out.println("p3");
+	// System.out.println("p3");
         assertEquals(2, customers.size());
         assertEquals(0, customerDeck.size());
         assertEquals(3, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order3));
 
-	System.out.println("p4");
+	// System.out.println("p4");
         assertTrue(customers.customerWillLeaveSoon());
-	System.out.println("p4.1");
+	// System.out.println("p4.1");
         assertFalse(customers.isEmpty());
         assertEquals(order4, customers.peek()); 
     }
 
     @Test
     public void testAddCustomerOrder__Draining2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-        System.out.println("Draining2");
+        // System.out.println("Draining2");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -758,24 +758,24 @@ public class CustomersTest {
         assertThrows(EmptyStackException.class, () -> {customers.addCustomerOrder();});
 
         // State after addCustomerOrder() should be: null -> null -> order5
-        System.out.println("drain2 np1");
+        // System.out.println("drain2 np1");
         assertEquals(1, customers.size());
         assertEquals(0, customerDeck.size());
         assertEquals(4, inactiveCustomers.size());
-        System.out.println("p3");
+        // System.out.println("p3");
         assertTrue(inactiveCustomers.contains(order4));
 
-        System.out.println("p4");
+        // System.out.println("p4");
         assertTrue(customers.customerWillLeaveSoon());
-        System.out.println("p5");
+        // System.out.println("p5");
         assertFalse(customers.isEmpty());
-        System.out.println("p6");
+        // System.out.println("p6");
         assertEquals(order5, customers.peek()); 
     }
 
     @Test
     public void testAddCustomerOrder__Draining3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-        System.out.println("Draining3");
+        // System.out.println("Draining3");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -947,9 +947,9 @@ public class CustomersTest {
         assertFalse(customers.getActiveCustomers().contains(order4));
         assertTrue(inactiveCustomers.contains(order2));
 
-        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() entry");
+        // System.out.println("AddCustomerOrder3 customerWillLeaveSoon() entry");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() exit");
+        // System.out.println("AddCustomerOrder3 customerWillLeaveSoon() exit");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
 
@@ -964,9 +964,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
-        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() entry");
+        // System.out.println("AddCustomerOrder3 customerWillLeaveSoon() entry");
         assertTrue(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder3 customerWillLeaveSoon() exit");
+        // System.out.println("AddCustomerOrder3 customerWillLeaveSoon() exit");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
@@ -1000,9 +1000,9 @@ public class CustomersTest {
         assertFalse(customers.getActiveCustomers().contains(order4));
         assertTrue(inactiveCustomers.contains(order3));
 
-        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() en");
+        // System.out.println("AddCustomerOrder4 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() ex");
+        // System.out.println("AddCustomerOrder4 customerWillLeaveSoon() ex");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
 
@@ -1017,9 +1017,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek()); 
-        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() en");
+        // System.out.println("AddCustomerOrder4 customerWillLeaveSoon() en");
         assertTrue(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder4 customerWillLeaveSoon() ex");
+        // System.out.println("AddCustomerOrder4 customerWillLeaveSoon() ex");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
@@ -1155,9 +1155,9 @@ public class CustomersTest {
         assertTrue(inactiveCustomers.contains(order2));
         assertTrue(inactiveCustomers.contains(order3));
 
-        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() en");
+        // System.out.println("AddCustomerOrder7 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() ex");
+        // System.out.println("AddCustomerOrder7 customerWillLeaveSoon() ex");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
 
@@ -1172,9 +1172,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
-        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() en");
+        // System.out.println("AddCustomerOrder7 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder7 customerWillLeaveSoon() ex");
+        // System.out.println("AddCustomerOrder7 customerWillLeaveSoon() ex");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order4.getStatus());
     }
@@ -1362,9 +1362,9 @@ public class CustomersTest {
         assertTrue(inactiveCustomers.contains(order2));
         assertTrue(inactiveCustomers.contains(order4));
 
-        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() en");
+        // System.out.println("AddCustomerOrder11 customerWillLeaveSoon() en");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() ex");
+        // System.out.println("AddCustomerOrder11 customerWillLeaveSoon() ex");
         assertFalse(customers.isEmpty());
         assertEquals(order3, customers.peek());
 
@@ -1378,9 +1378,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertEquals(order3, customers.peek());
-        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() en");
+        // System.out.println("AddCustomerOrder11 customerWillLeaveSoon() en");
         assertTrue(customers.customerWillLeaveSoon());
-        System.out.println("AddCustomerOrder11 customerWillLeaveSoon() ex");
+        // System.out.println("AddCustomerOrder11 customerWillLeaveSoon() ex");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
     }
@@ -1659,62 +1659,62 @@ public class CustomersTest {
 	//  Deck looks like: [5, 4]
 	
 	//  BUT TEST AUTHOR THINKS  ActiveCustomers: [1, 2, 3]
-	System.out.println("rm part1");
-	System.out.println("active     " + customers.getActiveCustomers());
+	// System.out.println("rm part1");
+	// System.out.println("active     " + customers.getActiveCustomers());
 	
-	System.out.println("expecting  " + order1 + " " + order2);
+	// System.out.println("expecting  " + order1 + " " + order2);
         customers.remove(order3);
 	//  TEST AUTHOR THINKS      ActiveCustomers: [1, 2, _]
 	//  BUT IS ACTUALLY         ActiveCustomers: [_, 2, 1]
-	System.out.println("active     " + customers.getActiveCustomers());
-	System.out.println("rm part1.01 ");
+	// System.out.println("active     " + customers.getActiveCustomers());
+	// System.out.println("rm part1.01 ");
         assertFalse(customers.customerWillLeaveSoon());  // Wrong assertFalse, customer #1 will leave soon.
-	System.out.println("rm part1.05 ");
+	// System.out.println("rm part1.05 ");
         assertFalse(customers.isEmpty());
-	System.out.println("rm part1.1 ");
-	System.out.println("active customers" + customers.getActiveCustomers());
-	System.out.println("order1 " +order1);
+	// System.out.println("rm part1.1 ");
+	// System.out.println("active customers" + customers.getActiveCustomers());
+	// System.out.println("order1 " +order1);
         assertEquals(order1, customers.peek());
-	System.out.println("rm part1.2");
+	// System.out.println("rm part1.2");
         assertEquals(2, customers.size());
-	System.out.println("rm part1.3");
+	// System.out.println("rm part1.3");
         assertEquals(1, inactiveCustomers.size());
-	System.out.println("rm part1.4");
+	// System.out.println("rm part1.4");
         assertTrue(inactiveCustomers.contains(order3));
 
-	System.out.println("rm part2");
+	// System.out.println("rm part2");
         customers.remove(order1);
 	//  ActiveCustomers: [_, 2, _]
         assertFalse(customers.customerWillLeaveSoon());
         assertFalse(customers.isEmpty());
-	System.out.println("rm part2.2");
+	// System.out.println("rm part2.2");
         assertNull(customers.peek());
         assertEquals(1, customers.size());
         assertEquals(2, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order1));
 
-	System.out.println("rm part3");
+	// System.out.println("rm part3");
         assertNull(customers.addCustomerOrder());
 	//  ActiveCustomers: [4, _, 2]
         assertFalse(customers.customerWillLeaveSoon());
         assertFalse(customers.isEmpty());
-	System.out.println("rm part3.3");
+	// System.out.println("rm part3.3");
         assertNull(customers.peek());
         assertEquals(2, customers.size());
         assertFalse(customerDeck.contains(order4));
         assertEquals(1, customerDeck.size());
 
-	System.out.println("rm part4");
+	// System.out.println("rm part4");
         customers.remove(order2);
         assertFalse(customers.customerWillLeaveSoon());
         assertFalse(customers.isEmpty());
-	System.out.println("rm part4.4");
+	// System.out.println("rm part4.4");
         assertNull(customers.peek());
         assertEquals(1, customers.size());
         assertEquals(3, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order2));
 
-	System.out.println("rm part5");
+	// System.out.println("rm part5");
         customers.remove(order4);
         assertFalse(customers.customerWillLeaveSoon());
         assertTrue(customers.isEmpty());
@@ -1727,7 +1727,7 @@ public class CustomersTest {
     @Test
     public void testTimePasses__PDFExample1() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
 
-	System.out.println("##  TP PDFExample 1 - emulates 2 player test (initialises with 2x level #1 orders, then 1x level #2 order)");
+	// System.out.println("##  TP PDFExample 1 - emulates 2 player test (initialises with 2x level #1 orders, then 1x level #2 order)");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -1741,45 +1741,45 @@ public class CustomersTest {
         // Active customers should be order3 -> order2 -> order1
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-	System.out.println("ex1 part 0");
+	// System.out.println("ex1 part 0");
 
         assertEquals(3, customers.size());
         assertEquals(0, inactiveCustomers.size());
-	System.out.println("ex1 part 0.5");
+	// System.out.println("ex1 part 0.5");
 
-	// System.out.println(customers.getActiveCustomers());
+	// // System.out.println(customers.getActiveCustomers());
 
 	try {
-	    System.out.println(customers.getActiveCustomers().contains(order1));
-	    System.out.println(order1);
-	    System.out.println(order2);
-	    System.out.println(order3);
+	    // System.out.println(customers.getActiveCustomers().contains(order1));
+	    // System.out.println(order1);
+	    // System.out.println(order2);
+	    // System.out.println(order3);
 	} catch (Exception e ) {
-	    System.out.println("contains failed" + e);
+	    // System.out.println("contains failed" + e);
 
 	}
 
         assertTrue(customers.getActiveCustomers().contains(order1));
-	System.out.println("ex1 part 0.5.1");
+	// System.out.println("ex1 part 0.5.1");
         assertTrue(customers.getActiveCustomers().contains(order2));
-	System.out.println("ex1 part 0.5.2");
+	// System.out.println("ex1 part 0.5.2");
         assertTrue(customers.getActiveCustomers().contains(order3));
 
-	System.out.println("ex1 part 1");
+	// System.out.println("ex1 part 1");
 
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
         assertTrue(customers.customerWillLeaveSoon());
-	System.out.println("ex1 part 1.5");
+	// System.out.println("ex1 part 1.5");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
 
-	System.out.println("ex1 part 2");
+	// System.out.println("ex1 part 2");
 
         // Time passes!
         assertEquals(order1, customers.timePasses());
-	System.out.println("ex1 part 2.5");
+	// System.out.println("ex1 part 2.5");
 
 
         // Active customers should be empty -> order3 -> order2 || order1 is now inactive
@@ -1787,25 +1787,25 @@ public class CustomersTest {
         assertEquals(1, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order1));
 
-	System.out.println("ex1 part 3");
+	// System.out.println("ex1 part 3");
 
         assertFalse(customers.isEmpty());
-	System.out.println("ex1 part 3.1");
+	// System.out.println("ex1 part 3.1");
         assertEquals(order2, customers.peek());
-	System.out.println("ex1 part 3.2");
+	// System.out.println("ex1 part 3.2");
         assertFalse(customers.customerWillLeaveSoon());
-	System.out.println("ex1 part 3.5");
+	// System.out.println("ex1 part 3.5");
 
         assertEquals(CustomerOrder.CustomerOrderStatus.GIVEN_UP, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
-	System.out.println("ex1 part 4");
+	// System.out.println("ex1 part 4");
 
     }
 
     @Test
     public void testTimePasses__PDFExample2() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-	System.out.println("##  TP PDFExample 2");
+	// System.out.println("##  TP PDFExample 2");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -1820,44 +1820,44 @@ public class CustomersTest {
         // Active customers should be order3 -> order2 -> null || order1 is now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-        System.out.println("TP ex2 part 2");
+        // System.out.println("TP ex2 part 2");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
         assertFalse(customers.getActiveCustomers().contains(order1));
-        System.out.println("TP ex2 part 2.1");
+        // System.out.println("TP ex2 part 2.1");
         assertTrue(customers.getActiveCustomers().contains(order2));
-        System.out.println("TP ex2 part 2.2");
+        // System.out.println("TP ex2 part 2.2");
         assertTrue(customers.getActiveCustomers().contains(order3));
 
-        System.out.println("TP ex2 part 3");
+        // System.out.println("TP ex2 part 3");
         assertFalse(customers.isEmpty());
         assertNull(customers.peek());
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
-        System.out.println("TP ex2 part 4");
+        // System.out.println("TP ex2 part 4");
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order3 -> order2 
-        System.out.println("TP ex2 part 5");
+        // System.out.println("TP ex2 part 5");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order1));
 
-        System.out.println("TP ex2 part 6");
+        // System.out.println("TP ex2 part 6");
         assertFalse(customers.isEmpty());
         assertEquals(order2, customers.peek());
-        System.out.println("TP ex2 part 6.1");
+        // System.out.println("TP ex2 part 6.1");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("TP ex2 part 6.2");
+        // System.out.println("TP ex2 part 6.2");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
-        System.out.println("TP ex2 part 6.3");
+        // System.out.println("TP ex2 part 6.3");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
     }
 
     @Test
     public void testTimePasses__PDFExample3() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
-	System.out.println("##  TP PDFExample 3");
+	// System.out.println("##  TP PDFExample 3");
         Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -1872,40 +1872,40 @@ public class CustomersTest {
         // Active customers should be order3 -> null -> order1 || order2 is now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-        System.out.println("TP ex3 p1");
+        // System.out.println("TP ex3 p1");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
-        System.out.println("TP ex3 p1.2");
+        // System.out.println("TP ex3 p1.2");
         assertTrue(customers.getActiveCustomers().contains(order1));
-        System.out.println("TP ex3 p1.3");
+        // System.out.println("TP ex3 p1.3");
         assertFalse(customers.getActiveCustomers().contains(order2));
-        System.out.println("TP ex3 p1.4");
+        // System.out.println("TP ex3 p1.4");
         assertTrue(customers.getActiveCustomers().contains(order3));
 
-        System.out.println("TP ex3 p1.5");
+        // System.out.println("TP ex3 p1.5");
         assertFalse(customers.isEmpty());
-        System.out.println("TP ex3 p1.6");
+        // System.out.println("TP ex3 p1.6");
         assertEquals(order1, customers.peek());
-        System.out.println("TP ex3 p1.7");
+        // System.out.println("TP ex3 p1.7");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order3 -> order1 
-        System.out.println("TP ex3 p2");
+        // System.out.println("TP ex3 p2");
         assertEquals(2, customers.size());
-        System.out.println("TP ex3 p2.1");
+        // System.out.println("TP ex3 p2.1");
         assertEquals(1, inactiveCustomers.size());
-        System.out.println("TP ex3 p2.2");
+        // System.out.println("TP ex3 p2.2");
         assertTrue(inactiveCustomers.contains(order2));
 
-        System.out.println("TP ex3 p3");
+        // System.out.println("TP ex3 p3");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
-        System.out.println("TP ex3 customerWillLeaveSoon");
+        // System.out.println("TP ex3 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("TP ex3.1 customerWillLeaveSoon");
+        // System.out.println("TP ex3.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
     }
@@ -1926,39 +1926,39 @@ public class CustomersTest {
         // Active customers should be null -> order2 -> order1 || order3 is now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-        System.out.println("TP ex4 p1");
+        // System.out.println("TP ex4 p1");
         assertEquals(2, customers.size());
         assertEquals(1, inactiveCustomers.size());
-        System.out.println("TP ex4 p1.1");
+        // System.out.println("TP ex4 p1.1");
         assertTrue(customers.getActiveCustomers().contains(order1));
-        System.out.println("TP ex4 p1.2");
+        // System.out.println("TP ex4 p1.2");
         assertTrue(customers.getActiveCustomers().contains(order2));
-        System.out.println("TP ex4 p1.3");
+        // System.out.println("TP ex4 p1.3");
         assertFalse(customers.getActiveCustomers().contains(order3));
 
-        System.out.println("TP ex4 p2");
+        // System.out.println("TP ex4 p2");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
-        System.out.println("TP ex4 p2.2");
+        // System.out.println("TP ex4 p2.2");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order2 -> order1
-        System.out.println("TP ex4 p3");
+        // System.out.println("TP ex4 p3");
         assertEquals(2, customers.size());
-        System.out.println("TP ex4 p3.1");
+        // System.out.println("TP ex4 p3.1");
         assertEquals(1, inactiveCustomers.size());
-        System.out.println("TP ex4 p3.2");
+        // System.out.println("TP ex4 p3.2");
         assertTrue(inactiveCustomers.contains(order3));
 
-        System.out.println("TP ex4 p4");
+        // System.out.println("TP ex4 p4");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
-        System.out.println("TP ex4 customerWillLeaveSoon");
+        // System.out.println("TP ex4 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("TP ex4.1 customerWillLeaveSoon");
+        // System.out.println("TP ex4.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order2.getStatus());
     }
@@ -2001,9 +2001,9 @@ public class CustomersTest {
 
         assertFalse(customers.isEmpty());
         assertNull(customers.peek());
-        System.out.println("TP ex5 customerWillLeaveSoon");
+        // System.out.println("TP ex5 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("TP ex5.1 customerWillLeaveSoon");
+        // System.out.println("TP ex5.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order3.getStatus());
     }
 
@@ -2066,36 +2066,36 @@ public class CustomersTest {
         // Active customers should be null -> null -> order1 || order2 and order3 are now inactive
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-        System.out.println("TP ex7 p1");
+        // System.out.println("TP ex7 p1");
         assertEquals(1, customers.size());
         assertEquals(2, inactiveCustomers.size());
         assertTrue(customers.getActiveCustomers().contains(order1));
         assertFalse(customers.getActiveCustomers().contains(order2));
         assertFalse(customers.getActiveCustomers().contains(order3));
 
-        System.out.println("TP ex7 p2");
+        // System.out.println("TP ex7 p2");
         assertFalse(customers.isEmpty());
-        System.out.println("TP ex7 p2.1");
+        // System.out.println("TP ex7 p2.1");
         assertEquals(order1, customers.peek());
-        System.out.println("TP ex7 p2.2");
+        // System.out.println("TP ex7 p2.2");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> null -> order1 
-        System.out.println("TP ex7 p3");
+        // System.out.println("TP ex7 p3");
         assertEquals(1, customers.size());
         assertEquals(2, inactiveCustomers.size());
         assertTrue(inactiveCustomers.contains(order2));
         assertTrue(inactiveCustomers.contains(order3));
 
-        System.out.println("TP ex7 p4");
+        // System.out.println("TP ex7 p4");
         assertFalse(customers.isEmpty());
         assertEquals(order1, customers.peek());
-        System.out.println("TP ex7 customerWillLeaveSoon");
+        // System.out.println("TP ex7 customerWillLeaveSoon");
         assertFalse(customers.customerWillLeaveSoon());
-        System.out.println("TP ex7.1 customerWillLeaveSoon");
+        // System.out.println("TP ex7.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order1.getStatus());
     }
 
@@ -2142,7 +2142,7 @@ public class CustomersTest {
     @Test
     public void testTimePasses__PDFExample9() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
 
-	System.out.println("TP PDF9");
+	// System.out.println("TP PDF9");
 	Customers customers = getDeterministicCustomers();
         // customerDeck from top to bottom: order1 -> order2 -> order3 -> order4 -> order5
 
@@ -2253,46 +2253,46 @@ public class CustomersTest {
         // Active customers should be order5 -> null -> order3 || order1, order2, and order4 are inactive || the customerDeck is empty
 
         // Sanity checking: if there is an error before timePasses(), something is wrong with addCustomer(), remove(), or the various state functions. Fix them first
-        System.out.println("TP ex11 p1");
+        // System.out.println("TP ex11 p1");
         assertEquals(2, customers.size());
         assertEquals(3, inactiveCustomers.size());
-        System.out.println("TP ex11 p1.2");
+        // System.out.println("TP ex11 p1.2");
         assertTrue(customers.getCustomerDeck().isEmpty());
-        System.out.println("TP ex11 p1.3");
+        // System.out.println("TP ex11 p1.3");
         assertTrue(inactiveCustomers.contains(order1));
-        System.out.println("TP ex11 p1.4");
+        // System.out.println("TP ex11 p1.4");
         assertTrue(inactiveCustomers.contains(order2));
-        System.out.println("TP ex11 p1.5");
+        // System.out.println("TP ex11 p1.5");
         assertTrue(inactiveCustomers.contains(order4));
-        System.out.println("TP ex11 p1.6");
+        // System.out.println("TP ex11 p1.6");
         assertTrue(customers.getActiveCustomers().contains(order3));
-        System.out.println("TP ex11 p1.7");
+        // System.out.println("TP ex11 p1.7");
         assertTrue(customers.getActiveCustomers().contains(order5));
 
-        System.out.println("TP ex11 p2");
+        // System.out.println("TP ex11 p2");
         assertFalse(customers.isEmpty());
-        System.out.println("TP ex11 p2.1");
+        // System.out.println("TP ex11 p2.1");
         assertEquals(order3, customers.peek());
-        System.out.println("TP ex11 p2.2");
+        // System.out.println("TP ex11 p2.2");
         assertFalse(customers.customerWillLeaveSoon());
 
         // Time passes!
         assertNull(customers.timePasses());
 
         // Active customers should be null -> order5 -> order3
-        System.out.println("TP ex11 p3");
+        // System.out.println("TP ex11 p3");
         assertEquals(2, customers.size());
         assertEquals(3, inactiveCustomers.size());
 
-        System.out.println("TP ex11 p4");
+        // System.out.println("TP ex11 p4");
         assertFalse(customers.isEmpty());
-        System.out.println("TP ex11 p4.1");
+        // System.out.println("TP ex11 p4.1");
         assertEquals(order3, customers.peek());
-        System.out.println("TP ex11 customerWillLeaveSoon");
+        // System.out.println("TP ex11 customerWillLeaveSoon");
         assertTrue(customers.customerWillLeaveSoon());
-        System.out.println("TP ex11.1 customerWillLeaveSoon");
+        // System.out.println("TP ex11.1 customerWillLeaveSoon");
         assertEquals(CustomerOrder.CustomerOrderStatus.IMPATIENT, order3.getStatus());
-        System.out.println("TP ex11 p5");
+        // System.out.println("TP ex11 p5");
         assertEquals(CustomerOrder.CustomerOrderStatus.WAITING, order5.getStatus());
     }
 
@@ -2527,36 +2527,36 @@ public class CustomersTest {
     @Test
     public void testDrawCustomer__Init() throws FileNotFoundException, IOException, NoSuchFieldException, IllegalAccessException {
 
-	System.out.println("testDrawCustomer__INIT()");
+	// System.out.println("testDrawCustomer__INIT()");
         Customers customers = getDeterministicCustomers();
 
         @SuppressWarnings("unchecked")
 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
         assertEquals(5, customerDeck.size());
-        System.out.println("p1");
+        // System.out.println("p1");
 
         assertEquals(order1, customers.drawCustomer());
-        System.out.println("p2");
+        // System.out.println("p2");
         assertEquals(4, customerDeck.size());
         assertFalse(customerDeck.contains(order1));
 
-        System.out.println("p3");
+        // System.out.println("p3");
         assertEquals(order2, customers.drawCustomer());
         assertEquals(3, customerDeck.size());
         assertFalse(customerDeck.contains(order2));
 
-        System.out.println("p4");
+        // System.out.println("p4");
         assertEquals(order3, customers.drawCustomer());
         assertEquals(2, customerDeck.size());
         assertFalse(customerDeck.contains(order3));
 
-        System.out.println("p5");
+        // System.out.println("p5");
         assertEquals(order4, customers.drawCustomer());
         assertEquals(1, customerDeck.size());
         assertFalse(customerDeck.contains(order4));
 
-        System.out.println("p6");
+        // System.out.println("p6");
         assertEquals(order5, customers.drawCustomer());
         assertEquals(0, customerDeck.size());
         assertFalse(customerDeck.contains(order5));
@@ -2566,7 +2566,7 @@ public class CustomersTest {
 	public void testDrawCustomer__AddAll() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
         Customers customers = new Customers("./io/customers.csv", new Random(12345), layers, 4);
 
-	System.out.println("testDrawCustomer__AddAll()");
+	// System.out.println("testDrawCustomer__AddAll()");
         @SuppressWarnings("unchecked")
 		Collection<CustomerOrder> customerDeck = (Collection<CustomerOrder>)FunctionalHelper.getFieldValue(customers, "customerDeck");
 
@@ -2584,52 +2584,52 @@ public class CustomersTest {
     @Test
     public void testGetFulfillable() throws ClassNotFoundException, FileNotFoundException, InvocationTargetException, IOException, NoSuchFieldException, IllegalAccessException {
         Customers customers = getDeterministicCustomers();
-	System.out.println("##  GetFulfillable");
+	// System.out.println("##  GetFulfillable");
 		Collection<CustomerOrder> fulfillable = getFulfilableWrapper(customers, pantry);
-	System.out.println("p0");
+	// System.out.println("p0");
         assertNotNull(fulfillable);
-	System.out.println("p0.1");
+	// System.out.println("p0.1");
         assertTrue(fulfillable.isEmpty());
-	System.out.println("p0.2");
+	// System.out.println("p0.2");
 
         customers.addCustomerOrder();
 
-	System.out.println("p1");
+	// System.out.println("p1");
 	fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertTrue(fulfillable.isEmpty());
 
         customers.addCustomerOrder();
 
-        System.out.println("p2");
+        // System.out.println("p2");
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertEquals(1, fulfillable.size());
-        System.out.println("p2.1");
+        // System.out.println("p2.1");
         assertEquals(order2, fulfillable.toArray()[0]);
 
         customers.addCustomerOrder();
         
-        System.out.println("p3");
+        // System.out.println("p3");
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertEquals(2, fulfillable.size());
         assertTrue(fulfillable.contains(order2));
-        System.out.println("p3.1");
+        // System.out.println("p3.1");
         assertTrue(fulfillable.contains(order3));
 
         customers.remove(order2);
-        System.out.println("p4");
+        // System.out.println("p4");
 
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertEquals(1, fulfillable.size());
-        System.out.println("p4.2");
+        // System.out.println("p4.2");
         assertEquals(order3, fulfillable.toArray()[0]);
 
         customers.remove(order3);
 
-        System.out.println("p5");
+        // System.out.println("p5");
         fulfillable = getFulfilableWrapper(customers, pantry);
         assertNotNull(fulfillable);
         assertTrue(fulfillable.isEmpty());
@@ -2787,7 +2787,7 @@ public class CustomersTest {
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__TwoPlayers__EulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
 
-	System.out.println("##  customer shuf 2");
+	// System.out.println("##  customer shuf 2");
 	Customers customers = new Customers("./io/customers.csv", new Random(271828), layers, 2);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
@@ -2804,7 +2804,7 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__FivePlayers__EulerSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	System.out.println("##  customer shuf 5a");
+	// System.out.println("##  customer shuf 5a");
         Customers customers = new Customers("./io/customers.csv", new Random(271828), layers, 5);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
@@ -2819,7 +2819,7 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__FivePlayers__AvoSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	System.out.println("##  customer shuf 5b");
+	// System.out.println("##  customer shuf 5b");
         Customers customers = new Customers("./io/customers.csv", new Random(602214076), layers, 5);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
@@ -2834,7 +2834,7 @@ public class CustomersTest {
 
     @Test
 	public void testCustomerDeckIsShuffledCorrectly__FivePlayers__TauSeed() throws NoSuchFieldException, IllegalAccessException, IOException, FileNotFoundException, InvocationTargetException {
-	System.out.println("##  customer shuf 5c");
+	// System.out.println("##  customer shuf 5c");
         Customers customers = new Customers("./io/customers.csv", new Random(628318530), layers, 5);
         ArrayList<CustomerOrder> customerDeck = new ArrayList<CustomerOrder>(customers.getCustomerDeck());
 
