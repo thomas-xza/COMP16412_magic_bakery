@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 import bakery.*;
+import util.*;
 
 /**
  * Create customer order
@@ -25,6 +26,8 @@ public class CustomerOrder
     private CustomerOrderStatus status;
    
     private static final long serialVersionUID = 7;
+
+    private static Collection<Ingredient> layers_in;
 
     /**
      *  func
@@ -70,6 +73,18 @@ public class CustomerOrder
     }
 
     /**
+     * store list of layers inside CustomerOrder object
+     */
+
+    public void add_layers(Collection<Ingredient> layers) {
+
+	this.layers_in = new ArrayList<>();
+
+	this.layers_in.addAll((ArrayList)layers);
+
+    }
+
+    /**
      * WARNING_DUMB_INVERTED_PARAMETER_ORDER
      * @param target_map a
      * @param source_map a
@@ -83,7 +98,8 @@ public class CustomerOrder
 
 	System.out.println("target_map:  " + target_map);
 
-	int missing = 0;
+	int missing_in = 0;
+	int missing_total = 0;
 
 	Integer i_source = 0;
 	Integer i_target = 0;
@@ -108,9 +124,21 @@ public class CustomerOrder
 
 	    }
 
+	    missing_in = i_target - i_source;
+
+	    for ( Ingredient l : this.layers_in ) {
+
+		if ( l.toString().equals(key) && missing_in > 0 ) {
+
+		    return false;
+
+		}
+
+	    }
+
 	    if (i_target > i_source) {
 
-		missing = missing + (i_target - i_source);
+		missing_total += missing_in;
 
 	    }
 
@@ -120,7 +148,7 @@ public class CustomerOrder
 
 	if ( ducks == null ) { ducks = 0; }
 
-	if ( missing == 0 || ( ducks >= missing ) ) {
+	if ( missing_total == 0 || ( ducks >= missing_total ) ) {
 
 	    res = true;
 	    
