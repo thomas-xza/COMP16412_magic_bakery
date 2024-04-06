@@ -27,7 +27,7 @@ public class CustomerOrder
    
     private static final long serialVersionUID = 7;
 
-    private static Collection<Ingredient> layers_loaded;
+    private static Collection<Layer> layers_loaded;
 
     /**
      *  func
@@ -76,7 +76,7 @@ public class CustomerOrder
      * store list of layers inside CustomerOrder object
      */
 
-    public void add_layers(Collection<Ingredient> layers) {
+    public void add_layers(Collection<Layer> layers) {
 
 	this.layers_loaded = new ArrayList<>();
 
