@@ -373,6 +373,12 @@ public class MagicBakery
 
 	hand_used = customer.fulfill(getCurrentPlayer().getHand(), garnish);
 
+	System.out.println("hand" + getCurrentPlayer().getHand());
+
+	System.out.println("recipe" + customer.getRecipe());
+	
+	System.out.println("hand_used" + hand_used);
+
 	//  Arguably this function should also remove the card...
 	//  But this breaks all the tests!
 
@@ -475,9 +481,9 @@ public class MagicBakery
 	    if ( order != null ) {
 
 		boolean res = CustomerOrder.compare_quantities(
-		    CustomerOrder.list_to_quantities(order.getRecipe(), 0),
+		    CustomerOrder.list_to_quantities(order.getRecipe()),
 		    CustomerOrder.list_to_quantities(
-			getCurrentPlayer().getHand(), 0),
+						     getCurrentPlayer().getHand()),
 					     0
 					     );
 
@@ -509,9 +515,9 @@ public class MagicBakery
 	    if ( order != null ) {
 
 		boolean res = CustomerOrder.compare_quantities(
-		    CustomerOrder.list_to_quantities(order.getGarnish(), 0),
+		    CustomerOrder.list_to_quantities(order.getGarnish()),
 		    CustomerOrder.list_to_quantities(
-			getCurrentPlayer().getHand(), 0),
+			getCurrentPlayer().getHand()),
 					     0
 					     );
 

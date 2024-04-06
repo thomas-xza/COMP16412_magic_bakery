@@ -96,6 +96,8 @@ public class Customers
 
 	CustomerOrder last_cust = timePasses();
 
+	statuses_a_c_refresh();
+
 	try {
 	
 	    ((LinkedList)this.activeCustomers).set(0,
@@ -117,8 +119,6 @@ public class Customers
 	    dummy_stack.pop();
 	    	    
 	}
-
-	statuses_a_c_refresh();
 
 	// System.out.println("customerDeck posttime: " + " " + this.customerDeck);
 
@@ -179,6 +179,8 @@ public class Customers
 	LinkedList<CustomerOrder> picked_up = new LinkedList<>();
 
 	CustomerOrder placeholder = null;
+
+	statuses_a_c_refresh();
 
 	picked_up.addFirst(placeholder);
 
@@ -269,7 +271,7 @@ public class Customers
 
 	// System.out.println("");
 
-	// statuses_a_c_refresh();
+	statuses_a_c_refresh();
 
 	CustomerOrder c = null;
 
@@ -354,12 +356,12 @@ public class Customers
 
 	    try {
 
-		System.out.println(CustomerOrder.list_to_quantities(a_cust.getRecipe(), 0));
-		System.out.println(CustomerOrder.list_to_quantities(hand, 0));
+		// System.out.println(CustomerOrder.list_to_quantities(a_cust.getRecipe()));
+		// System.out.println(CustomerOrder.list_to_quantities(hand));
 	
 		boolean res = CustomerOrder.compare_quantities(
-				CustomerOrder.list_to_quantities(a_cust.getRecipe(), 0),
-				CustomerOrder.list_to_quantities(hand, 0),
+				CustomerOrder.list_to_quantities(a_cust.getRecipe()),
+				CustomerOrder.list_to_quantities(hand),
 				0
 				);
 	    
@@ -598,7 +600,7 @@ public class Customers
 	    this.inactiveCustomers.add(customer);
 	    int pos = ((LinkedList)this.activeCustomers).indexOf(customer);
 
-	    System.out.println("pos  " + pos);
+	    // System.out.println("pos  " + pos);
 	
 	    ((LinkedList)this.activeCustomers).set(pos, null);
 

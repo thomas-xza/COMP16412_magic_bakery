@@ -139,10 +139,10 @@ public class CustomerOrder
 
 	List<List<Ingredient>> output = new ArrayList<>();
 
-	List<Ingredient> raw_i = to_raw_ingredients(in);
+	List<Ingredient> raw_i = in;
 	List<Ingredient> raw_i_copy = new ArrayList<>();
 	raw_i_copy.addAll(raw_i);
-	List<Ingredient> target_raw = to_raw_ingredients(target);
+	List<Ingredient> target_raw = target;
 	List<Ingredient> used = new ArrayList<>();
 
 	int missing = 0;
@@ -293,8 +293,8 @@ public class CustomerOrder
 	// System.out.println(this.name);
 
 	boolean res = compare_quantities(
-					 list_to_quantities(recipe, 1),
-					 list_to_quantities(ingredients, 1),
+					 list_to_quantities(recipe),
+					 list_to_quantities(ingredients),
 					 0
 					 );
 
@@ -339,8 +339,8 @@ public class CustomerOrder
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = compare_quantities(
-					 list_to_quantities(garnish, 1),
-					 list_to_quantities(ingredients, 1),
+					 list_to_quantities(garnish),
+					 list_to_quantities(ingredients),
 					 0
 					 );
 
@@ -400,8 +400,8 @@ public class CustomerOrder
 	}
 
 	can_f_g = compare_quantities(
-				     list_to_quantities(recipe_and_garnish, 1),
-				     list_to_quantities(ingredients, 1),
+				     list_to_quantities(recipe_and_garnish),
+				     list_to_quantities(ingredients),
 				     1
 				     );
 
@@ -409,7 +409,7 @@ public class CustomerOrder
 
 	    used_remain = used_quantities_v2(
 					     this.recipe,
-					     to_raw_ingredients(ingredients)
+					     ingredients
 					     );
 
 	    used = used_remain.get(0);
@@ -582,21 +582,13 @@ public class CustomerOrder
      * @return a
      */
 
-    public static Map<String, Integer> list_to_quantities(List<Ingredient> elements, int fragment) {
-
-	List<Ingredient> raw_ingrds = new ArrayList<>();
+    public static Map<String, Integer> list_to_quantities(List<Ingredient> elements) {
 
 	Map<String, Integer> map = new HashMap<>();
 
 	String e_str = "";
 
-	if ( fragment == 1 ) {
-
-	    raw_ingrds = to_raw_ingredients(elements);
-
-	} else { raw_ingrds.addAll(elements); }
-
-	for ( Ingredient e : raw_ingrds ) {
+	for ( Ingredient e : elements ) {
 
 	    e_str = e.toString();
 
