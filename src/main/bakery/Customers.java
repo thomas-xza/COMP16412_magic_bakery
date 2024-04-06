@@ -121,6 +121,17 @@ public class Customers
 
     /**
      * add
+     * @return a
+     */
+
+    public int customer_deck_size() {
+
+	return this.customerDeck.size();
+
+    }
+
+    /**
+     * add
      */
 
     public void statuses_a_c_refresh() {
@@ -161,6 +172,8 @@ public class Customers
 
     public CustomerOrder timePasses() {
 
+	System.out.println("TIME PASSES");
+
 	int i = 0;
 
 	boolean filled_a_blank = false;
@@ -179,6 +192,8 @@ public class Customers
 	     this.activeCustomers.size() != 0 ) {
 
 	    i = ((LinkedList)this.activeCustomers).indexOf(anti_peek());
+
+	    System.out.println("Cycling forward to... " + i);
 
 	}
 

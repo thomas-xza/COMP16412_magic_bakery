@@ -402,11 +402,21 @@ public class MagicBakery
 
 	this.new_round_chk += 1;
 
+	System.out.println("new_round_chk" + new_round_chk);
+
 	try {
 
 	    if ( this.new_round_chk == this.players.size() ) {
+		
+		if ( this.customers.customer_deck_size() > 0 ) {
 
-		this.customers.addCustomerOrder();
+		    this.customers.addCustomerOrder();
+
+		} else {
+
+		    this.customers.timePasses();
+
+		}
 
 		this.new_round_chk = 0;
 
