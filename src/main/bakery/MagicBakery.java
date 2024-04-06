@@ -210,7 +210,7 @@ public class MagicBakery
 	    
 	    // System.out.println("bakeLayer used, remain" + used_remain);
 
-	    // this.layers.remove(layer);
+	    this.layers.remove(layer);
 
 	    // System.out.println("removed layer");
 	    
@@ -419,7 +419,7 @@ public class MagicBakery
 
 	    } else {
 
-		this.layers.add(i);
+		this.layers.add((Layer)i);
 
 	    }
 
