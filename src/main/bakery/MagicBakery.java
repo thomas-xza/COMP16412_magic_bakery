@@ -413,6 +413,8 @@ public class MagicBakery
 
 	customers.remove(customer);
 
+	this.layers.addAll(SL.layers_loaded);
+
 	if ( garnished == true ) { return customer.getGarnish(); }
 	    
 	return null;
