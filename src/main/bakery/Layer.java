@@ -56,6 +56,16 @@ public class Layer extends Ingredient
      *  func
      * @return a
      */
+    public boolean is_layer() {
+
+	return true;
+	
+    }
+
+    /**
+     *  func
+     * @return a
+     */
     public String getRecipeDescription() {
 
         List<String> r_list = new ArrayList<>();

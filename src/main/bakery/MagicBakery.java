@@ -411,13 +411,21 @@ public class MagicBakery
 	    
 	}
 
+	for ( Ingredient i : hand_used ) {
+
+	    if ( !(i instanceof Layer) ) {
+
+		((Stack)this.pantryDiscard).push(i);
+
+	    } else if (i instanceof Layer) {
+
+		this.layers.add(i);
+
+	    }
+
+	}
+
 	customers.remove(customer);
-
-	System.out.println("SL layers (SLAYERS)" + SL.layers_loaded);
-
-	((LinkedList)this.layers).clear();
-
-	((LinkedList)this.layers).addAll(SL.layers_loaded);
 
 	if ( garnished == true ) { return customer.getGarnish(); }
 	    

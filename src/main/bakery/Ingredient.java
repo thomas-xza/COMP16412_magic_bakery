@@ -46,6 +46,16 @@ public class Ingredient
 
     /**
      *  func
+     * @return a
+     */
+    public boolean is_layer() {
+
+        return false;
+
+    }
+    
+    /**
+     *  func
      * @param o a
      * @return a
      */
