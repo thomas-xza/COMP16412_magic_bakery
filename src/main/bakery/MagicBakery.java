@@ -239,13 +239,23 @@ public class MagicBakery
      *  func
      * @return a
      * @throws TooManyActionsException a
+     * @throws EmptyPantryException a
      */
     
-    private Ingredient drawFromPantryDeck() throws TooManyActionsException{
+    private Ingredient drawFromPantryDeck() throws TooManyActionsException, EmptyPantryException {
 
 	int i = 0;
 
 	if ( getActionsRemaining() == 0 ) { throw new TooManyActionsException(); };
+
+	if ( ((List)this.pantryDeck).size() == 0 &&
+	     ((List)this.pantryDiscard).size() == 0 ) {
+
+	    throw new EmptyPantryException("undefined state", new RuntimeException());
+
+	}
+
+
 
 	if ( ((List)this.pantryDeck).size() == 0 ) {
 
