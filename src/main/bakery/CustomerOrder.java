@@ -161,13 +161,15 @@ public class CustomerOrder
     public boolean canGarnish(List<Ingredient> ingredients) {
 
 	boolean res = SL.compare_quantities(
-					 SL.list_to_layer_bool(garnish),
+					 SL.list_to_layer_bool(
+					   SL.to_raw_ingredients(garnish)
+							       ),
 					 SL.list_to_layer_bool(ingredients),
 					 SL.list_to_quantities(
 					   SL.to_raw_ingredients(garnish)
 							    ),
 					 SL.list_to_quantities(
-					   SL.to_raw_ingredients(ingredients)
+					   ingredients
 							    ),
 					 0
 					 );
